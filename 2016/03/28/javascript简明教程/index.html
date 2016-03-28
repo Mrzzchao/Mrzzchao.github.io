@@ -1,0 +1,634 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Mrzzchao</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="zzchao">
+    
+    <meta name="description" content="JavaScript基础知识点1. 基本概念1.1 数据类型简单数据类型
+Undefined
+
+未经初始化或声明的变量
+
+
+Null
+
+Boolean
+Number
+String
+
+复杂数据类型
+Object
+
+1.2 操作符
+一元操作符
+位操作符
+布尔操作符
+乘性操作符
+加性操作符
+关系操作符
+条">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/logo.svg">
+    <link rel="apple-touch-icon-precomposed" href="/img/logo.svg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Mrzzchao" title="Mrzzchao"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Mrzzchao">Mrzzchao</a></h1>
+				<h2 class="blog-motto">less is more</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">主页 | Home</a></li>
+					
+						<li><a href="/index">索引 | Index</a></li>
+					
+						<li><a href="/archives">归档 | Archives</a></li>
+					
+						<li><a href="/about">简介 | About</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:Mrzzchao.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/28/javascript简明教程/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://Mrzzchao.github.io" title="zzchao">zzchao</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2016-03-28T14:56:08.816Z" itemprop="datePublished">2016-03-28</time>
+    更新日期:<time datetime="2016-03-28T14:56:16.400Z" itemprop="dateModified">2016-03-28</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JavaScript基础知识点"><span class="toc-number">1.</span> <span class="toc-text">JavaScript基础知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-基本概念"><span class="toc-number">1.1.</span> <span class="toc-text">1. 基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-数据类型"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#简单数据类型"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">简单数据类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#复杂数据类型"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">复杂数据类型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-操作符"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-语句"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.3 语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-函数"><span class="toc-number">1.1.4.</span> <span class="toc-text">1.4 函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-变量、作用域和内存问题"><span class="toc-number">1.2.</span> <span class="toc-text">2. 变量、作用域和内存问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-基本类型和引用类型值"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 基本类型和引用类型值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-执行环境及作用域￥"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 执行环境及作用域￥</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-引用类型"><span class="toc-number">1.3.</span> <span class="toc-text">3. 引用类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-Object-类型"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 Object 类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Array-类型"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 Array 类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-Date-类型"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.3 Date 类型 @</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-RegExp-类型"><span class="toc-number">1.3.4.</span> <span class="toc-text">3.4 RegExp 类型 @</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-Function"><span class="toc-number">1.3.5.</span> <span class="toc-text">3.5 Function @</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#属性"><span class="toc-number">1.3.5.1.</span> <span class="toc-text">属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法"><span class="toc-number">1.3.5.2.</span> <span class="toc-text">方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-基本包装类型"><span class="toc-number">1.3.6.</span> <span class="toc-text">3.6 基本包装类型@</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-7-单体内置对象"><span class="toc-number">1.3.7.</span> <span class="toc-text">3.7 单体内置对象@</span></a></li></ol></li></ol></li></ol>
+		</div>
+		
+		<h1 id="JavaScript基础知识点"><a href="#JavaScript基础知识点" class="headerlink" title="JavaScript基础知识点"></a>JavaScript基础知识点</h1><h2 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h2><h3 id="1-1-数据类型"><a href="#1-1-数据类型" class="headerlink" title="1.1 数据类型"></a>1.1 数据类型</h3><h4 id="简单数据类型"><a href="#简单数据类型" class="headerlink" title="简单数据类型"></a>简单数据类型</h4><ul>
+<li><p><strong>Undefined</strong></p>
+<blockquote>
+<p>未经初始化或声明的变量</p>
+</blockquote>
+</li>
+<li><p>Null</p>
+</li>
+<li>Boolean</li>
+<li>Number</li>
+<li>String</li>
+</ul>
+<h4 id="复杂数据类型"><a href="#复杂数据类型" class="headerlink" title="复杂数据类型"></a>复杂数据类型</h4><ul>
+<li>Object</li>
+</ul>
+<h3 id="1-2-操作符"><a href="#1-2-操作符" class="headerlink" title="1.2 操作符"></a>1.2 操作符</h3><ul>
+<li>一元操作符</li>
+<li>位操作符</li>
+<li>布尔操作符</li>
+<li>乘性操作符</li>
+<li>加性操作符</li>
+<li>关系操作符</li>
+<li>条件操作符</li>
+<li>赋值操作符</li>
+<li>逗号操作符</li>
+</ul>
+<h3 id="1-3-语句"><a href="#1-3-语句" class="headerlink" title="1.3 语句"></a>1.3 语句</h3><ul>
+<li>if 语句</li>
+<li>do-while 语句</li>
+<li>for 语句</li>
+<li>for-in 语句</li>
+<li>label 语句</li>
+<li>break 和 continue 语句</li>
+<li><p><strong>with 语句</strong></p>
+<blockquote>
+<p>将代码的作用域设置到一个特定的对象中去</p>
+</blockquote>
+</li>
+<li><p>switch 语句</p>
+</li>
+</ul>
+<h3 id="1-4-函数"><a href="#1-4-函数" class="headerlink" title="1.4 函数"></a>1.4 函数</h3><ul>
+<li><p><strong>arguments</strong></p>
+<blockquote>
+<p>函数参数集合</p>
+</blockquote>
+</li>
+<li><p><strong>没用重载</strong></p>
+<blockquote>
+<p>可通过检查传入参数的数目与类型而做出不同的反应来实现</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="2-变量、作用域和内存问题"><a href="#2-变量、作用域和内存问题" class="headerlink" title="2. 变量、作用域和内存问题"></a>2. 变量、作用域和内存问题</h2><h3 id="2-1-基本类型和引用类型值"><a href="#2-1-基本类型和引用类型值" class="headerlink" title="2.1 基本类型和引用类型值"></a>2.1 基本类型和引用类型值</h3><ul>
+<li><p>检测数据类型</p>
+<blockquote>
+<p>typeof</p>
+</blockquote>
+</li>
+<li><p>检测引用类型</p>
+<blockquote>
+<p>instanceof</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="2-2-执行环境及作用域￥"><a href="#2-2-执行环境及作用域￥" class="headerlink" title="2.2 执行环境及作用域￥"></a>2.2 执行环境及作用域￥</h3><ul>
+<li><strong>作用域链</strong></li>
+<li>全局环境<ul>
+<li>有 var 全局</li>
+<li>没 var 局部</li>
+</ul>
+</li>
+<li>局部环境</li>
+<li>延长作用域链<ul>
+<li>try catch</li>
+<li>with</li>
+</ul>
+</li>
+<li><p>没用块作用域</p>
+<blockquote>
+<p>if语句</p>
+</blockquote>
+</li>
+<li><p>垃圾收集</p>
+<ul>
+<li>标记清除（主流方式）</li>
+<li>引用计数</li>
+</ul>
+</li>
+<li>管理内存<blockquote>
+<p>手动释放不在引用的全局变量</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="3-引用类型"><a href="#3-引用类型" class="headerlink" title="3. 引用类型"></a>3. 引用类型</h2><h3 id="3-1-Object-类型"><a href="#3-1-Object-类型" class="headerlink" title="3.1 Object 类型"></a>3.1 Object 类型</h3><ul>
+<li>对象创建方式<ul>
+<li>new 创建</li>
+<li>字面量创建 （花括号{}）</li>
+</ul>
+</li>
+<li>属性引用<ul>
+<li><strong>.</strong> 引用（主流）</li>
+<li>[] 引用（属性为变量或者含有空格）</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-2-Array-类型"><a href="#3-2-Array-类型" class="headerlink" title="3.2 Array 类型"></a>3.2 Array 类型</h3><ul>
+<li>检测数组<ul>
+<li>instanceof</li>
+<li>isArray()</li>
+</ul>
+</li>
+<li>转换方法<ul>
+<li>toString</li>
+<li>toLocaleString</li>
+<li>valueOf</li>
+<li>join</li>
+</ul>
+</li>
+<li>栈方法<ul>
+<li>push</li>
+<li>pop</li>
+</ul>
+</li>
+<li>队列方法<ul>
+<li>shift</li>
+<li>unshift</li>
+</ul>
+</li>
+<li><p>重排序方法</p>
+<ul>
+<li><p>sort</p>
+<blockquote>
+<p>转化成字符串比较</p>
+</blockquote>
+</li>
+<li><p>reverse</p>
+</li>
+</ul>
+</li>
+<li><p>操作方法</p>
+<ul>
+<li>concat</li>
+<li><p>slice</p>
+<blockquote>
+<p>取子数组</p>
+</blockquote>
+</li>
+<li><p>splice</p>
+<blockquote>
+<p>删除（2个参数）  删除、替换（三个参数）</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>位置方法</p>
+<ul>
+<li>indexOf(从前)</li>
+<li>lastIndexOf(从后)</li>
+</ul>
+</li>
+<li><p>迭代方法</p>
+<ul>
+<li><p>every</p>
+<blockquote>
+<p>检查数组执行方法后每一项是否都返回true</p>
+</blockquote>
+</li>
+<li><p>filter</p>
+<blockquote>
+<p>选出数组执行方法后返回true的项</p>
+</blockquote>
+</li>
+<li><p>forEach</p>
+<blockquote>
+<p>数组中的每一项都执行方法</p>
+</blockquote>
+</li>
+<li><p>map</p>
+<blockquote>
+<p>返回数组每一项执行方法后返回的值</p>
+</blockquote>
+</li>
+<li><p>some</p>
+<blockquote>
+<p>检查数组执行方法后是否有一项返回true</p>
+</blockquote>
+<table style="text-align:center"><br>  <thead><br>      <th>第1个参数</th><br>      <th>第2个参数</th><br>      <th>第3个参数</th><br>  </thead><br>  <tbody><br>      <tr><br>          <td>数组项的值</td><br>          <td>数组项的位置</td><br>          <td>数组本身</td><br>      </tr><br>  </tbody><br></table>
+</li>
+</ul>
+</li>
+<li><p>归并方法</p>
+<ul>
+<li>reduce</li>
+<li><p>reduceRight</p>
+<table style="text-align:center"><br>  <thead><br>      <th>第1个参数</th><br>      <th>第2个参数</th><br>      <th>第3个参数</th><br>      <th>第4个参数</th><br>  </thead><br>  <tbody><br>      <tr><br>          <td>前一个值</td><br>          <td>当前值</td><br>          <td>当前项的位置</td><br>          <td>数组本身</td><br>      </tr><br>  </tbody><br></table>
+
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-3-Date-类型"><a href="#3-3-Date-类型" class="headerlink" title="3.3 Date 类型 @"></a>3.3 Date 类型 @</h3><ul>
+<li>继承的方法</li>
+<li>日期格式化方法</li>
+</ul>
+<h3 id="3-4-RegExp-类型"><a href="#3-4-RegExp-类型" class="headerlink" title="3.4 RegExp 类型 @"></a>3.4 RegExp 类型 @</h3><ul>
+<li>RegExp 实例属性</li>
+<li>RegExp 实例方法</li>
+<li>RegExp 构造函数属性</li>
+<li>模式的局限性<table style="text-align:center"><br>  <thead><br>      <th>global 模式</th><br>      <th>ignoreCase 模式</th><br>      <th>multiline 模式</th><br>  </thead><br>  <tbody><br>      <tr><br>          <td>g</td><br>          <td>i</td><br>          <td>m</td><br>      </tr><br>      <tr><br>          <td>表示全局</td><br>          <td>表示不区分大小写</td><br>          <td>表示多行模式</td><br>      </tr><br>  </tbody><br></table>
+
+</li>
+</ul>
+<h3 id="3-5-Function"><a href="#3-5-Function" class="headerlink" title="3.5 Function @"></a>3.5 Function @</h3><ul>
+<li><p>没有重载（深入理解）</p>
+<blockquote>
+<p>因为函数名为指针，相同的函数名指向的为同一个函数</p>
+</blockquote>
+</li>
+<li><p>函数声明与函数表达式</p>
+<ul>
+<li><p>函数声明</p>
+<blockquote>
+<p>可以无视代码顺序</p>
+</blockquote>
+</li>
+<li><p>函数表达式</p>
+<blockquote>
+<p>必须在表达式之后才可引用</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>作为值的函数</p>
+<blockquote>
+<p>可以作为参数传递或返回，实际上就是个引用</p>
+</blockquote>
+</li>
+<li><p>函数内部属性</p>
+<p>  <strong>特殊对象</strong></p>
+<ul>
+<li>arguments(也叫callee—指向拥有该arguments的函数)</li>
+<li>this</li>
+</ul>
+</li>
+<li><p>函数的属性和方法</p>
+<h4 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h4><ul>
+<li>length(命名参数数目)</li>
+<li>prototype(所以实例方法的真正存在)</li>
+</ul>
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><ul>
+<li>apply(参数可不定)</li>
+<li>call(参数确定)</li>
+<li>bind</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-6-基本包装类型"><a href="#3-6-基本包装类型" class="headerlink" title="3.6 基本包装类型@"></a>3.6 基本包装类型@</h3><blockquote>
+<p>创建实例 <br>调用实力方法<br>销毁实例</p>
+</blockquote>
+<ul>
+<li>Booleadn 类型</li>
+<li>Number 类型</li>
+<li>String 类型<ul>
+<li>trim(去除字符串空格)</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-7-单体内置对象"><a href="#3-7-单体内置对象" class="headerlink" title="3.7 单体内置对象@"></a>3.7 单体内置对象@</h3><ul>
+<li>Global 对象<ul>
+<li>eval(可把传入参数或字符串解析为js代码)</li>
+<li>window（在浏览器中将global对象作为他的一部分来实现）</li>
+</ul>
+</li>
+<li>Math 对象</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://Mrzzchao.github.io/2016/03/28/javascript简明教程/" data-title="Mrzzchao" data-tsina="Mrzzchao" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/03/20/字体名称/"  title="css字体名称">
+ <strong>NEXT:</strong><br/> 
+ <span>css字体名称
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JavaScript基础知识点"><span class="toc-number">1.</span> <span class="toc-text">JavaScript基础知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-基本概念"><span class="toc-number">1.1.</span> <span class="toc-text">1. 基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-数据类型"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#简单数据类型"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">简单数据类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#复杂数据类型"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">复杂数据类型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-操作符"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-语句"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.3 语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-函数"><span class="toc-number">1.1.4.</span> <span class="toc-text">1.4 函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-变量、作用域和内存问题"><span class="toc-number">1.2.</span> <span class="toc-text">2. 变量、作用域和内存问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-基本类型和引用类型值"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 基本类型和引用类型值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-执行环境及作用域￥"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 执行环境及作用域￥</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-引用类型"><span class="toc-number">1.3.</span> <span class="toc-text">3. 引用类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-Object-类型"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 Object 类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Array-类型"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 Array 类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-Date-类型"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.3 Date 类型 @</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-RegExp-类型"><span class="toc-number">1.3.4.</span> <span class="toc-text">3.4 RegExp 类型 @</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-Function"><span class="toc-number">1.3.5.</span> <span class="toc-text">3.5 Function @</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#属性"><span class="toc-number">1.3.5.1.</span> <span class="toc-text">属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法"><span class="toc-number">1.3.5.2.</span> <span class="toc-text">方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-基本包装类型"><span class="toc-number">1.3.6.</span> <span class="toc-text">3.6 基本包装类型@</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-7-单体内置对象"><span class="toc-number">1.3.7.</span> <span class="toc-text">3.7 单体内置对象@</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/CSS/" title="CSS">CSS<sup>3</sup></a></li>
+		
+			<li><a href="/categories/blog/" title="blog">blog<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Center-Issue/" title="Center Issue">Center Issue<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Font-Name/" title="Font-Name">Font-Name<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Triangle/" title="Triangle">Triangle<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/Center-Issue/" style="font-size: 10px;">Center Issue</a> <a href="/tags/Font-Name/" style="font-size: 10px;">Font-Name</a> <a href="/tags/Triangle/" style="font-size: 10px;">Triangle</a>
+    </div>
+  </div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		<a href="https://github.com/Mrzzchao" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2016 
+		
+		<a href="http://Mrzzchao.github.io" target="_blank" title="zzchao">zzchao</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"mchao.duoshuo.com"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+  </body>
+</html>
