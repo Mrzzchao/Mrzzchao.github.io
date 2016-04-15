@@ -1,106 +1,356 @@
+<!doctype html>
 
- <!DOCTYPE HTML>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
+
+
   
-    <title>作用域与this | Mrzzchao</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
     
-    <meta name="author" content="zzchao">
     
-    <meta name="description" content="词法作用域定义在词法阶段的作用域。简单来说就是函数，对象在定义时就决定好的执行范围,由代码书写的地方决定一切。
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="this," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Mrzzchao" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="词法作用域定义在词法阶段的作用域。简单来说就是函数，对象在定义时就决定好的执行范围,由代码书写的地方决定一切。
 词法欺骗但是，也可以通过一定的语法来改写这个先天决定的作用域。
 
-eval接受的字符串参数就好像是书写在eval位置上的代码一样
-123456function foo(str, a) &amp;#">
-    
-    
-    
-    
-    
-    <link rel="icon" href="/img/favicon.ico">
-    
-    
-    <link rel="apple-touch-icon" href="/img/logo.svg">
-    <link rel="apple-touch-icon-precomposed" href="/img/logo.svg">
-    
-    <link rel="stylesheet" href="/css/style.css">
+eval接受的字符串参数就好像是书写在eval位置上的代码一样123456function foo(str, a) &amp;#123;    eval( str ); // 欺骗！    console.log( a, b );">
+<meta property="og:type" content="article">
+<meta property="og:title" content="作用域与this">
+<meta property="og:url" content="http://Mrzzchao.github.io/2016/04/08/作用域与this/index.html">
+<meta property="og:site_name" content="Mrzzchao">
+<meta property="og:description" content="词法作用域定义在词法阶段的作用域。简单来说就是函数，对象在定义时就决定好的执行范围,由代码书写的地方决定一切。
+词法欺骗但是，也可以通过一定的语法来改写这个先天决定的作用域。
+
+eval接受的字符串参数就好像是书写在eval位置上的代码一样123456function foo(str, a) &amp;#123;    eval( str ); // 欺骗！    console.log( a, b );">
+<meta property="og:image" content="http://7xrul1.com1.z0.glb.clouddn.com/%E4%BD%9C%E7%94%A8%E5%9F%9F2.png">
+<meta property="og:image" content="http://7xrul1.com1.z0.glb.clouddn.com/%E4%BD%9C%E7%94%A8%E5%9F%9F.png">
+<meta property="og:updated_time" content="2016-04-15T13:09:02.627Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="作用域与this">
+<meta name="twitter:description" content="词法作用域定义在词法阶段的作用域。简单来说就是函数，对象在定义时就决定好的执行范围,由代码书写的地方决定一切。
+词法欺骗但是，也可以通过一定的语法来改写这个先天决定的作用域。
+
+eval接受的字符串参数就好像是书写在eval位置上的代码一样123456function foo(str, a) &amp;#123;    eval( str ); // 欺骗！    console.log( a, b );">
+<meta name="twitter:image" content="http://7xrul1.com1.z0.glb.clouddn.com/%E4%BD%9C%E7%94%A8%E5%9F%9F2.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 作用域与this | Mrzzchao </title>
 </head>
 
-  <body>
-    <header>
-      <div>
-		
-			<div id="imglogo">
-				<a href="/"><img src="/img/logo.svg" alt="Mrzzchao" title="Mrzzchao"/></a>
-			</div>
-			
-			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="Mrzzchao">Mrzzchao</a></h1>
-				<h2 class="blog-motto">less is more</h2>
-			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
-			</a></div>
-			<nav class="animated">
-				<ul>
-					
-						<li><a href="/">主页 | Home</a></li>
-					
-						<li><a href="/index">索引 | Index</a></li>
-					
-						<li><a href="/archives">归档 | Archives</a></li>
-					
-						<li><a href="/about">简介 | About</a></li>
-					
-					<li>
-					
-					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
-						<label>Search</label>
-						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
-						<input type="hidden" name="q" value="site:Mrzzchao.github.io">
-					</form>
-					
-					</li>
-				</ul>
-			</nav>			
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Mrzzchao</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Go or Die</p>
 </div>
 
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
     </header>
-    <div id="container">
-      <div id="main" class="post" itemscope itemprop="blogPost">
-	<article itemprop="articleBody"> 
-		<header class="article-info clearfix">
-  <h1 itemprop="name">
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
     
-      <a href="/2016/04/08/作用域与this/" title="作用域与this" itemprop="url">作用域与this</a>
-  </h1>
-  <p class="article-author">By
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
     
-      <a href="http://Mrzzchao.github.io" title="zzchao">zzchao</a>
-    </p>
-  <p class="article-time">
-    <time datetime="2016-04-08T07:30:03.000Z" itemprop="datePublished">2016-04-08</time>
-    更新日期:<time datetime="2016-04-08T14:09:34.312Z" itemprop="dateModified">2016-04-08</time>
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                作用域与this
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-08T15:30:03+08:00" content="2016-04-08">
+              2016-04-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/08/作用域与this/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/08/作用域与this/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+		  
+		  
+		  	 <span id="/2016/04/08/作用域与this/"class="leancloud_visitors"  data-flag-title="作用域与this">
+            &nbsp; | &nbsp; 阅读次数
+            </span>
+		  
+
+          
+          
+             <span id="/2016/04/08/作用域与this/" class="leancloud_visitors" data-flag-title="作用域与this">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
     
-  </p>
-</header>
-	<div class="article-content">
-		
-		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#词法作用域"><span class="toc-number">1.</span> <span class="toc-text">词法作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#词法欺骗"><span class="toc-number">1.1.</span> <span class="toc-text">词法欺骗</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#eval"><span class="toc-number">1.1.1.</span> <span class="toc-text">eval</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#with"><span class="toc-number">1.1.2.</span> <span class="toc-text">with</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数作用域"><span class="toc-number">1.2.</span> <span class="toc-text">函数作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#作用域图"><span class="toc-number">1.2.1.</span> <span class="toc-text">作用域图</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#块作用域"><span class="toc-number">1.3.</span> <span class="toc-text">块作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#模拟块作用域-ES5以前"><span class="toc-number">1.3.1.</span> <span class="toc-text">模拟块作用域(ES5以前)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ES6"><span class="toc-number">1.3.2.</span> <span class="toc-text">ES6</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#let"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">let</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#const"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">const</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动态作用域"><span class="toc-number">2.</span> <span class="toc-text">动态作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#This"><span class="toc-number">3.</span> <span class="toc-text">This</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#归纳来说this有四种绑定方式"><span class="toc-number">3.1.</span> <span class="toc-text">归纳来说this有四种绑定方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#默认绑定"><span class="toc-number">3.1.1.</span> <span class="toc-text">默认绑定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#隐式绑定"><span class="toc-number">3.1.2.</span> <span class="toc-text">隐式绑定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#显示绑定"><span class="toc-number">3.1.3.</span> <span class="toc-text">显示绑定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#new绑定"><span class="toc-number">3.1.4.</span> <span class="toc-text">new绑定</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四种绑定优先级（前高后低）"><span class="toc-number">3.2.</span> <span class="toc-text">四种绑定优先级（前高后低）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#绑定例外"><span class="toc-number">3.2.1.</span> <span class="toc-text">绑定例外</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">4.</span> <span class="toc-text">参考资料</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#《你不知道的JS》-真的写的很好"><span class="toc-number">4.1.</span> <span class="toc-text">《你不知道的JS》(真的写的很好)</span></a></li></ol></li></ol>
-		</div>
-		
-		<h2 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h2><p>定义在词法阶段的作用域。简单来说就是函数，对象在定义时就决定好的执行范围,由代码书写的地方决定一切。</p>
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h2><p>定义在词法阶段的作用域。简单来说就是函数，对象在定义时就决定好的执行范围,由代码书写的地方决定一切。</p>
 <h3 id="词法欺骗"><a href="#词法欺骗" class="headerlink" title="词法欺骗"></a>词法欺骗</h3><p>但是，也可以通过一定的语法来改写这个先天决定的作用域。</p>
 <ul>
-<li><h4 id="eval"><a href="#eval" class="headerlink" title="eval"></a>eval</h4><p>接受的字符串参数就好像是书写在eval位置上的代码一样</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">str, a</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">eval</span>( str ); <span class="comment">// 欺骗！</span></span><br><span class="line">    <span class="built_in">console</span>.log( a, b );</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line">foo( <span class="string">"var b = 3;"</span>, <span class="number">1</span> ); <span class="comment">// 1, 3</span></span><br></pre></td></tr></table></figure>
+<li><h4 id="eval"><a href="#eval" class="headerlink" title="eval"></a>eval</h4>接受的字符串参数就好像是书写在eval位置上的代码一样<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">str, a</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">eval</span>( str ); <span class="comment">// 欺骗！</span></span><br><span class="line">    <span class="built_in">console</span>.log( a, b );</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line">foo( <span class="string">"var b = 3;"</span>, <span class="number">1</span> ); <span class="comment">// 1, 3</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><h4 id="with"><a href="#with" class="headerlink" title="with"></a>with</h4><p>会首先在with传入对象里面查询同名属性</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    a: <span class="number">1</span>,</span><br><span class="line">    b: <span class="number">2</span>,</span><br><span class="line">    c: <span class="number">3</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 单调乏味的重复"obj"</span></span><br><span class="line">obj.a = <span class="number">2</span>;</span><br><span class="line">obj.b = <span class="number">3</span>;</span><br><span class="line">obj.c = <span class="number">4</span>;</span><br><span class="line"><span class="comment">// 简单的快捷方式</span></span><br><span class="line"><span class="keyword">with</span> (obj) &#123;</span><br><span class="line">    a = <span class="number">3</span>;</span><br><span class="line">    b = <span class="number">4</span>;</span><br><span class="line">    c = <span class="number">5</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</ul>
+<a id="more"></a>
+<ul>
+<li><h4 id="with"><a href="#with" class="headerlink" title="with"></a>with</h4>会首先在with传入对象里面查询同名属性<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    a: <span class="number">1</span>,</span><br><span class="line">    b: <span class="number">2</span>,</span><br><span class="line">    c: <span class="number">3</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 单调乏味的重复"obj"</span></span><br><span class="line">obj.a = <span class="number">2</span>;</span><br><span class="line">obj.b = <span class="number">3</span>;</span><br><span class="line">obj.c = <span class="number">4</span>;</span><br><span class="line"><span class="comment">// 简单的快捷方式</span></span><br><span class="line"><span class="keyword">with</span> (obj) &#123;</span><br><span class="line">    a = <span class="number">3</span>;</span><br><span class="line">    b = <span class="number">4</span>;</span><br><span class="line">    c = <span class="number">5</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <blockquote>
@@ -139,7 +389,8 @@ eval接受的字符串参数就好像是书写在eval位置上的代码一样
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">if</span> (foo) &#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">const</span> b = <span class="number">3</span>; <span class="comment">// 包含在if中的块作用域常</span></span><br><span class="line">    a = <span class="number">3</span>; <span class="comment">// 正常!</span></span><br><span class="line">    b = <span class="number">4</span>; <span class="comment">// 错误!</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log( a ); <span class="comment">// 3</span></span><br><span class="line"><span class="built_in">console</span>.log( b ); <span class="comment">// ReferenceError!</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="动态作用域"><a href="#动态作用域" class="headerlink" title="动态作用域"></a>动态作用域</h2><p>什么是动态作用域？<br><br>动态作用域就如你所想的就是下面这段代码发生的情况一样<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( a ); <span class="comment">// 2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line">    foo();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">bar();</span><br></pre></td></tr></table></figure></p>
+<h2 id="动态作用域"><a href="#动态作用域" class="headerlink" title="动态作用域"></a>动态作用域</h2><p>什么是动态作用域？<br><br>动态作用域就如你所想的就是下面这段代码发生的情况一样</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( a ); <span class="comment">// 2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line">    foo();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">bar();</span><br></pre></td></tr></table></figure>
 <p>但是结果并不是这样<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( a ); <span class="comment">// 3（ 不是2！）</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line">    foo();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">bar();</span><br></pre></td></tr></table></figure></p>
 <p><strong>词法作用域关注函数在何处声明，而动态作用域关注函数从何处调用。</strong><br><br>实际上JavaScript不具有动态作用域，他只有词法作用域。但是this机制从某种程度上很像动态作用域。</p>
 <h2 id="This"><a href="#This" class="headerlink" title="This"></a>This</h2><p>this既不指向函数自身也不指向函数的词法作用域<br><br>this实际上是在函数被调用时发生的绑定，它指向什么完全取决于函数在哪里被调用<br></p>
@@ -226,262 +477,496 @@ eval接受的字符串参数就好像是书写在eval位置上的代码一样
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><h3 id="《你不知道的JS》-真的写的很好"><a href="#《你不知道的JS》-真的写的很好" class="headerlink" title="《你不知道的JS》(真的写的很好)"></a>《你不知道的JS》(真的写的很好)</h3></li>
 </ul>
-  
-	</div>
-		<footer class="article-footer clearfix">
 
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/this/">this</a>
-  </div>
-
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-</div>
-
-
-
-<div class="article-share" id="share">
-
-  <div data-url="http://Mrzzchao.github.io/2016/04/08/作用域与this/" data-title="作用域与this | Mrzzchao" data-tsina="Mrzzchao" class="share clearfix">
-  </div>
-
-</div>
-</footer>   	       
-	</article>
-	
-<nav class="article-nav clearfix">
- 
-
-<div class="next">
-<a href="/2016/04/06/浮动知识点/"  title="浮动知识点">
- <strong>NEXT:</strong><br/> 
- <span>浮动知识点
-</span>
-</a>
-</div>
-
-</nav>
-
-	
-<section class="comment">
-	<div class="ds-thread"></div>
-</section>
-
-
-</div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
-
-  <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#词法作用域"><span class="toc-number">1.</span> <span class="toc-text">词法作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#词法欺骗"><span class="toc-number">1.1.</span> <span class="toc-text">词法欺骗</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#eval"><span class="toc-number">1.1.1.</span> <span class="toc-text">eval</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#with"><span class="toc-number">1.1.2.</span> <span class="toc-text">with</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数作用域"><span class="toc-number">1.2.</span> <span class="toc-text">函数作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#作用域图"><span class="toc-number">1.2.1.</span> <span class="toc-text">作用域图</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#块作用域"><span class="toc-number">1.3.</span> <span class="toc-text">块作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#模拟块作用域-ES5以前"><span class="toc-number">1.3.1.</span> <span class="toc-text">模拟块作用域(ES5以前)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ES6"><span class="toc-number">1.3.2.</span> <span class="toc-text">ES6</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#let"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">let</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#const"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">const</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动态作用域"><span class="toc-number">2.</span> <span class="toc-text">动态作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#This"><span class="toc-number">3.</span> <span class="toc-text">This</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#归纳来说this有四种绑定方式"><span class="toc-number">3.1.</span> <span class="toc-text">归纳来说this有四种绑定方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#默认绑定"><span class="toc-number">3.1.1.</span> <span class="toc-text">默认绑定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#隐式绑定"><span class="toc-number">3.1.2.</span> <span class="toc-text">隐式绑定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#显示绑定"><span class="toc-number">3.1.3.</span> <span class="toc-text">显示绑定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#new绑定"><span class="toc-number">3.1.4.</span> <span class="toc-text">new绑定</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四种绑定优先级（前高后低）"><span class="toc-number">3.2.</span> <span class="toc-text">四种绑定优先级（前高后低）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#绑定例外"><span class="toc-number">3.2.1.</span> <span class="toc-text">绑定例外</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">4.</span> <span class="toc-text">参考资料</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#《你不知道的JS》-真的写的很好"><span class="toc-number">4.1.</span> <span class="toc-text">《你不知道的JS》(真的写的很好)</span></a></li></ol></li></ol>
-  </div>
-
-<div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
-<aside class="clearfix">
-
-  
-
-  
-<div class="categorieslist">
-	<p class="asidetitle">分类</p>
-		<ul>
-		
-			<li><a href="/categories/CSS/" title="CSS">CSS<sup>4</sup></a></li>
-		
-			<li><a href="/categories/JavaScript/" title="JavaScript">JavaScript<sup>2</sup></a></li>
-		
-			<li><a href="/categories/RegExp/" title="RegExp">RegExp<sup>1</sup></a></li>
-		
-		</ul>
-</div>
-
-
-  
-<div class="tagslist">
-	<p class="asidetitle">标签</p>
-		<ul class="clearfix">
-		
-			<li><a href="/tags/Center-Issue/" title="Center Issue">Center Issue<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Font-Name/" title="Font-Name">Font-Name<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Triangle/" title="Triangle">Triangle<sup>1</sup></a></li>
-		
-			<li><a href="/tags/this/" title="this">this<sup>1</sup></a></li>
-		
-		</ul>
-</div>
-
-
-  <div class="rsspart">
-	<a href="null" target="_blank" title="rss">RSS 订阅</a>
-</div>
-
-  
-  <div class="tagcloudlist">
-    <p class="asidetitle">标签云</p>
-    <div class="tagcloudlist clearfix">
-       <a href="/tags/Center-Issue/" style="font-size: 10px;">Center Issue</a> <a href="/tags/Font-Name/" style="font-size: 10px;">Font-Name</a> <a href="/tags/Triangle/" style="font-size: 10px;">Triangle</a> <a href="/tags/this/" style="font-size: 10px;">this</a>
-    </div>
-  </div>
-
-
-</aside>
-</div>
-    </div>
-    <footer><div id="footer" >
-	
-	<div class="line">
-		<span></span>
-		<div class="author"></div>
-	</div>
-	
-	
-	<div class="social-font clearfix">
-		
-		
-		
-		<a href="https://github.com/Mrzzchao" target="_blank" title="github"></a>
-		
-		
-		
-	</div>
-		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2016 
-		
-		<a href="http://Mrzzchao.github.io" target="_blank" title="zzchao">zzchao</a>
-		
-		</p>
-</div>
-</footer>
-    <script src="/js/jquery-2.1.0.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.navbar').click(function(){
-    $('header nav').toggleClass('shownav');
-  });
-  var myWidth = 0;
-  function getSize(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-  };
-  var m = $('#main'),
-      a = $('#asidepart'),
-      c = $('.closeaside'),
-      o = $('.openaside');
-  $(window).resize(function(){
-    getSize(); 
-    if (myWidth >= 1024) {
-      $('header nav').removeClass('shownav');
-    }else
-    {
-      m.removeClass('moveMain');
-      a.css('display', 'block').removeClass('fadeOut');
-      o.css('display', 'none');
       
-      $('#toc.toc-aside').css('display', 'none');
+    </div>
+    
+    <div>
+      
         
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/this/" rel="tag">#this</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/06/浮动知识点/" rel="next" title="浮动知识点">
+                <i class="fa fa-chevron-left"></i> 浮动知识点
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/08/作用域与this/"
+           data-title="作用域与this" data-url="http://Mrzzchao.github.io/2016/04/08/作用域与this/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/瓦力.jpg"
+               alt="MChao" />
+          <p class="site-author-name" itemprop="name">MChao</p>
+          <p class="site-description motion-element" itemprop="description">Mrzzchao是一个基于Github和Hexo的静态Blog，希望用简单而清晰的写作方式Markdown分享自己的心得体会。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#词法作用域"><span class="nav-number">1.</span> <span class="nav-text">词法作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#词法欺骗"><span class="nav-number">1.1.</span> <span class="nav-text">词法欺骗</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#eval"><span class="nav-number">1.1.1.</span> <span class="nav-text">eval</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#with"><span class="nav-number">1.1.2.</span> <span class="nav-text">with</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数作用域"><span class="nav-number">1.2.</span> <span class="nav-text">函数作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#作用域图"><span class="nav-number">1.2.1.</span> <span class="nav-text">作用域图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#块作用域"><span class="nav-number">1.3.</span> <span class="nav-text">块作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#模拟块作用域-ES5以前"><span class="nav-number">1.3.1.</span> <span class="nav-text">模拟块作用域(ES5以前)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ES6"><span class="nav-number">1.3.2.</span> <span class="nav-text">ES6</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#let"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">let</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#const"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">const</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态作用域"><span class="nav-number">2.</span> <span class="nav-text">动态作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#This"><span class="nav-number">3.</span> <span class="nav-text">This</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#归纳来说this有四种绑定方式"><span class="nav-number">3.1.</span> <span class="nav-text">归纳来说this有四种绑定方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#默认绑定"><span class="nav-number">3.1.1.</span> <span class="nav-text">默认绑定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#隐式绑定"><span class="nav-number">3.1.2.</span> <span class="nav-text">隐式绑定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#显示绑定"><span class="nav-number">3.1.3.</span> <span class="nav-text">显示绑定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#new绑定"><span class="nav-number">3.1.4.</span> <span class="nav-text">new绑定</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四种绑定优先级（前高后低）"><span class="nav-number">3.2.</span> <span class="nav-text">四种绑定优先级（前高后低）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#绑定例外"><span class="nav-number">3.2.1.</span> <span class="nav-text">绑定例外</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#《你不知道的JS》-真的写的很好"><span class="nav-number">4.1.</span> <span class="nav-text">《你不知道的JS》(真的写的很好)</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MChao</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"mchao"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("BdKwB8M3nl4XWJNoe8YDezLg-gzGzoHsz", "OmJtIIE5ARtelP3wYtlxjHHL");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
     }
-  });
-  c.click(function(){
-    a.addClass('fadeOut').css('display', 'none');
-    o.css('display', 'block').addClass('fadeIn');
-    m.addClass('moveMain');
-  });
-  o.click(function(){
-    o.css('display', 'none').removeClass('beforeFadeIn');
-    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
-    m.removeClass('moveMain');
-  });
-  $(window).scroll(function(){
-    o.css("top",Math.max(80,260-$(this).scrollTop()));
-  });
-});
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+  	 <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("BdKwB8M3nl4XWJNoe8YDezLg-gzGzoHsz", "OmJtIIE5ARtelP3wYtlxjHHL");</script>
+<script>
+function showTime(Counter) {
+	var query = new AV.Query(Counter);
+	$(".leancloud_visitors").each(function() {
+		var url = $(this).attr("id").trim();
+		query.equalTo("url", url);
+		query.find({
+			success: function(results) {
+				if (results.length == 0) {
+					var content = $(document.getElementById(url)).text() + ': 0';
+					$(document.getElementById(url)).text(content);
+					return;
+				}
+				for (var i = 0; i < results.length; i++) {
+					var object = results[i];
+					var content = $(document.getElementById(url)).text() + ': ' + object.get('time');
+					$(document.getElementById(url)).text(content);
+				}
+			},
+			error: function(object, error) {
+				console.log("Error: " + error.code + " " + error.message);
+			}
+		});
+
+	});
+}
+
+function addCount(Counter) {
+	var Counter = AV.Object.extend("Counter");
+	url = $(".leancloud_visitors").attr('id').trim();
+	title = $(".leancloud_visitors").attr('data-flag-title').trim();
+	var query = new AV.Query(Counter);
+	query.equalTo("url", url);
+	query.find({
+		success: function(results) {
+			if (results.length > 0) {
+				var counter = results[0];
+				counter.fetchWhenSave(true);
+				counter.increment("time");
+				counter.save(null, {
+					success: function(counter) {
+						var content = $(document.getElementById(url)).text() + ': ' + counter.get('time');
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(counter, error) {
+						console.log('Failed to save Visitor num, with error message: ' + error.message);
+					}
+				});
+			} else {
+				var newcounter = new Counter();
+				newcounter.set("title", title);
+				newcounter.set("url", url);
+				newcounter.set("time", 1);
+				newcounter.save(null, {
+					success: function(newcounter) {
+					    console.log("newcounter.get('time')="+newcounter.get('time'));
+						var content = $(document.getElementById(url)).text() + ': ' + newcounter.get('time');
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(newcounter, error) {
+						console.log('Failed to create');
+					}
+				});
+			}
+		},
+		error: function(error) {
+			console.log('Error:' + error.code + " " + error.message);
+		}
+	});
+}
+$(function() {
+	var Counter = AV.Object.extend("Counter");
+	if ($('.leancloud_visitors').length == 1) {
+		addCount(Counter);
+	} else if ($('.post-title-link').length > 1) {
+		showTime(Counter);
+	}
+}); 
 </script>
-
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var ai = $('.article-content>iframe'),
-      ae = $('.article-content>embed'),
-      t  = $('#toc'),
-      h  = $('article h2')
-      ah = $('article h2'),
-      ta = $('#toc.toc-aside'),
-      o  = $('.openaside'),
-      c  = $('.closeaside');
-  if(ai.length>0){
-    ai.wrap('<div class="video-container" />');
-  };
-  if(ae.length>0){
-   ae.wrap('<div class="video-container" />');
-  };
-  if(ah.length==0){
-    t.css('display','none');
-  }else{
-    c.click(function(){
-      ta.css('display', 'block').addClass('fadeIn');
-    });
-    o.click(function(){
-      ta.css('display', 'none');
-    });
-    $(window).scroll(function(){
-      ta.css("top",Math.max(140,320-$(this).scrollTop()));
-    });
-  };
-});
-</script>
-
-
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var $this = $('.share'),
-      url = $this.attr('data-url'),
-      encodedUrl = encodeURIComponent(url),
-      title = $this.attr('data-title'),
-      tsina = $this.attr('data-tsina');
-  var html = [
-  '<a href="#" class="overlay" id="qrcode"></a>',
-  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
-  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
-  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
-  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
-  '<span title="Share to"></span>'
-  ].join('');
-  $this.append(html);
-  $('.article-share-qrcode').click(function(){
-    var imgSrc = $('#qrcode-pic').attr('data-src');
-    $('#qrcode-pic').attr('src', imgSrc);
-    $('#qrcode-pic').load(function(){
-        $('.qrcode strong').text(' ');
-    });
-  });
-});     
-</script>
-
-
-<script type="text/javascript">
-  var duoshuoQuery = {short_name:"mchao.duoshuo.com"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-    || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-</script> 
-
-
-
-
-
-  </body>
+  
+</body>
 </html>
