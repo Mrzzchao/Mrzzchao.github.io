@@ -1,0 +1,1057 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Mrzzchao</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://Mrzzchao.github.io/"/>
+  <updated>2016-04-15T13:09:02.627Z</updated>
+  <id>http://Mrzzchao.github.io/</id>
+  
+  <author>
+    <name>MChao</name>
+    <email>mrzzhichao@gmail.com</email>
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>作用域与this</title>
+    <link href="http://Mrzzchao.github.io/2016/04/08/%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8Ethis/"/>
+    <id>http://Mrzzchao.github.io/2016/04/08/作用域与this/</id>
+    <published>2016-04-08T07:30:03.000Z</published>
+    <updated>2016-04-15T13:09:02.627Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;词法作用域&quot;&gt;&lt;a href=&quot;#词法作用域&quot; class=&quot;headerlink&quot; title=&quot;词法作用域&quot;&gt;&lt;/a&gt;词法作用域&lt;/h2&gt;&lt;p&gt;定义在词法阶段的作用域。简单来说就是函数，对象在定义时就决定好的执行范围,由代码书写的地方决定一切。&lt;/p&gt;
+&lt;h3 id=&quot;词法欺骗&quot;&gt;&lt;a href=&quot;#词法欺骗&quot; class=&quot;headerlink&quot; title=&quot;词法欺骗&quot;&gt;&lt;/a&gt;词法欺骗&lt;/h3&gt;&lt;p&gt;但是，也可以通过一定的语法来改写这个先天决定的作用域。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;h4 id=&quot;eval&quot;&gt;&lt;a href=&quot;#eval&quot; class=&quot;headerlink&quot; title=&quot;eval&quot;&gt;&lt;/a&gt;eval&lt;/h4&gt;接受的字符串参数就好像是书写在eval位置上的代码一样&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;foo&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;str, a&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;eval&lt;/span&gt;( str ); &lt;span class=&quot;comment&quot;&gt;// 欺骗！&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log( a, b );&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; b = &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;foo( &lt;span class=&quot;string&quot;&gt;&quot;var b = 3;&quot;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; ); &lt;span class=&quot;comment&quot;&gt;// 1, 3&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;h4 id=&quot;with&quot;&gt;&lt;a href=&quot;#with&quot; class=&quot;headerlink&quot; title=&quot;with&quot;&gt;&lt;/a&gt;with&lt;/h4&gt;会首先在with传入对象里面查询同名属性&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; obj = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    a: &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    b: &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    c: &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 单调乏味的重复&quot;obj&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;obj.a = &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;obj.b = &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;obj.c = &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 简单的快捷方式&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;with&lt;/span&gt; (obj) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    a = &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    b = &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    c = &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意：如果代码中大量使用eval(..)或with，那么运行起来一定会变得非常慢。无论引擎多聪明，试图将&lt;br&gt;这些悲观情况的副作用限制在最小范围内，也无法避免如果没有这些优化，代码会运行得更慢这个事实。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;函数作用域&quot;&gt;&lt;a href=&quot;#函数作用域&quot; class=&quot;headerlink&quot; title=&quot;函数作用域&quot;&gt;&lt;/a&gt;函数作用域&lt;/h3&gt;&lt;p&gt;函数声明时就已决定的作用域。&lt;/p&gt;
+&lt;h4 id=&quot;作用域图&quot;&gt;&lt;a href=&quot;#作用域图&quot; class=&quot;headerlink&quot; title=&quot;作用域图&quot;&gt;&lt;/a&gt;作用域图&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/%E4%BD%9C%E7%94%A8%E5%9F%9F2.png&quot; alt=&quot;作用域图&quot;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;气泡1包含着整个全局作用域，其中只有一个标识符：foo。&lt;/li&gt;
+&lt;li&gt;气泡2包含着foo所创建的作用域，其中有三个标识符：a、bar和b。&lt;/li&gt;
+&lt;li&gt;气泡3包含着bar所创建的作用域，其中只有一个标识符：c。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;如果函数有嵌套，那被嵌套的函数可以引用上层函数作用域里的属性，反之不行&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/%E4%BD%9C%E7%94%A8%E5%9F%9F.png&quot; alt=&quot;词法作用域&quot;&gt;&lt;/p&gt;
+&lt;p&gt;这个建筑代表程序中的嵌套作用域链。第一层楼代表当前的执行作用域，也就是你所处的位置。建筑的顶层代表全局作用域。&lt;br&gt;&lt;br&gt;LHS和RHS引用都会在当前楼层进行查找，如果没有找到，就会坐电梯前往上一层楼，如果还是没&lt;br&gt;有找到就继续向上，以此类推。一旦抵达顶层（全局作用域），可能找到了你所需的变量，也可能没找到，但无论如何查找过程都将停止。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意：LHS在编译阶段，RHS在执行阶段&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;块作用域&quot;&gt;&lt;a href=&quot;#块作用域&quot; class=&quot;headerlink&quot; title=&quot;块作用域&quot;&gt;&lt;/a&gt;块作用域&lt;/h3&gt;&lt;p&gt;很多语言（例如Java,C,C++）都有块作用域,但是JavaScript没有这个作用域模式&lt;br&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;a&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; i = &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; i = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; i &amp;lt; &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;; i++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(i);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; b = a(); &lt;span class=&quot;comment&quot;&gt;// 1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(b.i) &lt;span class=&quot;comment&quot;&gt;// 1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果按块作用域来看，最后一段代码应该输出5，但是结果却是1，这是因为for循环的的 i 污染了全局里面的 i 然后让他重新赋值为0，最后循环结束就变为了1&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;模拟块作用域-ES5以前&quot;&gt;&lt;a href=&quot;#模拟块作用域-ES5以前&quot; class=&quot;headerlink&quot; title=&quot;模拟块作用域(ES5以前)&quot;&gt;&lt;/a&gt;模拟块作用域(ES5以前)&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;with&lt;/p&gt;
+&lt;p&gt;  用with从对象中创建出的作用域仅在with声明中而非外部作用域中有效。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;try/catch&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;literal&quot;&gt;undefined&lt;/span&gt;(); &lt;span class=&quot;comment&quot;&gt;// 执行一个非法操作来强制制造一个异常&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt; (err) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log( err ); &lt;span class=&quot;comment&quot;&gt;// 能够正常执行！&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log( err ); &lt;span class=&quot;comment&quot;&gt;// ReferenceError: err not found&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;外部无法访问内部定义的err&lt;/p&gt;
+&lt;h4 id=&quot;ES6&quot;&gt;&lt;a href=&quot;#ES6&quot; class=&quot;headerlink&quot; title=&quot;ES6&quot;&gt;&lt;/a&gt;ES6&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;h5 id=&quot;let&quot;&gt;&lt;a href=&quot;#let&quot; class=&quot;headerlink&quot; title=&quot;let&quot;&gt;&lt;/a&gt;let&lt;/h5&gt;&lt;p&gt;  let关键字可以将变量绑定到所在的任意作用域中（通常是{ .. }内部）。换句话说，let为其声明的&lt;br&gt;  变量隐式地了所在的块作用域。&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; foo = &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (foo) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; bar = foo * &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    bar = something( bar );&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log( bar );&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log( bar ); &lt;span class=&quot;comment&quot;&gt;// ReferenceError&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;h5 id=&quot;const&quot;&gt;&lt;a href=&quot;#const&quot; class=&quot;headerlink&quot; title=&quot;const&quot;&gt;&lt;/a&gt;const&lt;/h5&gt;&lt;p&gt;  除了&lt;strong&gt;let&lt;/strong&gt;以外，ES6还引入了&lt;strong&gt;const&lt;/strong&gt;，同样可以用来创建块作用域变量，但其值是固定的（常量）。之后&lt;br&gt;  任何试图修改值的操作都会引起错误。&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; foo = &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (foo) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; a = &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; b = &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;; &lt;span class=&quot;comment&quot;&gt;// 包含在if中的块作用域常&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    a = &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;; &lt;span class=&quot;comment&quot;&gt;// 正常!&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    b = &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;; &lt;span class=&quot;comment&quot;&gt;// 错误!&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log( a ); &lt;span class=&quot;comment&quot;&gt;// 3&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log( b ); &lt;span class=&quot;comment&quot;&gt;// ReferenceError!&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;动态作用域&quot;&gt;&lt;a href=&quot;#动态作用域&quot; class=&quot;headerlink&quot; title=&quot;动态作用域&quot;&gt;&lt;/a&gt;动态作用域&lt;/h2&gt;&lt;p&gt;什么是动态作用域？&lt;br&gt;&lt;br&gt;动态作用域就如你所想的就是下面这段代码发生的情况一样&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;foo&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log( a ); &lt;span class=&quot;comment&quot;&gt;// 2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;bar&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; a = &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    foo();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; a = &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;bar();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;但是结果并不是这样&lt;br&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;foo&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log( a ); &lt;span class=&quot;comment&quot;&gt;// 3（ 不是2！）&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;bar&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; a = &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    foo();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; a = &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;bar();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;词法作用域关注函数在何处声明，而动态作用域关注函数从何处调用。&lt;/strong&gt;&lt;br&gt;&lt;br&gt;实际上JavaScript不具有动态作用域，他只有词法作用域。但是this机制从某种程度上很像动态作用域。&lt;/p&gt;
+&lt;h2 id=&quot;This&quot;&gt;&lt;a href=&quot;#This&quot; class=&quot;headerlink&quot; title=&quot;This&quot;&gt;&lt;/a&gt;This&lt;/h2&gt;&lt;p&gt;this既不指向函数自身也不指向函数的词法作用域&lt;br&gt;&lt;br&gt;this实际上是在函数被调用时发生的绑定，它指向什么完全取决于函数在哪里被调用&lt;br&gt;&lt;/p&gt;
+&lt;h3 id=&quot;归纳来说this有四种绑定方式&quot;&gt;&lt;a href=&quot;#归纳来说this有四种绑定方式&quot; class=&quot;headerlink&quot; title=&quot;归纳来说this有四种绑定方式&quot;&gt;&lt;/a&gt;归纳来说this有四种绑定方式&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;h4 id=&quot;默认绑定&quot;&gt;&lt;a href=&quot;#默认绑定&quot; class=&quot;headerlink&quot; title=&quot;默认绑定&quot;&gt;&lt;/a&gt;默认绑定&lt;/h4&gt;&lt;p&gt;在没有其他任何修饰的函数引用进行调用&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;foo&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log( &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.a );&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; a = &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;foo(); &lt;span class=&quot;comment&quot;&gt;// 2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;this绑定了window&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;h4 id=&quot;隐式绑定&quot;&gt;&lt;a href=&quot;#隐式绑定&quot; class=&quot;headerlink&quot; title=&quot;隐式绑定&quot;&gt;&lt;/a&gt;隐式绑定&lt;/h4&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;foo&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log( &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.a );&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; obj = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    a: &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    foo: foo&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;obj.foo(); &lt;span class=&quot;comment&quot;&gt;// 2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;this绑定了obj&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;而且对象属性引用链中只有最顶层或者说最后一层会影响调用位置。举例来说：&lt;br&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;foo&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log( &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.a );&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; obj2 = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    a: &lt;span class=&quot;number&quot;&gt;42&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    foo: foo&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; obj1 = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    a: &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    obj2: obj2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;obj1.obj2.foo(); &lt;span class=&quot;comment&quot;&gt;// 42&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;this 绑定了obj2&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;但如果将属性引用传给一个变量后再调用，就会出现隐式丢失，变成默认绑定，例如：&lt;br&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;foo&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log( &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.a );&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; obj = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    a: &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    foo: foo&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; bar = obj.foo; &lt;span class=&quot;comment&quot;&gt;// 函数别名！&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; a = &lt;span class=&quot;string&quot;&gt;&quot;oops, global&quot;&lt;/span&gt;; &lt;span class=&quot;comment&quot;&gt;// a是全局对象的属性&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;bar(); &lt;span class=&quot;comment&quot;&gt;// &quot;oops, global&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;this绑定了window&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;h4 id=&quot;显示绑定&quot;&gt;&lt;a href=&quot;#显示绑定&quot; class=&quot;headerlink&quot; title=&quot;显示绑定&quot;&gt;&lt;/a&gt;显示绑定&lt;/h4&gt;&lt;p&gt;从this绑定的角度来说，call(..)和apply(..)是一样的，它们的区别体现在其他的参数上&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;call()&lt;/li&gt;
+&lt;li&gt;apply()&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;foo&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log( &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.a );&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; obj = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    a:&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;foo.call( obj ); &lt;span class=&quot;comment&quot;&gt;// 2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;this绑定了obj&lt;br&gt;&lt;br&gt;&lt;strong&gt;注意&lt;/strong&gt;:显示绑定会出现丢失绑定问题，也就是以后可以通过call,apply等再次修改this的绑定对象&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;硬绑定&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;foo&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log( &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.a );&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; obj = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    a:&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; bar = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    foo.call( obj );&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;bar(); &lt;span class=&quot;comment&quot;&gt;// 2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;setTimeout( bar, &lt;span class=&quot;number&quot;&gt;100&lt;/span&gt; ); &lt;span class=&quot;comment&quot;&gt;// 2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 硬绑定的bar不可能再修改它的this&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;bar.call( &lt;span class=&quot;built_in&quot;&gt;window&lt;/span&gt; ); &lt;span class=&quot;comment&quot;&gt;// 2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;通过对调用函数显示绑定的封装，使得bar.call实际上是绑定封装匿名函数的this，完全没影响到里面的foo绑定&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;bind&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;foo&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;something&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log( &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.a, something );&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.a + something;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; obj = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    a:&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; bar = foo.bind( obj );&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; b = bar( &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt; ); &lt;span class=&quot;comment&quot;&gt;// 2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log( b ); &lt;span class=&quot;comment&quot;&gt;// 5&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;bind(..)会返回一个硬编码的新函数，它会把参数设置为this的上下文并调用原始函数&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;h4 id=&quot;new绑定&quot;&gt;&lt;a href=&quot;#new绑定&quot; class=&quot;headerlink&quot; title=&quot;new绑定&quot;&gt;&lt;/a&gt;new绑定&lt;/h4&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;foo&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;a&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.a = a;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; bar = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; foo(&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log( bar.a ); &lt;span class=&quot;comment&quot;&gt;// 2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;this绑定当前函数对象&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;四种绑定优先级（前高后低）&quot;&gt;&lt;a href=&quot;#四种绑定优先级（前高后低）&quot; class=&quot;headerlink&quot; title=&quot;四种绑定优先级（前高后低）&quot;&gt;&lt;/a&gt;四种绑定优先级（前高后低）&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;new绑定&lt;/li&gt;
+&lt;li&gt;显示绑定&lt;/li&gt;
+&lt;li&gt;隐式绑定&lt;/li&gt;
+&lt;li&gt;默认绑定&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;绑定例外&quot;&gt;&lt;a href=&quot;#绑定例外&quot; class=&quot;headerlink&quot; title=&quot;绑定例外&quot;&gt;&lt;/a&gt;绑定例外&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;被忽略的this&lt;/p&gt;
+&lt;p&gt;  当call,apply,bind传入绑定参数为null,undefined时会被忽略，实际应用的是默认绑定&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;foo&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log( &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.a );&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; a = &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;foo.call( &lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt; ); &lt;span class=&quot;comment&quot;&gt;// 2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;this绑定window&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Object.create(null)&lt;blockquote&gt;
+&lt;p&gt;不会创建Object.prototype委托，比{}更空,应该把Object.create(null)作为参数传入，避免传入null时，无意中使用默认绑定规则，导致的不可预计的后果&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;间接引用&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;foo&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log( &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.a );&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; a = &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; o = &amp;#123; a: &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;, foo: foo &amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; p = &amp;#123; a: &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt; &amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;o.foo(); &lt;span class=&quot;comment&quot;&gt;// 3&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(p.foo = o.foo)(); &lt;span class=&quot;comment&quot;&gt;// 2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;this绑定了window,这里就好像把对象函数引用传过来在全局调用一样&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;软绑定&lt;br&gt;可以不顾优先级，任意进行绑定转换&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;this词法&lt;br&gt;箭头函数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;参考资料&quot;&gt;&lt;a href=&quot;#参考资料&quot; class=&quot;headerlink&quot; title=&quot;参考资料&quot;&gt;&lt;/a&gt;参考资料&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;h3 id=&quot;《你不知道的JS》-真的写的很好&quot;&gt;&lt;a href=&quot;#《你不知道的JS》-真的写的很好&quot; class=&quot;headerlink&quot; title=&quot;《你不知道的JS》(真的写的很好)&quot;&gt;&lt;/a&gt;《你不知道的JS》(真的写的很好)&lt;/h3&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;词法作用域&quot;&gt;&lt;a href=&quot;#词法作用域&quot; class=&quot;headerlink&quot; title=&quot;词法作用域&quot;&gt;&lt;/a&gt;词法作用域&lt;/h2&gt;&lt;p&gt;定义在词法阶段的作用域。简单来说就是函数，对象在定义时就决定好的执行范围,由代码书写的地方决定一切。&lt;/p&gt;
+&lt;h3 id=&quot;词法欺骗&quot;&gt;&lt;a href=&quot;#词法欺骗&quot; class=&quot;headerlink&quot; title=&quot;词法欺骗&quot;&gt;&lt;/a&gt;词法欺骗&lt;/h3&gt;&lt;p&gt;但是，也可以通过一定的语法来改写这个先天决定的作用域。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;h4 id=&quot;eval&quot;&gt;&lt;a href=&quot;#eval&quot; class=&quot;headerlink&quot; title=&quot;eval&quot;&gt;&lt;/a&gt;eval&lt;/h4&gt;接受的字符串参数就好像是书写在eval位置上的代码一样&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;foo&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;str, a&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;eval&lt;/span&gt;( str ); &lt;span class=&quot;comment&quot;&gt;// 欺骗！&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log( a, b );&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; b = &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;foo( &lt;span class=&quot;string&quot;&gt;&quot;var b = 3;&quot;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; ); &lt;span class=&quot;comment&quot;&gt;// 1, 3&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://Mrzzchao.github.io/categories/JavaScript/"/>
+    
+    
+      <category term="this" scheme="http://Mrzzchao.github.io/tags/this/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>浮动知识点</title>
+    <link href="http://Mrzzchao.github.io/2016/04/06/%E6%B5%AE%E5%8A%A8%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    <id>http://Mrzzchao.github.io/2016/04/06/浮动知识点/</id>
+    <published>2016-04-06T07:30:03.000Z</published>
+    <updated>2016-04-15T09:03:20.443Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;知识点&quot;&gt;&lt;a href=&quot;#知识点&quot; class=&quot;headerlink&quot; title=&quot;知识点&quot;&gt;&lt;/a&gt;知识点&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;浮动的8种用法&lt;/strong&gt;&lt;/p&gt;
+  &lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;float&lt;/span&gt;: &lt;span class=&quot;selector-tag&quot;&gt;left&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;float&lt;/span&gt;: &lt;span class=&quot;selector-tag&quot;&gt;right&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;float&lt;/span&gt;: &lt;span class=&quot;selector-tag&quot;&gt;none&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;float&lt;/span&gt;: &lt;span class=&quot;selector-tag&quot;&gt;inline-start&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;float&lt;/span&gt;: &lt;span class=&quot;selector-tag&quot;&gt;inline-end&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/* Global values */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;float&lt;/span&gt;: &lt;span class=&quot;selector-tag&quot;&gt;inherit&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;float&lt;/span&gt;: &lt;span class=&quot;selector-tag&quot;&gt;initial&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;float&lt;/span&gt;: &lt;span class=&quot;selector-tag&quot;&gt;unset&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;left&lt;blockquote&gt;
+&lt;p&gt;元素必须浮动在它的包含块的左边&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;right&lt;blockquote&gt;
+&lt;p&gt;元素必须浮动在它的包含块的右边&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;none&lt;blockquote&gt;
+&lt;p&gt;元素没有浮动，在正常文档流种&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;inline-start&lt;br&gt;Is a keyword indicating that the element must float on the start side of its containing block, that is the left side on ltr scripts and the right side on rtl scripts.&lt;/li&gt;
+&lt;li&gt;inline-end&lt;br&gt;Is a keyword indicating that the element must float on the end side of its containing block, that is the right side on ltr scripts and the left side on rtl scripts.&lt;/li&gt;
+&lt;li&gt;inherit&lt;blockquote&gt;
+&lt;p&gt;元素继承父元素的浮动属性&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;initial&lt;blockquote&gt;
+&lt;p&gt;元素保持最初的浮动属性（没实践）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;unset&lt;blockquote&gt;
+&lt;p&gt;有待研究&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;定位的4种用法&lt;/strong&gt;&lt;/p&gt;
+  &lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;position&lt;/span&gt;: &lt;span class=&quot;selector-tag&quot;&gt;static&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;position&lt;/span&gt;: &lt;span class=&quot;selector-tag&quot;&gt;relative&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;position&lt;/span&gt;: &lt;span class=&quot;selector-tag&quot;&gt;absolute&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;position&lt;/span&gt;: &lt;span class=&quot;selector-tag&quot;&gt;fixed&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;static&lt;blockquote&gt;
+&lt;p&gt;元素在正常文档流中（默认值）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;relative&lt;blockquote&gt;
+&lt;p&gt;元素在正常文档流中，进行定位时，原位置依然在文档流中占着，相当于相对原来的位置进行偏移&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;absolute&lt;blockquote&gt;
+&lt;p&gt;元素脱离文档流，其他（兄弟）元素可以占用该元素原来的位置。然后可以相对有定位（positon为relative或absolute）的祖先元素进行定位&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;fixed&lt;blockquote&gt;
+&lt;p&gt;元素脱离文档流，其他（兄弟）元素可以占用该元素原来的位置。然后可以相对于视窗进行定位&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;清除浮动的一般方法&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;clear: both;&lt;/li&gt;
+&lt;li&gt;overflow: hidden;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;最理想方法&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;/*清除浮动*/&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    .clearfix &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        *zoom: 1;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    .clearfix:before,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    .clearfix:after &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        display: table;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        line-height: 0;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        content: &quot;&quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    .clearfix:after &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        clear: both;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;参考资料&quot;&gt;&lt;a href=&quot;#参考资料&quot; class=&quot;headerlink&quot; title=&quot;参考资料&quot;&gt;&lt;/a&gt;参考资料&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/CSS/position&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MDN：position&lt;/a&gt;：了解 CSS position 属性的基本知识&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/CSS/float&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MDN：float&lt;/a&gt;：了解 CSS float 属性的基本知识&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.barelyfitz.com/screencast/html-training/css/positioning/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Learn CSS Positioning in Ten Steps&lt;/a&gt;：通过具体的例子熟悉 position 属性&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://stackoverflow.com/questions/211383/which-method-of-clearfix-is-best&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;StackOverflow&lt;/a&gt;：Which method of ‘clearfix’ is best?：清除浮动黑科技完整解读&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/pigtail/archive/2013/01/23/2871627.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;关于Block Formatting Context－－BFC和IE的hasLayout&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.zhangxinxu.com/wordpress/2016/01/understand-css-stacking-context-order-z-index/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;深入理解CSS中的层叠上下文和层叠顺序&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;知识点&quot;&gt;&lt;a href=&quot;#知识点&quot; class=&quot;headerlink&quot; title=&quot;知识点&quot;&gt;&lt;/a&gt;知识点&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;浮动的8种用法&lt;/strong&gt;&lt;/p&gt;
+  &lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;float&lt;/span&gt;: &lt;span class=&quot;selector-tag&quot;&gt;left&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;float&lt;/span&gt;: &lt;span class=&quot;selector-tag&quot;&gt;right&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;float&lt;/span&gt;: &lt;span class=&quot;selector-tag&quot;&gt;none&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;float&lt;/span&gt;: &lt;span class=&quot;selector-tag&quot;&gt;inline-start&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;float&lt;/span&gt;: &lt;span class=&quot;selector-tag&quot;&gt;inline-end&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/* Global values */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;float&lt;/span&gt;: &lt;span class=&quot;selector-tag&quot;&gt;inherit&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;float&lt;/span&gt;: &lt;span class=&quot;selector-tag&quot;&gt;initial&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;float&lt;/span&gt;: &lt;span class=&quot;selector-tag&quot;&gt;unset&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;left&lt;blockquote&gt;
+&lt;p&gt;元素必须浮动在它的包含块的左边&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="CSS" scheme="http://Mrzzchao.github.io/categories/CSS/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>常用正则表达式</title>
+    <link href="http://Mrzzchao.github.io/2016/03/31/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    <id>http://Mrzzchao.github.io/2016/03/31/常用正则表达式/</id>
+    <published>2016-03-31T02:39:00.000Z</published>
+    <updated>2016-04-15T09:02:56.751Z</updated>
+    
+    <content type="html">&lt;ul&gt;
+&lt;li&gt;匹配中文字符的正则表达式： [\u4e00-\u9fa5]&lt;/li&gt;
+&lt;li&gt;匹配双字节字符(包括汉字在内)：[^\x00-\xff]&lt;/li&gt;
+&lt;li&gt;匹配空白行的正则表达式：\n\s*\r&lt;/li&gt;
+&lt;li&gt;匹配HTML标记的正则表达式：&amp;lt;(\S&lt;em&gt;?)[^&amp;gt;]&lt;/em&gt;&amp;gt;.&lt;em&gt;?&amp;lt;/&amp;gt;|&amp;lt;.&lt;/em&gt;? /&amp;gt;&lt;/li&gt;
+&lt;li&gt;匹配首尾空白字符的正则表达式：^\s&lt;em&gt;|\s&lt;/em&gt;$&lt;/li&gt;
+&lt;li&gt;匹配Email地址的正则表达式：\w+([-+.]\w+)&lt;em&gt;@\w+([-.]\w+)&lt;/em&gt;.\w+([-.]\w+)*&lt;/li&gt;
+&lt;li&gt;匹配网址URL的正则表达式：[a-zA-z]+://[^\s]*&lt;/li&gt;
+&lt;li&gt;匹配帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)：^[a-zA-Z][a-zA-Z0-9_]$&lt;/li&gt;
+&lt;li&gt;匹配国内电话号码：\d-\d|\d-\d&lt;/li&gt;
+&lt;li&gt;匹配腾讯QQ号：[1-9][0-9]&lt;/li&gt;
+&lt;li&gt;匹配中国邮政编码：[1-9]\d(?!\d)&lt;/li&gt;
+&lt;li&gt;匹配身份证：\d|\d&lt;/li&gt;
+&lt;li&gt;匹配ip地址：\d+.\d+.\d+.\d+&lt;/li&gt;
+&lt;li&gt;匹配特定数字：&lt;ul&gt;
+&lt;li&gt;^[1-9]\d*$　 　 //匹配正整数&lt;/li&gt;
+&lt;li&gt;^-[1-9]\d*$ 　 //匹配负整数&lt;/li&gt;
+&lt;li&gt;^-?[1-9]\d*$　　 //匹配整数&lt;/li&gt;
+&lt;li&gt;^[1-9]\d*|0$　 //匹配非负整数（正整数 + 0）&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;^-[1-9]\d*|0$　　 //匹配非正整数（负整数 + 0）&lt;/li&gt;
+&lt;li&gt;^[1-9]\d&lt;em&gt;.\d&lt;/em&gt;|0.\d&lt;em&gt;[1-9]\d&lt;/em&gt;$　　 //匹配正浮点数&lt;/li&gt;
+&lt;li&gt;^-([1-9]\d&lt;em&gt;.\d&lt;/em&gt;|0.\d&lt;em&gt;[1-9]\d&lt;/em&gt;)$　 //匹配负浮点数&lt;/li&gt;
+&lt;li&gt;^-?([1-9]\d&lt;em&gt;.\d&lt;/em&gt;|0.\d&lt;em&gt;[1-9]\d&lt;/em&gt;|0?.0+|0)$　 //匹配浮点数&lt;/li&gt;
+&lt;li&gt;^[1-9]\d&lt;em&gt;.\d&lt;/em&gt;|0.\d&lt;em&gt;[1-9]\d&lt;/em&gt;|0?.0+|0$　　 //匹配非负浮点数（正浮点数 + 0）&lt;/li&gt;
+&lt;li&gt;^(-([1-9]\d&lt;em&gt;.\d&lt;/em&gt;|0.\d&lt;em&gt;[1-9]\d&lt;/em&gt;))|0?.0+|0$　　//匹配非正浮点数（负浮点数 + 0）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;匹配特定字符串：&lt;ul&gt;
+&lt;li&gt;^[A-Za-z]+$　　//匹配由26个英文字母组成的字符串&lt;/li&gt;
+&lt;li&gt;^[A-Z]+$　　//匹配由26个英文字母的大写组成的字符串&lt;/li&gt;
+&lt;li&gt;^[a-z]+$　　//匹配由26个英文字母的小写组成的字符串&lt;/li&gt;
+&lt;li&gt;^[A-Za-z0-9]+$　　//匹配由数字和26个英文字母组成的字符串&lt;/li&gt;
+&lt;li&gt;^\w+$　　//匹配由数字、26个英文字母或者下划线组成的字符串&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;匹配中文字符的正则表达式： [\u4e00-\u9fa5]&lt;/li&gt;
+&lt;li&gt;匹配双字节字符(包括汉字在内)：[^\x00-\xff]&lt;/li&gt;
+&lt;li&gt;匹配空白行的正则表达式：\n\s*\r&lt;/li&gt;
+&lt;li&gt;匹配HTML标记的正则表达式：&amp;lt;(\S&lt;em&gt;?)[^&amp;gt;]&lt;/em&gt;&amp;gt;.&lt;em&gt;?&amp;lt;/&amp;gt;|&amp;lt;.&lt;/em&gt;? /&amp;gt;&lt;/li&gt;
+&lt;li&gt;匹配首尾空白字符的正则表达式：^\s&lt;em&gt;|\s&lt;/em&gt;$&lt;/li&gt;
+&lt;li&gt;匹配Email地址的正则表达式：\w+([-+.]\w+)&lt;em&gt;@\w+([-.]\w+)&lt;/em&gt;.\w+([-.]\w+)*&lt;/li&gt;
+&lt;li&gt;匹配网址URL的正则表达式：[a-zA-z]+://[^\s]*&lt;/li&gt;
+&lt;li&gt;匹配帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)：^[a-zA-Z][a-zA-Z0-9_]$&lt;/li&gt;
+&lt;li&gt;匹配国内电话号码：\d-\d|\d-\d&lt;/li&gt;
+&lt;li&gt;匹配腾讯QQ号：[1-9][0-9]&lt;/li&gt;
+&lt;li&gt;匹配中国邮政编码：[1-9]\d(?!\d)&lt;/li&gt;
+&lt;li&gt;匹配身份证：\d|\d&lt;/li&gt;
+&lt;li&gt;匹配ip地址：\d+.\d+.\d+.\d+&lt;/li&gt;
+&lt;li&gt;匹配特定数字：&lt;ul&gt;
+&lt;li&gt;^[1-9]\d*$　 　 //匹配正整数&lt;/li&gt;
+&lt;li&gt;^-[1-9]\d*$ 　 //匹配负整数&lt;/li&gt;
+&lt;li&gt;^-?[1-9]\d*$　　 //匹配整数&lt;/li&gt;
+&lt;li&gt;^[1-9]\d*|0$　 //匹配非负整数（正整数 + 0）
+    
+    </summary>
+    
+      <category term="RegExp" scheme="http://Mrzzchao.github.io/categories/RegExp/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript基础知识点</title>
+    <link href="http://Mrzzchao.github.io/2016/03/20/javascript%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/"/>
+    <id>http://Mrzzchao.github.io/2016/03/20/javascript简明教程/</id>
+    <published>2016-03-20T07:30:03.000Z</published>
+    <updated>2016-04-15T09:03:08.813Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;基本概念&quot;&gt;&lt;a href=&quot;#基本概念&quot; class=&quot;headerlink&quot; title=&quot;基本概念&quot;&gt;&lt;/a&gt;基本概念&lt;/h2&gt;&lt;h3 id=&quot;数据类型&quot;&gt;&lt;a href=&quot;#数据类型&quot; class=&quot;headerlink&quot; title=&quot;数据类型&quot;&gt;&lt;/a&gt;数据类型&lt;/h3&gt;&lt;h4 id=&quot;简单数据类型&quot;&gt;&lt;a href=&quot;#简单数据类型&quot; class=&quot;headerlink&quot; title=&quot;简单数据类型&quot;&gt;&lt;/a&gt;简单数据类型&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Undefined&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;未经初始化或声明的变量&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Null&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;Boolean&lt;/li&gt;
+&lt;li&gt;Number&lt;/li&gt;
+&lt;li&gt;String&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;复杂数据类型&quot;&gt;&lt;a href=&quot;#复杂数据类型&quot; class=&quot;headerlink&quot; title=&quot;复杂数据类型&quot;&gt;&lt;/a&gt;复杂数据类型&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Object&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;操作符&quot;&gt;&lt;a href=&quot;#操作符&quot; class=&quot;headerlink&quot; title=&quot;操作符&quot;&gt;&lt;/a&gt;操作符&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;一元操作符&lt;/li&gt;
+&lt;li&gt;位操作符&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;布尔操作符&lt;/li&gt;
+&lt;li&gt;乘性操作符&lt;/li&gt;
+&lt;li&gt;加性操作符&lt;/li&gt;
+&lt;li&gt;关系操作符&lt;/li&gt;
+&lt;li&gt;条件操作符&lt;/li&gt;
+&lt;li&gt;赋值操作符&lt;/li&gt;
+&lt;li&gt;逗号操作符&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;语句&quot;&gt;&lt;a href=&quot;#语句&quot; class=&quot;headerlink&quot; title=&quot;语句&quot;&gt;&lt;/a&gt;语句&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;if 语句&lt;/li&gt;
+&lt;li&gt;do-while 语句&lt;/li&gt;
+&lt;li&gt;for 语句&lt;/li&gt;
+&lt;li&gt;for-in 语句&lt;/li&gt;
+&lt;li&gt;label 语句&lt;/li&gt;
+&lt;li&gt;break 和 continue 语句&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;with 语句&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;将代码的作用域设置到一个特定的对象中去&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;switch 语句&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;函数&quot;&gt;&lt;a href=&quot;#函数&quot; class=&quot;headerlink&quot; title=&quot;函数&quot;&gt;&lt;/a&gt;函数&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;arguments&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;函数参数集合&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;没用重载&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;可通过检查传入参数的数目与类型而做出不同的反应来实现&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;变量、作用域和内存问题&quot;&gt;&lt;a href=&quot;#变量、作用域和内存问题&quot; class=&quot;headerlink&quot; title=&quot;变量、作用域和内存问题&quot;&gt;&lt;/a&gt;变量、作用域和内存问题&lt;/h2&gt;&lt;h3 id=&quot;基本类型和引用类型值&quot;&gt;&lt;a href=&quot;#基本类型和引用类型值&quot; class=&quot;headerlink&quot; title=&quot;基本类型和引用类型值&quot;&gt;&lt;/a&gt;基本类型和引用类型值&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;检测数据类型&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;typeof&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;检测引用类型&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;instanceof&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;执行环境及作用域￥&quot;&gt;&lt;a href=&quot;#执行环境及作用域￥&quot; class=&quot;headerlink&quot; title=&quot;执行环境及作用域￥&quot;&gt;&lt;/a&gt;执行环境及作用域￥&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;作用域链&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;全局环境&lt;ul&gt;
+&lt;li&gt;有 var 全局&lt;/li&gt;
+&lt;li&gt;没 var 局部&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;局部环境&lt;/li&gt;
+&lt;li&gt;延长作用域链&lt;ul&gt;
+&lt;li&gt;try catch&lt;/li&gt;
+&lt;li&gt;with&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;没用块作用域&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;if语句&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;垃圾收集&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;标记清除（主流方式）&lt;/li&gt;
+&lt;li&gt;引用计数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;管理内存&lt;blockquote&gt;
+&lt;p&gt;手动释放不在引用的全局变量&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;引用类型&quot;&gt;&lt;a href=&quot;#引用类型&quot; class=&quot;headerlink&quot; title=&quot;引用类型&quot;&gt;&lt;/a&gt;引用类型&lt;/h2&gt;&lt;h3 id=&quot;Object-类型&quot;&gt;&lt;a href=&quot;#Object-类型&quot; class=&quot;headerlink&quot; title=&quot;Object 类型&quot;&gt;&lt;/a&gt;Object 类型&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;对象创建方式&lt;ul&gt;
+&lt;li&gt;new 创建&lt;/li&gt;
+&lt;li&gt;字面量创建 （花括号{}）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;属性引用&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;.&lt;/strong&gt; 引用（主流）&lt;/li&gt;
+&lt;li&gt;[] 引用（属性为变量或者含有空格）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Array-类型&quot;&gt;&lt;a href=&quot;#Array-类型&quot; class=&quot;headerlink&quot; title=&quot;Array 类型&quot;&gt;&lt;/a&gt;Array 类型&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;检测数组&lt;ul&gt;
+&lt;li&gt;instanceof&lt;/li&gt;
+&lt;li&gt;isArray()&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;转换方法&lt;ul&gt;
+&lt;li&gt;toString&lt;/li&gt;
+&lt;li&gt;toLocaleString&lt;/li&gt;
+&lt;li&gt;valueOf&lt;/li&gt;
+&lt;li&gt;join&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;栈方法&lt;ul&gt;
+&lt;li&gt;push&lt;/li&gt;
+&lt;li&gt;pop&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;队列方法&lt;ul&gt;
+&lt;li&gt;shift&lt;/li&gt;
+&lt;li&gt;unshift&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;重排序方法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;sort&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;转化成字符串比较&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;reverse&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;操作方法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;concat&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;slice&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;取子数组&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;splice&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;删除（2个参数）  删除、替换（三个参数）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;位置方法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;indexOf(从前)&lt;/li&gt;
+&lt;li&gt;lastIndexOf(从后)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;迭代方法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;every&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;检查数组执行方法后每一项是否都返回true&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;filter&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;选出数组执行方法后返回true的项&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;forEach&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;数组中的每一项都执行方法&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;map&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;返回数组每一项执行方法后返回的值&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;some&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;检查数组执行方法后是否有一项返回true&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table style=&quot;text-align:center&quot;&gt;&lt;br&gt;  &lt;thead&gt;&lt;br&gt;      &lt;th&gt;第1个参数&lt;/th&gt;&lt;br&gt;      &lt;th&gt;第2个参数&lt;/th&gt;&lt;br&gt;      &lt;th&gt;第3个参数&lt;/th&gt;&lt;br&gt;  &lt;/thead&gt;&lt;br&gt;  &lt;tbody&gt;&lt;br&gt;      &lt;tr&gt;&lt;br&gt;          &lt;td&gt;数组项的值&lt;/td&gt;&lt;br&gt;          &lt;td&gt;数组项的位置&lt;/td&gt;&lt;br&gt;          &lt;td&gt;数组本身&lt;/td&gt;&lt;br&gt;      &lt;/tr&gt;&lt;br&gt;  &lt;/tbody&gt;&lt;br&gt;&lt;/table&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;归并方法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;reduce&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;reduceRight&lt;/p&gt;
+&lt;table style=&quot;text-align:center&quot;&gt;&lt;br&gt;  &lt;thead&gt;&lt;br&gt;      &lt;th&gt;第1个参数&lt;/th&gt;&lt;br&gt;      &lt;th&gt;第2个参数&lt;/th&gt;&lt;br&gt;      &lt;th&gt;第3个参数&lt;/th&gt;&lt;br&gt;      &lt;th&gt;第4个参数&lt;/th&gt;&lt;br&gt;  &lt;/thead&gt;&lt;br&gt;  &lt;tbody&gt;&lt;br&gt;      &lt;tr&gt;&lt;br&gt;          &lt;td&gt;前一个值&lt;/td&gt;&lt;br&gt;          &lt;td&gt;当前值&lt;/td&gt;&lt;br&gt;          &lt;td&gt;当前项的位置&lt;/td&gt;&lt;br&gt;          &lt;td&gt;数组本身&lt;/td&gt;&lt;br&gt;      &lt;/tr&gt;&lt;br&gt;  &lt;/tbody&gt;&lt;br&gt;&lt;/table&gt;
+
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Date-类型&quot;&gt;&lt;a href=&quot;#Date-类型&quot; class=&quot;headerlink&quot; title=&quot;Date 类型 @&quot;&gt;&lt;/a&gt;Date 类型 @&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;继承的方法&lt;/li&gt;
+&lt;li&gt;日期格式化方法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;RegExp-类型&quot;&gt;&lt;a href=&quot;#RegExp-类型&quot; class=&quot;headerlink&quot; title=&quot;RegExp 类型 @&quot;&gt;&lt;/a&gt;RegExp 类型 @&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;RegExp 实例属性&lt;/li&gt;
+&lt;li&gt;RegExp 实例方法&lt;/li&gt;
+&lt;li&gt;RegExp 构造函数属性&lt;/li&gt;
+&lt;li&gt;模式的局限性&lt;table style=&quot;text-align:center&quot;&gt;&lt;br&gt;  &lt;thead&gt;&lt;br&gt;      &lt;th&gt;global 模式&lt;/th&gt;&lt;br&gt;      &lt;th&gt;ignoreCase 模式&lt;/th&gt;&lt;br&gt;      &lt;th&gt;multiline 模式&lt;/th&gt;&lt;br&gt;  &lt;/thead&gt;&lt;br&gt;  &lt;tbody&gt;&lt;br&gt;      &lt;tr&gt;&lt;br&gt;          &lt;td&gt;g&lt;/td&gt;&lt;br&gt;          &lt;td&gt;i&lt;/td&gt;&lt;br&gt;          &lt;td&gt;m&lt;/td&gt;&lt;br&gt;      &lt;/tr&gt;&lt;br&gt;      &lt;tr&gt;&lt;br&gt;          &lt;td&gt;表示全局&lt;/td&gt;&lt;br&gt;          &lt;td&gt;表示不区分大小写&lt;/td&gt;&lt;br&gt;          &lt;td&gt;表示多行模式&lt;/td&gt;&lt;br&gt;      &lt;/tr&gt;&lt;br&gt;  &lt;/tbody&gt;&lt;br&gt;&lt;/table&gt;
+
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Function&quot;&gt;&lt;a href=&quot;#Function&quot; class=&quot;headerlink&quot; title=&quot;Function @&quot;&gt;&lt;/a&gt;Function @&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;没有重载（深入理解）&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;因为函数名为指针，相同的函数名指向的为同一个函数&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;函数声明与函数表达式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;函数声明&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;可以无视代码顺序&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;函数表达式&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;必须在表达式之后才可引用&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;作为值的函数&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;可以作为参数传递或返回，实际上就是个引用&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;函数内部属性&lt;/p&gt;
+&lt;p&gt;  &lt;strong&gt;特殊对象&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;arguments(也叫callee—指向拥有该arguments的函数)&lt;/li&gt;
+&lt;li&gt;this&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;函数的属性和方法&lt;/p&gt;
+&lt;h4 id=&quot;属性&quot;&gt;&lt;a href=&quot;#属性&quot; class=&quot;headerlink&quot; title=&quot;属性&quot;&gt;&lt;/a&gt;属性&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;length(命名参数数目)&lt;/li&gt;
+&lt;li&gt;prototype(所以实例方法的真正存在)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;方法&quot;&gt;&lt;a href=&quot;#方法&quot; class=&quot;headerlink&quot; title=&quot;方法&quot;&gt;&lt;/a&gt;方法&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;apply(参数可不定)&lt;/li&gt;
+&lt;li&gt;call(参数确定)&lt;/li&gt;
+&lt;li&gt;bind&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;基本包装类型&quot;&gt;&lt;a href=&quot;#基本包装类型&quot; class=&quot;headerlink&quot; title=&quot;基本包装类型@&quot;&gt;&lt;/a&gt;基本包装类型@&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;创建实例 &lt;br&gt;调用实力方法&lt;br&gt;销毁实例&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Booleadn 类型&lt;/li&gt;
+&lt;li&gt;Number 类型&lt;/li&gt;
+&lt;li&gt;String 类型&lt;ul&gt;
+&lt;li&gt;trim(去除字符串空格)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;单体内置对象&quot;&gt;&lt;a href=&quot;#单体内置对象&quot; class=&quot;headerlink&quot; title=&quot;单体内置对象@&quot;&gt;&lt;/a&gt;单体内置对象@&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Global 对象&lt;ul&gt;
+&lt;li&gt;eval(可把传入参数或字符串解析为js代码)&lt;/li&gt;
+&lt;li&gt;window（在浏览器中将global对象作为他的一部分来实现）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Math 对象&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;基本概念&quot;&gt;&lt;a href=&quot;#基本概念&quot; class=&quot;headerlink&quot; title=&quot;基本概念&quot;&gt;&lt;/a&gt;基本概念&lt;/h2&gt;&lt;h3 id=&quot;数据类型&quot;&gt;&lt;a href=&quot;#数据类型&quot; class=&quot;headerlink&quot; title=&quot;数据类型&quot;&gt;&lt;/a&gt;数据类型&lt;/h3&gt;&lt;h4 id=&quot;简单数据类型&quot;&gt;&lt;a href=&quot;#简单数据类型&quot; class=&quot;headerlink&quot; title=&quot;简单数据类型&quot;&gt;&lt;/a&gt;简单数据类型&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Undefined&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;未经初始化或声明的变量&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Null&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;Boolean&lt;/li&gt;
+&lt;li&gt;Number&lt;/li&gt;
+&lt;li&gt;String&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;复杂数据类型&quot;&gt;&lt;a href=&quot;#复杂数据类型&quot; class=&quot;headerlink&quot; title=&quot;复杂数据类型&quot;&gt;&lt;/a&gt;复杂数据类型&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Object&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;操作符&quot;&gt;&lt;a href=&quot;#操作符&quot; class=&quot;headerlink&quot; title=&quot;操作符&quot;&gt;&lt;/a&gt;操作符&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;一元操作符&lt;/li&gt;
+&lt;li&gt;位操作符
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://Mrzzchao.github.io/categories/JavaScript/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>css字体名称</title>
+    <link href="http://Mrzzchao.github.io/2016/03/20/%E5%AD%97%E4%BD%93%E5%90%8D%E7%A7%B0/"/>
+    <id>http://Mrzzchao.github.io/2016/03/20/字体名称/</id>
+    <published>2016-03-20T07:30:03.000Z</published>
+    <updated>2016-04-15T10:19:32.658Z</updated>
+    
+    <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;h2 id=&quot;Mac&quot;&gt;&lt;a href=&quot;#Mac&quot; class=&quot;headerlink&quot; title=&quot;Mac&quot;&gt;&lt;/a&gt;Mac&lt;/h2&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;中文名&lt;/th&gt;
+&lt;th&gt;英文名&lt;/th&gt;
+&lt;th&gt;Unicode&lt;/th&gt;
+&lt;th&gt;Unicode 2&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;华文细黑&lt;/td&gt;
+&lt;td&gt;STHeiti Light [STXihei]&lt;/td&gt;
+&lt;td&gt;\534E\6587\7EC6\9ED1&lt;/td&gt;
+&lt;td&gt;华文细黑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文黑体&lt;/td&gt;
+&lt;td&gt;STHeiti&lt;/td&gt;
+&lt;td&gt;\534E\6587\9ED1\4F53&lt;/td&gt;
+&lt;td&gt;华文黑体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文楷体&lt;/td&gt;
+&lt;td&gt;STKaiti&lt;/td&gt;
+&lt;td&gt;\534E\6587\6977\4F53&lt;/td&gt;
+&lt;td&gt;华文楷体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文宋体&lt;/td&gt;
+&lt;td&gt;STSong&lt;/td&gt;
+&lt;td&gt;\534E\6587\5B8B\4F53&lt;/td&gt;
+&lt;td&gt;华文宋体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文仿宋&lt;/td&gt;
+&lt;td&gt;STFangsong&lt;/td&gt;
+&lt;td&gt;\534E\6587\4EFF\5B8B&lt;/td&gt;
+&lt;td&gt;华文仿宋&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;丽黑 Pro&lt;/td&gt;
+&lt;td&gt;LiHei Pro Medium&lt;/td&gt;
+&lt;td&gt;\4E3D\9ED1 Pro&lt;/td&gt;
+&lt;td&gt;丽黑 Pro&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;丽宋 Pro&lt;/td&gt;
+&lt;td&gt;LiSong Pro Light&lt;/td&gt;
+&lt;td&gt;\4E3D\5B8B Pro&lt;/td&gt;
+&lt;td&gt;丽宋 Pro&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;标楷体&lt;/td&gt;
+&lt;td&gt;BiauKai&lt;/td&gt;
+&lt;td&gt;\6807\6977\4F53&lt;/td&gt;
+&lt;td&gt;标楷体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;苹果丽中黑&lt;/td&gt;
+&lt;td&gt;Apple LiGothic Medium&lt;/td&gt;
+&lt;td&gt;\82F9\679C\4E3D\4E2D\9ED1&lt;/td&gt;
+&lt;td&gt;苹果丽中黑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;苹果丽细宋&lt;/td&gt;
+&lt;td&gt;Apple LiSung Light&lt;/td&gt;
+&lt;td&gt;\82F9\679C\4E3D\7EC6\5B8B&lt;/td&gt;
+&lt;td&gt;苹果丽细宋&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;h2 id=&quot;Window&quot;&gt;&lt;a href=&quot;#Window&quot; class=&quot;headerlink&quot; title=&quot;Window&quot;&gt;&lt;/a&gt;Window&lt;/h2&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;中文名&lt;/th&gt;
+&lt;th&gt;英文名&lt;/th&gt;
+&lt;th&gt;Unicode&lt;/th&gt;
+&lt;th&gt;Unicode 2&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;新细明体&lt;/td&gt;
+&lt;td&gt;PMingLiU&lt;/td&gt;
+&lt;td&gt;\65B0\7EC6\660E\4F53&lt;/td&gt;
+&lt;td&gt;新细明体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;细明体&lt;/td&gt;
+&lt;td&gt;MingLiU&lt;/td&gt;
+&lt;td&gt;\7EC6\660E\4F53&lt;/td&gt;
+&lt;td&gt;细明体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;标楷体&lt;/td&gt;
+&lt;td&gt;DFKai-SB&lt;/td&gt;
+&lt;td&gt;\6807\6977\4F53&lt;/td&gt;
+&lt;td&gt;标楷体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;黑体&lt;/td&gt;
+&lt;td&gt;SimHei&lt;/td&gt;
+&lt;td&gt;\9ED1\4F53&lt;/td&gt;
+&lt;td&gt;黑体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;宋体&lt;/td&gt;
+&lt;td&gt;SimSun&lt;/td&gt;
+&lt;td&gt;\5B8B\4F53&lt;/td&gt;
+&lt;td&gt;宋体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;新宋体&lt;/td&gt;
+&lt;td&gt;NSimSun&lt;/td&gt;
+&lt;td&gt;\65B0\5B8B\4F53&lt;/td&gt;
+&lt;td&gt;新宋体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;仿宋&lt;/td&gt;
+&lt;td&gt;FangSong&lt;/td&gt;
+&lt;td&gt;\4EFF\5B8B&lt;/td&gt;
+&lt;td&gt;仿宋&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;楷体&lt;/td&gt;
+&lt;td&gt;KaiTi&lt;/td&gt;
+&lt;td&gt;\6977\4F53&lt;/td&gt;
+&lt;td&gt;楷体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;仿宋_GB2312&lt;/td&gt;
+&lt;td&gt;FangSong_GB2312&lt;/td&gt;
+&lt;td&gt;\4EFF\5B8B_GB2312&lt;/td&gt;
+&lt;td&gt;仿宋_GB2312&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;楷体_GB2312&lt;/td&gt;
+&lt;td&gt;KaiTi_GB2312&lt;/td&gt;
+&lt;td&gt;\6977\4F53_GB2312&lt;/td&gt;
+&lt;td&gt;楷体_GB2312&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;微软正黑体&lt;/td&gt;
+&lt;td&gt;Microsoft JhengHei&lt;/td&gt;
+&lt;td&gt;\5FAE\x8F6F\6B63\9ED1\4F53&lt;/td&gt;
+&lt;td&gt;微软正黑体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;微软雅黑&lt;/td&gt;
+&lt;td&gt;Microsoft YaHei&lt;/td&gt;
+&lt;td&gt;\5FAE\8F6F\96C5\9ED1&lt;/td&gt;
+&lt;td&gt;微软雅黑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;&lt;h2 id=&quot;Mac&quot;&gt;&lt;a href=&quot;#Mac&quot; class=&quot;headerlink&quot; title=&quot;Mac&quot;&gt;&lt;/a&gt;Mac&lt;/h2&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;中文名&lt;/th&gt;
+&lt;th&gt;英文名&lt;/th&gt;
+&lt;th&gt;Unicode&lt;/th&gt;
+&lt;th&gt;Unicode 2&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;华文细黑&lt;/td&gt;
+&lt;td&gt;STHeiti Light [STXihei]&lt;/td&gt;
+&lt;td&gt;\534E\6587\7EC6\9ED1&lt;/td&gt;
+&lt;td&gt;华文细黑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文黑体&lt;/td&gt;
+&lt;td&gt;STHeiti&lt;/td&gt;
+&lt;td&gt;\534E\6587\9ED1\4F53&lt;/td&gt;
+&lt;td&gt;华文黑体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文楷体&lt;/td&gt;
+&lt;td&gt;STKaiti&lt;/td&gt;
+&lt;td&gt;\534E\6587\6977\4F53&lt;/td&gt;
+&lt;td&gt;华文楷体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文宋体&lt;/td&gt;
+&lt;td&gt;STSong&lt;/td&gt;
+&lt;td&gt;\534E\6587\5B8B\4F53&lt;/td&gt;
+&lt;td&gt;华文宋体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文仿宋&lt;/td&gt;
+&lt;td&gt;STFangsong&lt;/td&gt;
+&lt;td&gt;\534E\6587\4EFF\5B8B&lt;/td&gt;
+&lt;td&gt;华文仿宋&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;丽黑 Pro&lt;/td&gt;
+&lt;td&gt;LiHei Pro Medium&lt;/td&gt;
+&lt;td&gt;\4E3D\9ED1 Pro&lt;/td&gt;
+&lt;td&gt;丽黑 Pro&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;丽宋 Pro&lt;/td&gt;
+&lt;td&gt;LiSong Pro Light&lt;/td&gt;
+&lt;td&gt;\4E3D\5B8B Pro&lt;/td&gt;
+&lt;td&gt;丽宋 Pro&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;标楷体&lt;/td&gt;
+&lt;td&gt;BiauKai&lt;/td&gt;
+&lt;td&gt;\6807\6977\4F53&lt;/td&gt;
+&lt;td&gt;标楷体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;苹果丽中黑&lt;/td&gt;
+&lt;td&gt;Apple LiGothic Medium&lt;/td&gt;
+&lt;td&gt;\82F9\679C\4E3D\4E2D\9ED1&lt;/td&gt;
+&lt;td&gt;苹果丽中黑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;苹果丽细宋&lt;/td&gt;
+&lt;td&gt;Apple LiSung Light&lt;/td&gt;
+&lt;td&gt;\82F9\679C\4E3D\7EC6\5B8B&lt;/td&gt;
+&lt;td&gt;苹果丽细宋&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;h2 id=&quot;Window&quot;&gt;&lt;a href=&quot;#Window&quot; class=&quot;headerlink&quot; title=&quot;Window&quot;&gt;&lt;/a&gt;Window&lt;/h2&gt;
+    
+    </summary>
+    
+      <category term="CSS" scheme="http://Mrzzchao.github.io/categories/CSS/"/>
+    
+    
+      <category term="Font-Name" scheme="http://Mrzzchao.github.io/tags/Font-Name/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>纯CSS绘制三角形</title>
+    <link href="http://Mrzzchao.github.io/2016/03/20/%E7%BA%AFCSS%E7%BB%98%E5%88%B6%E4%B8%89%E8%A7%92%E5%BD%A2%EF%BC%88%E5%90%84%E7%A7%8D%E8%A7%92%E5%BA%A6%EF%BC%89/"/>
+    <id>http://Mrzzchao.github.io/2016/03/20/纯CSS绘制三角形（各种角度）/</id>
+    <published>2016-03-20T07:28:03.000Z</published>
+    <updated>2016-04-15T09:04:45.781Z</updated>
+    
+    <content type="html">&lt;p&gt;相信很多人在处理li图形的时候，都会很纳闷，为什么list-style-type没有三角图案，难度要在网上下个三角图标作为list-style-image?怎么可能呢，所以我整理了网上一些css三角绘制的方法和代码。&lt;/p&gt;
+&lt;h2 id=&quot;Triangle-Up&quot;&gt;&lt;a href=&quot;#Triangle-Up&quot; class=&quot;headerlink&quot; title=&quot;Triangle-Up&quot;&gt;&lt;/a&gt;Triangle-Up&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/triangle-up.jpg&quot; alt=&quot;Triangle-up&quot; title=&quot;triangle-up&quot;&gt;&lt;br&gt;&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-id&quot;&gt;#triangle-up&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;width&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;height&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;border-left&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;50px&lt;/span&gt; solid transparent;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;border-right&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;50px&lt;/span&gt; solid transparent;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;border-bottom&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;100px&lt;/span&gt; solid red;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Triangle-Down&quot;&gt;&lt;a href=&quot;#Triangle-Down&quot; class=&quot;headerlink&quot; title=&quot;Triangle-Down&quot;&gt;&lt;/a&gt;Triangle-Down&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/triangle-down.jpg&quot; alt=&quot;Triangle-Down&quot; title=&quot;triangle-down&quot;&gt;&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-id&quot;&gt;#triangle-down&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;width&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;height&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;border-left&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;50px&lt;/span&gt; solid transparent;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;border-right&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;50px&lt;/span&gt; solid transparent;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;border-top&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;100px&lt;/span&gt; solid red;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Triangle-Left&quot;&gt;&lt;a href=&quot;#Triangle-Left&quot; class=&quot;headerlink&quot; title=&quot;Triangle-Left&quot;&gt;&lt;/a&gt;Triangle-Left&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/triangle-left.jpg&quot; alt=&quot;Triangle-Left&quot; title=&quot;triangle-left&quot;&gt;&lt;br&gt;&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-id&quot;&gt;#triangle-left&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;width&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;height&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;border-top&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;50px&lt;/span&gt; solid transparent;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;border-right&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;100px&lt;/span&gt; solid red;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;border-bottom&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;50px&lt;/span&gt; solid transparent;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Triangle-Right&quot;&gt;&lt;a href=&quot;#Triangle-Right&quot; class=&quot;headerlink&quot; title=&quot;Triangle-Right&quot;&gt;&lt;/a&gt;Triangle-Right&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/triangle-right.jpg&quot; alt=&quot;Triangle-Right&quot; title=&quot;triangle-right&quot;&gt;&lt;br&gt;&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-id&quot;&gt;#triangle-right&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;width&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;height&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;border-top&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;50px&lt;/span&gt; solid transparent;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;border-left&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;100px&lt;/span&gt; solid red;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;border-bottom&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;50px&lt;/span&gt; solid transparent;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Triangle-Top-Left&quot;&gt;&lt;a href=&quot;#Triangle-Top-Left&quot; class=&quot;headerlink&quot; title=&quot;Triangle-Top-Left&quot;&gt;&lt;/a&gt;Triangle-Top-Left&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/triangle-top-left.jpg&quot; alt=&quot;Triangle-Top-Left&quot; title=&quot;triangle-top-left&quot;&gt;&lt;br&gt;&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-id&quot;&gt;#triangle-topleft&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;width&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;height&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;border-top&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;100px&lt;/span&gt; solid red;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;border-right&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;100px&lt;/span&gt; solid transparent;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Triangle-Top-Right&quot;&gt;&lt;a href=&quot;#Triangle-Top-Right&quot; class=&quot;headerlink&quot; title=&quot;Triangle-Top-Right&quot;&gt;&lt;/a&gt;Triangle-Top-Right&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/triangle-top-right.jpg&quot; alt=&quot;Triangle-Top-Right&quot; title=&quot;triangle-top-right&quot;&gt;&lt;br&gt;&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-id&quot;&gt;#triangle-topright&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;width&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;height&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;border-top&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;100px&lt;/span&gt; solid red;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;border-left&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;100px&lt;/span&gt; solid transparent;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Triangle-Bottom-left&quot;&gt;&lt;a href=&quot;#Triangle-Bottom-left&quot; class=&quot;headerlink&quot; title=&quot;Triangle-Bottom-left&quot;&gt;&lt;/a&gt;Triangle-Bottom-left&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/triangle-bottom-left.jpg&quot; alt=&quot;Triangle-Bottom-left&quot; title=&quot;triangle-bottom-left&quot;&gt;&lt;br&gt;&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-id&quot;&gt;#triangle-bottomleft&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;width&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;height&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;border-bottom&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;100px&lt;/span&gt; solid red;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;border-right&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;100px&lt;/span&gt; solid transparent;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Triangle-Bottom-Right&quot;&gt;&lt;a href=&quot;#Triangle-Bottom-Right&quot; class=&quot;headerlink&quot; title=&quot;Triangle-Bottom-Right&quot;&gt;&lt;/a&gt;Triangle-Bottom-Right&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/triangle-bottom-right.jpg&quot; alt=&quot;Triangle-Bottom-Right&quot; title=&quot;triangle-bottom-right&quot;&gt;&lt;br&gt;&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-id&quot;&gt;#triangle-bottomright&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;width&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;height&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;border-bottom&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;100px&lt;/span&gt; solid red;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;border-left&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;100px&lt;/span&gt; solid transparent;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;相信很多人在处理li图形的时候，都会很纳闷，为什么list-style-type没有三角图案，难度要在网上下个三角图标作为list-style-image?怎么可能呢，所以我整理了网上一些css三角绘制的方法和代码。&lt;/p&gt;
+&lt;h2 id=&quot;Triangle-Up&quot;&gt;&lt;a href=&quot;#Triangle-Up&quot; class=&quot;headerlink&quot; title=&quot;Triangle-Up&quot;&gt;&lt;/a&gt;Triangle-Up&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/triangle-up.jpg&quot; alt=&quot;Triangle-up&quot; title=&quot;triangle-up&quot;&gt;&lt;br&gt;&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-id&quot;&gt;#triangle-up&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;width&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;height&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;border-left&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;50px&lt;/span&gt; solid transparent;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;border-right&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;50px&lt;/span&gt; solid transparent;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;border-bottom&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;100px&lt;/span&gt; solid red;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Triangle-Down&quot;&gt;&lt;a href=&quot;#Triangle-Down&quot; class=&quot;headerlink&quot; title=&quot;Triangle-Down&quot;&gt;&lt;/a&gt;Triangle-Down&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/triangle-down.jpg&quot; alt=&quot;Triangle-Down&quot; title=&quot;triangle-down&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="CSS" scheme="http://Mrzzchao.github.io/categories/CSS/"/>
+    
+    
+      <category term="Triangle" scheme="http://Mrzzchao.github.io/tags/Triangle/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>居中问题浅谈</title>
+    <link href="http://Mrzzchao.github.io/2016/03/16/%E5%B1%85%E4%B8%AD%E9%97%AE%E9%A2%98%E6%B5%85%E8%B0%88/"/>
+    <id>http://Mrzzchao.github.io/2016/03/16/居中问题浅谈/</id>
+    <published>2016-03-16T06:42:03.000Z</published>
+    <updated>2016-04-15T09:09:26.631Z</updated>
+    
+    <content type="html">&lt;!-- 一直以来，居中问题都是前端路上不可避免的一道障碍，所以学会居中方法，掌握居中技巧是每一个攻城狮必须完成的使命。 --&gt;
+&lt;p&gt;在CSS的世界里居中一直都是人们抱怨的一件事。“居个中为什么就这么难呢？”人们无奈的说。我认为困难的不是怎么做他，而是怎样在不同的情况下，用不同的方法去达到这相同的目的—居中。&lt;/p&gt;
+&lt;p&gt;所以 让我们来解决这个问题吧&lt;/p&gt;
+&lt;h2 id=&quot;水平居中-Horizontally&quot;&gt;&lt;a href=&quot;#水平居中-Horizontally&quot; class=&quot;headerlink&quot; title=&quot;水平居中(Horizontally)&quot;&gt;&lt;/a&gt;水平居中(Horizontally)&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;h3 id=&quot;行内块元素（inline-or-inline-element）&quot;&gt;&lt;a href=&quot;#行内块元素（inline-or-inline-element）&quot; class=&quot;headerlink&quot; title=&quot;行内块元素（inline or inline-* element）&quot;&gt;&lt;/a&gt;行内块元素（inline or inline-* element）&lt;/h3&gt;  &lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.center-children&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;attribute&quot;&gt;text-align&lt;/span&gt;: center;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;一个块级元素（one-block-level-element）&quot;&gt;&lt;a href=&quot;#一个块级元素（one-block-level-element）&quot; class=&quot;headerlink&quot; title=&quot;一个块级元素（one block level element）&quot;&gt;&lt;/a&gt;一个块级元素（one block level element）&lt;/h3&gt;  &lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.center-me&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;attribute&quot;&gt;margin&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; auto;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;h3 id=&quot;多个块级元素（some-block-level-elements）&quot;&gt;&lt;a href=&quot;#多个块级元素（some-block-level-elements）&quot; class=&quot;headerlink&quot; title=&quot;多个块级元素（some block level elements）&quot;&gt;&lt;/a&gt;多个块级元素（some block level elements）&lt;/h3&gt;&lt;p&gt;  &lt;strong&gt;HTML&lt;/strong&gt;&lt;/p&gt;
+  &lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;inline-block-center&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    I&#39;m an element that is block-like with my siblings and we&#39;re centered in a row.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    I&#39;m an element that is block-like with my siblings and we&#39;re centered in a row. I have more content in me than my siblings do.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    I&#39;m an element that is block-like with my siblings and we&#39;re centered in a row.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;main&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+  &lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;flex-center&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    I&#39;m an element that is block-like with my siblings and we&#39;re centered in a row.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    I&#39;m an element that is block-like with my siblings and we&#39;re centered in a row. I have more content in me than my siblings do.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    I&#39;m an element that is block-like with my siblings and we&#39;re centered in a row.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;main&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;CSS&lt;/strong&gt;&lt;/p&gt;
+  &lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;body&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;background&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;#f06d06&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;font-size&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;80%&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;main&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;background&lt;/span&gt;: white;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;margin&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;20px&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;padding&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;10px&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;selector-tag&quot;&gt;div&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;background&lt;/span&gt;: black;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;color&lt;/span&gt;: white;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;padding&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;15px&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;max-width&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;125px&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;margin&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;5px&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.inline-block-center&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;text-align&lt;/span&gt;: center;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.inline-block-center&lt;/span&gt; &lt;span class=&quot;selector-tag&quot;&gt;div&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;display&lt;/span&gt;: inline-block;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;text-align&lt;/span&gt;: left;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.flex-center&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;display&lt;/span&gt;: flex;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;justify-content&lt;/span&gt;: center;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;  总之：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;text-align&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;垂直居中（Verticallly）&quot;&gt;&lt;a href=&quot;#垂直居中（Verticallly）&quot; class=&quot;headerlink&quot; title=&quot;垂直居中（Verticallly）&quot;&gt;&lt;/a&gt;垂直居中（Verticallly）&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;h3 id=&quot;行内块元素（inline-or-inline-element）-1&quot;&gt;&lt;a href=&quot;#行内块元素（inline-or-inline-element）-1&quot; class=&quot;headerlink&quot; title=&quot;行内块元素（inline or inline-* element）&quot;&gt;&lt;/a&gt;行内块元素（inline or inline-* element）&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;单行情况&lt;/p&gt;
+&lt;p&gt;padding&lt;/p&gt;
+&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.link&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;padding-top&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;30px&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;padding-bottom&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;30px&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;line-height&lt;/p&gt;
+&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.center-text-trick&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;height&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;100px&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;line-height&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;100px&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;white-space&lt;/span&gt;: nowrap;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;多行情况&lt;/p&gt;
+&lt;p&gt;HTML&lt;/p&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;table&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;tr&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;td&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      I&#39;m vertically centered multiple lines of text in a real table cell.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;td&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;tr&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;table&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;center-table&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;p&lt;/span&gt;&amp;gt;&lt;/span&gt;I&#39;m vertically centered multiple lines of text in a CSS-created table layout.&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;p&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;CSS&lt;/p&gt;
+&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;body&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;background&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;#f06d06&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;font-size&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;80%&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;table&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;background&lt;/span&gt;: white;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;width&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;240px&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;border-collapse&lt;/span&gt;: separate;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;margin&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;20px&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;height&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;250px&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;table&lt;/span&gt; &lt;span class=&quot;selector-tag&quot;&gt;td&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;background&lt;/span&gt;: black;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;color&lt;/span&gt;: white;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;padding&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;20px&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;border&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;10px&lt;/span&gt; solid white;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;/* default is vertical-align: middle; */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.center-table&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;display&lt;/span&gt;: table;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;height&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;250px&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;background&lt;/span&gt;: white;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;width&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;240px&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;margin&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;20px&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.center-table&lt;/span&gt; &lt;span class=&quot;selector-tag&quot;&gt;p&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;display&lt;/span&gt;: table-cell;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;margin&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;background&lt;/span&gt;: black;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;color&lt;/span&gt;: white;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;padding&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;20px&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;border&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;10px&lt;/span&gt; solid white;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;vertical-align&lt;/span&gt;: middle;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;总之：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;padding&lt;/li&gt;
+&lt;li&gt;line-height&lt;/li&gt;
+&lt;li&gt;vertical-align&lt;/li&gt;
+&lt;li&gt;flex&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;一个块级元素（one-block-level-element）-1&quot;&gt;&lt;a href=&quot;#一个块级元素（one-block-level-element）-1&quot; class=&quot;headerlink&quot; title=&quot;一个块级元素（one block level element）&quot;&gt;&lt;/a&gt;一个块级元素（one block level element）&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;知道元素高度&lt;/p&gt;
+&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.parent&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;position&lt;/span&gt;: relative;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.child&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;position&lt;/span&gt;: absolute;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;top&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;50%&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;height&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;100px&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;margin-top&lt;/span&gt;: -&lt;span class=&quot;number&quot;&gt;50px&lt;/span&gt;; &lt;span class=&quot;comment&quot;&gt;/* account for padding and border if not using box-sizing: border-box; */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;不知道元素高度&lt;/p&gt;
+&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.parent&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;position&lt;/span&gt;: relative;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.child&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;position&lt;/span&gt;: absolute;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;top&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;50%&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;transform&lt;/span&gt;: &lt;span class=&quot;built_in&quot;&gt;translateY&lt;/span&gt;(-50%);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;无所谓，flex解决一切&lt;/p&gt;
+&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.parent&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;display&lt;/span&gt;: flex;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;flex-direction&lt;/span&gt;: column;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;justify-content&lt;/span&gt;: center;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;水平与垂直同时居中（Both-Horizontally-and-Vertically）&quot;&gt;&lt;a href=&quot;#水平与垂直同时居中（Both-Horizontally-and-Vertically）&quot; class=&quot;headerlink&quot; title=&quot;水平与垂直同时居中（Both Horizontally and Vertically）&quot;&gt;&lt;/a&gt;水平与垂直同时居中（Both Horizontally and Vertically）&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;h3 id=&quot;知道元素尺寸&quot;&gt;&lt;a href=&quot;#知道元素尺寸&quot; class=&quot;headerlink&quot; title=&quot;知道元素尺寸&quot;&gt;&lt;/a&gt;知道元素尺寸&lt;/h3&gt;&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.parent&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;display&lt;/span&gt;: flex;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;justify-content&lt;/span&gt;: center;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;align-items&lt;/span&gt;: center;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;不知道元素尺寸&quot;&gt;&lt;a href=&quot;#不知道元素尺寸&quot; class=&quot;headerlink&quot; title=&quot;不知道元素尺寸&quot;&gt;&lt;/a&gt;不知道元素尺寸&lt;/h3&gt;&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.parent&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;position&lt;/span&gt;: relative;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.child&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;position&lt;/span&gt;: absolute;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;top&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;50%&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;left&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;50%&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;transform&lt;/span&gt;: &lt;span class=&quot;built_in&quot;&gt;translate&lt;/span&gt;(-50%, -50%);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;无所谓，flex解决一切&quot;&gt;&lt;a href=&quot;#无所谓，flex解决一切&quot; class=&quot;headerlink&quot; title=&quot;无所谓，flex解决一切&quot;&gt;&lt;/a&gt;无所谓，flex解决一切&lt;/h3&gt;&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.parent&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;display&lt;/span&gt;: flex;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;justify-content&lt;/span&gt;: center;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;align-items&lt;/span&gt;: center;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;总结（Conclusion）&quot;&gt;&lt;a href=&quot;#总结（Conclusion）&quot; class=&quot;headerlink&quot; title=&quot;总结（Conclusion）&quot;&gt;&lt;/a&gt;总结（Conclusion）&lt;/h2&gt;&lt;p&gt;  只要你愿意，css会帮你完成这一切…&lt;/p&gt;
+&lt;h2 id=&quot;参考资料&quot;&gt;&lt;a href=&quot;#参考资料&quot; class=&quot;headerlink&quot; title=&quot;参考资料&quot;&gt;&lt;/a&gt;参考资料&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://css-tricks.com/centering-css-complete-guide/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Centering in CSS: A Complete Guide&lt;/a&gt;：基本参考和翻译本文章内容，十分感谢&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;!-- 一直以来，居中问题都是前端路上不可避免的一道障碍，所以学会居中方法，掌握居中技巧是每一个攻城狮必须完成的使命。 --&gt;
+&lt;p&gt;在CSS的世界里居中一直都是人们抱怨的一件事。“居个中为什么就这么难呢？”人们无奈的说。我认为困难的不是怎么做他，而是怎样在不同的情况下，用不同的方法去达到这相同的目的—居中。&lt;/p&gt;
+&lt;p&gt;所以 让我们来解决这个问题吧&lt;/p&gt;
+&lt;h2 id=&quot;水平居中-Horizontally&quot;&gt;&lt;a href=&quot;#水平居中-Horizontally&quot; class=&quot;headerlink&quot; title=&quot;水平居中(Horizontally)&quot;&gt;&lt;/a&gt;水平居中(Horizontally)&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;h3 id=&quot;行内块元素（inline-or-inline-element）&quot;&gt;&lt;a href=&quot;#行内块元素（inline-or-inline-element）&quot; class=&quot;headerlink&quot; title=&quot;行内块元素（inline or inline-* element）&quot;&gt;&lt;/a&gt;行内块元素（inline or inline-* element）&lt;/h3&gt;  &lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.center-children&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;attribute&quot;&gt;text-align&lt;/span&gt;: center;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;一个块级元素（one-block-level-element）&quot;&gt;&lt;a href=&quot;#一个块级元素（one-block-level-element）&quot; class=&quot;headerlink&quot; title=&quot;一个块级元素（one block level element）&quot;&gt;&lt;/a&gt;一个块级元素（one block level element）&lt;/h3&gt;  &lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.center-me&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;attribute&quot;&gt;margin&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; auto;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="CSS" scheme="http://Mrzzchao.github.io/categories/CSS/"/>
+    
+    
+      <category term="Center Issue" scheme="http://Mrzzchao.github.io/tags/Center-Issue/"/>
+    
+  </entry>
+  
+</feed>
