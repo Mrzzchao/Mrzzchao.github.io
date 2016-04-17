@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://Mrzzchao.github.io/"/>
-  <updated>2016-04-15T13:09:02.627Z</updated>
+  <updated>2016-04-17T07:55:55.590Z</updated>
   <id>http://Mrzzchao.github.io/</id>
   
   <author>
@@ -14,6 +14,157 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>博客诞生季</title>
+    <link href="http://Mrzzchao.github.io/2016/04/17/%E5%8D%9A%E5%AE%A2%E8%AF%9E%E7%94%9F%E8%AE%B0%20/"/>
+    <id>http://Mrzzchao.github.io/2016/04/17/博客诞生记 /</id>
+    <published>2016-04-17T03:25:32.000Z</published>
+    <updated>2016-04-17T07:55:55.590Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;折腾了两天，终于把期待很久的博客弄上线了，这就如同上了电视一般激动，所以激动的同时，也记录一下这个&lt;br&gt;艰辛的过程，留给自己，帮助他人。&lt;/p&gt;
+&lt;h1 id=&quot;Hexo&quot;&gt;&lt;a href=&quot;#Hexo&quot; class=&quot;headerlink&quot; title=&quot;Hexo&quot;&gt;&lt;/a&gt;Hexo&lt;/h1&gt;&lt;p&gt;Hexo的作者是tommy351，根据官方介绍，Hexo是一个简单、快速、强大的博客发布工具，支持Markdown格式&lt;/p&gt;
+&lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h2&gt;&lt;p&gt;打开git&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;npm install -g hexo
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;初始化&quot;&gt;&lt;a href=&quot;#初始化&quot; class=&quot;headerlink&quot; title=&quot;初始化&quot;&gt;&lt;/a&gt;初始化&lt;/h2&gt;&lt;p&gt;在我的电脑中建立一个名字叫「Hexo」的文件夹，然后在此文件夹中右键打开Git Bash&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;hexo init
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;初始化完 &lt;em&gt;cd&lt;/em&gt; 进你初始化化的目录&lt;/p&gt;
+&lt;h2 id=&quot;生成静态页面&quot;&gt;&lt;a href=&quot;#生成静态页面&quot; class=&quot;headerlink&quot; title=&quot;生成静态页面&quot;&gt;&lt;/a&gt;生成静态页面&lt;/h2&gt;&lt;p&gt;以下命令会在你 &lt;em&gt;init&lt;/em&gt; 目录下生成一个public文件夹&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;hexo generate
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;如果是第二次生成，那要执行以下命令进行清除public文件夹&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;hexo clean
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;本地启动&quot;&gt;&lt;a href=&quot;#本地启动&quot; class=&quot;headerlink&quot; title=&quot;本地启动&quot;&gt;&lt;/a&gt;本地启动&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;hexo server
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;执行完成后，浏览器输入&lt;a href=&quot;http://localhost:4000&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://localhost:4000&lt;/a&gt;就可以看到效果&lt;/p&gt;
+&lt;h2 id=&quot;写文章&quot;&gt;&lt;a href=&quot;#写文章&quot; class=&quot;headerlink&quot; title=&quot;写文章&quot;&gt;&lt;/a&gt;写文章&lt;/h2&gt;&lt;p&gt;执行new命令，生成指定名称的文章至hexo\source_posts\postName.md&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;hexo new page &amp;quot;postName&amp;quot; #新建文章    
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;文章摘要&quot;&gt;&lt;a href=&quot;#文章摘要&quot; class=&quot;headerlink&quot; title=&quot;文章摘要&quot;&gt;&lt;/a&gt;文章摘要&lt;/h2&gt;&lt;p&gt;在需要显示摘要的地方添加以下代码即可&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;以上是摘要
+&amp;lt;!--more--&amp;gt;
+以下是余下全文
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;新建页面&quot;&gt;&lt;a href=&quot;#新建页面&quot; class=&quot;headerlink&quot; title=&quot;新建页面&quot;&gt;&lt;/a&gt;新建页面&lt;/h2&gt;&lt;p&gt;执行new命令，生成指定名称的文件夹至hexo\source\pageName，并且生成index.md至文件夹&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;hexo new pageName #新建页面
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;部署Hexo&quot;&gt;&lt;a href=&quot;#部署Hexo&quot; class=&quot;headerlink&quot; title=&quot;部署Hexo&quot;&gt;&lt;/a&gt;部署Hexo&lt;/h2&gt;&lt;p&gt;以下命令建立在已成功构建了Github远程端的前提下，这里就不一概述了&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;hexo deloy #部署到Github
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;常用命令&quot;&gt;&lt;a href=&quot;#常用命令&quot; class=&quot;headerlink&quot; title=&quot;常用命令&quot;&gt;&lt;/a&gt;常用命令&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;hexo new &amp;quot;postName&amp;quot; #新建文章
+hexo new page &amp;quot;pageName&amp;quot; #新建页面
+hexo generate #生成静态页面至public目录
+hexo server #开启预览访问端口（默认端口4000，&amp;apos;ctrl + c&amp;apos;关闭server）
+hexo deploy #将.deploy目录部署到GitHub
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;简写&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;hexo n == hexo new
+hexo g == hexo generate
+hexo s == hexo server
+hexo d == hexo deploy
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;主题&quot;&gt;&lt;a href=&quot;#主题&quot; class=&quot;headerlink&quot; title=&quot;主题&quot;&gt;&lt;/a&gt;主题&lt;/h1&gt;&lt;p&gt;搭建hexo时，会给一个初始的主题&lt;strong&gt;landscape&lt;/strong&gt;，但是人各有所好，不是每个人都会喜欢&lt;br&gt;。所以选择一个自己喜欢的主题是很重要的，就像穿衣服一样。&lt;/p&gt;
+&lt;h2 id=&quot;推荐主题&quot;&gt;&lt;a href=&quot;#推荐主题&quot; class=&quot;headerlink&quot; title=&quot;推荐主题&quot;&gt;&lt;/a&gt;推荐主题&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;pacman: 大气，最重要的是功能齐全&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;yilia: 美观，但是有一定的Bug&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;next: 现在正在使用，添加插件什么的很方便，很喜欢&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Next主题&quot;&gt;&lt;a href=&quot;#Next主题&quot; class=&quot;headerlink&quot; title=&quot;Next主题&quot;&gt;&lt;/a&gt;Next主题&lt;/h2&gt;&lt;p&gt;有很完整的教程，这里就做做搬运工了&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://theme-next.iissnan.com/getting-started.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方教程&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://notes.wanghao.work/2015-10-21-%E4%B8%BANexT%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E9%87%8F%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD.html#%E9%85%8D%E7%BD%AELeanCloud&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;为NexT主题添加文章阅读量统计功能&lt;/a&gt;: 注意后面要加Web安全那一块才能生效&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://zhiho.github.io/2015/09/29/hexo-next/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo搭建GitHub博客（三）- NexT主题配置使用&lt;/a&gt;：解惑我很多问题&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;域名&quot;&gt;&lt;a href=&quot;#域名&quot; class=&quot;headerlink&quot; title=&quot;域名&quot;&gt;&lt;/a&gt;域名&lt;/h2&gt;&lt;p&gt;对于有着情怀的我们来说，怎么可能忍受一直用着&lt;strong&gt;MyName.github.io&lt;/strong&gt;进入我们的博客，所以呢？为了看起来更拉风当然要弄个域名了&lt;/p&gt;
+&lt;h3 id=&quot;购买域名&quot;&gt;&lt;a href=&quot;#购买域名&quot; class=&quot;headerlink&quot; title=&quot;购买域名&quot;&gt;&lt;/a&gt;购买域名&lt;/h3&gt;&lt;h4 id=&quot;推荐&quot;&gt;&lt;a href=&quot;#推荐&quot; class=&quot;headerlink&quot; title=&quot;推荐&quot;&gt;&lt;/a&gt;推荐&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://sg.godaddy.com/zh?isc=cjc99com&amp;amp;ci=&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Godaddy&lt;/a&gt;: 毕竟是国际大厂商，也支持支付宝&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://www.aliyun.com/?spm=5176.3047821.1.1.POmfMt&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;阿里云&lt;/a&gt;: 支持国产也是很重要的&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;DNS服务器&quot;&gt;&lt;a href=&quot;#DNS服务器&quot; class=&quot;headerlink&quot; title=&quot;DNS服务器&quot;&gt;&lt;/a&gt;DNS服务器&lt;/h3&gt;&lt;h4 id=&quot;推荐-1&quot;&gt;&lt;a href=&quot;#推荐-1&quot; class=&quot;headerlink&quot; title=&quot;推荐&quot;&gt;&lt;/a&gt;推荐&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.dnspod.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;DNSPOO&lt;/a&gt;: 职业DNS服务商&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.aliyun.com/?spm=5176.3047821.1.1.POmfMt&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;阿里云&lt;/a&gt;: 在阿里云购买的域名，那用他自己的DNS当然最方便，不用更改&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;域名与Github&quot;&gt;&lt;a href=&quot;#域名与Github&quot; class=&quot;headerlink&quot; title=&quot;域名与Github&quot;&gt;&lt;/a&gt;域名与Github&lt;/h3&gt;&lt;p&gt;因为我用的阿里云的，所以以阿里云的方式作为参考&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;进入阿里云主页，点击登录&lt;br&gt;![3]&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;[3]: images/3.png “3” { width:auto; max-width:90% }&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;登陆后，点击万网购买你喜欢并且存在的域名&lt;br&gt;![4]&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;[4]: images/4.png “4” { width:auto; max-width:90% }&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;购买完成后，进入管理控制台&lt;br&gt;![5]&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;[5]: images/5.png “5” { width:auto; max-width:90% }&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;点击域名，可以看到域名列表，然后在相应的域名处点击管理&lt;br&gt;![6]&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;[6]: images/6.png “6” { width:auto; max-width:90% }&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;点击页面中的域名解析&lt;br&gt;![9]&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;[9]: images/9.png “9” { width:auto; max-width:90% }&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;然后点击解析设置&lt;br&gt;![10]&lt;br&gt;[10]: images/10.png “9” { width:auto; max-width:90% }&lt;/li&gt;
+&lt;li&gt;点击添加解析添加图中框选的三条解析记录，第一条填写自己的github地址&lt;br&gt;&lt;strong&gt;注意&lt;/strong&gt;：如博客不能登录，有可能是github更改了空间服务的ip地址，记得及时到在GitHub Pages查看最新的ip即可&lt;br&gt;![11]&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;[11]: images/11.png “11” { width:auto; max-width:90% }&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在自己的&lt;strong&gt;Hexo\source&lt;/strong&gt;目录下创建一个&lt;strong&gt;CNAME&lt;/strong&gt;文件，打开后，里面写入自己的域名地址，如：&lt;strong&gt;www.mrzzchao.com&lt;/strong&gt;&lt;br&gt;可以不加wwww&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&quot;最后，这么详细的过程，详细你打开浏览器输入你的域名，一定会想请我喝咖啡的&quot;&gt;&lt;a href=&quot;#最后，这么详细的过程，详细你打开浏览器输入你的域名，一定会想请我喝咖啡的&quot; class=&quot;headerlink&quot; title=&quot;最后，这么详细的过程，详细你打开浏览器输入你的域名，一定会想请我喝咖啡的&quot;&gt;&lt;/a&gt;最后，这么详细的过程，详细你打开浏览器输入你的域名，一定会想请我喝咖啡的&lt;/h4&gt;&lt;h1 id=&quot;博客的笔&quot;&gt;&lt;a href=&quot;#博客的笔&quot; class=&quot;headerlink&quot; title=&quot;博客的笔&quot;&gt;&lt;/a&gt;博客的笔&lt;/h1&gt;&lt;p&gt;博客就像是本子一样，而我们需要做的是在他里面留下我们的思想，印下我们的足迹，那用什么写他呢？&lt;br&gt;当然是现在最流行的&lt;strong&gt;markdown&lt;/strong&gt;了&lt;/p&gt;
+&lt;h2 id=&quot;Markdown&quot;&gt;&lt;a href=&quot;#Markdown&quot; class=&quot;headerlink&quot; title=&quot;Markdown&quot;&gt;&lt;/a&gt;Markdown&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://ibruce.info/2013/11/26/markdown/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;markdown简明语法&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://wowubuntu.com/markdown/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Markdown 语法说明 (简体中文版)&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;编辑器&quot;&gt;&lt;a href=&quot;#编辑器&quot; class=&quot;headerlink&quot; title=&quot;编辑器&quot;&gt;&lt;/a&gt;编辑器&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://jingyan.baidu.com/article/ea24bc39b985dfda63b33176.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MarkDownPad2&lt;/a&gt;: 要钱，但是不错&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://www.madoko.net/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Madoko&lt;/a&gt;: 这篇博客就是在这个神奇的网站编辑器诞生的&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Madoko&quot;&gt;&lt;a href=&quot;#Madoko&quot; class=&quot;headerlink&quot; title=&quot;Madoko&quot;&gt;&lt;/a&gt;Madoko&lt;/h3&gt;&lt;p&gt;要想打开本地文件夹就需要安装他的环境，打开命令行，运行如下命令（需要安装&lt;strong&gt;Node&lt;/strong&gt;）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;npm install -g madoko-local
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;安装完成后，打开命令行在你需要打开的文件夹运行如下命令（注意后面那个点）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;madoko-local -l .
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;详细情况点击&lt;a href=&quot;https://www.npmjs.com/package/madoko-local&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;教程&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;参考教程&quot;&gt;&lt;a href=&quot;#参考教程&quot; class=&quot;headerlink&quot; title=&quot;参考教程&quot;&gt;&lt;/a&gt;参考教程&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/zhcncn/p/4097881.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo搭建Github静态博客&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.jianshu.com/p/05289a4bc8b2&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;如何搭建一个独立博客——简明Github Pages与Hexo教程&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://ibruce.info/2013/11/22/hexo-your-blog/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;hexo你的博客&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://theme-next.iissnan.com/getting-started.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方教程&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://notes.wanghao.work/2015-10-21-%E4%B8%BANexT%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E9%87%8F%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD.html#%E9%85%8D%E7%BD%AELeanCloud&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;为NexT主题添加文章阅读量统计功能&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://zhiho.github.io/2015/09/29/hexo-next/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo搭建GitHub博客（三）- NexT主题配置使用&lt;/a&gt;：解惑我很多问题&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://ibruce.info/2013/11/26/markdown/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;markdown简明语法&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://wowubuntu.com/markdown/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Markdown 语法说明 (简体中文版)&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://www.npmjs.com/package/madoko-local&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Madoko&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;折腾了两天，终于把期待很久的博客弄上线了，这就如同上了电视一般激动，所以激动的同时，也记录一下这个&lt;br&gt;艰辛的过程，留给自己，帮助他人。&lt;
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://Mrzzchao.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="Hexo" scheme="http://Mrzzchao.github.io/tags/Hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>作用域与this</title>

@@ -270,6 +270,259 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/17/博客诞生记 /" itemprop="url">
+                  博客诞生季
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-17T11:25:32+08:00" content="2016-04-17">
+              2016-04-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/17/博客诞生记 /#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/17/博客诞生记 /" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+		  
+		  	 <span id="/2016/04/17/博客诞生记 /"class="leancloud_visitors"  data-flag-title="博客诞生季">
+            &nbsp; | &nbsp; 阅读次数
+            </span>
+		  
+		  
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>折腾了两天，终于把期待很久的博客弄上线了，这就如同上了电视一般激动，所以激动的同时，也记录一下这个<br>艰辛的过程，留给自己，帮助他人。</p>
+<h1 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h1><p>Hexo的作者是tommy351，根据官方介绍，Hexo是一个简单、快速、强大的博客发布工具，支持Markdown格式</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>打开git</p>
+<pre><code>npm install -g hexo
+</code></pre><h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>在我的电脑中建立一个名字叫「Hexo」的文件夹，然后在此文件夹中右键打开Git Bash</p>
+<pre><code>hexo init
+</code></pre><p>初始化完 <em>cd</em> 进你初始化化的目录</p>
+<h2 id="生成静态页面"><a href="#生成静态页面" class="headerlink" title="生成静态页面"></a>生成静态页面</h2><p>以下命令会在你 <em>init</em> 目录下生成一个public文件夹</p>
+<pre><code>hexo generate
+</code></pre><p>如果是第二次生成，那要执行以下命令进行清除public文件夹</p>
+<pre><code>hexo clean
+</code></pre><h2 id="本地启动"><a href="#本地启动" class="headerlink" title="本地启动"></a>本地启动</h2><pre><code>hexo server
+</code></pre><p>执行完成后，浏览器输入<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a>就可以看到效果</p>
+<h2 id="写文章"><a href="#写文章" class="headerlink" title="写文章"></a>写文章</h2><p>执行new命令，生成指定名称的文章至hexo\source_posts\postName.md</p>
+<pre><code>hexo new page &quot;postName&quot; #新建文章    
+</code></pre><h2 id="文章摘要"><a href="#文章摘要" class="headerlink" title="文章摘要"></a>文章摘要</h2><p>在需要显示摘要的地方添加以下代码即可</p>
+<pre><code>以上是摘要
+&lt;!--more--&gt;
+以下是余下全文
+</code></pre><h2 id="新建页面"><a href="#新建页面" class="headerlink" title="新建页面"></a>新建页面</h2><p>执行new命令，生成指定名称的文件夹至hexo\source\pageName，并且生成index.md至文件夹</p>
+<pre><code>hexo new pageName #新建页面
+</code></pre><h2 id="部署Hexo"><a href="#部署Hexo" class="headerlink" title="部署Hexo"></a>部署Hexo</h2><p>以下命令建立在已成功构建了Github远程端的前提下，这里就不一概述了</p>
+<pre><code>hexo deloy #部署到Github
+</code></pre><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><pre><code>hexo new &quot;postName&quot; #新建文章
+hexo new page &quot;pageName&quot; #新建页面
+hexo generate #生成静态页面至public目录
+hexo server #开启预览访问端口（默认端口4000，&apos;ctrl + c&apos;关闭server）
+hexo deploy #将.deploy目录部署到GitHub
+</code></pre><p>简写</p>
+<pre><code>hexo n == hexo new
+hexo g == hexo generate
+hexo s == hexo server
+hexo d == hexo deploy
+</code></pre><h1 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h1><p>搭建hexo时，会给一个初始的主题<strong>landscape</strong>，但是人各有所好，不是每个人都会喜欢<br>。所以选择一个自己喜欢的主题是很重要的，就像穿衣服一样。</p>
+<h2 id="推荐主题"><a href="#推荐主题" class="headerlink" title="推荐主题"></a>推荐主题</h2><ul>
+<li><p>pacman: 大气，最重要的是功能齐全</p>
+</li>
+<li><p>yilia: 美观，但是有一定的Bug</p>
+</li>
+<li><p>next: 现在正在使用，添加插件什么的很方便，很喜欢</p>
+</li>
+</ul>
+<h2 id="Next主题"><a href="#Next主题" class="headerlink" title="Next主题"></a>Next主题</h2><p>有很完整的教程，这里就做做搬运工了</p>
+<ul>
+<li><p><a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="external">官方教程</a></p>
+</li>
+<li><p><a href="https://notes.wanghao.work/2015-10-21-%E4%B8%BANexT%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E9%87%8F%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD.html#%E9%85%8D%E7%BD%AELeanCloud" target="_blank" rel="external">为NexT主题添加文章阅读量统计功能</a>: 注意后面要加Web安全那一块才能生效</p>
+</li>
+<li><p><a href="http://zhiho.github.io/2015/09/29/hexo-next/" target="_blank" rel="external">Hexo搭建GitHub博客（三）- NexT主题配置使用</a>：解惑我很多问题</p>
+</li>
+</ul>
+<h2 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h2><p>对于有着情怀的我们来说，怎么可能忍受一直用着<strong>MyName.github.io</strong>进入我们的博客，所以呢？为了看起来更拉风当然要弄个域名了</p>
+<h3 id="购买域名"><a href="#购买域名" class="headerlink" title="购买域名"></a>购买域名</h3><h4 id="推荐"><a href="#推荐" class="headerlink" title="推荐"></a>推荐</h4><ul>
+<li><p><a href="https://sg.godaddy.com/zh?isc=cjc99com&amp;ci=" target="_blank" rel="external">Godaddy</a>: 毕竟是国际大厂商，也支持支付宝</p>
+</li>
+<li><p><a href="https://www.aliyun.com/?spm=5176.3047821.1.1.POmfMt" target="_blank" rel="external">阿里云</a>: 支持国产也是很重要的</p>
+</li>
+</ul>
+<h3 id="DNS服务器"><a href="#DNS服务器" class="headerlink" title="DNS服务器"></a>DNS服务器</h3><h4 id="推荐-1"><a href="#推荐-1" class="headerlink" title="推荐"></a>推荐</h4><ul>
+<li><a href="https://www.dnspod.cn/" target="_blank" rel="external">DNSPOO</a>: 职业DNS服务商</li>
+<li><a href="https://www.aliyun.com/?spm=5176.3047821.1.1.POmfMt" target="_blank" rel="external">阿里云</a>: 在阿里云购买的域名，那用他自己的DNS当然最方便，不用更改</li>
+</ul>
+<h3 id="域名与Github"><a href="#域名与Github" class="headerlink" title="域名与Github"></a>域名与Github</h3><p>因为我用的阿里云的，所以以阿里云的方式作为参考</p>
+<ol>
+<li>进入阿里云主页，点击登录<br>![3]</li>
+</ol>
+<p>[3]: images/3.png “3” { width:auto; max-width:90% }</p>
+<ol>
+<li>登陆后，点击万网购买你喜欢并且存在的域名<br>![4]</li>
+</ol>
+<p>[4]: images/4.png “4” { width:auto; max-width:90% }</p>
+<ol>
+<li>购买完成后，进入管理控制台<br>![5]</li>
+</ol>
+<p>[5]: images/5.png “5” { width:auto; max-width:90% }</p>
+<ol>
+<li>点击域名，可以看到域名列表，然后在相应的域名处点击管理<br>![6]</li>
+</ol>
+<p>[6]: images/6.png “6” { width:auto; max-width:90% }</p>
+<ol>
+<li>点击页面中的域名解析<br>![9]</li>
+</ol>
+<p>[9]: images/9.png “9” { width:auto; max-width:90% }</p>
+<ol>
+<li>然后点击解析设置<br>![10]<br>[10]: images/10.png “9” { width:auto; max-width:90% }</li>
+<li>点击添加解析添加图中框选的三条解析记录，第一条填写自己的github地址<br><strong>注意</strong>：如博客不能登录，有可能是github更改了空间服务的ip地址，记得及时到在GitHub Pages查看最新的ip即可<br>![11]</li>
+</ol>
+<p>[11]: images/11.png “11” { width:auto; max-width:90% }</p>
+<ol>
+<li>在自己的<strong>Hexo\source</strong>目录下创建一个<strong>CNAME</strong>文件，打开后，里面写入自己的域名地址，如：<strong>www.mrzzchao.com</strong><br>可以不加wwww</li>
+</ol>
+<h4 id="最后，这么详细的过程，详细你打开浏览器输入你的域名，一定会想请我喝咖啡的"><a href="#最后，这么详细的过程，详细你打开浏览器输入你的域名，一定会想请我喝咖啡的" class="headerlink" title="最后，这么详细的过程，详细你打开浏览器输入你的域名，一定会想请我喝咖啡的"></a>最后，这么详细的过程，详细你打开浏览器输入你的域名，一定会想请我喝咖啡的</h4><h1 id="博客的笔"><a href="#博客的笔" class="headerlink" title="博客的笔"></a>博客的笔</h1><p>博客就像是本子一样，而我们需要做的是在他里面留下我们的思想，印下我们的足迹，那用什么写他呢？<br>当然是现在最流行的<strong>markdown</strong>了</p>
+<h2 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h2><ul>
+<li><p><a href="http://ibruce.info/2013/11/26/markdown/" target="_blank" rel="external">markdown简明语法</a></p>
+</li>
+<li><p><a href="http://wowubuntu.com/markdown/" target="_blank" rel="external">Markdown 语法说明 (简体中文版)</a></p>
+</li>
+</ul>
+<h2 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h2><ul>
+<li><p><a href="http://jingyan.baidu.com/article/ea24bc39b985dfda63b33176.html" target="_blank" rel="external">MarkDownPad2</a>: 要钱，但是不错</p>
+</li>
+<li><p><a href="https://www.madoko.net/" target="_blank" rel="external">Madoko</a>: 这篇博客就是在这个神奇的网站编辑器诞生的</p>
+</li>
+</ul>
+<h3 id="Madoko"><a href="#Madoko" class="headerlink" title="Madoko"></a>Madoko</h3><p>要想打开本地文件夹就需要安装他的环境，打开命令行，运行如下命令（需要安装<strong>Node</strong>）</p>
+<pre><code>npm install -g madoko-local
+</code></pre><p>安装完成后，打开命令行在你需要打开的文件夹运行如下命令（注意后面那个点）</p>
+<pre><code>madoko-local -l .
+</code></pre><p>详细情况点击<a href="https://www.npmjs.com/package/madoko-local" target="_blank" rel="external">教程</a></p>
+<h1 id="参考教程"><a href="#参考教程" class="headerlink" title="参考教程"></a>参考教程</h1><ul>
+<li><p><a href="http://www.cnblogs.com/zhcncn/p/4097881.html" target="_blank" rel="external">Hexo搭建Github静态博客</a></p>
+</li>
+<li><p><a href="http://www.jianshu.com/p/05289a4bc8b2" target="_blank" rel="external">如何搭建一个独立博客——简明Github Pages与Hexo教程</a></p>
+</li>
+<li><p><a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="external">hexo你的博客</a></p>
+</li>
+<li><p><a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="external">官方教程</a></p>
+</li>
+<li><p><a href="https://notes.wanghao.work/2015-10-21-%E4%B8%BANexT%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E9%87%8F%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD.html#%E9%85%8D%E7%BD%AELeanCloud" target="_blank" rel="external">为NexT主题添加文章阅读量统计功能</a></p>
+</li>
+<li><p><a href="http://zhiho.github.io/2015/09/29/hexo-next/" target="_blank" rel="external">Hexo搭建GitHub博客（三）- NexT主题配置使用</a>：解惑我很多问题</p>
+</li>
+<li><p><a href="http://ibruce.info/2013/11/26/markdown/" target="_blank" rel="external">markdown简明语法</a></p>
+</li>
+<li><p><a href="http://wowubuntu.com/markdown/" target="_blank" rel="external">Markdown 语法说明 (简体中文版)</a></p>
+</li>
+<li><p><a href="https://www.npmjs.com/package/madoko-local" target="_blank" rel="external">Madoko</a></p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/08/作用域与this/" itemprop="url">
                   作用域与this
                 </a>
@@ -802,209 +1055,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/20/字体名称/" itemprop="url">
-                  css字体名称
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-20T15:30:03+08:00" content="2016-03-20">
-              2016-03-20
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/20/字体名称/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/20/字体名称/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-		  
-		  	 <span id="/2016/03/20/字体名称/"class="leancloud_visitors"  data-flag-title="css字体名称">
-            &nbsp; | &nbsp; 阅读次数
-            </span>
-		  
-		  
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <ul>
-<li><h2 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h2></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>中文名</th>
-<th>英文名</th>
-<th>Unicode</th>
-<th>Unicode 2</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>华文细黑</td>
-<td>STHeiti Light [STXihei]</td>
-<td>\534E\6587\7EC6\9ED1</td>
-<td>华文细黑</td>
-</tr>
-<tr>
-<td>华文黑体</td>
-<td>STHeiti</td>
-<td>\534E\6587\9ED1\4F53</td>
-<td>华文黑体</td>
-</tr>
-<tr>
-<td>华文楷体</td>
-<td>STKaiti</td>
-<td>\534E\6587\6977\4F53</td>
-<td>华文楷体</td>
-</tr>
-<tr>
-<td>华文宋体</td>
-<td>STSong</td>
-<td>\534E\6587\5B8B\4F53</td>
-<td>华文宋体</td>
-</tr>
-<tr>
-<td>华文仿宋</td>
-<td>STFangsong</td>
-<td>\534E\6587\4EFF\5B8B</td>
-<td>华文仿宋</td>
-</tr>
-<tr>
-<td>丽黑 Pro</td>
-<td>LiHei Pro Medium</td>
-<td>\4E3D\9ED1 Pro</td>
-<td>丽黑 Pro</td>
-</tr>
-<tr>
-<td>丽宋 Pro</td>
-<td>LiSong Pro Light</td>
-<td>\4E3D\5B8B Pro</td>
-<td>丽宋 Pro</td>
-</tr>
-<tr>
-<td>标楷体</td>
-<td>BiauKai</td>
-<td>\6807\6977\4F53</td>
-<td>标楷体</td>
-</tr>
-<tr>
-<td>苹果丽中黑</td>
-<td>Apple LiGothic Medium</td>
-<td>\82F9\679C\4E3D\4E2D\9ED1</td>
-<td>苹果丽中黑</td>
-</tr>
-<tr>
-<td>苹果丽细宋</td>
-<td>Apple LiSung Light</td>
-<td>\82F9\679C\4E3D\7EC6\5B8B</td>
-<td>苹果丽细宋</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><h2 id="Window"><a href="#Window" class="headerlink" title="Window"></a>Window</h2>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/03/20/字体名称/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1050,7 +1100,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1058,7 +1108,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1067,7 +1117,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
