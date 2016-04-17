@@ -85,7 +85,7 @@
 <meta name="description" content="在CSS的世界里居中一直都是人们抱怨的一件事。“居个中为什么就这么难呢？”人们无奈的说。我认为困难的不是怎么做他，而是怎样在不同的情况下，用不同的方法去达到这相同的目的—居中。
 所以 让我们来解决这个问题吧
 水平居中(Horizontally)
-行内块元素（inline or inline-* element）  123.center-children &amp;#123;   text-align:">
+行内块元素（inline or inline-* element）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="居中问题浅谈">
 <meta property="og:url" content="http://Mrzzchao.github.io/2016/03/16/居中问题浅谈/index.html">
@@ -93,14 +93,14 @@
 <meta property="og:description" content="在CSS的世界里居中一直都是人们抱怨的一件事。“居个中为什么就这么难呢？”人们无奈的说。我认为困难的不是怎么做他，而是怎样在不同的情况下，用不同的方法去达到这相同的目的—居中。
 所以 让我们来解决这个问题吧
 水平居中(Horizontally)
-行内块元素（inline or inline-* element）  123.center-children &amp;#123;   text-align:">
-<meta property="og:updated_time" content="2016-04-15T09:09:26.631Z">
+行内块元素（inline or inline-* element）">
+<meta property="og:updated_time" content="2016-04-17T12:29:30.962Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="居中问题浅谈">
 <meta name="twitter:description" content="在CSS的世界里居中一直都是人们抱怨的一件事。“居个中为什么就这么难呢？”人们无奈的说。我认为困难的不是怎么做他，而是怎样在不同的情况下，用不同的方法去达到这相同的目的—居中。
 所以 让我们来解决这个问题吧
 水平居中(Horizontally)
-行内块元素（inline or inline-* element）  123.center-children &amp;#123;   text-align:">
+行内块元素（inline or inline-* element）">
 
 
 
@@ -352,13 +352,11 @@
 <p>在CSS的世界里居中一直都是人们抱怨的一件事。“居个中为什么就这么难呢？”人们无奈的说。我认为困难的不是怎么做他，而是怎样在不同的情况下，用不同的方法去达到这相同的目的—居中。</p>
 <p>所以 让我们来解决这个问题吧</p>
 <h2 id="水平居中-Horizontally"><a href="#水平居中-Horizontally" class="headerlink" title="水平居中(Horizontally)"></a>水平居中(Horizontally)</h2><ul>
-<li><h3 id="行内块元素（inline-or-inline-element）"><a href="#行内块元素（inline-or-inline-element）" class="headerlink" title="行内块元素（inline or inline-* element）"></a>行内块元素（inline or inline-* element）</h3>  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.center-children</span> &#123;</span><br><span class="line">   <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><h3 id="行内块元素（inline-or-inline-element）"><a href="#行内块元素（inline-or-inline-element）" class="headerlink" title="行内块元素（inline or inline-* element）"></a>行内块元素（inline or inline-* element）</h3><a id="more"></a>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.center-children</span> &#123;</span><br><span class="line">   <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><h3 id="一个块级元素（one-block-level-element）"><a href="#一个块级元素（one-block-level-element）" class="headerlink" title="一个块级元素（one block level element）"></a>一个块级元素（one block level element）</h3>  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.center-me</span> &#123;</span><br><span class="line">      <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<a id="more"></a>
-<ul>
 <li><h3 id="多个块级元素（some-block-level-elements）"><a href="#多个块级元素（some-block-level-elements）" class="headerlink" title="多个块级元素（some block level elements）"></a>多个块级元素（some block level elements）</h3><p>  <strong>HTML</strong></p>
   <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">main</span> <span class="attr">class</span>=<span class="string">"inline-block-center"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    I'm an element that is block-like with my siblings and we're centered in a row.</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    I'm an element that is block-like with my siblings and we're centered in a row. I have more content in me than my siblings do.</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    I'm an element that is block-like with my siblings and we're centered in a row.</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">main</span>&gt;</span></span><br></pre></td></tr></table></figure>
   <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">main</span> <span class="attr">class</span>=<span class="string">"flex-center"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    I'm an element that is block-like with my siblings and we're centered in a row.</span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    I'm an element that is block-like with my siblings and we're centered in a row. I have more content in me than my siblings do.</span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    I'm an element that is block-like with my siblings and we're centered in a row.</span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">main</span>&gt;</span></span><br></pre></td></tr></table></figure>
