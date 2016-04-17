@@ -359,13 +359,13 @@
 </code></pre><h2 id="本地启动"><a href="#本地启动" class="headerlink" title="本地启动"></a>本地启动</h2><pre><code>hexo server
 </code></pre><p>执行完成后，浏览器输入<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a>就可以看到效果</p>
 <h2 id="写文章"><a href="#写文章" class="headerlink" title="写文章"></a>写文章</h2><p>执行new命令，生成指定名称的文章至hexo\source_posts\postName.md</p>
-<pre><code>hexo new page &quot;postName&quot; #新建文章    
+<pre><code>hexo new &quot;postName&quot; #新建文章
 </code></pre><h2 id="文章摘要"><a href="#文章摘要" class="headerlink" title="文章摘要"></a>文章摘要</h2><p>在需要显示摘要的地方添加以下代码即可</p>
 <pre><code>以上是摘要
 &lt;!--more--&gt;
 以下是余下全文
 </code></pre><h2 id="新建页面"><a href="#新建页面" class="headerlink" title="新建页面"></a>新建页面</h2><p>执行new命令，生成指定名称的文件夹至hexo\source\pageName，并且生成index.md至文件夹</p>
-<pre><code>hexo new pageName #新建页面
+<pre><code>hexo new page &quot;pageName&quot; #新建页面
 </code></pre><h2 id="部署Hexo"><a href="#部署Hexo" class="headerlink" title="部署Hexo"></a>部署Hexo</h2><p>以下命令建立在已成功构建了Github远程端的前提下，这里就不一概述了</p>
 <pre><code>hexo deloy #部署到Github
 </code></pre><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><pre><code>hexo new &quot;postName&quot; #新建文章
@@ -404,38 +404,19 @@ hexo d == hexo deploy
 </li>
 </ul>
 <h3 id="DNS服务器"><a href="#DNS服务器" class="headerlink" title="DNS服务器"></a>DNS服务器</h3><h4 id="推荐-1"><a href="#推荐-1" class="headerlink" title="推荐"></a>推荐</h4><ul>
-<li><a href="https://www.dnspod.cn/" target="_blank" rel="external">DNSPOO</a>: 职业DNS服务商</li>
-<li><a href="https://www.aliyun.com/?spm=5176.3047821.1.1.POmfMt" target="_blank" rel="external">阿里云</a>: 在阿里云购买的域名，那用他自己的DNS当然最方便，不用更改</li>
+<li><p><a href="https://www.dnspod.cn/" target="_blank" rel="external">DNSPOO</a>: 职业DNS服务商</p>
+</li>
+<li><p><a href="https://www.aliyun.com/?spm=5176.3047821.1.1.POmfMt" target="_blank" rel="external">阿里云</a>: 在阿里云购买的域名，那用他自己的DNS当然最方便，不用更改</p>
+</li>
 </ul>
 <h3 id="域名与Github"><a href="#域名与Github" class="headerlink" title="域名与Github"></a>域名与Github</h3><p>因为我用的阿里云的，所以以阿里云的方式作为参考</p>
-<ol>
-<li>进入阿里云主页，点击登录<br>![3]</li>
-</ol>
-<p>[3]: <a href="http://7xrul1.com1.z0.glb.clouddn.com/3.png" target="_blank" rel="external">http://7xrul1.com1.z0.glb.clouddn.com/3.png</a> “3” { width:auto; max-width:90% }</p>
-<ol>
-<li>登陆后，点击万网购买你喜欢并且存在的域名<br>![4]</li>
-</ol>
-<p>[4]: <a href="http://7xrul1.com1.z0.glb.clouddn.com/4.png" target="_blank" rel="external">http://7xrul1.com1.z0.glb.clouddn.com/4.png</a> “4” { width:auto; max-width:90% }</p>
-<ol>
-<li>购买完成后，进入管理控制台<br>![5]</li>
-</ol>
-<p>[5]:<a href="http://7xrul1.com1.z0.glb.clouddn.com5.png" target="_blank" rel="external">http://7xrul1.com1.z0.glb.clouddn.com5.png</a> “5” { width:auto; max-width:90% }</p>
-<ol>
-<li>点击域名，可以看到域名列表，然后在相应的域名处点击管理<br>![6]</li>
-</ol>
-<p>[6]: <a href="http://7xrul1.com1.z0.glb.clouddn.com/6.png" target="_blank" rel="external">http://7xrul1.com1.z0.glb.clouddn.com/6.png</a> “6” { width:auto; max-width:90% }</p>
-<ol>
-<li>点击页面中的域名解析<br>![9]</li>
-</ol>
-<p>[9]: <a href="http://7xrul1.com1.z0.glb.clouddn.com/9.png" target="_blank" rel="external">http://7xrul1.com1.z0.glb.clouddn.com/9.png</a> “9” { width:auto; max-width:90% }</p>
-<ol>
-<li>然后点击解析设置<br>![10]<br>[10]: <a href="http://7xrul1.com1.z0.glb.clouddn.com/10.png" target="_blank" rel="external">http://7xrul1.com1.z0.glb.clouddn.com/10.png</a> “9” { width:auto; max-width:90% }</li>
-<li>点击添加解析添加图中框选的三条解析记录，第一条填写自己的github地址<br><strong>注意</strong>：如博客不能登录，有可能是github更改了空间服务的ip地址，记得及时到在GitHub Pages查看最新的ip即可<br>![11]</li>
-</ol>
-<p>[11]: <a href="http://7xrul1.com1.z0.glb.clouddn.com/11.png" target="_blank" rel="external">http://7xrul1.com1.z0.glb.clouddn.com/11.png</a> “11” { width:auto; max-width:90% }</p>
-<ol>
-<li>在自己的<strong>Hexo\source</strong>目录下创建一个<strong>CNAME</strong>文件，打开后，里面写入自己的域名地址，如：<strong>www.mrzzchao.com</strong><br>可以不加wwww</li>
-</ol>
+<p>1.进入阿里云主页，点击登录<br><img src="http://7xrul1.com1.z0.glb.clouddn.com/3.png" alt="3" title="3"><br>2.登陆后，点击万网购买你喜欢并且存在的域名<br><img src="http://7xrul1.com1.z0.glb.clouddn.com/4.png" alt="4" title="4"></p>
+<p>3.购买完成后，进入管理控制台<br><img src="http://7xrul1.com1.z0.glb.clouddn.com/5.png" alt="5" title="5"></p>
+<p>4.点击域名，可以看到域名列表，然后在相应的域名处点击管理<br><img src="http://7xrul1.com1.z0.glb.clouddn.com/6.png" alt="6" title="6"></p>
+<p>5.点击页面中的域名解析<br><img src="http://7xrul1.com1.z0.glb.clouddn.com/9.png" alt="9" title="9"></p>
+<p>6.然后点击解析设置<br><img src="http://7xrul1.com1.z0.glb.clouddn.com/10.png" alt="10" title="9"></p>
+<p>7.点击添加解析添加图中框选的三条解析记录，第一条填写自己的github地址<br><strong>注意</strong>：如博客不能登录，有可能是github更改了空间服务的ip地址，记得及时到在GitHub Pages查看最新的ip即可<br><img src="http://7xrul1.com1.z0.glb.clouddn.com/11.png" alt="11" title="11"></p>
+<p>8.在自己的<strong>Hexo\source</strong>目录下创建一个<strong>CNAME</strong>文件，打开后，里面写入自己的域名地址，如：<strong>www.mrzzchao.com</strong><br>可以不加wwww</p>
 <h4 id="最后，这么详细的过程，详细你打开浏览器输入你的域名，一定会想请我喝咖啡的"><a href="#最后，这么详细的过程，详细你打开浏览器输入你的域名，一定会想请我喝咖啡的" class="headerlink" title="最后，这么详细的过程，详细你打开浏览器输入你的域名，一定会想请我喝咖啡的"></a>最后，这么详细的过程，详细你打开浏览器输入你的域名，一定会想请我喝咖啡的</h4><h1 id="博客的笔"><a href="#博客的笔" class="headerlink" title="博客的笔"></a>博客的笔</h1><p>博客就像是本子一样，而我们需要做的是在他里面留下我们的思想，印下我们的足迹，那用什么写他呢？<br>当然是现在最流行的<strong>markdown</strong>了</p>
 <h2 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h2><ul>
 <li><p><a href="http://ibruce.info/2013/11/26/markdown/" target="_blank" rel="external">markdown简明语法</a></p>
@@ -454,7 +435,7 @@ hexo d == hexo deploy
 </code></pre><p>安装完成后，打开命令行在你需要打开的文件夹运行如下命令（注意后面那个点）</p>
 <pre><code>madoko-local -l .
 </code></pre><p>详情点击<a href="https://www.npmjs.com/package/madoko-local" target="_blank" rel="external">教程</a></p>
-<h1 id="参考教程"><a href="#参考教程" class="headerlink" title="参考教程"></a>参考教程</h1><ul>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
 <li><p><a href="http://www.cnblogs.com/zhcncn/p/4097881.html" target="_blank" rel="external">Hexo搭建Github静态博客</a></p>
 </li>
 <li><p><a href="http://www.jianshu.com/p/05289a4bc8b2" target="_blank" rel="external">如何搭建一个独立博客——简明Github Pages与Hexo教程</a></p>
