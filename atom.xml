@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://Mrzzchao.github.io/"/>
-  <updated>2016-04-18T03:49:58.563Z</updated>
+  <updated>2016-04-18T05:33:20.523Z</updated>
   <id>http://Mrzzchao.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://Mrzzchao.github.io/2016/04/17/%E5%8D%9A%E5%AE%A2%E8%AF%9E%E7%94%9F%E8%AE%B0%20/"/>
     <id>http://Mrzzchao.github.io/2016/04/17/博客诞生记 /</id>
     <published>2016-04-17T03:25:32.000Z</published>
-    <updated>2016-04-18T03:49:58.563Z</updated>
+    <updated>2016-04-18T05:33:20.523Z</updated>
     
     <content type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;折腾了两天，终于把期待很久的博客弄上线了，这就如同上了电视一般激动，所以激动的同时，也记录一下这个&lt;br&gt;艰辛的过程，留给自己，帮助他人。&lt;/p&gt;
 &lt;h1 id=&quot;Hexo&quot;&gt;&lt;a href=&quot;#Hexo&quot; class=&quot;headerlink&quot; title=&quot;Hexo&quot;&gt;&lt;/a&gt;Hexo&lt;/h1&gt;&lt;p&gt;Hexo的作者是tommy351，根据官方介绍，Hexo是一个简单、快速、强大的博客发布工具，支持Markdown格式&lt;/p&gt;
@@ -93,7 +93,7 @@ hexo d == hexo deploy
 &lt;p&gt;6.然后点击解析设置&lt;br&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/10.png&quot; alt=&quot;10&quot; title=&quot;9&quot;&gt;&lt;/p&gt;
 &lt;p&gt;7.点击添加解析添加图中框选的三条解析记录，第一条填写自己的github地址&lt;br&gt;&lt;strong&gt;注意&lt;/strong&gt;：如博客不能登录，有可能是github更改了空间服务的ip地址，记得及时到在GitHub Pages查看最新的ip即可&lt;br&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/11.png&quot; alt=&quot;11&quot; title=&quot;11&quot;&gt;&lt;/p&gt;
 &lt;p&gt;8.在自己的&lt;strong&gt;Hexo\source&lt;/strong&gt;目录下创建一个&lt;strong&gt;CNAME&lt;/strong&gt;文件，打开后，里面写入自己的域名地址，如：&lt;strong&gt;www.mrzzchao.com&lt;/strong&gt;&lt;br&gt;可以不加wwww&lt;/p&gt;
-&lt;h4 id=&quot;最后，这么详细的过程，详细你打开浏览器输入你的域名，一定会想请我喝咖啡的&quot;&gt;&lt;a href=&quot;#最后，这么详细的过程，详细你打开浏览器输入你的域名，一定会想请我喝咖啡的&quot; class=&quot;headerlink&quot; title=&quot;最后，这么详细的过程，详细你打开浏览器输入你的域名，一定会想请我喝咖啡的&quot;&gt;&lt;/a&gt;最后，这么详细的过程，详细你打开浏览器输入你的域名，一定会想请我喝咖啡的&lt;/h4&gt;&lt;h1 id=&quot;博客的笔&quot;&gt;&lt;a href=&quot;#博客的笔&quot; class=&quot;headerlink&quot; title=&quot;博客的笔&quot;&gt;&lt;/a&gt;博客的笔&lt;/h1&gt;&lt;p&gt;博客就像是本子一样，而我们需要做的是在他里面留下我们的思想，印下我们的足迹，那用什么写他呢？&lt;br&gt;当然是现在最流行的&lt;strong&gt;markdown&lt;/strong&gt;了&lt;/p&gt;
+&lt;h4 id=&quot;最后，这么详细的过程，相信你打开浏览器输入你的域名后，一定会想请我喝咖啡的&quot;&gt;&lt;a href=&quot;#最后，这么详细的过程，相信你打开浏览器输入你的域名后，一定会想请我喝咖啡的&quot; class=&quot;headerlink&quot; title=&quot;最后，这么详细的过程，相信你打开浏览器输入你的域名后，一定会想请我喝咖啡的&quot;&gt;&lt;/a&gt;最后，这么详细的过程，相信你打开浏览器输入你的域名后，一定会想请我喝咖啡的&lt;/h4&gt;&lt;h1 id=&quot;博客的笔&quot;&gt;&lt;a href=&quot;#博客的笔&quot; class=&quot;headerlink&quot; title=&quot;博客的笔&quot;&gt;&lt;/a&gt;博客的笔&lt;/h1&gt;&lt;p&gt;博客就像是本子一样，而我们需要做的是在他里面留下我们的思想，印下我们的足迹，那用什么写他呢？&lt;br&gt;当然是现在最流行的&lt;strong&gt;markdown&lt;/strong&gt;了&lt;/p&gt;
 &lt;h2 id=&quot;Markdown&quot;&gt;&lt;a href=&quot;#Markdown&quot; class=&quot;headerlink&quot; title=&quot;Markdown&quot;&gt;&lt;/a&gt;Markdown&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://ibruce.info/2013/11/26/markdown/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;markdown简明语法&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
