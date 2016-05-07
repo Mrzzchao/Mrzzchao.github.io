@@ -348,70 +348,20 @@
 
       
         
-          
-            <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>Angular真是一个很折腾人的框架，一天就遇到了两问题。</p>
-<p>现在按照<a href="http://www.apjs.net/" target="_blank" rel="external">Angular中文网</a>的步骤进行单元测试时，又出现了问题。</p>
+          <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>Angular真是一个很折腾人的框架，一天就遇到了两问题。</p>
+<p>现在按照<a href="http://www.apjs.net/">Angular中文网</a>的步骤进行单元测试时，又出现了问题。</p>
 <p>首先我只想说这个网站的教程是多久以前的了，怎么源码文件和教程的命令不同步的，真是无力吐槽。</p>
 <p>回到正题，由于本网站的年代性，原先</p>
 <blockquote>
 <p>.\scripts\test-server.bat</p>
 </blockquote>
 <p>这些单元测试的命令是完全没用了，因为根本不存在test-server.bat文件</p>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>再次感谢<a href="http://www.tuicool.com/articles/ym6Jfen" target="_blank" rel="external">JavaChen’s Blog</a>写的教程<br>在他的博客里面执行</p>
-<blockquote>
-<p>npm run protractor</p>
-</blockquote>
-<p>就可以运行单元测试了。。 但是，问题又产生了，执行该命令后会出现如下错误</p>
-<pre><code>events.js:141
-      throw er; // Unhandled &apos;error&apos; event
-      ^
-
-Error: spawn java ENOENT
-    at exports._errnoException (util.js:870:11)
-    at Process.ChildProcess._handle.onexit (internal/child_process.js:178:32)
-    at onErrorNT (internal/child_process.js:344:16)
-    at nextTickCallbackWith2Args (node.js:441:9)
-    at process._tickCallback (node.js:355:17)
-
-npm ERR! Windows_NT 10.0.10586
-npm ERR! argv &quot;F:\\Software\\nodejs\\node.exe&quot; &quot;F:\\Software\\nodejs\\node_modules\\npm\\bin\\npm-cli.js&quot; &quot;run&quot; &quot;protractor&quot;
-npm ERR! node v4.2.6
-npm ERR! npm  v2.14.12
-npm ERR! code ELIFECYCLE
-npm ERR! angular-phonecat@0.0.0 protractor: `protractor test/protractor-conf.js`
-npm ERR! Exit status 1
-npm ERR!
-npm ERR! Failed at the angular-phonecat@0.0.0 protractor script &apos;protractor test/protractor-conf.js&apos;.
-npm ERR! This is most likely a problem with the angular-phonecat package,
-npm ERR! not with npm itself.
-npm ERR! Tell the author that this fails on your system:
-npm ERR!     protractor test/protractor-conf.js
-npm ERR! You can get their info via:
-npm ERR!     npm owner ls angular-phonecat
-npm ERR! There is likely additional logging output above.
-
-npm ERR! Please include the following file with any support request:
-npm ERR!     E:\项目\public\angular-phonecat\npm-debug.log
-</code></pre><p>这才是一个最磨人的bug，找了很多解决办法</p>
-<ul>
-<li>更新谷歌浏览器</li>
-<li>把protractor安装成全局的<blockquote>
-<p>npm install -g protractor</p>
-</blockquote>
-</li>
-</ul>
-<p>但是很遗憾以上两个办法对我都无效，在即将放弃之际，居然找到了解决办法，累死哥。</p>
-<h3 id="最终方法"><a href="#最终方法" class="headerlink" title="最终方法"></a>最终方法</h3><p>把<strong>angular-phonecat\test</strong>下<strong>protractor-conf.js</strong>里的</p>
-<blockquote>
-<p>chromeOnly: true</p>
-</blockquote>
-<p>换成</p>
-<blockquote>
-<p>directConnect: true</p>
-</blockquote>
-<p>好了，再次启动，问题完美解决</p>
-
-          
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>再次感谢<a href="http://www.tuicool.com/articles/ym6Jfen">JavaChen’s Blog</a>写的教程<br>在他的博客里面执行</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/05/07/Angular-运行单元测试问题/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
