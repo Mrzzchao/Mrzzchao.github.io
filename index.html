@@ -270,6 +270,195 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/07/Angular-运行单元测试问题/" itemprop="url">
+                  Angular 运行单元测试问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-07T22:02:17+08:00" content="2016-05-07">
+              2016-05-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Angular/" itemprop="url" rel="index">
+                    <span itemprop="name">Angular</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/07/Angular-运行单元测试问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/07/Angular-运行单元测试问题/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/07/Angular-运行单元测试问题/" class="leancloud_visitors" data-flag-title="Angular 运行单元测试问题">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>Angular真是一个很折腾人的框架，一天就遇到了两问题。</p>
+<p>现在按照<a href="http://www.apjs.net/" target="_blank" rel="external">Angular中文网</a>的步骤进行单元测试时，又出现了问题。</p>
+<p>首先我只想说这个网站的教程是多久以前的了，怎么源码文件和教程的命令不同步的，真是无力吐槽。</p>
+<p>回到正题，由于本网站的年代性，原先</p>
+<blockquote>
+<p>.\scripts\test-server.bat</p>
+</blockquote>
+<p>这些单元测试的命令是完全没用了，因为根本不存在test-server.bat文件</p>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>再次感谢<a href="http://www.tuicool.com/articles/ym6Jfen" target="_blank" rel="external">JavaChen’s Blog</a>写的教程<br>在他的博客里面执行</p>
+<blockquote>
+<p>npm run protractor</p>
+</blockquote>
+<p>就可以运行单元测试了。。 但是，问题又产生了，执行该命令后会出现如下错误</p>
+<pre><code>events.js:141
+      throw er; // Unhandled &apos;error&apos; event
+      ^
+
+Error: spawn java ENOENT
+    at exports._errnoException (util.js:870:11)
+    at Process.ChildProcess._handle.onexit (internal/child_process.js:178:32)
+    at onErrorNT (internal/child_process.js:344:16)
+    at nextTickCallbackWith2Args (node.js:441:9)
+    at process._tickCallback (node.js:355:17)
+
+npm ERR! Windows_NT 10.0.10586
+npm ERR! argv &quot;F:\\Software\\nodejs\\node.exe&quot; &quot;F:\\Software\\nodejs\\node_modules\\npm\\bin\\npm-cli.js&quot; &quot;run&quot; &quot;protractor&quot;
+npm ERR! node v4.2.6
+npm ERR! npm  v2.14.12
+npm ERR! code ELIFECYCLE
+npm ERR! angular-phonecat@0.0.0 protractor: `protractor test/protractor-conf.js`
+npm ERR! Exit status 1
+npm ERR!
+npm ERR! Failed at the angular-phonecat@0.0.0 protractor script &apos;protractor test/protractor-conf.js&apos;.
+npm ERR! This is most likely a problem with the angular-phonecat package,
+npm ERR! not with npm itself.
+npm ERR! Tell the author that this fails on your system:
+npm ERR!     protractor test/protractor-conf.js
+npm ERR! You can get their info via:
+npm ERR!     npm owner ls angular-phonecat
+npm ERR! There is likely additional logging output above.
+
+npm ERR! Please include the following file with any support request:
+npm ERR!     E:\项目\public\angular-phonecat\npm-debug.log
+</code></pre><p>这才是一个最磨人的bug，找了很多解决办法</p>
+<ul>
+<li>更新谷歌浏览器</li>
+<li>把protractor安装成全局的<blockquote>
+<p>npm install -g protractor</p>
+</blockquote>
+</li>
+</ul>
+<p>但是很遗憾以上两个办法对我都无效，在即将放弃之际，居然找到了解决办法，累死哥。</p>
+<h3 id="最终方法"><a href="#最终方法" class="headerlink" title="最终方法"></a>最终方法</h3><p>把<strong>angular-phonecat\test</strong>下<strong>protractor-conf.js</strong>里的</p>
+<blockquote>
+<p>chromeOnly: true</p>
+</blockquote>
+<p>换成</p>
+<blockquote>
+<p>directConnect: true</p>
+</blockquote>
+<p>好了，再次启动，问题完美解决</p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/07/Angular-web-server-js-不存在/" itemprop="url">
                   Angular web-server.js 不存在
                 </a>
@@ -289,6 +478,25 @@
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Angular/" itemprop="url" rel="index">
+                    <span itemprop="name">Angular</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -770,210 +978,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/06/浮动知识点/" itemprop="url">
-                  浮动知识点
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-06T15:30:03+08:00" content="2016-04-06">
-              2016-04-06
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/06/浮动知识点/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/06/浮动知识点/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/04/06/浮动知识点/" class="leancloud_visitors" data-flag-title="浮动知识点">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><ul>
-<li><p><strong>浮动的8种用法</strong></p>
-  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">float</span>: <span class="selector-tag">left</span>;</span><br><span class="line"><span class="selector-tag">float</span>: <span class="selector-tag">right</span>;</span><br><span class="line"><span class="selector-tag">float</span>: <span class="selector-tag">none</span>;</span><br><span class="line">&lt;!<span class="selector-tag">--more--</span>&gt;</span><br><span class="line"><span class="selector-tag">float</span>: <span class="selector-tag">inline-start</span>;</span><br><span class="line"><span class="selector-tag">float</span>: <span class="selector-tag">inline-end</span>;</span><br><span class="line"><span class="comment">/* Global values */</span></span><br><span class="line"><span class="selector-tag">float</span>: <span class="selector-tag">inherit</span>;</span><br><span class="line"><span class="selector-tag">float</span>: <span class="selector-tag">initial</span>;</span><br><span class="line"><span class="selector-tag">float</span>: <span class="selector-tag">unset</span>;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>left<blockquote>
-<p>元素必须浮动在它的包含块的左边</p>
-</blockquote>
-</li>
-<li>right<blockquote>
-<p>元素必须浮动在它的包含块的右边</p>
-</blockquote>
-</li>
-<li>none<blockquote>
-<p>元素没有浮动，在正常文档流种</p>
-</blockquote>
-</li>
-<li>inline-start<br>Is a keyword indicating that the element must float on the start side of its containing block, that is the left side on ltr scripts and the right side on rtl scripts.</li>
-<li>inline-end<br>Is a keyword indicating that the element must float on the end side of its containing block, that is the right side on ltr scripts and the left side on rtl scripts.</li>
-<li>inherit<blockquote>
-<p>元素继承父元素的浮动属性</p>
-</blockquote>
-</li>
-<li>initial<blockquote>
-<p>元素保持最初的浮动属性（没实践）</p>
-</blockquote>
-</li>
-<li>unset<blockquote>
-<p>有待研究</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p><strong>定位的4种用法</strong></p>
-  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">static</span>;</span><br><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">relative</span>;</span><br><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</span><br><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">fixed</span>;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>static<blockquote>
-<p>元素在正常文档流中（默认值）</p>
-</blockquote>
-</li>
-<li>relative<blockquote>
-<p>元素在正常文档流中，进行定位时，原位置依然在文档流中占着，相当于相对原来的位置进行偏移</p>
-</blockquote>
-</li>
-<li>absolute<blockquote>
-<p>元素脱离文档流，其他（兄弟）元素可以占用该元素原来的位置。然后可以相对有定位（positon为relative或absolute）的祖先元素进行定位</p>
-</blockquote>
-</li>
-<li>fixed<blockquote>
-<p>元素脱离文档流，其他（兄弟）元素可以占用该元素原来的位置。然后可以相对于视窗进行定位</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p><strong>清除浮动的一般方法</strong></p>
-<ul>
-<li>clear: both;</li>
-<li>overflow: hidden;</li>
-<li><p>最理想方法</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/*清除浮动*/</span><br><span class="line">    .clearfix &#123;</span><br><span class="line">        *zoom: 1;</span><br><span class="line">    &#125;</span><br><span class="line">    .clearfix:before,</span><br><span class="line">    .clearfix:after &#123;</span><br><span class="line">        display: table;</span><br><span class="line">        line-height: 0;</span><br><span class="line">        content: "";</span><br><span class="line">    &#125;</span><br><span class="line">    .clearfix:after &#123;</span><br><span class="line">        clear: both;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/position" target="_blank" rel="external">MDN：position</a>：了解 CSS position 属性的基本知识</li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/float" target="_blank" rel="external">MDN：float</a>：了解 CSS float 属性的基本知识</li>
-<li><a href="http://www.barelyfitz.com/screencast/html-training/css/positioning/" target="_blank" rel="external">Learn CSS Positioning in Ten Steps</a>：通过具体的例子熟悉 position 属性</li>
-<li><a href="http://stackoverflow.com/questions/211383/which-method-of-clearfix-is-best" target="_blank" rel="external">StackOverflow</a>：Which method of ‘clearfix’ is best?：清除浮动黑科技完整解读</li>
-<li><a href="http://www.cnblogs.com/pigtail/archive/2013/01/23/2871627.html" target="_blank" rel="external">关于Block Formatting Context－－BFC和IE的hasLayout</a></li>
-<li><a href="http://www.zhangxinxu.com/wordpress/2016/01/understand-css-stacking-context-order-z-index/" target="_blank" rel="external">深入理解CSS中的层叠上下文和层叠顺序</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1014,7 +1023,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1022,7 +1031,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

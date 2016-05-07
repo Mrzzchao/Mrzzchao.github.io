@@ -270,6 +270,205 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/06/浮动知识点/" itemprop="url">
+                  浮动知识点
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-06T15:30:03+08:00" content="2016-04-06">
+              2016-04-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/06/浮动知识点/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/06/浮动知识点/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/04/06/浮动知识点/" class="leancloud_visitors" data-flag-title="浮动知识点">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><ul>
+<li><p><strong>浮动的8种用法</strong></p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">float</span>: <span class="selector-tag">left</span>;</span><br><span class="line"><span class="selector-tag">float</span>: <span class="selector-tag">right</span>;</span><br><span class="line"><span class="selector-tag">float</span>: <span class="selector-tag">none</span>;</span><br><span class="line">&lt;!<span class="selector-tag">--more--</span>&gt;</span><br><span class="line"><span class="selector-tag">float</span>: <span class="selector-tag">inline-start</span>;</span><br><span class="line"><span class="selector-tag">float</span>: <span class="selector-tag">inline-end</span>;</span><br><span class="line"><span class="comment">/* Global values */</span></span><br><span class="line"><span class="selector-tag">float</span>: <span class="selector-tag">inherit</span>;</span><br><span class="line"><span class="selector-tag">float</span>: <span class="selector-tag">initial</span>;</span><br><span class="line"><span class="selector-tag">float</span>: <span class="selector-tag">unset</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>left<blockquote>
+<p>元素必须浮动在它的包含块的左边</p>
+</blockquote>
+</li>
+<li>right<blockquote>
+<p>元素必须浮动在它的包含块的右边</p>
+</blockquote>
+</li>
+<li>none<blockquote>
+<p>元素没有浮动，在正常文档流种</p>
+</blockquote>
+</li>
+<li>inline-start<br>Is a keyword indicating that the element must float on the start side of its containing block, that is the left side on ltr scripts and the right side on rtl scripts.</li>
+<li>inline-end<br>Is a keyword indicating that the element must float on the end side of its containing block, that is the right side on ltr scripts and the left side on rtl scripts.</li>
+<li>inherit<blockquote>
+<p>元素继承父元素的浮动属性</p>
+</blockquote>
+</li>
+<li>initial<blockquote>
+<p>元素保持最初的浮动属性（没实践）</p>
+</blockquote>
+</li>
+<li>unset<blockquote>
+<p>有待研究</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>定位的4种用法</strong></p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">static</span>;</span><br><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">relative</span>;</span><br><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</span><br><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">fixed</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>static<blockquote>
+<p>元素在正常文档流中（默认值）</p>
+</blockquote>
+</li>
+<li>relative<blockquote>
+<p>元素在正常文档流中，进行定位时，原位置依然在文档流中占着，相当于相对原来的位置进行偏移</p>
+</blockquote>
+</li>
+<li>absolute<blockquote>
+<p>元素脱离文档流，其他（兄弟）元素可以占用该元素原来的位置。然后可以相对有定位（positon为relative或absolute）的祖先元素进行定位</p>
+</blockquote>
+</li>
+<li>fixed<blockquote>
+<p>元素脱离文档流，其他（兄弟）元素可以占用该元素原来的位置。然后可以相对于视窗进行定位</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>清除浮动的一般方法</strong></p>
+<ul>
+<li>clear: both;</li>
+<li>overflow: hidden;</li>
+<li><p>最理想方法</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/*清除浮动*/</span><br><span class="line">    .clearfix &#123;</span><br><span class="line">        *zoom: 1;</span><br><span class="line">    &#125;</span><br><span class="line">    .clearfix:before,</span><br><span class="line">    .clearfix:after &#123;</span><br><span class="line">        display: table;</span><br><span class="line">        line-height: 0;</span><br><span class="line">        content: "";</span><br><span class="line">    &#125;</span><br><span class="line">    .clearfix:after &#123;</span><br><span class="line">        clear: both;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/position" target="_blank" rel="external">MDN：position</a>：了解 CSS position 属性的基本知识</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/float" target="_blank" rel="external">MDN：float</a>：了解 CSS float 属性的基本知识</li>
+<li><a href="http://www.barelyfitz.com/screencast/html-training/css/positioning/" target="_blank" rel="external">Learn CSS Positioning in Ten Steps</a>：通过具体的例子熟悉 position 属性</li>
+<li><a href="http://stackoverflow.com/questions/211383/which-method-of-clearfix-is-best" target="_blank" rel="external">StackOverflow</a>：Which method of ‘clearfix’ is best?：清除浮动黑科技完整解读</li>
+<li><a href="http://www.cnblogs.com/pigtail/archive/2013/01/23/2871627.html" target="_blank" rel="external">关于Block Formatting Context－－BFC和IE的hasLayout</a></li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2016/01/understand-css-stacking-context-order-z-index/" target="_blank" rel="external">深入理解CSS中的层叠上下文和层叠顺序</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/03/31/常用正则表达式/" itemprop="url">
                   常用正则表达式
                 </a>
@@ -861,146 +1060,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/16/居中问题浅谈/" itemprop="url">
-                  居中问题浅谈
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-16T14:42:03+08:00" content="2016-03-16">
-              2016-03-16
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/16/居中问题浅谈/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/16/居中问题浅谈/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/03/16/居中问题浅谈/" class="leancloud_visitors" data-flag-title="居中问题浅谈">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <!-- 一直以来，居中问题都是前端路上不可避免的一道障碍，所以学会居中方法，掌握居中技巧是每一个攻城狮必须完成的使命。 -->
-<p>在CSS的世界里居中一直都是人们抱怨的一件事。“居个中为什么就这么难呢？”人们无奈的说。我认为困难的不是怎么做他，而是怎样在不同的情况下，用不同的方法去达到这相同的目的—居中。</p>
-<p>所以 让我们来解决这个问题吧</p>
-<h2 id="水平居中-Horizontally"><a href="#水平居中-Horizontally" class="headerlink" title="水平居中(Horizontally)"></a>水平居中(Horizontally)</h2><ul>
-<li><h3 id="行内块元素（inline-or-inline-element）"><a href="#行内块元素（inline-or-inline-element）" class="headerlink" title="行内块元素（inline or inline-* element）"></a>行内块元素（inline or inline-* element）</h3>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/03/16/居中问题浅谈/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1041,7 +1105,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1049,7 +1113,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
