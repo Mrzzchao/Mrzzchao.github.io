@@ -271,7 +271,7 @@
               
                 
                 <a class="post-title-link" href="/2016/05/15/chrome禁止本地浏览时加载本地其他文件-md/" itemprop="url">
-                  chrome禁止本地浏览时加载本地其他文件.md
+                  chrome禁止本地浏览时加载本地其他文件
                 </a>
               
             
@@ -325,7 +325,7 @@
 
           
           
-             <span id="/2016/05/15/chrome禁止本地浏览时加载本地其他文件-md/" class="leancloud_visitors" data-flag-title="chrome禁止本地浏览时加载本地其他文件.md">
+             <span id="/2016/05/15/chrome禁止本地浏览时加载本地其他文件-md/" class="leancloud_visitors" data-flag-title="chrome禁止本地浏览时加载本地其他文件">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -348,39 +348,15 @@
 
       
         
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在学习Angular的<strong>step-5</strong>中，遇到了一个问题<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">angular.js:<span class="number">11028</span> XMLHttpRequest cannot load</span><br><span class="line">file:<span class="comment">///E:/%E9%A1%B9%E7%9B%AE/public/angular-phonecat/app/phones/phones.json.</span></span><br><span class="line">Cross origin requests are only supported <span class="keyword">for</span> protocol schemes: http, data, chrome, chrome-extension, https, chrome-extension-resource.</span><br></pre></td></tr></table></figure></p>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在学习Angular的<strong>step-5</strong>中，遇到了一个问题<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">angular.js:<span class="number">11028</span> XMLHttpRequest cannot load</span><br><span class="line">file:<span class="comment">///E:/%E9%A1%B9%E7%9B%AE/public/angular-phonecat/app/phones/phones.json.</span></span><br><span class="line">Cross origin requests are only supported <span class="keyword">for</span> protocol schemes: http, data, chrome, chrome-extension, https, chrome-extension-resource.</span><br></pre></td></tr></table></figure></p>
 <p>研究发现该问题在<strong>fixfox</strong>里面没有出现，所以锁定了<em>chrome禁止本地浏览时加载本地其他文件</em>的搜索关键字</p>
 <h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><h4 id="启动参数"><a href="#启动参数" class="headerlink" title="启动参数"></a>启动参数</h4><p>–user-data-dir=”[PATH]“  自定义用户数据目录</p>
-<p>–start-maximized                启动就最大化</p>
-<p>–no-sandbox                         取消沙盒模式</p>
-<p>–single-process                    单进程运行</p>
-<p>–process-per-tab                 每个标签使用单独进程</p>
-<p>–process-per-site                每个站点使用单独进程</p>
-<p>–in-process-plugins            插件不启用单独进程</p>
-<p>–disable-popup-blocking 禁用弹出拦截</p>
-<p>–disable-javascript             禁用JavaScript</p>
-<p>–disable-java                         禁用Java</p>
-<p>–disable-plugins                   禁用插件</p>
-<p>–disable-images                   禁用图像</p>
-<p>-incognito                               启动进入隐身模式</p>
-<p>–enable-udd-profiles        启用账户切换菜单</p>
-<p>–proxy-pac-url                   使用pac代理 [via 1/2]</p>
-<p>–lang=zh-CN                        设置语言为简体中文</p>
-<p>–disk-cache-dir=”[PATH]“ 自定义缓存目录</p>
-<p>–disk-cache-size=              自定义缓存最大值（单位byte）</p>
-<p>–media-cache-size=         自定义多媒体缓存最大值（单位byte）</p>
-<p>–bookmark-menu              在工具栏增加一个书签按钮</p>
-<p>–enable-sync                       启用书签同步</p>
-<h4 id="应用方式"><a href="#应用方式" class="headerlink" title="应用方式"></a>应用方式</h4><ol>
-<li>右键选择桌面的chrome浏览器的属性</li>
-<li>选中快捷方式栏</li>
-<li>在目标路径的最后（<strong>记得空一格</strong>）添加启动参数</li>
-<li>本问题添加的参数为 <em>–allow-file-access-from-files</em>     或者　<em>–disable-web-security</em><h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4>将参数加在Chrome快捷方式的后面，加一个空格。像这样：C:\Users\zh\AppData\Local\Google\Chrome\Application\chrome.exe –user-data-dir=”D:\Chrome”</li>
-</ol>
-<p>只有在加参数的快捷方式上启动Chrome，参数才起作用，外部调用chrome参数不起作用</p>
-
-          
+<p>–start-maximized                启动就最大化<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/05/15/chrome禁止本地浏览时加载本地其他文件-md/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
