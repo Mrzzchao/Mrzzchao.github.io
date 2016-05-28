@@ -1,0 +1,1105 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Linux," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Mrzzchao" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="前言一晃眼，期末再次来临，各种考试也接踵而至。考试是一学期的浪荡再加3天苦读，相信这是很多大学生的4年状态。而考完后，这些挤压在脑壳中的字符就像被格式化一般，最后一无所有。所以为了在Linux这门课上留下点什么，在此记录。（参照老邝PPT所给考点归纳，貌似依旧应试）
+Linux、类unix基本常识什么是linux
+是一个类UNIX内核的可以自由发布的实现版本，是一个操作系统的底层核心
+
+Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux期末复习">
+<meta property="og:url" content="http://Mrzzchao.github.io/2016/05/28/Linux期末复习/index.html">
+<meta property="og:site_name" content="Mrzzchao">
+<meta property="og:description" content="前言一晃眼，期末再次来临，各种考试也接踵而至。考试是一学期的浪荡再加3天苦读，相信这是很多大学生的4年状态。而考完后，这些挤压在脑壳中的字符就像被格式化一般，最后一无所有。所以为了在Linux这门课上留下点什么，在此记录。（参照老邝PPT所给考点归纳，貌似依旧应试）
+Linux、类unix基本常识什么是linux
+是一个类UNIX内核的可以自由发布的实现版本，是一个操作系统的底层核心
+
+Linux">
+<meta property="og:image" content="http://7xrul1.com1.z0.glb.clouddn.com/ln1.png">
+<meta property="og:image" content="http://7xrul1.com1.z0.glb.clouddn.com/ln3.png">
+<meta property="og:image" content="http://7xrul1.com1.z0.glb.clouddn.com/ln4.png">
+<meta property="og:image" content="http://7xrul1.com1.z0.glb.clouddn.com/ln2.png">
+<meta property="og:image" content="http://7xrul1.com1.z0.glb.clouddn.com/ln5.png">
+<meta property="og:image" content="http://7xrul1.com1.z0.glb.clouddn.com/ln6.png">
+<meta property="og:image" content="http://7xrul1.com1.z0.glb.clouddn.com/ln7.png">
+<meta property="og:image" content="http://7xrul1.com1.z0.glb.clouddn.com/ln8.png">
+<meta property="og:image" content="http://7xrul1.com1.z0.glb.clouddn.com/ln9.png">
+<meta property="og:image" content="http://7xrul1.com1.z0.glb.clouddn.com/ln10.png">
+<meta property="og:image" content="http://7xrul1.com1.z0.glb.clouddn.com/ln11.png">
+<meta property="og:image" content="http://7xrul1.com1.z0.glb.clouddn.com/ln12.png">
+<meta property="og:image" content="http://7xrul1.com1.z0.glb.clouddn.com/ln13.png">
+<meta property="og:image" content="http://7xrul1.com1.z0.glb.clouddn.com/ln14.png">
+<meta property="og:image" content="http://7xrul1.com1.z0.glb.clouddn.com/ln15.png">
+<meta property="og:image" content="http://7xrul1.com1.z0.glb.clouddn.com/ln16.png">
+<meta property="og:image" content="http://7xrul1.com1.z0.glb.clouddn.com/ln17.png">
+<meta property="og:updated_time" content="2016-05-28T09:40:23.437Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux期末复习">
+<meta name="twitter:description" content="前言一晃眼，期末再次来临，各种考试也接踵而至。考试是一学期的浪荡再加3天苦读，相信这是很多大学生的4年状态。而考完后，这些挤压在脑壳中的字符就像被格式化一般，最后一无所有。所以为了在Linux这门课上留下点什么，在此记录。（参照老邝PPT所给考点归纳，貌似依旧应试）
+Linux、类unix基本常识什么是linux
+是一个类UNIX内核的可以自由发布的实现版本，是一个操作系统的底层核心
+
+Linux">
+<meta name="twitter:image" content="http://7xrul1.com1.z0.glb.clouddn.com/ln1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6260023498350003000,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Linux期末复习 | Mrzzchao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'true', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Mrzzchao</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Less is More</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-index">
+          <a href="/index" rel="section">
+            
+              <i class="menu-item-icon fa fa-magnet fa-fw"></i> <br />
+            
+            索引
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Linux期末复习
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-28T17:24:02+08:00" content="2016-05-28">
+              2016-05-28
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/28/Linux期末复习/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/28/Linux期末复习/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/28/Linux期末复习/" class="leancloud_visitors" data-flag-title="Linux期末复习">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>一晃眼，期末再次来临，各种考试也接踵而至。考试是一学期的浪荡再加3天苦读，相信这是很多大学生的4年状态。而考完后，这些挤压在脑壳中的字符就像被格式化一般，最后一无所有。所以为了在Linux这门课上留下点什么，在此记录。（参照老邝PPT所给考点归纳，貌似依旧应试）</p>
+<h2 id="Linux、类unix基本常识"><a href="#Linux、类unix基本常识" class="headerlink" title="Linux、类unix基本常识"></a>Linux、类unix基本常识</h2><h3 id="什么是linux"><a href="#什么是linux" class="headerlink" title="什么是linux"></a>什么是linux</h3><ul>
+<li>是一个类UNIX内核的可以自由发布的实现版本，是一个操作系统的底层核心</li>
+</ul>
+<h3 id="Linux的特性"><a href="#Linux的特性" class="headerlink" title="Linux的特性"></a>Linux的特性</h3><ul>
+<li>可以获得内核源代码，编译并安装，然后获得并安装许多其他自由发布的软件，从而创建一个完整的Linux，通常称为Linux系统</li>
+<li>Linux发行版</li>
+</ul>
+<h3 id="GNU、GPL概念"><a href="#GNU、GPL概念" class="headerlink" title="GNU、GPL概念"></a>GNU、GPL概念</h3><p><strong>GNU</strong></p>
+<ul>
+<li>1983 年 Richard Stallman(自由软件业的精神教父) 创办 GNU(GNU’s not Unix)计划</li>
+<li>旨在发展一個类-Unix 且为 自由软件 的完整操作系統</li>
+</ul>
+<p><strong>GPL</strong></p>
+<a id="more"></a>
+<ul>
+<li>GNU GPL（GNU General Public License，通用公共许可证）是一个广泛被使用的自由软件许可证，最初由理查德·斯托曼为GNU计划而撰写</li>
+<li>在GPL中有一个关键的概念就是Copyleft。GPL规定，再发行权的授予需要许可证接受人公开软件的源代码及所有修改，而且复制件、修改版本都必须以GPL为许可证。这些要求就是Copyleft，它的基础就是作品在法律上版权所有</li>
+<li>Copyleft（是copyright的反话，就是防止有人给自由软件的使用加上限制）</li>
+</ul>
+<h3 id="Linux的版本"><a href="#Linux的版本" class="headerlink" title="Linux的版本"></a>Linux的版本</h3><p><strong>Linux操作系统（kernel+ultiliteies</strong>）：专家才会用<br><strong>Linux发行版（Distribution</strong>）：整合更多配套软件，普通用户也能用</p>
+<ul>
+<li>内核版本号：由Linus等人制定和维护，全球统一</li>
+<li>发行版本号：由各个发行公司或者组织自行制定，不同公司的发行版本号之间无可比性</li>
+<li><p>内核版本号格式：x.y.zz-www，x为主版本号，y为次版本号，zz为次次版本号，www发行号</p>
+</li>
+<li><p>稳定版本：偶数 — 2.6.12</p>
+</li>
+<li>最新内核：奇数 — 3.4.1<h3 id="Linux各个目录的意义"><a href="#Linux各个目录的意义" class="headerlink" title="Linux各个目录的意义"></a>Linux各个目录的意义</h3>以目录的方式来组织和管理系统中的所有文件<br>以根目录“/”为起点，所有其他的目录都由根目录派生而来  </li>
+</ul>
+<p><img src="http://7xrul1.com1.z0.glb.clouddn.com/ln1.png" alt="此处输入图片的描述"></p>
+<p><img src="http://7xrul1.com1.z0.glb.clouddn.com/ln3.png" alt="此处输入图片的描述"></p>
+<p><img src="http://7xrul1.com1.z0.glb.clouddn.com/ln4.png" alt="此处输入图片的描述"><br><strong>/bin</strong><br>这一目录中存放了供所有用户使用的完成基本维护任务的命令。其中bin是binary的缩写，表示二进制文件，通常为可执行文件。一些常用的系统命令，如cp、ls等保存在该目录中。</p>
+<p><strong>/boot</strong><br>这里存放的是启动Linux时使用的一些核心文件。如操作系统内核、引导程序Grub等。</p>
+<p><strong>/dev</strong><br>在此目录中包含所有的系统设备文件。从此目录可以访问各种系统设备。如CD-ROM，磁盘驱动器，调制解调器和内存等。在该目录中还包含有各种实用功能，如用于创建设备文件的MAKEDEV。</p>
+<p><strong>/etc</strong><br>该目录中包含系统和应用软件的配置文件。</p>
+<p><strong>/etc/passwd</strong><br>该目录中包含了系统中的用户描述信息，每行记录一个用户的信息。</p>
+<p><strong>/home</strong><br>存储普通用户的个人文件。每个用户的主目录均在/home下以自己的用户名命名。</p>
+<p><strong>/lib</strong><br>这个目录里存放着系统最基本的共享链接库和内核模块。共享链接库在功能上类似于Windows里的.dll文件。</p>
+<p><strong>/lib64</strong><br>64位系统有这个文件夹，64位程序的库。</p>
+<p><strong>/lost+found</strong><br>这并不是Linux目录结构的组成部分，而是ext3文件系统用于保存丢失文件的地方。不恰当的关机操作和磁盘错误均会导致文件丢失，这意味着这些被标注为“在使用”，但却并未列于磁盘上的数据结构上。正常情况下，引导进程会运行fsck程序，该程序能发现这些文件。除了“/”分区上的这个目录外，在每个分区上均有一个lost+found目录。</p>
+<p><strong>/media</strong><br>可移动设备的挂载点，当前的操作系统通常会把U盘等设备自动挂载到该文件夹下。</p>
+<p><strong>/mnt</strong><br>临时用于挂载文件系统的地方。一般情况下这个目录是空的，而在我们将要挂载分区时在这个目录下建立目录，再将我们将要访问的设备挂载在这个目录上，这样我们就可访问文件了。（注意在GNOME中，只有挂载到/media的文件夹才会显示在“计算机”中，挂载到/mnt不会做为特殊设备显示，详见自动挂载分区）</p>
+<p><strong>/opt</strong><br>多数第三方软件默认安装到此位置，如Adobe Reader、google-earth等。并不是每个系统都会创建这个目录。</p>
+<p><strong>/proc</strong><br>它是存在于内存中的虚拟文件系统。里面保存了内核和进程的状态信息。多为文本文件，可以直接查看。如/proc/cpuinfo保存了有关CPU的信息。</p>
+<p><strong>/root</strong><br>这是根用户的主目录。与保留给个人用户的/home下的目录很相似，该目录中还包含仅与根用户有关的条目。</p>
+<p><strong>/sbin</strong><br>供超级用户使用的可执行文件，里面多是系统管理命令，如fsck, reboot, shutdown, ifconfig等。</p>
+<p><strong>/tmp</strong><br>该目录用以保存临时文件。该目录具有Sticky特殊权限，所有用户都可以在这个目录中创建、编辑文件。但只有文件拥有者才能删除文件。为了加快临时文件的访问速度，有的实现把/tmp放在内存中。</p>
+<p><strong>/usr</strong><br>静态的用户级应用程序等，见下。</p>
+<ul>
+<li><p>/usr/bin<br>多数日常应用程序存放的位置。如果/usr被放在单独的分区中，Linux的单用户模式不能访问/usr/bin，所以对系统至关重要的程序不应放在此文件夹中。</p>
+</li>
+<li><p>/usr/include<br>存放C/C++头文件的目录</p>
+</li>
+<li><p>/usr/lib<br>系统的库文件</p>
+</li>
+<li><p>/usr/local<br>新装的系统中这个文件夹是空的，可以用于存放个人安装的软件。安装了本地软件的/usr/local里的目录结构与/usr相似</p>
+</li>
+<li><p>/usr/sbin<br>在单用户模式中不用的系统管理程序，如apache2等。</p>
+</li>
+<li><p>/usr/share<br>与架构无关的数据。多数软件安装在此。</p>
+</li>
+<li><p>/usr/X11R6<br>该目录用于保存运行X-Window所需的所有文件。该目录中还包含用于运行GUI要的配置文件和二进制文件。</p>
+</li>
+<li><p>/usr/src<br>源代码</p>
+</li>
+</ul>
+<p><strong>/var</strong><br>动态的程序数据等，见下文。</p>
+<ul>
+<li><p>/var/cache<br>应用程序的缓存文件</p>
+</li>
+<li><p>/var/lib<br>应用程序的信息、数据。如数据库的数据等都存放在此文件夹。</p>
+</li>
+<li><p>/var/local<br>/usr/local中程序的信息、数据</p>
+</li>
+<li><p>/var/lock<br>锁文件</p>
+</li>
+<li><p>/var/log<br>日志文件</p>
+</li>
+<li><p>/var/opt</p>
+</li>
+<li><p>/opt中程序的信息、数据</p>
+</li>
+<li><p>/var/run<br>正在执行着的程序的信息，如PID文件应存放于此</p>
+</li>
+<li><p>/var/spool<br>存放程序的假脱机数据（即spool data）</p>
+</li>
+<li><p>/var/tmp<br>临时文件</p>
+</li>
+</ul>
+<h2 id="系统运行的各种级别及切换方法（-）"><a href="#系统运行的各种级别及切换方法（-）" class="headerlink" title="系统运行的各种级别及切换方法（*）"></a>系统运行的各种级别及切换方法（*）</h2><h3 id="Linux系统的运行级别（Run-Level）"><a href="#Linux系统的运行级别（Run-Level）" class="headerlink" title="Linux系统的运行级别（Run Level）"></a>Linux系统的运行级别（Run Level）</h3><p><strong>0</strong>：关机级别。<br><strong>1</strong>：单用户运行级别，运行rc.sysinit和rc1.d目录下的脚本。<br><strong>2</strong>：多用户，但系统不会启动NFS，字符模式，在有些linux系统中，级别2为默认模式，具有网络功能，如ubuntu.debian。<br><strong>3</strong>：多用户，字符模式，系统启动具有网络功能，Red Hat常用运行级别。<br><strong>4</strong>：用户自定义级别。<br><strong>5</strong>：图形界面模式，Red Hat常用运行级别。<br><strong>6</strong>：重启级别。</p>
+<h3 id="更改系统运行级别"><a href="#更改系统运行级别" class="headerlink" title="更改系统运行级别"></a>更改系统运行级别</h3><ul>
+<li><p>在字符终端界面上以root用户身份执行命令init n或telinit n，n为级别号。</p>
+</li>
+<li><p>在字符终端界面上执行命令startx启动图形化环境。</p>
+</li>
+<li><p>更改/etc/inittab文件中“id: 5:  initdefault”项目，把数字5改为其他数字，表示Linux默认采用某级别启动。</p>
+</li>
+</ul>
+<h2 id="系統关机"><a href="#系統关机" class="headerlink" title="系統关机"></a>系統关机</h2><h3 id="关机"><a href="#关机" class="headerlink" title="关机"></a>关机</h3><ul>
+<li>shutdown –h now</li>
+<li>halt</li>
+<li>poweroff</li>
+<li>init 0<h3 id="重新启动"><a href="#重新启动" class="headerlink" title="重新启动"></a>重新启动</h3></li>
+<li>shutdown –r now</li>
+<li>reboot</li>
+<li>init 6</li>
+</ul>
+<h2 id="Shell（-）"><a href="#Shell（-）" class="headerlink" title="Shell（*）"></a>Shell（*）</h2><h3 id="什么是shell"><a href="#什么是shell" class="headerlink" title="什么是shell"></a>什么是shell</h3><ul>
+<li>Shell是一个作为用户与linux系统间接口的程序，它允许用户向操作系统输入需要执行的命令</li>
+</ul>
+<h3 id="常用的shell有哪些"><a href="#常用的shell有哪些" class="headerlink" title="常用的shell有哪些"></a>常用的shell有哪些</h3><ul>
+<li>ash：是贝尔实验室开发的shell，bsh是对ash的符号链接。</li>
+<li>bash：是GNU的Bourne Again  shell，是GNU操作系统上默认的shell。sh以及bash2都是对它的符号链接。</li>
+<li>tcsh：是Berkeley UNIX C shell。csh是对它的符号链接。</li>
+<li>ksh：Korn Shell的语法与Bourne Shell相同，同时具备了C * Shell的易用特点。</li>
+</ul>
+<h3 id="Shell处于linux系统的哪个模块"><a href="#Shell处于linux系统的哪个模块" class="headerlink" title="Shell处于linux系统的哪个模块"></a>Shell处于linux系统的哪个模块</h3><ul>
+<li><ul>
+<li>Shell 作为应用程序，部署在 Linux 内核周围。</li>
+</ul>
+</li>
+</ul>
+<h3 id="如何指定用户使用某个shell-etc-passwd"><a href="#如何指定用户使用某个shell-etc-passwd" class="headerlink" title="如何指定用户使用某个shell(/etc/passwd)"></a>如何指定用户使用某个shell(/etc/passwd)</h3><ul>
+<li>chsh –s /bin/bash 将 bash 设置为默认 shell</li>
+<li>或者 vi /etc/passwd 设置对应账号的默认 shell</li>
+</ul>
+<h2 id="Vi文本编辑器"><a href="#Vi文本编辑器" class="headerlink" title="Vi文本编辑器"></a>Vi文本编辑器</h2><h3 id="VI的几种工作模式：命令模式、插入模式、末行模式，如何切换（-）"><a href="#VI的几种工作模式：命令模式、插入模式、末行模式，如何切换（-）" class="headerlink" title="VI的几种工作模式：命令模式、插入模式、末行模式，如何切换（*）"></a>VI的几种工作模式：命令模式、插入模式、末行模式，如何切换（*）</h3><p><img src="http://7xrul1.com1.z0.glb.clouddn.com/ln2.png" alt="此处输入图片的描述"></p>
+<h3 id="如何保存、退出、设置行号"><a href="#如何保存、退出、设置行号" class="headerlink" title="如何保存、退出、设置行号"></a>如何保存、退出、设置行号</h3><ul>
+<li>保存文件 :w</li>
+<li>保存并退出 :wq 或者:x 或者 ZZ(<strong>没有冒号</strong>)</li>
+<li>退出文件 :q</li>
+<li>强制退出 :q!</li>
+<li>设置行号 :set nu</li>
+<li>取消显示行号 :set nonu</li>
+<li>取消光标所在行:nu</li>
+</ul>
+<h2 id="Linux文件（-）"><a href="#Linux文件（-）" class="headerlink" title="Linux文件（*）"></a>Linux文件（*）</h2><h3 id="文件属性，如何修改，如何计算"><a href="#文件属性，如何修改，如何计算" class="headerlink" title="文件属性，如何修改，如何计算"></a>文件属性，如何修改，如何计算</h3><p><strong>文件属性</strong><br><img src="http://7xrul1.com1.z0.glb.clouddn.com/ln5.png" alt="此处输入图片的描述"></p>
+<p><strong>如何修改</strong></p>
+<blockquote>
+<p>chmod命令<br>作用：改变指定目录或文件的权限。<br>语法：chmod [选项] mode文件名或目录<br>该命令语法中mode代表权限设定字串，格式如下：<br>[ugoa…][+-=][rwxX]…][,…]  </p>
+</blockquote>
+<p><strong>如何计算</strong></p>
+<blockquote>
+<p>rwx 可读可写可执行。 r=4,w=2,x=1, - =0;<br>每一组的权限值各个位相加，例如 <em>-rwxrwx—</em> 计算得777</p>
+</blockquote>
+<h3 id="有多少种文件类型，如何辨别"><a href="#有多少种文件类型，如何辨别" class="headerlink" title="有多少种文件类型，如何辨别"></a>有多少种文件类型，如何辨别</h3><ul>
+<li><p>正规文件( regular file )<br>第一个属性为 [ - ]<br>纯文字文件(ascii)<br>二进制文件(binary)　</p>
+</li>
+<li><p>目录 (directory)：<br>第一个属性为 [ d ]</p>
+</li>
+<li><p>链接文件 (link)：<br>第一个属性为 [ l ]</p>
+</li>
+<li><p>设备文件 (device)：<br>区块 (block) 设备文件，第一个属性为 [ b ]；<br>字符 (character) 设备文件，第一个属性为 [ c ]。</p>
+</li>
+<li><p>管道文件<br>第一个属性为 [ p ]</p>
+</li>
+<li><p>Socket文件<br>第一个属性为 [ s ]</p>
+</li>
+</ul>
+<h3 id="硬链接、软链接"><a href="#硬链接、软链接" class="headerlink" title="硬链接、软链接"></a>硬链接、软链接</h3><p><strong>命令格式</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln [选项] &lt;source&gt; &lt;dest&gt;</span><br></pre></td></tr></table></figure></p>
+<p>硬链接（hard link）：给文件一个副本（别名），同时建立两者之间的连接关系，修改其中一个，与其连接的文件同时被修改，如果删除其中一个，其余的文件不受影响。磁盘上只有一份数据。硬链接是存在同一个文件系统中。</p>
+<p>软链接（symbolic link）：软链接的方式则是产生一个特殊的文件，该文件的内容是指向另一个文件的位置。它只是一个快捷方式，删除了源文件，这个连接文件就没用了。软链接可以跨越不同的文件系统。</p>
+<ul>
+<li><p>软链接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s sourceFileName desFileName</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>硬链接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln sourceFileName desFileName</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="系统管理"><a href="#系统管理" class="headerlink" title="系统管理"></a>系统管理</h2><h3 id="挂载的概念"><a href="#挂载的概念" class="headerlink" title="挂载的概念"></a>挂载的概念</h3><p>如果要使用 USB 存储设备、光盘或软盘等存储设备，必须将这些设备中的“小”目录树像嫁接一样挂载（ mount）到 Linux 系统的“大”目录树中。</p>
+<h3 id="文件系统类型"><a href="#文件系统类型" class="headerlink" title="文件系统类型"></a>文件系统类型</h3><p>ext、 ext2、 ext3、 ext4、 HPFS、 iso9660、 VFAT、 MINIX、 MSDOS、 NTFS</p>
+<h3 id="虚拟文件系统结构（-）"><a href="#虚拟文件系统结构（-）" class="headerlink" title="虚拟文件系统结构（*）"></a>虚拟文件系统结构（*）</h3><p><strong>VFS</strong><br>Linux系统可以支持多种文件系统，为此，必须使用一种统一的接口，这就是虚拟文件系统(VFS)。通过VFS将不同文件系统的实现细节隐藏起来，因而从外部看上去，所有的文件系统都是一样的。<br><img src="http://7xrul1.com1.z0.glb.clouddn.com/ln6.png" alt="此处输入图片的描述"></p>
+<h3 id="磁盘在linux下的标识"><a href="#磁盘在linux下的标识" class="headerlink" title="磁盘在linux下的标识"></a>磁盘在linux下的标识</h3><p><strong>前面连个字母表示分区所在设备的类型</strong></p>
+<ul>
+<li>hd: IDE硬盘</li>
+<li>sd: SCSI硬盘（U盘）</li>
+</ul>
+<p><strong>第三个字母表示分区在那个设备上</strong></p>
+<ul>
+<li>hda: 第一块IDE硬盘</li>
+<li>sda: 第一块SCSI硬盘</li>
+<li>sdb: 第二块SCSI硬盘</li>
+</ul>
+<p><strong>数字表示分区的次序</strong></p>
+<ul>
+<li>hda1: 第一块IDE硬盘的第一个分区</li>
+<li>sda1: 第一块SCSI硬盘的第一个分区</li>
+</ul>
+<p>每一个硬盘最多可以有4个主分区， 因此<em>1-4</em>的作用表示硬盘的主分区。逻辑分区是从数字5开始的，梅朵一个分区，数字加1即可。</p>
+<h3 id="如何挂载U盘"><a href="#如何挂载U盘" class="headerlink" title="如何挂载U盘"></a>如何挂载U盘</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fdisk –l   // 查看挂载的U盘是什么标示</span><br><span class="line">cd /mnt    </span><br><span class="line">mkdir usb  // 在mnt目录下创建挂载点usb目录</span><br><span class="line">mount –o iocharset=cp936 /dev/sdb1 /mnt/usb // 如有中文文件名乱码，执行该命令 -o</span><br></pre></td></tr></table></figure>
+<h3 id="系统初始化过程分析（-）"><a href="#系统初始化过程分析（-）" class="headerlink" title="系统初始化过程分析（*）"></a>系统初始化过程分析（*）</h3><p><img src="http://7xrul1.com1.z0.glb.clouddn.com/ln7.png" alt="此处输入图片的描述"></p>
+<h3 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h3><ul>
+<li><p><strong>进程、父进程、子进程、程序概念</strong></p>
+<blockquote>
+<p>Linux 系统上所有运行的东西都可以称之为一个进程。每个用户任务、每个系统管理任务，都可以称之为进程。进程是一个程序的运行。<br>程序只是一个静态的指令集合，不占系统的运行资源；而进程是一个随时都可能发生变化的、动态的、使用系统运行资源的程序。一个程序可以启动多个进程。<br>父进程和子进程是管理和被管理的关系。当父进程终止时，子进程也随之终止。但子进程终止，父进程并不一定终止。</p>
+</blockquote>
+</li>
+<li><p><strong>At的使用</strong></p>
+<blockquote>
+<p>在shell提示符下输入”at 时间”，然后按回车键。这时在下一行shell会等待用户继续输入要执行的命令。每一行输入一个命令，所有命令都输入完毕后按Ctrl+d键结束。<br>将各个命令写入shell脚本中，然后使用下面格式设置在指定时间执行shell脚本中的命令：<br>at 时间 –f 脚本文件</p>
+</blockquote>
+</li>
+<li><p><strong>Cron的使用（*）</strong></p>
+<blockquote>
+<p>cron 命令在系统启动时由一个 shell 脚本自动启动，进入后台。<br>cron 启动后搜索/var/spool/cron 目录，寻找以/etc/passwd 文件中的用户名命名的<br>crontab 文件，被找到的这种文件将载入内存。<br>如果没有 crontab 文件，就转入“休眠”状态，释放系统资源。<br>cron 每分钟“醒”过来一次，查看当前是否有需要运行的命令。<br>如果发现某个用户设置了 crontab 文件，它将以该用户的身份去运行文件中指定的命<br>令。命令执行结束后，任何输出都将作为邮件发送给 crontab 的所有者，或者/etc/crontab<br>文件中 MAILTO 环境变量中指定的用户。</p>
+</blockquote>
+</li>
+</ul>
+<p>crontab 文件固定的格式：</p>
+<blockquote>
+<p>f1 f2 f3 f4 f5 program</p>
+</blockquote>
+<p>f1:表示分钟，00-59<br>f2:表示小时，00-24<br>f3:表示一个月的第几天，01-31<br>f4:表示月份，01-12<br>f5:表示一周的第几天，0-6<br>program: 表示要执行的程序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">f1为*：表示每分钟要执行program</span><br><span class="line">f1为a-b：表示从a-b分钟要执行program</span><br><span class="line">f1为*/n：表示每n分钟要执行program</span><br><span class="line">f1为a,b,c,...：表示第a,b,c,..要执行program</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p><strong>Grep命令的使用,-v,-w,^d,^-</strong></p>
+<blockquote>
+<p>　grep（global search regular expression(RE) and print out the line，全面搜索正则表达式并把行打印出来）是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹配的行打印出来。</p>
+</blockquote>
+<pre><code>-v 反转查找。
+-w 只显示全字符合的列。
+^：匹配正则表达式的开始行
+-d&lt;进行动作&gt; 当指定要查找的是目录而非文件时，必须使用这项参数，否则grep命令将回报信息并停止动作
+</code></pre></li>
+</ul>
+<ul>
+<li><strong>Awk命令的使用,awk ‘{print $2}’</strong></li>
+</ul>
+<h2 id="网络管理"><a href="#网络管理" class="headerlink" title="网络管理"></a>网络管理</h2><h3 id="如何配置机器的ip，如何查看（ifconfig用法）"><a href="#如何配置机器的ip，如何查看（ifconfig用法）" class="headerlink" title="如何配置机器的ip，如何查看（ifconfig用法）"></a>如何配置机器的ip，如何查看（ifconfig用法）</h3><ul>
+<li><p>使用终端命令ifconfig方便地查看系统目前所有活跃的网络接口的详细信息<br>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ifconfig     // 查看所有接口信息（包括接口对应IP）</span><br><span class="line">ifconfig eth0  // 查看指定接口信息（包括接口对应IP）</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置机器的接口IP</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ifconfig &lt;设备名&gt; &lt;IP地址&gt; netmask &lt;掩码&gt;</span><br><span class="line">// 例如</span><br><span class="line">ifconfig eth0 192.168.15.11 netmask 255.255.255.0</span><br><span class="line">fconfig eth1 21.156.299.13 netmask 255.255.255.0</span><br><span class="line">ifconfig eth0:0 192.168.17.21 netmask 255.255.255.0</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="网络相关配置文件有哪些，有何作用"><a href="#网络相关配置文件有哪些，有何作用" class="headerlink" title="网络相关配置文件有哪些，有何作用"></a>网络相关配置文件有哪些，有何作用</h3><p><img src="http://7xrul1.com1.z0.glb.clouddn.com/ln8.png" alt="此处输入图片的描述"></p>
+<h3 id="ftp服务配置、启动、停止"><a href="#ftp服务配置、启动、停止" class="headerlink" title="ftp服务配置、启动、停止"></a>ftp服务配置、启动、停止</h3><blockquote>
+<p>[root@localhost log]#setsebool -P ftpd_disable_trans on<br>[root@localhost log]#setsebool -P ftp_home_dir on<br>service vsftpd [start|stop|restart] 或者 /etc/rc.d/init.d/vsftpd [start|stop|restart]</p>
+</blockquote>
+<h3 id="telnet-服务配置、启动、停止"><a href="#telnet-服务配置、启动、停止" class="headerlink" title="telnet 服务配置、启动、停止"></a>telnet 服务配置、启动、停止</h3><p>完全由xinet控制</p>
+<h3 id="Xinetd-服务配置、启动、停止"><a href="#Xinetd-服务配置、启动、停止" class="headerlink" title="Xinetd 服务配置、启动、停止"></a>Xinetd 服务配置、启动、停止</h3><p><strong>配置文件</strong></p>
+<blockquote>
+<p>/etc/xinetd.conf：控制xinetd程序运行的配置文件。其中，提供了所有服务的缺省配置。<br>/etc/xinetd.d/*：该目录包括所有由xinetd程序启动的服务的配置文件，每个服务都有自己单独的配置文件，配置文件名与服务名一致。</p>
+</blockquote>
+<p><strong>重启服务</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service xinetd restart</span><br></pre></td></tr></table></figure></p>
+<h3 id="守护进程概念原理（-）"><a href="#守护进程概念原理（-）" class="headerlink" title="守护进程概念原理（*）"></a>守护进程概念原理（*）</h3><blockquote>
+<p>在 Client/Server 模式下。服务器监听（ Listen）在一个特定的端口上等待客户连接。连接成功后服务器和客户端通过端口进行数据通信。守护进程的工作就是打开一个端口，并且等待（ Listen）进入连接。如果客户端产生一个连接请求，守护进程就创建（ Fork）一个子服务器响应这个连接，而主服务器继续监听其他的服务请求。</p>
+</blockquote>
+<h3 id="网络服务独立模式与xinetd模式区别（-）"><a href="#网络服务独立模式与xinetd模式区别（-）" class="headerlink" title="网络服务独立模式与xinetd模式区别（*）"></a>网络服务独立模式与xinetd模式区别（*）</h3><p><img src="http://7xrul1.com1.z0.glb.clouddn.com/ln9.png" alt="此处输入图片的描述"><br><img src="http://7xrul1.com1.z0.glb.clouddn.com/ln10.png" alt="此处输入图片的描述"></p>
+<blockquote>
+<p>xinetd 能够同时监听多个指定的端口，在接受用户请求时，他能够根据用户请求的端口不同，启动不同的网络服务进程来处理这些用户请求。</p>
+</blockquote>
+<h2 id="Shell编程（-）"><a href="#Shell编程（-）" class="headerlink" title="Shell编程（*）"></a>Shell编程（*）</h2><h3 id="变量：自定义的变量、环境变量"><a href="#变量：自定义的变量、环境变量" class="headerlink" title="变量：自定义的变量、环境变量"></a>变量：自定义的变量、环境变量</h3><ul>
+<li><strong>自定义的变量</strong><br>变量＝值 （注意：等号两侧不能有空格）</li>
+<li><strong>环境变量</strong><br><img src="http://7xrul1.com1.z0.glb.clouddn.com/ln11.png" alt="此处输入图片的描述"></li>
+</ul>
+<h3 id="程序结构：条件判断、循环结构、函数"><a href="#程序结构：条件判断、循环结构、函数" class="headerlink" title="程序结构：条件判断、循环结构、函数"></a>程序结构：条件判断、循环结构、函数</h3><ul>
+<li><p><strong>条件</strong></p>
+<blockquote>
+<p>常见的条件：<br>变量属性；<br>文件属性；<br>命令执行结果；<br>多种条件的逻辑组合；</p>
+<p>判断结果的一般定义：<br>  真：0<br>  假：1</p>
+<p>格式：<br>  test condition<br>  [ condition ]</p>
+</blockquote>
+</li>
+<li><p><strong>循环结构</strong></p>
+<blockquote>
+<p>for循环<br>while循环与until循环</p>
+</blockquote>
+</li>
+<li><p><strong>函数</strong><br>定义：<br><img src="http://7xrul1.com1.z0.glb.clouddn.com/ln12.png" alt="此处输入图片的描述"><br>引用：<br><img src="http://7xrul1.com1.z0.glb.clouddn.com/ln13.png" alt="此处输入图片的描述"></p>
+</li>
+</ul>
+<h3 id="如何执行"><a href="#如何执行" class="headerlink" title="如何执行"></a>如何执行</h3><blockquote>
+<p>/bin/sh filename<br>或给该文件属性添加执行权限 chmod +x filename，然后直接执行 ./ filename</p>
+</blockquote>
+<h3 id="文件属性的判断、字符串属性和整数关系的判断"><a href="#文件属性的判断、字符串属性和整数关系的判断" class="headerlink" title="文件属性的判断、字符串属性和整数关系的判断"></a>文件属性的判断、字符串属性和整数关系的判断</h3><ul>
+<li><strong>文件</strong><br><img src="http://7xrul1.com1.z0.glb.clouddn.com/ln14.png" alt="此处输入图片的描述"></li>
+<li><strong>字符串</strong><br><img src="http://7xrul1.com1.z0.glb.clouddn.com/ln15.png" alt="此处输入图片的描述"></li>
+<li><strong>整数</strong><br><img src="http://7xrul1.com1.z0.glb.clouddn.com/ln16.png" alt="此处输入图片的描述"></li>
+</ul>
+<h3 id="函数使用、shift"><a href="#函数使用、shift" class="headerlink" title="函数使用、shift"></a>函数使用、shift</h3><p><img src="http://7xrul1.com1.z0.glb.clouddn.com/ln17.png" alt="此处输入图片的描述"></p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag">#Linux</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/15/chrome禁止本地浏览时加载本地其他文件-md/" rel="next" title="chrome禁止本地浏览时加载本地其他文件">
+                <i class="fa fa-chevron-left"></i> chrome禁止本地浏览时加载本地其他文件
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/05/28/Linux期末复习/"
+           data-title="Linux期末复习" data-url="http://Mrzzchao.github.io/2016/05/28/Linux期末复习/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/logo1.jpg"
+               alt="MChao" />
+          <p class="site-author-name" itemprop="name">MChao</p>
+          <p class="site-description motion-element" itemprop="description">御风而行，逆流而上</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Mrzzchao" target="_blank" title="github">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/5053977152/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux、类unix基本常识"><span class="nav-number">1.1.</span> <span class="nav-text">Linux、类unix基本常识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是linux"><span class="nav-number">1.1.1.</span> <span class="nav-text">什么是linux</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux的特性"><span class="nav-number">1.1.2.</span> <span class="nav-text">Linux的特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GNU、GPL概念"><span class="nav-number">1.1.3.</span> <span class="nav-text">GNU、GPL概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux的版本"><span class="nav-number">1.1.4.</span> <span class="nav-text">Linux的版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux各个目录的意义"><span class="nav-number">1.1.5.</span> <span class="nav-text">Linux各个目录的意义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统运行的各种级别及切换方法（-）"><span class="nav-number">1.2.</span> <span class="nav-text">系统运行的各种级别及切换方法（*）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux系统的运行级别（Run-Level）"><span class="nav-number">1.2.1.</span> <span class="nav-text">Linux系统的运行级别（Run Level）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更改系统运行级别"><span class="nav-number">1.2.2.</span> <span class="nav-text">更改系统运行级别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系統关机"><span class="nav-number">1.3.</span> <span class="nav-text">系統关机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关机"><span class="nav-number">1.3.1.</span> <span class="nav-text">关机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重新启动"><span class="nav-number">1.3.2.</span> <span class="nav-text">重新启动</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shell（-）"><span class="nav-number">1.4.</span> <span class="nav-text">Shell（*）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是shell"><span class="nav-number">1.4.1.</span> <span class="nav-text">什么是shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用的shell有哪些"><span class="nav-number">1.4.2.</span> <span class="nav-text">常用的shell有哪些</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Shell处于linux系统的哪个模块"><span class="nav-number">1.4.3.</span> <span class="nav-text">Shell处于linux系统的哪个模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何指定用户使用某个shell-etc-passwd"><span class="nav-number">1.4.4.</span> <span class="nav-text">如何指定用户使用某个shell(/etc/passwd)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vi文本编辑器"><span class="nav-number">1.5.</span> <span class="nav-text">Vi文本编辑器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#VI的几种工作模式：命令模式、插入模式、末行模式，如何切换（-）"><span class="nav-number">1.5.1.</span> <span class="nav-text">VI的几种工作模式：命令模式、插入模式、末行模式，如何切换（*）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何保存、退出、设置行号"><span class="nav-number">1.5.2.</span> <span class="nav-text">如何保存、退出、设置行号</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux文件（-）"><span class="nav-number">1.6.</span> <span class="nav-text">Linux文件（*）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件属性，如何修改，如何计算"><span class="nav-number">1.6.1.</span> <span class="nav-text">文件属性，如何修改，如何计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有多少种文件类型，如何辨别"><span class="nav-number">1.6.2.</span> <span class="nav-text">有多少种文件类型，如何辨别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#硬链接、软链接"><span class="nav-number">1.6.3.</span> <span class="nav-text">硬链接、软链接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统管理"><span class="nav-number">1.7.</span> <span class="nav-text">系统管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#挂载的概念"><span class="nav-number">1.7.1.</span> <span class="nav-text">挂载的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件系统类型"><span class="nav-number">1.7.2.</span> <span class="nav-text">文件系统类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟文件系统结构（-）"><span class="nav-number">1.7.3.</span> <span class="nav-text">虚拟文件系统结构（*）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#磁盘在linux下的标识"><span class="nav-number">1.7.4.</span> <span class="nav-text">磁盘在linux下的标识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何挂载U盘"><span class="nav-number">1.7.5.</span> <span class="nav-text">如何挂载U盘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统初始化过程分析（-）"><span class="nav-number">1.7.6.</span> <span class="nav-text">系统初始化过程分析（*）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程管理"><span class="nav-number">1.7.7.</span> <span class="nav-text">进程管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络管理"><span class="nav-number">1.8.</span> <span class="nav-text">网络管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何配置机器的ip，如何查看（ifconfig用法）"><span class="nav-number">1.8.1.</span> <span class="nav-text">如何配置机器的ip，如何查看（ifconfig用法）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络相关配置文件有哪些，有何作用"><span class="nav-number">1.8.2.</span> <span class="nav-text">网络相关配置文件有哪些，有何作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ftp服务配置、启动、停止"><span class="nav-number">1.8.3.</span> <span class="nav-text">ftp服务配置、启动、停止</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#telnet-服务配置、启动、停止"><span class="nav-number">1.8.4.</span> <span class="nav-text">telnet 服务配置、启动、停止</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Xinetd-服务配置、启动、停止"><span class="nav-number">1.8.5.</span> <span class="nav-text">Xinetd 服务配置、启动、停止</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#守护进程概念原理（-）"><span class="nav-number">1.8.6.</span> <span class="nav-text">守护进程概念原理（*）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络服务独立模式与xinetd模式区别（-）"><span class="nav-number">1.8.7.</span> <span class="nav-text">网络服务独立模式与xinetd模式区别（*）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shell编程（-）"><span class="nav-number">1.9.</span> <span class="nav-text">Shell编程（*）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量：自定义的变量、环境变量"><span class="nav-number">1.9.1.</span> <span class="nav-text">变量：自定义的变量、环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程序结构：条件判断、循环结构、函数"><span class="nav-number">1.9.2.</span> <span class="nav-text">程序结构：条件判断、循环结构、函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何执行"><span class="nav-number">1.9.3.</span> <span class="nav-text">如何执行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件属性的判断、字符串属性和整数关系的判断"><span class="nav-number">1.9.4.</span> <span class="nav-text">文件属性的判断、字符串属性和整数关系的判断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数使用、shift"><span class="nav-number">1.9.5.</span> <span class="nav-text">函数使用、shift</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MChao</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div>
+本站总访问量 <span id="busuanzi_value_site_pv"></span> &nbsp&nbsp&nbsp
+您是第<span id="busuanzi_value_site_uv"></span>个来到的小伙伴
+</div>
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"mchao"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("BdKwB8M3nl4XWJNoe8YDezLg-gzGzoHsz", "OmJtIIE5ARtelP3wYtlxjHHL");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

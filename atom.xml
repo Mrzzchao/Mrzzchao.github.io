@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://Mrzzchao.github.io/"/>
-  <updated>2016-05-15T07:12:29.202Z</updated>
+  <updated>2016-05-28T09:40:23.437Z</updated>
   <id>http://Mrzzchao.github.io/</id>
   
   <author>
@@ -16,11 +16,329 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Linux期末复习</title>
+    <link href="http://Mrzzchao.github.io/2016/05/28/Linux%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/"/>
+    <id>http://Mrzzchao.github.io/2016/05/28/Linux期末复习/</id>
+    <published>2016-05-28T09:24:02.000Z</published>
+    <updated>2016-05-28T09:40:23.437Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;一晃眼，期末再次来临，各种考试也接踵而至。考试是一学期的浪荡再加3天苦读，相信这是很多大学生的4年状态。而考完后，这些挤压在脑壳中的字符就像被格式化一般，最后一无所有。所以为了在Linux这门课上留下点什么，在此记录。（参照老邝PPT所给考点归纳，貌似依旧应试）&lt;/p&gt;
+&lt;h2 id=&quot;Linux、类unix基本常识&quot;&gt;&lt;a href=&quot;#Linux、类unix基本常识&quot; class=&quot;headerlink&quot; title=&quot;Linux、类unix基本常识&quot;&gt;&lt;/a&gt;Linux、类unix基本常识&lt;/h2&gt;&lt;h3 id=&quot;什么是linux&quot;&gt;&lt;a href=&quot;#什么是linux&quot; class=&quot;headerlink&quot; title=&quot;什么是linux&quot;&gt;&lt;/a&gt;什么是linux&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;是一个类UNIX内核的可以自由发布的实现版本，是一个操作系统的底层核心&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Linux的特性&quot;&gt;&lt;a href=&quot;#Linux的特性&quot; class=&quot;headerlink&quot; title=&quot;Linux的特性&quot;&gt;&lt;/a&gt;Linux的特性&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;可以获得内核源代码，编译并安装，然后获得并安装许多其他自由发布的软件，从而创建一个完整的Linux，通常称为Linux系统&lt;/li&gt;
+&lt;li&gt;Linux发行版&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;GNU、GPL概念&quot;&gt;&lt;a href=&quot;#GNU、GPL概念&quot; class=&quot;headerlink&quot; title=&quot;GNU、GPL概念&quot;&gt;&lt;/a&gt;GNU、GPL概念&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;GNU&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1983 年 Richard Stallman(自由软件业的精神教父) 创办 GNU(GNU’s not Unix)计划&lt;/li&gt;
+&lt;li&gt;旨在发展一個类-Unix 且为 自由软件 的完整操作系統&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;GPL&lt;/strong&gt;&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;GNU GPL（GNU General Public License，通用公共许可证）是一个广泛被使用的自由软件许可证，最初由理查德·斯托曼为GNU计划而撰写&lt;/li&gt;
+&lt;li&gt;在GPL中有一个关键的概念就是Copyleft。GPL规定，再发行权的授予需要许可证接受人公开软件的源代码及所有修改，而且复制件、修改版本都必须以GPL为许可证。这些要求就是Copyleft，它的基础就是作品在法律上版权所有&lt;/li&gt;
+&lt;li&gt;Copyleft（是copyright的反话，就是防止有人给自由软件的使用加上限制）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Linux的版本&quot;&gt;&lt;a href=&quot;#Linux的版本&quot; class=&quot;headerlink&quot; title=&quot;Linux的版本&quot;&gt;&lt;/a&gt;Linux的版本&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Linux操作系统（kernel+ultiliteies&lt;/strong&gt;）：专家才会用&lt;br&gt;&lt;strong&gt;Linux发行版（Distribution&lt;/strong&gt;）：整合更多配套软件，普通用户也能用&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;内核版本号：由Linus等人制定和维护，全球统一&lt;/li&gt;
+&lt;li&gt;发行版本号：由各个发行公司或者组织自行制定，不同公司的发行版本号之间无可比性&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;内核版本号格式：x.y.zz-www，x为主版本号，y为次版本号，zz为次次版本号，www发行号&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;稳定版本：偶数 — 2.6.12&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;最新内核：奇数 — 3.4.1&lt;h3 id=&quot;Linux各个目录的意义&quot;&gt;&lt;a href=&quot;#Linux各个目录的意义&quot; class=&quot;headerlink&quot; title=&quot;Linux各个目录的意义&quot;&gt;&lt;/a&gt;Linux各个目录的意义&lt;/h3&gt;以目录的方式来组织和管理系统中的所有文件&lt;br&gt;以根目录“/”为起点，所有其他的目录都由根目录派生而来  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/ln1.png&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/ln3.png&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/ln4.png&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;br&gt;&lt;strong&gt;/bin&lt;/strong&gt;&lt;br&gt;这一目录中存放了供所有用户使用的完成基本维护任务的命令。其中bin是binary的缩写，表示二进制文件，通常为可执行文件。一些常用的系统命令，如cp、ls等保存在该目录中。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/boot&lt;/strong&gt;&lt;br&gt;这里存放的是启动Linux时使用的一些核心文件。如操作系统内核、引导程序Grub等。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/dev&lt;/strong&gt;&lt;br&gt;在此目录中包含所有的系统设备文件。从此目录可以访问各种系统设备。如CD-ROM，磁盘驱动器，调制解调器和内存等。在该目录中还包含有各种实用功能，如用于创建设备文件的MAKEDEV。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/etc&lt;/strong&gt;&lt;br&gt;该目录中包含系统和应用软件的配置文件。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/etc/passwd&lt;/strong&gt;&lt;br&gt;该目录中包含了系统中的用户描述信息，每行记录一个用户的信息。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/home&lt;/strong&gt;&lt;br&gt;存储普通用户的个人文件。每个用户的主目录均在/home下以自己的用户名命名。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/lib&lt;/strong&gt;&lt;br&gt;这个目录里存放着系统最基本的共享链接库和内核模块。共享链接库在功能上类似于Windows里的.dll文件。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/lib64&lt;/strong&gt;&lt;br&gt;64位系统有这个文件夹，64位程序的库。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/lost+found&lt;/strong&gt;&lt;br&gt;这并不是Linux目录结构的组成部分，而是ext3文件系统用于保存丢失文件的地方。不恰当的关机操作和磁盘错误均会导致文件丢失，这意味着这些被标注为“在使用”，但却并未列于磁盘上的数据结构上。正常情况下，引导进程会运行fsck程序，该程序能发现这些文件。除了“/”分区上的这个目录外，在每个分区上均有一个lost+found目录。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/media&lt;/strong&gt;&lt;br&gt;可移动设备的挂载点，当前的操作系统通常会把U盘等设备自动挂载到该文件夹下。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/mnt&lt;/strong&gt;&lt;br&gt;临时用于挂载文件系统的地方。一般情况下这个目录是空的，而在我们将要挂载分区时在这个目录下建立目录，再将我们将要访问的设备挂载在这个目录上，这样我们就可访问文件了。（注意在GNOME中，只有挂载到/media的文件夹才会显示在“计算机”中，挂载到/mnt不会做为特殊设备显示，详见自动挂载分区）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/opt&lt;/strong&gt;&lt;br&gt;多数第三方软件默认安装到此位置，如Adobe Reader、google-earth等。并不是每个系统都会创建这个目录。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/proc&lt;/strong&gt;&lt;br&gt;它是存在于内存中的虚拟文件系统。里面保存了内核和进程的状态信息。多为文本文件，可以直接查看。如/proc/cpuinfo保存了有关CPU的信息。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/root&lt;/strong&gt;&lt;br&gt;这是根用户的主目录。与保留给个人用户的/home下的目录很相似，该目录中还包含仅与根用户有关的条目。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/sbin&lt;/strong&gt;&lt;br&gt;供超级用户使用的可执行文件，里面多是系统管理命令，如fsck, reboot, shutdown, ifconfig等。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/tmp&lt;/strong&gt;&lt;br&gt;该目录用以保存临时文件。该目录具有Sticky特殊权限，所有用户都可以在这个目录中创建、编辑文件。但只有文件拥有者才能删除文件。为了加快临时文件的访问速度，有的实现把/tmp放在内存中。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/usr&lt;/strong&gt;&lt;br&gt;静态的用户级应用程序等，见下。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;/usr/bin&lt;br&gt;多数日常应用程序存放的位置。如果/usr被放在单独的分区中，Linux的单用户模式不能访问/usr/bin，所以对系统至关重要的程序不应放在此文件夹中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;/usr/include&lt;br&gt;存放C/C++头文件的目录&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;/usr/lib&lt;br&gt;系统的库文件&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;/usr/local&lt;br&gt;新装的系统中这个文件夹是空的，可以用于存放个人安装的软件。安装了本地软件的/usr/local里的目录结构与/usr相似&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;/usr/sbin&lt;br&gt;在单用户模式中不用的系统管理程序，如apache2等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;/usr/share&lt;br&gt;与架构无关的数据。多数软件安装在此。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;/usr/X11R6&lt;br&gt;该目录用于保存运行X-Window所需的所有文件。该目录中还包含用于运行GUI要的配置文件和二进制文件。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;/usr/src&lt;br&gt;源代码&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;/var&lt;/strong&gt;&lt;br&gt;动态的程序数据等，见下文。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;/var/cache&lt;br&gt;应用程序的缓存文件&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;/var/lib&lt;br&gt;应用程序的信息、数据。如数据库的数据等都存放在此文件夹。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;/var/local&lt;br&gt;/usr/local中程序的信息、数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;/var/lock&lt;br&gt;锁文件&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;/var/log&lt;br&gt;日志文件&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;/var/opt&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;/opt中程序的信息、数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;/var/run&lt;br&gt;正在执行着的程序的信息，如PID文件应存放于此&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;/var/spool&lt;br&gt;存放程序的假脱机数据（即spool data）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;/var/tmp&lt;br&gt;临时文件&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;系统运行的各种级别及切换方法（-）&quot;&gt;&lt;a href=&quot;#系统运行的各种级别及切换方法（-）&quot; class=&quot;headerlink&quot; title=&quot;系统运行的各种级别及切换方法（*）&quot;&gt;&lt;/a&gt;系统运行的各种级别及切换方法（*）&lt;/h2&gt;&lt;h3 id=&quot;Linux系统的运行级别（Run-Level）&quot;&gt;&lt;a href=&quot;#Linux系统的运行级别（Run-Level）&quot; class=&quot;headerlink&quot; title=&quot;Linux系统的运行级别（Run Level）&quot;&gt;&lt;/a&gt;Linux系统的运行级别（Run Level）&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;0&lt;/strong&gt;：关机级别。&lt;br&gt;&lt;strong&gt;1&lt;/strong&gt;：单用户运行级别，运行rc.sysinit和rc1.d目录下的脚本。&lt;br&gt;&lt;strong&gt;2&lt;/strong&gt;：多用户，但系统不会启动NFS，字符模式，在有些linux系统中，级别2为默认模式，具有网络功能，如ubuntu.debian。&lt;br&gt;&lt;strong&gt;3&lt;/strong&gt;：多用户，字符模式，系统启动具有网络功能，Red Hat常用运行级别。&lt;br&gt;&lt;strong&gt;4&lt;/strong&gt;：用户自定义级别。&lt;br&gt;&lt;strong&gt;5&lt;/strong&gt;：图形界面模式，Red Hat常用运行级别。&lt;br&gt;&lt;strong&gt;6&lt;/strong&gt;：重启级别。&lt;/p&gt;
+&lt;h3 id=&quot;更改系统运行级别&quot;&gt;&lt;a href=&quot;#更改系统运行级别&quot; class=&quot;headerlink&quot; title=&quot;更改系统运行级别&quot;&gt;&lt;/a&gt;更改系统运行级别&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;在字符终端界面上以root用户身份执行命令init n或telinit n，n为级别号。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在字符终端界面上执行命令startx启动图形化环境。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;更改/etc/inittab文件中“id: 5:  initdefault”项目，把数字5改为其他数字，表示Linux默认采用某级别启动。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;系統关机&quot;&gt;&lt;a href=&quot;#系統关机&quot; class=&quot;headerlink&quot; title=&quot;系統关机&quot;&gt;&lt;/a&gt;系統关机&lt;/h2&gt;&lt;h3 id=&quot;关机&quot;&gt;&lt;a href=&quot;#关机&quot; class=&quot;headerlink&quot; title=&quot;关机&quot;&gt;&lt;/a&gt;关机&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;shutdown –h now&lt;/li&gt;
+&lt;li&gt;halt&lt;/li&gt;
+&lt;li&gt;poweroff&lt;/li&gt;
+&lt;li&gt;init 0&lt;h3 id=&quot;重新启动&quot;&gt;&lt;a href=&quot;#重新启动&quot; class=&quot;headerlink&quot; title=&quot;重新启动&quot;&gt;&lt;/a&gt;重新启动&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;shutdown –r now&lt;/li&gt;
+&lt;li&gt;reboot&lt;/li&gt;
+&lt;li&gt;init 6&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Shell（-）&quot;&gt;&lt;a href=&quot;#Shell（-）&quot; class=&quot;headerlink&quot; title=&quot;Shell（*）&quot;&gt;&lt;/a&gt;Shell（*）&lt;/h2&gt;&lt;h3 id=&quot;什么是shell&quot;&gt;&lt;a href=&quot;#什么是shell&quot; class=&quot;headerlink&quot; title=&quot;什么是shell&quot;&gt;&lt;/a&gt;什么是shell&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Shell是一个作为用户与linux系统间接口的程序，它允许用户向操作系统输入需要执行的命令&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;常用的shell有哪些&quot;&gt;&lt;a href=&quot;#常用的shell有哪些&quot; class=&quot;headerlink&quot; title=&quot;常用的shell有哪些&quot;&gt;&lt;/a&gt;常用的shell有哪些&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;ash：是贝尔实验室开发的shell，bsh是对ash的符号链接。&lt;/li&gt;
+&lt;li&gt;bash：是GNU的Bourne Again  shell，是GNU操作系统上默认的shell。sh以及bash2都是对它的符号链接。&lt;/li&gt;
+&lt;li&gt;tcsh：是Berkeley UNIX C shell。csh是对它的符号链接。&lt;/li&gt;
+&lt;li&gt;ksh：Korn Shell的语法与Bourne Shell相同，同时具备了C * Shell的易用特点。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Shell处于linux系统的哪个模块&quot;&gt;&lt;a href=&quot;#Shell处于linux系统的哪个模块&quot; class=&quot;headerlink&quot; title=&quot;Shell处于linux系统的哪个模块&quot;&gt;&lt;/a&gt;Shell处于linux系统的哪个模块&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;ul&gt;
+&lt;li&gt;Shell 作为应用程序，部署在 Linux 内核周围。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;如何指定用户使用某个shell-etc-passwd&quot;&gt;&lt;a href=&quot;#如何指定用户使用某个shell-etc-passwd&quot; class=&quot;headerlink&quot; title=&quot;如何指定用户使用某个shell(/etc/passwd)&quot;&gt;&lt;/a&gt;如何指定用户使用某个shell(/etc/passwd)&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;chsh –s /bin/bash 将 bash 设置为默认 shell&lt;/li&gt;
+&lt;li&gt;或者 vi /etc/passwd 设置对应账号的默认 shell&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Vi文本编辑器&quot;&gt;&lt;a href=&quot;#Vi文本编辑器&quot; class=&quot;headerlink&quot; title=&quot;Vi文本编辑器&quot;&gt;&lt;/a&gt;Vi文本编辑器&lt;/h2&gt;&lt;h3 id=&quot;VI的几种工作模式：命令模式、插入模式、末行模式，如何切换（-）&quot;&gt;&lt;a href=&quot;#VI的几种工作模式：命令模式、插入模式、末行模式，如何切换（-）&quot; class=&quot;headerlink&quot; title=&quot;VI的几种工作模式：命令模式、插入模式、末行模式，如何切换（*）&quot;&gt;&lt;/a&gt;VI的几种工作模式：命令模式、插入模式、末行模式，如何切换（*）&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/ln2.png&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;如何保存、退出、设置行号&quot;&gt;&lt;a href=&quot;#如何保存、退出、设置行号&quot; class=&quot;headerlink&quot; title=&quot;如何保存、退出、设置行号&quot;&gt;&lt;/a&gt;如何保存、退出、设置行号&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;保存文件 :w&lt;/li&gt;
+&lt;li&gt;保存并退出 :wq 或者:x 或者 ZZ(&lt;strong&gt;没有冒号&lt;/strong&gt;)&lt;/li&gt;
+&lt;li&gt;退出文件 :q&lt;/li&gt;
+&lt;li&gt;强制退出 :q!&lt;/li&gt;
+&lt;li&gt;设置行号 :set nu&lt;/li&gt;
+&lt;li&gt;取消显示行号 :set nonu&lt;/li&gt;
+&lt;li&gt;取消光标所在行:nu&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Linux文件（-）&quot;&gt;&lt;a href=&quot;#Linux文件（-）&quot; class=&quot;headerlink&quot; title=&quot;Linux文件（*）&quot;&gt;&lt;/a&gt;Linux文件（*）&lt;/h2&gt;&lt;h3 id=&quot;文件属性，如何修改，如何计算&quot;&gt;&lt;a href=&quot;#文件属性，如何修改，如何计算&quot; class=&quot;headerlink&quot; title=&quot;文件属性，如何修改，如何计算&quot;&gt;&lt;/a&gt;文件属性，如何修改，如何计算&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;文件属性&lt;/strong&gt;&lt;br&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/ln5.png&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;如何修改&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;chmod命令&lt;br&gt;作用：改变指定目录或文件的权限。&lt;br&gt;语法：chmod [选项] mode文件名或目录&lt;br&gt;该命令语法中mode代表权限设定字串，格式如下：&lt;br&gt;[ugoa…][+-=][rwxX]…][,…]  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;如何计算&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;rwx 可读可写可执行。 r=4,w=2,x=1, - =0;&lt;br&gt;每一组的权限值各个位相加，例如 &lt;em&gt;-rwxrwx—&lt;/em&gt; 计算得777&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;有多少种文件类型，如何辨别&quot;&gt;&lt;a href=&quot;#有多少种文件类型，如何辨别&quot; class=&quot;headerlink&quot; title=&quot;有多少种文件类型，如何辨别&quot;&gt;&lt;/a&gt;有多少种文件类型，如何辨别&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;正规文件( regular file )&lt;br&gt;第一个属性为 [ - ]&lt;br&gt;纯文字文件(ascii)&lt;br&gt;二进制文件(binary)　&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;目录 (directory)：&lt;br&gt;第一个属性为 [ d ]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;链接文件 (link)：&lt;br&gt;第一个属性为 [ l ]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;设备文件 (device)：&lt;br&gt;区块 (block) 设备文件，第一个属性为 [ b ]；&lt;br&gt;字符 (character) 设备文件，第一个属性为 [ c ]。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;管道文件&lt;br&gt;第一个属性为 [ p ]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Socket文件&lt;br&gt;第一个属性为 [ s ]&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;硬链接、软链接&quot;&gt;&lt;a href=&quot;#硬链接、软链接&quot; class=&quot;headerlink&quot; title=&quot;硬链接、软链接&quot;&gt;&lt;/a&gt;硬链接、软链接&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;命令格式&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ln [选项] &amp;lt;source&amp;gt; &amp;lt;dest&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;硬链接（hard link）：给文件一个副本（别名），同时建立两者之间的连接关系，修改其中一个，与其连接的文件同时被修改，如果删除其中一个，其余的文件不受影响。磁盘上只有一份数据。硬链接是存在同一个文件系统中。&lt;/p&gt;
+&lt;p&gt;软链接（symbolic link）：软链接的方式则是产生一个特殊的文件，该文件的内容是指向另一个文件的位置。它只是一个快捷方式，删除了源文件，这个连接文件就没用了。软链接可以跨越不同的文件系统。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;软链接&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ln -s sourceFileName desFileName&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;硬链接&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ln sourceFileName desFileName&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;系统管理&quot;&gt;&lt;a href=&quot;#系统管理&quot; class=&quot;headerlink&quot; title=&quot;系统管理&quot;&gt;&lt;/a&gt;系统管理&lt;/h2&gt;&lt;h3 id=&quot;挂载的概念&quot;&gt;&lt;a href=&quot;#挂载的概念&quot; class=&quot;headerlink&quot; title=&quot;挂载的概念&quot;&gt;&lt;/a&gt;挂载的概念&lt;/h3&gt;&lt;p&gt;如果要使用 USB 存储设备、光盘或软盘等存储设备，必须将这些设备中的“小”目录树像嫁接一样挂载（ mount）到 Linux 系统的“大”目录树中。&lt;/p&gt;
+&lt;h3 id=&quot;文件系统类型&quot;&gt;&lt;a href=&quot;#文件系统类型&quot; class=&quot;headerlink&quot; title=&quot;文件系统类型&quot;&gt;&lt;/a&gt;文件系统类型&lt;/h3&gt;&lt;p&gt;ext、 ext2、 ext3、 ext4、 HPFS、 iso9660、 VFAT、 MINIX、 MSDOS、 NTFS&lt;/p&gt;
+&lt;h3 id=&quot;虚拟文件系统结构（-）&quot;&gt;&lt;a href=&quot;#虚拟文件系统结构（-）&quot; class=&quot;headerlink&quot; title=&quot;虚拟文件系统结构（*）&quot;&gt;&lt;/a&gt;虚拟文件系统结构（*）&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;VFS&lt;/strong&gt;&lt;br&gt;Linux系统可以支持多种文件系统，为此，必须使用一种统一的接口，这就是虚拟文件系统(VFS)。通过VFS将不同文件系统的实现细节隐藏起来，因而从外部看上去，所有的文件系统都是一样的。&lt;br&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/ln6.png&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;磁盘在linux下的标识&quot;&gt;&lt;a href=&quot;#磁盘在linux下的标识&quot; class=&quot;headerlink&quot; title=&quot;磁盘在linux下的标识&quot;&gt;&lt;/a&gt;磁盘在linux下的标识&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;前面连个字母表示分区所在设备的类型&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;hd: IDE硬盘&lt;/li&gt;
+&lt;li&gt;sd: SCSI硬盘（U盘）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;第三个字母表示分区在那个设备上&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;hda: 第一块IDE硬盘&lt;/li&gt;
+&lt;li&gt;sda: 第一块SCSI硬盘&lt;/li&gt;
+&lt;li&gt;sdb: 第二块SCSI硬盘&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;数字表示分区的次序&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;hda1: 第一块IDE硬盘的第一个分区&lt;/li&gt;
+&lt;li&gt;sda1: 第一块SCSI硬盘的第一个分区&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;每一个硬盘最多可以有4个主分区， 因此&lt;em&gt;1-4&lt;/em&gt;的作用表示硬盘的主分区。逻辑分区是从数字5开始的，梅朵一个分区，数字加1即可。&lt;/p&gt;
+&lt;h3 id=&quot;如何挂载U盘&quot;&gt;&lt;a href=&quot;#如何挂载U盘&quot; class=&quot;headerlink&quot; title=&quot;如何挂载U盘&quot;&gt;&lt;/a&gt;如何挂载U盘&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;fdisk –l   // 查看挂载的U盘是什么标示&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cd /mnt    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mkdir usb  // 在mnt目录下创建挂载点usb目录&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mount –o iocharset=cp936 /dev/sdb1 /mnt/usb // 如有中文文件名乱码，执行该命令 -o&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;系统初始化过程分析（-）&quot;&gt;&lt;a href=&quot;#系统初始化过程分析（-）&quot; class=&quot;headerlink&quot; title=&quot;系统初始化过程分析（*）&quot;&gt;&lt;/a&gt;系统初始化过程分析（*）&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/ln7.png&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;进程管理&quot;&gt;&lt;a href=&quot;#进程管理&quot; class=&quot;headerlink&quot; title=&quot;进程管理&quot;&gt;&lt;/a&gt;进程管理&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;进程、父进程、子进程、程序概念&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Linux 系统上所有运行的东西都可以称之为一个进程。每个用户任务、每个系统管理任务，都可以称之为进程。进程是一个程序的运行。&lt;br&gt;程序只是一个静态的指令集合，不占系统的运行资源；而进程是一个随时都可能发生变化的、动态的、使用系统运行资源的程序。一个程序可以启动多个进程。&lt;br&gt;父进程和子进程是管理和被管理的关系。当父进程终止时，子进程也随之终止。但子进程终止，父进程并不一定终止。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;At的使用&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在shell提示符下输入”at 时间”，然后按回车键。这时在下一行shell会等待用户继续输入要执行的命令。每一行输入一个命令，所有命令都输入完毕后按Ctrl+d键结束。&lt;br&gt;将各个命令写入shell脚本中，然后使用下面格式设置在指定时间执行shell脚本中的命令：&lt;br&gt;at 时间 –f 脚本文件&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Cron的使用（*）&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;cron 命令在系统启动时由一个 shell 脚本自动启动，进入后台。&lt;br&gt;cron 启动后搜索/var/spool/cron 目录，寻找以/etc/passwd 文件中的用户名命名的&lt;br&gt;crontab 文件，被找到的这种文件将载入内存。&lt;br&gt;如果没有 crontab 文件，就转入“休眠”状态，释放系统资源。&lt;br&gt;cron 每分钟“醒”过来一次，查看当前是否有需要运行的命令。&lt;br&gt;如果发现某个用户设置了 crontab 文件，它将以该用户的身份去运行文件中指定的命&lt;br&gt;令。命令执行结束后，任何输出都将作为邮件发送给 crontab 的所有者，或者/etc/crontab&lt;br&gt;文件中 MAILTO 环境变量中指定的用户。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;crontab 文件固定的格式：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;f1 f2 f3 f4 f5 program&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;f1:表示分钟，00-59&lt;br&gt;f2:表示小时，00-24&lt;br&gt;f3:表示一个月的第几天，01-31&lt;br&gt;f4:表示月份，01-12&lt;br&gt;f5:表示一周的第几天，0-6&lt;br&gt;program: 表示要执行的程序&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;f1为*：表示每分钟要执行program&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;f1为a-b：表示从a-b分钟要执行program&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;f1为*/n：表示每n分钟要执行program&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;f1为a,b,c,...：表示第a,b,c,..要执行program&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Grep命令的使用,-v,-w,^d,^-&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;　grep（global search regular expression(RE) and print out the line，全面搜索正则表达式并把行打印出来）是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹配的行打印出来。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;-v 反转查找。
+-w 只显示全字符合的列。
+^：匹配正则表达式的开始行
+-d&amp;lt;进行动作&amp;gt; 当指定要查找的是目录而非文件时，必须使用这项参数，否则grep命令将回报信息并停止动作
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Awk命令的使用,awk ‘{print $2}’&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;网络管理&quot;&gt;&lt;a href=&quot;#网络管理&quot; class=&quot;headerlink&quot; title=&quot;网络管理&quot;&gt;&lt;/a&gt;网络管理&lt;/h2&gt;&lt;h3 id=&quot;如何配置机器的ip，如何查看（ifconfig用法）&quot;&gt;&lt;a href=&quot;#如何配置机器的ip，如何查看（ifconfig用法）&quot; class=&quot;headerlink&quot; title=&quot;如何配置机器的ip，如何查看（ifconfig用法）&quot;&gt;&lt;/a&gt;如何配置机器的ip，如何查看（ifconfig用法）&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;使用终端命令ifconfig方便地查看系统目前所有活跃的网络接口的详细信息&lt;br&gt;例如：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ifconfig     // 查看所有接口信息（包括接口对应IP）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ifconfig eth0  // 查看指定接口信息（包括接口对应IP）&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;设置机器的接口IP&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ifconfig &amp;lt;设备名&amp;gt; &amp;lt;IP地址&amp;gt; netmask &amp;lt;掩码&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 例如&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ifconfig eth0 192.168.15.11 netmask 255.255.255.0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;fconfig eth1 21.156.299.13 netmask 255.255.255.0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ifconfig eth0:0 192.168.17.21 netmask 255.255.255.0&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;网络相关配置文件有哪些，有何作用&quot;&gt;&lt;a href=&quot;#网络相关配置文件有哪些，有何作用&quot; class=&quot;headerlink&quot; title=&quot;网络相关配置文件有哪些，有何作用&quot;&gt;&lt;/a&gt;网络相关配置文件有哪些，有何作用&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/ln8.png&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;ftp服务配置、启动、停止&quot;&gt;&lt;a href=&quot;#ftp服务配置、启动、停止&quot; class=&quot;headerlink&quot; title=&quot;ftp服务配置、启动、停止&quot;&gt;&lt;/a&gt;ftp服务配置、启动、停止&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;[root@localhost log]#setsebool -P ftpd_disable_trans on&lt;br&gt;[root@localhost log]#setsebool -P ftp_home_dir on&lt;br&gt;service vsftpd [start|stop|restart] 或者 /etc/rc.d/init.d/vsftpd [start|stop|restart]&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;telnet-服务配置、启动、停止&quot;&gt;&lt;a href=&quot;#telnet-服务配置、启动、停止&quot; class=&quot;headerlink&quot; title=&quot;telnet 服务配置、启动、停止&quot;&gt;&lt;/a&gt;telnet 服务配置、启动、停止&lt;/h3&gt;&lt;p&gt;完全由xinet控制&lt;/p&gt;
+&lt;h3 id=&quot;Xinetd-服务配置、启动、停止&quot;&gt;&lt;a href=&quot;#Xinetd-服务配置、启动、停止&quot; class=&quot;headerlink&quot; title=&quot;Xinetd 服务配置、启动、停止&quot;&gt;&lt;/a&gt;Xinetd 服务配置、启动、停止&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;配置文件&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;/etc/xinetd.conf：控制xinetd程序运行的配置文件。其中，提供了所有服务的缺省配置。&lt;br&gt;/etc/xinetd.d/*：该目录包括所有由xinetd程序启动的服务的配置文件，每个服务都有自己单独的配置文件，配置文件名与服务名一致。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;重启服务&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;service xinetd restart&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&quot;守护进程概念原理（-）&quot;&gt;&lt;a href=&quot;#守护进程概念原理（-）&quot; class=&quot;headerlink&quot; title=&quot;守护进程概念原理（*）&quot;&gt;&lt;/a&gt;守护进程概念原理（*）&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;在 Client/Server 模式下。服务器监听（ Listen）在一个特定的端口上等待客户连接。连接成功后服务器和客户端通过端口进行数据通信。守护进程的工作就是打开一个端口，并且等待（ Listen）进入连接。如果客户端产生一个连接请求，守护进程就创建（ Fork）一个子服务器响应这个连接，而主服务器继续监听其他的服务请求。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;网络服务独立模式与xinetd模式区别（-）&quot;&gt;&lt;a href=&quot;#网络服务独立模式与xinetd模式区别（-）&quot; class=&quot;headerlink&quot; title=&quot;网络服务独立模式与xinetd模式区别（*）&quot;&gt;&lt;/a&gt;网络服务独立模式与xinetd模式区别（*）&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/ln9.png&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/ln10.png&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;xinetd 能够同时监听多个指定的端口，在接受用户请求时，他能够根据用户请求的端口不同，启动不同的网络服务进程来处理这些用户请求。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;Shell编程（-）&quot;&gt;&lt;a href=&quot;#Shell编程（-）&quot; class=&quot;headerlink&quot; title=&quot;Shell编程（*）&quot;&gt;&lt;/a&gt;Shell编程（*）&lt;/h2&gt;&lt;h3 id=&quot;变量：自定义的变量、环境变量&quot;&gt;&lt;a href=&quot;#变量：自定义的变量、环境变量&quot; class=&quot;headerlink&quot; title=&quot;变量：自定义的变量、环境变量&quot;&gt;&lt;/a&gt;变量：自定义的变量、环境变量&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;自定义的变量&lt;/strong&gt;&lt;br&gt;变量＝值 （注意：等号两侧不能有空格）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;环境变量&lt;/strong&gt;&lt;br&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/ln11.png&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;程序结构：条件判断、循环结构、函数&quot;&gt;&lt;a href=&quot;#程序结构：条件判断、循环结构、函数&quot; class=&quot;headerlink&quot; title=&quot;程序结构：条件判断、循环结构、函数&quot;&gt;&lt;/a&gt;程序结构：条件判断、循环结构、函数&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;条件&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;常见的条件：&lt;br&gt;变量属性；&lt;br&gt;文件属性；&lt;br&gt;命令执行结果；&lt;br&gt;多种条件的逻辑组合；&lt;/p&gt;
+&lt;p&gt;判断结果的一般定义：&lt;br&gt;  真：0&lt;br&gt;  假：1&lt;/p&gt;
+&lt;p&gt;格式：&lt;br&gt;  test condition&lt;br&gt;  [ condition ]&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;循环结构&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;for循环&lt;br&gt;while循环与until循环&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;函数&lt;/strong&gt;&lt;br&gt;定义：&lt;br&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/ln12.png&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;br&gt;引用：&lt;br&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/ln13.png&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;如何执行&quot;&gt;&lt;a href=&quot;#如何执行&quot; class=&quot;headerlink&quot; title=&quot;如何执行&quot;&gt;&lt;/a&gt;如何执行&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;/bin/sh filename&lt;br&gt;或给该文件属性添加执行权限 chmod +x filename，然后直接执行 ./ filename&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;文件属性的判断、字符串属性和整数关系的判断&quot;&gt;&lt;a href=&quot;#文件属性的判断、字符串属性和整数关系的判断&quot; class=&quot;headerlink&quot; title=&quot;文件属性的判断、字符串属性和整数关系的判断&quot;&gt;&lt;/a&gt;文件属性的判断、字符串属性和整数关系的判断&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;文件&lt;/strong&gt;&lt;br&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/ln14.png&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;字符串&lt;/strong&gt;&lt;br&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/ln15.png&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;整数&lt;/strong&gt;&lt;br&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/ln16.png&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;函数使用、shift&quot;&gt;&lt;a href=&quot;#函数使用、shift&quot; class=&quot;headerlink&quot; title=&quot;函数使用、shift&quot;&gt;&lt;/a&gt;函数使用、shift&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/ln17.png&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;一晃眼，期末再次来临，各种考试也接踵而至。考试是一学期的浪荡再加3天苦读，相信这是很多大学生的4年状态。而考完后，这些挤压在脑壳中的字符就像被格式化一般，最后一无所有。所以为了在Linux这门课上留下点什么，在此记录。（参照老邝PPT所给考点归纳，貌似依旧应试）&lt;/p&gt;
+&lt;h2 id=&quot;Linux、类unix基本常识&quot;&gt;&lt;a href=&quot;#Linux、类unix基本常识&quot; class=&quot;headerlink&quot; title=&quot;Linux、类unix基本常识&quot;&gt;&lt;/a&gt;Linux、类unix基本常识&lt;/h2&gt;&lt;h3 id=&quot;什么是linux&quot;&gt;&lt;a href=&quot;#什么是linux&quot; class=&quot;headerlink&quot; title=&quot;什么是linux&quot;&gt;&lt;/a&gt;什么是linux&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;是一个类UNIX内核的可以自由发布的实现版本，是一个操作系统的底层核心&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Linux的特性&quot;&gt;&lt;a href=&quot;#Linux的特性&quot; class=&quot;headerlink&quot; title=&quot;Linux的特性&quot;&gt;&lt;/a&gt;Linux的特性&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;可以获得内核源代码，编译并安装，然后获得并安装许多其他自由发布的软件，从而创建一个完整的Linux，通常称为Linux系统&lt;/li&gt;
+&lt;li&gt;Linux发行版&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;GNU、GPL概念&quot;&gt;&lt;a href=&quot;#GNU、GPL概念&quot; class=&quot;headerlink&quot; title=&quot;GNU、GPL概念&quot;&gt;&lt;/a&gt;GNU、GPL概念&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;GNU&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1983 年 Richard Stallman(自由软件业的精神教父) 创办 GNU(GNU’s not Unix)计划&lt;/li&gt;
+&lt;li&gt;旨在发展一個类-Unix 且为 自由软件 的完整操作系統&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;GPL&lt;/strong&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://Mrzzchao.github.io/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://Mrzzchao.github.io/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
     <title>chrome禁止本地浏览时加载本地其他文件</title>
     <link href="http://Mrzzchao.github.io/2016/05/15/chrome%E7%A6%81%E6%AD%A2%E6%9C%AC%E5%9C%B0%E6%B5%8F%E8%A7%88%E6%97%B6%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0%E5%85%B6%E4%BB%96%E6%96%87%E4%BB%B6-md/"/>
     <id>http://Mrzzchao.github.io/2016/05/15/chrome禁止本地浏览时加载本地其他文件-md/</id>
     <published>2016-05-15T06:53:18.000Z</published>
-    <updated>2016-05-15T07:12:29.202Z</updated>
+    <updated>2016-05-15T07:18:54.261Z</updated>
     
     <content type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在学习Angular的&lt;strong&gt;step-5&lt;/strong&gt;中，遇到了一个问题&lt;br&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;angular.js:&lt;span class=&quot;number&quot;&gt;11028&lt;/span&gt; XMLHttpRequest cannot load&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;file:&lt;span class=&quot;comment&quot;&gt;///E:/%E9%A1%B9%E7%9B%AE/public/angular-phonecat/app/phones/phones.json.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Cross origin requests are only supported &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; protocol schemes: http, data, chrome, chrome-extension, https, chrome-extension-resource.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;研究发现该问题在&lt;strong&gt;fixfox&lt;/strong&gt;里面没有出现，所以锁定了&lt;em&gt;chrome禁止本地浏览时加载本地其他文件&lt;/em&gt;的搜索关键字&lt;/p&gt;
@@ -686,6 +1004,265 @@ hexo d == hexo deploy
   </entry>
   
   <entry>
+    <title>css字体名称</title>
+    <link href="http://Mrzzchao.github.io/2016/03/20/%E5%AD%97%E4%BD%93%E5%90%8D%E7%A7%B0/"/>
+    <id>http://Mrzzchao.github.io/2016/03/20/字体名称/</id>
+    <published>2016-03-20T07:30:03.000Z</published>
+    <updated>2016-04-17T12:29:48.729Z</updated>
+    
+    <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;h2 id=&quot;Mac&quot;&gt;&lt;a href=&quot;#Mac&quot; class=&quot;headerlink&quot; title=&quot;Mac&quot;&gt;&lt;/a&gt;Mac&lt;/h2&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;中文名&lt;/th&gt;
+&lt;th&gt;英文名&lt;/th&gt;
+&lt;th&gt;Unicode&lt;/th&gt;
+&lt;th&gt;Unicode 2&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;华文细黑&lt;/td&gt;
+&lt;td&gt;STHeiti Light [STXihei]&lt;/td&gt;
+&lt;td&gt;\534E\6587\7EC6\9ED1&lt;/td&gt;
+&lt;td&gt;华文细黑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文黑体&lt;/td&gt;
+&lt;td&gt;STHeiti&lt;/td&gt;
+&lt;td&gt;\534E\6587\9ED1\4F53&lt;/td&gt;
+&lt;td&gt;华文黑体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文楷体&lt;/td&gt;
+&lt;td&gt;STKaiti&lt;/td&gt;
+&lt;td&gt;\534E\6587\6977\4F53&lt;/td&gt;
+&lt;td&gt;华文楷体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文宋体&lt;/td&gt;
+&lt;td&gt;STSong&lt;/td&gt;
+&lt;td&gt;\534E\6587\5B8B\4F53&lt;/td&gt;
+&lt;td&gt;华文宋体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文仿宋&lt;/td&gt;
+&lt;td&gt;STFangsong&lt;/td&gt;
+&lt;td&gt;\534E\6587\4EFF\5B8B&lt;/td&gt;
+&lt;td&gt;华文仿宋&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;丽黑 Pro&lt;/td&gt;
+&lt;td&gt;LiHei Pro Medium&lt;/td&gt;
+&lt;td&gt;\4E3D\9ED1 Pro&lt;/td&gt;
+&lt;td&gt;丽黑 Pro&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;丽宋 Pro&lt;/td&gt;
+&lt;td&gt;LiSong Pro Light&lt;/td&gt;
+&lt;td&gt;\4E3D\5B8B Pro&lt;/td&gt;
+&lt;td&gt;丽宋 Pro&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;标楷体&lt;/td&gt;
+&lt;td&gt;BiauKai&lt;/td&gt;
+&lt;td&gt;\6807\6977\4F53&lt;/td&gt;
+&lt;td&gt;标楷体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;苹果丽中黑&lt;/td&gt;
+&lt;td&gt;Apple LiGothic Medium&lt;/td&gt;
+&lt;td&gt;\82F9\679C\4E3D\4E2D\9ED1&lt;/td&gt;
+&lt;td&gt;苹果丽中黑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;苹果丽细宋&lt;/td&gt;
+&lt;td&gt;Apple LiSung Light&lt;/td&gt;
+&lt;td&gt;\82F9\679C\4E3D\7EC6\5B8B&lt;/td&gt;
+&lt;td&gt;苹果丽细宋&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;h2 id=&quot;Window&quot;&gt;&lt;a href=&quot;#Window&quot; class=&quot;headerlink&quot; title=&quot;Window&quot;&gt;&lt;/a&gt;Window&lt;/h2&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;中文名&lt;/th&gt;
+&lt;th&gt;英文名&lt;/th&gt;
+&lt;th&gt;Unicode&lt;/th&gt;
+&lt;th&gt;Unicode 2&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;新细明体&lt;/td&gt;
+&lt;td&gt;PMingLiU&lt;/td&gt;
+&lt;td&gt;\65B0\7EC6\660E\4F53&lt;/td&gt;
+&lt;td&gt;新细明体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;细明体&lt;/td&gt;
+&lt;td&gt;MingLiU&lt;/td&gt;
+&lt;td&gt;\7EC6\660E\4F53&lt;/td&gt;
+&lt;td&gt;细明体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;标楷体&lt;/td&gt;
+&lt;td&gt;DFKai-SB&lt;/td&gt;
+&lt;td&gt;\6807\6977\4F53&lt;/td&gt;
+&lt;td&gt;标楷体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;黑体&lt;/td&gt;
+&lt;td&gt;SimHei&lt;/td&gt;
+&lt;td&gt;\9ED1\4F53&lt;/td&gt;
+&lt;td&gt;黑体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;宋体&lt;/td&gt;
+&lt;td&gt;SimSun&lt;/td&gt;
+&lt;td&gt;\5B8B\4F53&lt;/td&gt;
+&lt;td&gt;宋体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;新宋体&lt;/td&gt;
+&lt;td&gt;NSimSun&lt;/td&gt;
+&lt;td&gt;\65B0\5B8B\4F53&lt;/td&gt;
+&lt;td&gt;新宋体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;仿宋&lt;/td&gt;
+&lt;td&gt;FangSong&lt;/td&gt;
+&lt;td&gt;\4EFF\5B8B&lt;/td&gt;
+&lt;td&gt;仿宋&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;楷体&lt;/td&gt;
+&lt;td&gt;KaiTi&lt;/td&gt;
+&lt;td&gt;\6977\4F53&lt;/td&gt;
+&lt;td&gt;楷体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;仿宋_GB2312&lt;/td&gt;
+&lt;td&gt;FangSong_GB2312&lt;/td&gt;
+&lt;td&gt;\4EFF\5B8B_GB2312&lt;/td&gt;
+&lt;td&gt;仿宋_GB2312&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;楷体_GB2312&lt;/td&gt;
+&lt;td&gt;KaiTi_GB2312&lt;/td&gt;
+&lt;td&gt;\6977\4F53_GB2312&lt;/td&gt;
+&lt;td&gt;楷体_GB2312&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;微软正黑体&lt;/td&gt;
+&lt;td&gt;Microsoft JhengHei&lt;/td&gt;
+&lt;td&gt;\5FAE\x8F6F\6B63\9ED1\4F53&lt;/td&gt;
+&lt;td&gt;微软正黑体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;微软雅黑&lt;/td&gt;
+&lt;td&gt;Microsoft YaHei&lt;/td&gt;
+&lt;td&gt;\5FAE\8F6F\96C5\9ED1&lt;/td&gt;
+&lt;td&gt;微软雅黑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;&lt;h2 id=&quot;Mac&quot;&gt;&lt;a href=&quot;#Mac&quot; class=&quot;headerlink&quot; title=&quot;Mac&quot;&gt;&lt;/a&gt;Mac&lt;/h2&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;中文名&lt;/th&gt;
+&lt;th&gt;英文名&lt;/th&gt;
+&lt;th&gt;Unicode&lt;/th&gt;
+&lt;th&gt;Unicode 2&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;华文细黑&lt;/td&gt;
+&lt;td&gt;STHeiti Light [STXihei]&lt;/td&gt;
+&lt;td&gt;\534E\6587\7EC6\9ED1&lt;/td&gt;
+&lt;td&gt;华文细黑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文黑体&lt;/td&gt;
+&lt;td&gt;STHeiti&lt;/td&gt;
+&lt;td&gt;\534E\6587\9ED1\4F53&lt;/td&gt;
+&lt;td&gt;华文黑体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文楷体&lt;/td&gt;
+&lt;td&gt;STKaiti&lt;/td&gt;
+&lt;td&gt;\534E\6587\6977\4F53&lt;/td&gt;
+&lt;td&gt;华文楷体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文宋体&lt;/td&gt;
+&lt;td&gt;STSong&lt;/td&gt;
+&lt;td&gt;\534E\6587\5B8B\4F53&lt;/td&gt;
+&lt;td&gt;华文宋体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文仿宋&lt;/td&gt;
+&lt;td&gt;STFangsong&lt;/td&gt;
+&lt;td&gt;\534E\6587\4EFF\5B8B&lt;/td&gt;
+&lt;td&gt;华文仿宋&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;丽黑 Pro&lt;/td&gt;
+&lt;td&gt;LiHei Pro Medium&lt;/td&gt;
+&lt;td&gt;\4E3D\9ED1 Pro&lt;/td&gt;
+&lt;td&gt;丽黑 Pro&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;丽宋 Pro&lt;/td&gt;
+&lt;td&gt;LiSong Pro Light&lt;/td&gt;
+&lt;td&gt;\4E3D\5B8B Pro&lt;/td&gt;
+&lt;td&gt;丽宋 Pro&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;标楷体&lt;/td&gt;
+&lt;td&gt;BiauKai&lt;/td&gt;
+&lt;td&gt;\6807\6977\4F53&lt;/td&gt;
+&lt;td&gt;标楷体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;苹果丽中黑&lt;/td&gt;
+&lt;td&gt;Apple LiGothic Medium&lt;/td&gt;
+&lt;td&gt;\82F9\679C\4E3D\4E2D\9ED1&lt;/td&gt;
+&lt;td&gt;苹果丽中黑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;苹果丽细宋&lt;/td&gt;
+&lt;td&gt;Apple LiSung Light&lt;/td&gt;
+&lt;td&gt;\82F9\679C\4E3D\7EC6\5B8B&lt;/td&gt;
+&lt;td&gt;苹果丽细宋&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+    
+    </summary>
+    
+      <category term="CSS" scheme="http://Mrzzchao.github.io/categories/CSS/"/>
+    
+    
+      <category term="Font-Name" scheme="http://Mrzzchao.github.io/tags/Font-Name/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JavaScript基础知识点</title>
     <link href="http://Mrzzchao.github.io/2016/03/20/javascript%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/"/>
     <id>http://Mrzzchao.github.io/2016/03/20/javascript简明教程/</id>
@@ -984,265 +1561,6 @@ hexo d == hexo deploy
     
       <category term="JavaScript" scheme="http://Mrzzchao.github.io/categories/JavaScript/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>css字体名称</title>
-    <link href="http://Mrzzchao.github.io/2016/03/20/%E5%AD%97%E4%BD%93%E5%90%8D%E7%A7%B0/"/>
-    <id>http://Mrzzchao.github.io/2016/03/20/字体名称/</id>
-    <published>2016-03-20T07:30:03.000Z</published>
-    <updated>2016-04-17T12:29:48.729Z</updated>
-    
-    <content type="html">&lt;ul&gt;
-&lt;li&gt;&lt;h2 id=&quot;Mac&quot;&gt;&lt;a href=&quot;#Mac&quot; class=&quot;headerlink&quot; title=&quot;Mac&quot;&gt;&lt;/a&gt;Mac&lt;/h2&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;中文名&lt;/th&gt;
-&lt;th&gt;英文名&lt;/th&gt;
-&lt;th&gt;Unicode&lt;/th&gt;
-&lt;th&gt;Unicode 2&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;华文细黑&lt;/td&gt;
-&lt;td&gt;STHeiti Light [STXihei]&lt;/td&gt;
-&lt;td&gt;\534E\6587\7EC6\9ED1&lt;/td&gt;
-&lt;td&gt;华文细黑&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;华文黑体&lt;/td&gt;
-&lt;td&gt;STHeiti&lt;/td&gt;
-&lt;td&gt;\534E\6587\9ED1\4F53&lt;/td&gt;
-&lt;td&gt;华文黑体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;华文楷体&lt;/td&gt;
-&lt;td&gt;STKaiti&lt;/td&gt;
-&lt;td&gt;\534E\6587\6977\4F53&lt;/td&gt;
-&lt;td&gt;华文楷体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;华文宋体&lt;/td&gt;
-&lt;td&gt;STSong&lt;/td&gt;
-&lt;td&gt;\534E\6587\5B8B\4F53&lt;/td&gt;
-&lt;td&gt;华文宋体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;华文仿宋&lt;/td&gt;
-&lt;td&gt;STFangsong&lt;/td&gt;
-&lt;td&gt;\534E\6587\4EFF\5B8B&lt;/td&gt;
-&lt;td&gt;华文仿宋&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;丽黑 Pro&lt;/td&gt;
-&lt;td&gt;LiHei Pro Medium&lt;/td&gt;
-&lt;td&gt;\4E3D\9ED1 Pro&lt;/td&gt;
-&lt;td&gt;丽黑 Pro&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;丽宋 Pro&lt;/td&gt;
-&lt;td&gt;LiSong Pro Light&lt;/td&gt;
-&lt;td&gt;\4E3D\5B8B Pro&lt;/td&gt;
-&lt;td&gt;丽宋 Pro&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;标楷体&lt;/td&gt;
-&lt;td&gt;BiauKai&lt;/td&gt;
-&lt;td&gt;\6807\6977\4F53&lt;/td&gt;
-&lt;td&gt;标楷体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;苹果丽中黑&lt;/td&gt;
-&lt;td&gt;Apple LiGothic Medium&lt;/td&gt;
-&lt;td&gt;\82F9\679C\4E3D\4E2D\9ED1&lt;/td&gt;
-&lt;td&gt;苹果丽中黑&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;苹果丽细宋&lt;/td&gt;
-&lt;td&gt;Apple LiSung Light&lt;/td&gt;
-&lt;td&gt;\82F9\679C\4E3D\7EC6\5B8B&lt;/td&gt;
-&lt;td&gt;苹果丽细宋&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;h2 id=&quot;Window&quot;&gt;&lt;a href=&quot;#Window&quot; class=&quot;headerlink&quot; title=&quot;Window&quot;&gt;&lt;/a&gt;Window&lt;/h2&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;中文名&lt;/th&gt;
-&lt;th&gt;英文名&lt;/th&gt;
-&lt;th&gt;Unicode&lt;/th&gt;
-&lt;th&gt;Unicode 2&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;新细明体&lt;/td&gt;
-&lt;td&gt;PMingLiU&lt;/td&gt;
-&lt;td&gt;\65B0\7EC6\660E\4F53&lt;/td&gt;
-&lt;td&gt;新细明体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;细明体&lt;/td&gt;
-&lt;td&gt;MingLiU&lt;/td&gt;
-&lt;td&gt;\7EC6\660E\4F53&lt;/td&gt;
-&lt;td&gt;细明体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;标楷体&lt;/td&gt;
-&lt;td&gt;DFKai-SB&lt;/td&gt;
-&lt;td&gt;\6807\6977\4F53&lt;/td&gt;
-&lt;td&gt;标楷体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;黑体&lt;/td&gt;
-&lt;td&gt;SimHei&lt;/td&gt;
-&lt;td&gt;\9ED1\4F53&lt;/td&gt;
-&lt;td&gt;黑体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;宋体&lt;/td&gt;
-&lt;td&gt;SimSun&lt;/td&gt;
-&lt;td&gt;\5B8B\4F53&lt;/td&gt;
-&lt;td&gt;宋体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;新宋体&lt;/td&gt;
-&lt;td&gt;NSimSun&lt;/td&gt;
-&lt;td&gt;\65B0\5B8B\4F53&lt;/td&gt;
-&lt;td&gt;新宋体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;仿宋&lt;/td&gt;
-&lt;td&gt;FangSong&lt;/td&gt;
-&lt;td&gt;\4EFF\5B8B&lt;/td&gt;
-&lt;td&gt;仿宋&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;楷体&lt;/td&gt;
-&lt;td&gt;KaiTi&lt;/td&gt;
-&lt;td&gt;\6977\4F53&lt;/td&gt;
-&lt;td&gt;楷体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;仿宋_GB2312&lt;/td&gt;
-&lt;td&gt;FangSong_GB2312&lt;/td&gt;
-&lt;td&gt;\4EFF\5B8B_GB2312&lt;/td&gt;
-&lt;td&gt;仿宋_GB2312&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;楷体_GB2312&lt;/td&gt;
-&lt;td&gt;KaiTi_GB2312&lt;/td&gt;
-&lt;td&gt;\6977\4F53_GB2312&lt;/td&gt;
-&lt;td&gt;楷体_GB2312&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;微软正黑体&lt;/td&gt;
-&lt;td&gt;Microsoft JhengHei&lt;/td&gt;
-&lt;td&gt;\5FAE\x8F6F\6B63\9ED1\4F53&lt;/td&gt;
-&lt;td&gt;微软正黑体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;微软雅黑&lt;/td&gt;
-&lt;td&gt;Microsoft YaHei&lt;/td&gt;
-&lt;td&gt;\5FAE\8F6F\96C5\9ED1&lt;/td&gt;
-&lt;td&gt;微软雅黑&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;&lt;h2 id=&quot;Mac&quot;&gt;&lt;a href=&quot;#Mac&quot; class=&quot;headerlink&quot; title=&quot;Mac&quot;&gt;&lt;/a&gt;Mac&lt;/h2&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;中文名&lt;/th&gt;
-&lt;th&gt;英文名&lt;/th&gt;
-&lt;th&gt;Unicode&lt;/th&gt;
-&lt;th&gt;Unicode 2&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;华文细黑&lt;/td&gt;
-&lt;td&gt;STHeiti Light [STXihei]&lt;/td&gt;
-&lt;td&gt;\534E\6587\7EC6\9ED1&lt;/td&gt;
-&lt;td&gt;华文细黑&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;华文黑体&lt;/td&gt;
-&lt;td&gt;STHeiti&lt;/td&gt;
-&lt;td&gt;\534E\6587\9ED1\4F53&lt;/td&gt;
-&lt;td&gt;华文黑体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;华文楷体&lt;/td&gt;
-&lt;td&gt;STKaiti&lt;/td&gt;
-&lt;td&gt;\534E\6587\6977\4F53&lt;/td&gt;
-&lt;td&gt;华文楷体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;华文宋体&lt;/td&gt;
-&lt;td&gt;STSong&lt;/td&gt;
-&lt;td&gt;\534E\6587\5B8B\4F53&lt;/td&gt;
-&lt;td&gt;华文宋体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;华文仿宋&lt;/td&gt;
-&lt;td&gt;STFangsong&lt;/td&gt;
-&lt;td&gt;\534E\6587\4EFF\5B8B&lt;/td&gt;
-&lt;td&gt;华文仿宋&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;丽黑 Pro&lt;/td&gt;
-&lt;td&gt;LiHei Pro Medium&lt;/td&gt;
-&lt;td&gt;\4E3D\9ED1 Pro&lt;/td&gt;
-&lt;td&gt;丽黑 Pro&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;丽宋 Pro&lt;/td&gt;
-&lt;td&gt;LiSong Pro Light&lt;/td&gt;
-&lt;td&gt;\4E3D\5B8B Pro&lt;/td&gt;
-&lt;td&gt;丽宋 Pro&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;标楷体&lt;/td&gt;
-&lt;td&gt;BiauKai&lt;/td&gt;
-&lt;td&gt;\6807\6977\4F53&lt;/td&gt;
-&lt;td&gt;标楷体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;苹果丽中黑&lt;/td&gt;
-&lt;td&gt;Apple LiGothic Medium&lt;/td&gt;
-&lt;td&gt;\82F9\679C\4E3D\4E2D\9ED1&lt;/td&gt;
-&lt;td&gt;苹果丽中黑&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;苹果丽细宋&lt;/td&gt;
-&lt;td&gt;Apple LiSung Light&lt;/td&gt;
-&lt;td&gt;\82F9\679C\4E3D\7EC6\5B8B&lt;/td&gt;
-&lt;td&gt;苹果丽细宋&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-    
-    </summary>
-    
-      <category term="CSS" scheme="http://Mrzzchao.github.io/categories/CSS/"/>
-    
-    
-      <category term="Font-Name" scheme="http://Mrzzchao.github.io/tags/Font-Name/"/>
     
   </entry>
   
