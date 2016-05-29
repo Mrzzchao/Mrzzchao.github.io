@@ -113,7 +113,7 @@
 <meta property="og:image" content="http://7xrul1.com1.z0.glb.clouddn.com/ln21.png">
 <meta property="og:image" content="http://7xrul1.com1.z0.glb.clouddn.com/ln21.jpg">
 <meta property="og:image" content="http://7xrul1.com1.z0.glb.clouddn.com/ln22.jpg">
-<meta property="og:updated_time" content="2016-05-29T14:40:42.185Z">
+<meta property="og:updated_time" content="2016-05-29T15:51:36.745Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux期末复习">
 <meta name="twitter:description" content="前言一晃眼，期末再次来临，各种考试也接踵而至。考试是一学期的浪荡再加3天苦读，相信这是很多大学生的4年状态。而考完后，这些挤压在脑壳中的字符就像被格式化一般，最后一无所有。所以为了在Linux这门课上留下点什么，在此记录。（参照老邝PPT所给考点归纳，貌似依旧应试）
@@ -378,7 +378,7 @@
 <li>1983 年 Richard Stallman(自由软件业的精神教父) 创办 GNU(GNU’s not Unix)计划</li>
 <li>旨在发展一個类-Unix 且为 自由软件 的完整操作系統</li>
 </ul>
-<p><strong>GPL</strong><br><a id="more"></a></p>
+<p><strong>GPL</strong></p>
 <ul>
 <li>GNU GPL（GNU General Public License，通用公共许可证）是一个广泛被使用的自由软件许可证，最初由理查德·斯托曼为GNU计划而撰写</li>
 <li>在GPL中有一个关键的概念就是Copyleft。GPL规定，再发行权的授予需要许可证接受人公开软件的源代码及所有修改，而且复制件、修改版本都必须以GPL为许可证。这些要求就是Copyleft，它的基础就是作品在法律上版权所有</li>
@@ -469,9 +469,7 @@
 <li>shutdown –h now</li>
 <li>halt</li>
 <li>poweroff</li>
-<li>init 0</li>
-</ul>
-<h3 id="重新启动"><a href="#重新启动" class="headerlink" title="重新启动"></a>重新启动</h3><ul>
+<li>init 0<h3 id="重新启动"><a href="#重新启动" class="headerlink" title="重新启动"></a>重新启动</h3></li>
 <li>shutdown –r now</li>
 <li>reboot</li>
 <li>init 6</li>
@@ -509,7 +507,7 @@
 </blockquote>
 <p><strong>如何计算</strong></p>
 <blockquote>
-<p>rwx 可读可写可执行。 r=4,w=2,x=1, - =0;<br>每一组的权限值各个位相加，例如 <em>-rwxrwx—</em> 计算得777</p>
+<p>rwx 可读可写可执行。 r=4,w=2,x=1, - =0;<br>每一组的权限值各个位相加，例如 <em>-rwxrwx—</em> 计算得770</p>
 </blockquote>
 <h3 id="有多少种文件类型，如何辨别"><a href="#有多少种文件类型，如何辨别" class="headerlink" title="有多少种文件类型，如何辨别"></a>有多少种文件类型，如何辨别</h3><ul>
 <li><p>正规文件( regular file )<br>第一个属性为 [ - ]<br>纯文字文件(ascii)<br>二进制文件(binary)　</p>
@@ -539,12 +537,12 @@
 <h2 id="系统管理"><a href="#系统管理" class="headerlink" title="系统管理"></a>系统管理</h2><h3 id="挂载的概念"><a href="#挂载的概念" class="headerlink" title="挂载的概念"></a>挂载的概念</h3><p>如果要使用 USB 存储设备、光盘或软盘等存储设备，必须将这些设备中的“小”目录树像嫁接一样挂载（ mount）到 Linux 系统的“大”目录树中。</p>
 <h3 id="文件系统类型"><a href="#文件系统类型" class="headerlink" title="文件系统类型"></a>文件系统类型</h3><p>ext、 ext2、 ext3、 ext4、 HPFS、 iso9660、 VFAT、 MINIX、 MSDOS、 NTFS</p>
 <h3 id="虚拟文件系统结构（-）"><a href="#虚拟文件系统结构（-）" class="headerlink" title="虚拟文件系统结构（*）"></a>虚拟文件系统结构（*）</h3><p><strong>VFS</strong><br>Linux系统可以支持多种文件系统，为此，必须使用一种统一的接口，这就是虚拟文件系统(VFS)。通过VFS将不同文件系统的实现细节隐藏起来，因而从外部看上去，所有的文件系统都是一样的。<br><img src="http://7xrul1.com1.z0.glb.clouddn.com/ln6.png" alt="此处输入图片的描述"></p>
-<h3 id="磁盘在linux下的标识"><a href="#磁盘在linux下的标识" class="headerlink" title="磁盘在linux下的标识"></a>磁盘在linux下的标识</h3><p><strong>前面连个字母表示分区所在设备的类型</strong></p>
+<h3 id="磁盘在linux下的标识"><a href="#磁盘在linux下的标识" class="headerlink" title="磁盘在linux下的标识"></a>磁盘在linux下的标识</h3><p><strong>前面两个字母表示分区所在设备的类型</strong></p>
 <ul>
 <li>hd: IDE硬盘</li>
 <li>sd: SCSI硬盘（U盘）</li>
 </ul>
-<p><strong>第三个字母表示分区在那个设备上</strong></p>
+<p><strong>第三个字母表示分区在哪个设备上</strong></p>
 <ul>
 <li>hda: 第一块IDE硬盘</li>
 <li>sda: 第一块SCSI硬盘</li>
@@ -555,7 +553,7 @@
 <li>hda1: 第一块IDE硬盘的第一个分区</li>
 <li>sda1: 第一块SCSI硬盘的第一个分区</li>
 </ul>
-<p>每一个硬盘最多可以有4个主分区， 因此<em>1-4</em>的作用表示硬盘的主分区。逻辑分区是从数字5开始的，梅朵一个分区，数字加1即可。</p>
+<p>每一个硬盘最多可以有4个主分区， 因此<em>1-4</em>的作用表示硬盘的主分区。逻辑分区是从数字5开始的，每多一个分区，数字加1即可。</p>
 <h3 id="如何挂载U盘"><a href="#如何挂载U盘" class="headerlink" title="如何挂载U盘"></a>如何挂载U盘</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fdisk –l   // 查看挂载的U盘是什么标示</span><br><span class="line">cd /mnt    </span><br><span class="line">mkdir usb  // 在mnt目录下创建挂载点usb目录</span><br><span class="line">mount –o iocharset=cp936 /dev/sdb1 /mnt/usb // 如有中文文件名乱码，执行该命令 -o</span><br></pre></td></tr></table></figure>
 <h3 id="系统初始化过程分析（-）"><a href="#系统初始化过程分析（-）" class="headerlink" title="系统初始化过程分析（*）"></a>系统初始化过程分析（*）</h3><p><img src="http://7xrul1.com1.z0.glb.clouddn.com/ln7.png" alt="此处输入图片的描述"></p>
 <h3 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h3><ul>
