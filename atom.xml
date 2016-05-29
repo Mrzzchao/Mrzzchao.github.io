@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://Mrzzchao.github.io/"/>
-  <updated>2016-05-28T09:44:43.565Z</updated>
+  <updated>2016-05-29T03:27:21.921Z</updated>
   <id>http://Mrzzchao.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://Mrzzchao.github.io/2016/05/28/Linux%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/"/>
     <id>http://Mrzzchao.github.io/2016/05/28/Linux期末复习/</id>
     <published>2016-05-28T09:24:02.000Z</published>
-    <updated>2016-05-28T09:44:43.565Z</updated>
+    <updated>2016-05-29T03:27:21.921Z</updated>
     
     <content type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;一晃眼，期末再次来临，各种考试也接踵而至。考试是一学期的浪荡再加3天苦读，相信这是很多大学生的4年状态。而考完后，这些挤压在脑壳中的字符就像被格式化一般，最后一无所有。所以为了在Linux这门课上留下点什么，在此记录。（参照老邝PPT所给考点归纳，貌似依旧应试）&lt;/p&gt;
 &lt;h2 id=&quot;Linux、类unix基本常识&quot;&gt;&lt;a href=&quot;#Linux、类unix基本常识&quot; class=&quot;headerlink&quot; title=&quot;Linux、类unix基本常识&quot;&gt;&lt;/a&gt;Linux、类unix基本常识&lt;/h2&gt;&lt;h3 id=&quot;什么是linux&quot;&gt;&lt;a href=&quot;#什么是linux&quot; class=&quot;headerlink&quot; title=&quot;什么是linux&quot;&gt;&lt;/a&gt;什么是linux&lt;/h3&gt;&lt;ul&gt;
@@ -36,7 +36,6 @@
 &lt;li&gt;旨在发展一個类-Unix 且为 自由软件 的完整操作系統&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;GPL&lt;/strong&gt;&lt;/p&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;GNU GPL（GNU General Public License，通用公共许可证）是一个广泛被使用的自由软件许可证，最初由理查德·斯托曼为GNU计划而撰写&lt;/li&gt;
 &lt;li&gt;在GPL中有一个关键的概念就是Copyleft。GPL规定，再发行权的授予需要许可证接受人公开软件的源代码及所有修改，而且复制件、修改版本都必须以GPL为许可证。这些要求就是Copyleft，它的基础就是作品在法律上版权所有&lt;/li&gt;
@@ -50,11 +49,13 @@
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;稳定版本：偶数 — 2.6.12&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;最新内核：奇数 — 3.4.1&lt;h3 id=&quot;Linux各个目录的意义&quot;&gt;&lt;a href=&quot;#Linux各个目录的意义&quot; class=&quot;headerlink&quot; title=&quot;Linux各个目录的意义&quot;&gt;&lt;/a&gt;Linux各个目录的意义&lt;/h3&gt;以目录的方式来组织和管理系统中的所有文件&lt;br&gt;以根目录“/”为起点，所有其他的目录都由根目录派生而来  &lt;/li&gt;
+&lt;li&gt;最新内核：奇数 — 3.4.1&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h3 id=&quot;Linux各个目录的意义&quot;&gt;&lt;a href=&quot;#Linux各个目录的意义&quot; class=&quot;headerlink&quot; title=&quot;Linux各个目录的意义&quot;&gt;&lt;/a&gt;Linux各个目录的意义&lt;/h3&gt;&lt;p&gt;以目录的方式来组织和管理系统中的所有文件&lt;br&gt;以根目录“/”为起点，所有其他的目录都由根目录派生而来  &lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/ln1.png&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/ln3.png&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/ln4.png&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;br&gt;&lt;strong&gt;/bin&lt;/strong&gt;&lt;br&gt;这一目录中存放了供所有用户使用的完成基本维护任务的命令。其中bin是binary的缩写，表示二进制文件，通常为可执行文件。一些常用的系统命令，如cp、ls等保存在该目录中。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/ln4.png&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/bin&lt;/strong&gt;&lt;br&gt;这一目录中存放了供所有用户使用的完成基本维护任务的命令。其中bin是binary的缩写，表示二进制文件，通常为可执行文件。一些常用的系统命令，如cp、ls等保存在该目录中。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;/boot&lt;/strong&gt;&lt;br&gt;这里存放的是启动Linux时使用的一些核心文件。如操作系统内核、引导程序Grub等。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;/dev&lt;/strong&gt;&lt;br&gt;在此目录中包含所有的系统设备文件。从此目录可以访问各种系统设备。如CD-ROM，磁盘驱动器，调制解调器和内存等。在该目录中还包含有各种实用功能，如用于创建设备文件的MAKEDEV。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;/etc&lt;/strong&gt;&lt;br&gt;该目录中包含系统和应用软件的配置文件。&lt;/p&gt;
@@ -125,9 +126,7 @@
 &lt;li&gt;shutdown –h now&lt;/li&gt;
 &lt;li&gt;halt&lt;/li&gt;
 &lt;li&gt;poweroff&lt;/li&gt;
-&lt;li&gt;init 0&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;重新启动&quot;&gt;&lt;a href=&quot;#重新启动&quot; class=&quot;headerlink&quot; title=&quot;重新启动&quot;&gt;&lt;/a&gt;重新启动&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;init 0&lt;h3 id=&quot;重新启动&quot;&gt;&lt;a href=&quot;#重新启动&quot; class=&quot;headerlink&quot; title=&quot;重新启动&quot;&gt;&lt;/a&gt;重新启动&lt;/h3&gt;&lt;/li&gt;
 &lt;li&gt;shutdown –r now&lt;/li&gt;
 &lt;li&gt;reboot&lt;/li&gt;
 &lt;li&gt;init 6&lt;/li&gt;
@@ -307,24 +306,57 @@
 &lt;li&gt;&lt;strong&gt;整数&lt;/strong&gt;&lt;br&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/ln16.png&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;函数使用、shift&quot;&gt;&lt;a href=&quot;#函数使用、shift&quot; class=&quot;headerlink&quot; title=&quot;函数使用、shift&quot;&gt;&lt;/a&gt;函数使用、shift&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/ln17.png&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;/p&gt;
-</content>
+&lt;h2 id=&quot;XWindow&quot;&gt;&lt;a href=&quot;#XWindow&quot; class=&quot;headerlink&quot; title=&quot;XWindow&quot;&gt;&lt;/a&gt;XWindow&lt;/h2&gt;&lt;h3 id=&quot;Xwindow概念&quot;&gt;&lt;a href=&quot;#Xwindow概念&quot; class=&quot;headerlink&quot; title=&quot;Xwindow概念&quot;&gt;&lt;/a&gt;Xwindow概念&lt;/h3&gt;&lt;p&gt;X Window 系统是一种以位图方式显示的软件窗口系统。&lt;/p&gt;
+&lt;h3 id=&quot;X-Window-的组成&quot;&gt;&lt;a href=&quot;#X-Window-的组成&quot; class=&quot;headerlink&quot; title=&quot;X Window 的组成&quot;&gt;&lt;/a&gt;X Window 的组成&lt;/h3&gt;&lt;p&gt;X Window 系统由三个基本元素组成： X Server、 X Client 和二者通信的通道。&lt;/p&gt;
+&lt;h3 id=&quot;原理（-）&quot;&gt;&lt;a href=&quot;#原理（-）&quot; class=&quot;headerlink&quot; title=&quot;原理（ *）&quot;&gt;&lt;/a&gt;原理（ *）&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;C/S模式应用程序&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;X Server 为S，X Client 为C&lt;br&gt;X Client只是单纯地执行程序、计算，它只能使用XServer提供的服务进行输入输出&lt;br&gt;X Server是一个管理显示的进程，必须运行在一个有图形显示能力的主机上&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;X Protocol（ X 协议）&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;X Protocol是X Client和X Server进行通信的一套协定&lt;br&gt;支持的网络协议有TCP/IP、DECnet等&lt;br&gt;可以认为X Protocol就是X Client和X Server交互的一种语言&lt;br&gt;X Protocol只是一种协议，并不是一个软件，该协议需要具体的软件来实现&lt;/p&gt;
+&lt;p&gt;X Client调用xlib，利用相应的通信功能向X Server发出请求&lt;br&gt;  X Server完成任务之后，同样调用xlib把结果显示指点的设备上去&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;有哪些XWindow&quot;&gt;&lt;a href=&quot;#有哪些XWindow&quot; class=&quot;headerlink&quot; title=&quot;有哪些XWindow&quot;&gt;&lt;/a&gt;有哪些XWindow&lt;/h3&gt;&lt;p&gt;GNOME 和 KDE&lt;/p&gt;
+&lt;h2 id=&quot;基于Linux的C编程&quot;&gt;&lt;a href=&quot;#基于Linux的C编程&quot; class=&quot;headerlink&quot; title=&quot;基于Linux的C编程&quot;&gt;&lt;/a&gt;基于Linux的C编程&lt;/h2&gt;&lt;h3 id=&quot;Gcc概念：各个选项的意义（-）&quot;&gt;&lt;a href=&quot;#Gcc概念：各个选项的意义（-）&quot; class=&quot;headerlink&quot; title=&quot;Gcc概念：各个选项的意义（*）&quot;&gt;&lt;/a&gt;Gcc概念：各个选项的意义（*）&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;名称：&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;GNU project C and C++ Compiler&lt;br&gt;GNU Compiler Collection&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;使用格式&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ gcc  [ 选项 ]   &amp;lt;文件名&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;各个选项的意义&lt;/strong&gt;&lt;br&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/ln18.png&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/ln19.png&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/ln20.png&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;各个阶段的编译及生成的文件，各种后缀名（-）&quot;&gt;&lt;a href=&quot;#各个阶段的编译及生成的文件，各种后缀名（-）&quot; class=&quot;headerlink&quot; title=&quot;各个阶段的编译及生成的文件，各种后缀名（ *）&quot;&gt;&lt;/a&gt;各个阶段的编译及生成的文件，各种后缀名（ *）&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;编译过程&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;预处理（Preprocessing）：将源文件的宏进行展开&lt;br&gt;编译（Compilation）：将源程序编译成汇编程序&lt;br&gt;汇编（Assembly）：将汇编文件编译成机器码&lt;br&gt;链接（Linking ）：将目标文件和外部符号进行链接，生成可执行文件&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;生成的文件后缀&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;（1）.c为后缀的文件，是C语言源代码文件。&lt;br&gt;（2）.h为后缀的文件，是头文件。&lt;br&gt;（3）.C，.cc、.cpp、.cp或.cxx为后缀的文件，是C++源代码文件。&lt;br&gt;（4）.h为后缀的文件，是程序所包含的头文件。&lt;br&gt;（5）.i为后缀的文件，是已经预处理过的C源代码文件。&lt;br&gt;（6）.ii为后缀的文件，是已经预处理过的C++源代码文件。&lt;br&gt;（7）.m为后缀的文件，是Objective-C源代码文件。&lt;br&gt;（8）.o为后缀的文件，是编译后的目标文件。&lt;br&gt;（9）.s为后缀的文件，是汇编语言源代码文件。&lt;br&gt;（10）.S为后缀的文件，是经过预编译的汇编语言源代码文件。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Makefile（-）&quot;&gt;&lt;a href=&quot;#Makefile（-）&quot; class=&quot;headerlink&quot; title=&quot;Makefile（*）&quot;&gt;&lt;/a&gt;Makefile（*）&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/ln21.png&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1    hello:hello.o say_hello.o&lt;br&gt;2          gcc hello.o say_hello.o -o hello&lt;br&gt;3    say_hello.o:say_hello.c say_hello.h&lt;br&gt;4          gcc -c say_hello.c -o say_hello.o&lt;br&gt;5    hello.o:hello.c say_hello.h&lt;br&gt;6          gcc -c hello.c -o hello.o&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;Linux-系统&quot;&gt;&lt;a href=&quot;#Linux-系统&quot; class=&quot;headerlink&quot; title=&quot;Linux 系统&quot;&gt;&lt;/a&gt;Linux 系统&lt;/h2&gt;&lt;h3 id=&quot;Linux-的系统体系结构（-）&quot;&gt;&lt;a href=&quot;#Linux-的系统体系结构（-）&quot; class=&quot;headerlink&quot; title=&quot;Linux 的系统体系结构（ *）&quot;&gt;&lt;/a&gt;Linux 的系统体系结构（ *）&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/ln21.jpg&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Linux的内核组成部分&quot;&gt;&lt;a href=&quot;#Linux的内核组成部分&quot; class=&quot;headerlink&quot; title=&quot;Linux的内核组成部分&quot;&gt;&lt;/a&gt;&lt;strong&gt;Linux的内核组成部分&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/ln22.jpg&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;原稿链接&quot;&gt;&lt;a href=&quot;#原稿链接&quot; class=&quot;headerlink&quot; title=&quot;原稿链接&quot;&gt;&lt;/a&gt;原稿链接&lt;/h1&gt;&lt;h2 id=&quot;Mrzzchao作业部落&quot;&gt;&lt;a href=&quot;#Mrzzchao作业部落&quot; class=&quot;headerlink&quot; title=&quot;Mrzzchao作业部落&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://www.zybuluo.com/Mrzzchao/note/389390&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Mrzzchao作业部落&lt;/a&gt;&lt;/h2&gt;</content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;一晃眼，期末再次来临，各种考试也接踵而至。考试是一学期的浪荡再加3天苦读，相信这是很多大学生的4年状态。而考完后，这些挤压在脑壳中的字符就像被格式化一般，最后一无所有。所以为了在Linux这门课上留下点什么，在此记录。（参照老邝PPT所给考点归纳，貌似依旧应试）&lt;/p&gt;
-&lt;h2 id=&quot;Linux、类unix基本常识&quot;&gt;&lt;a href=&quot;#Linux、类unix基本常识&quot; class=&quot;headerlink&quot; title=&quot;Linux、类unix基本常识&quot;&gt;&lt;/a&gt;Linux、类unix基本常识&lt;/h2&gt;&lt;h3 id=&quot;什么是linux&quot;&gt;&lt;a href=&quot;#什么是linux&quot; class=&quot;headerlink&quot; title=&quot;什么是linux&quot;&gt;&lt;/a&gt;什么是linux&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;是一个类UNIX内核的可以自由发布的实现版本，是一个操作系统的底层核心&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;Linux的特性&quot;&gt;&lt;a href=&quot;#Linux的特性&quot; class=&quot;headerlink&quot; title=&quot;Linux的特性&quot;&gt;&lt;/a&gt;Linux的特性&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;可以获得内核源代码，编译并安装，然后获得并安装许多其他自由发布的软件，从而创建一个完整的Linux，通常称为Linux系统&lt;/li&gt;
-&lt;li&gt;Linux发行版&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;GNU、GPL概念&quot;&gt;&lt;a href=&quot;#GNU、GPL概念&quot; class=&quot;headerlink&quot; title=&quot;GNU、GPL概念&quot;&gt;&lt;/a&gt;GNU、GPL概念&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;GNU&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;1983 年 Richard Stallman(自由软件业的精神教父) 创办 GNU(GNU’s not Unix)计划&lt;/li&gt;
-&lt;li&gt;旨在发展一個类-Unix 且为 自由软件 的完整操作系統&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;GPL&lt;/strong&gt;&lt;/p&gt;
+      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;一晃眼，期末再次来临，各种考试也接踵而至。考试是一学期的浪荡再加3天苦读，相信这是很多大学生的4年状态。而考完后，这些挤压在脑壳中的字符就像
     
     </summary>
     
@@ -1006,265 +1038,6 @@ hexo d == hexo deploy
   </entry>
   
   <entry>
-    <title>css字体名称</title>
-    <link href="http://Mrzzchao.github.io/2016/03/20/%E5%AD%97%E4%BD%93%E5%90%8D%E7%A7%B0/"/>
-    <id>http://Mrzzchao.github.io/2016/03/20/字体名称/</id>
-    <published>2016-03-20T07:30:03.000Z</published>
-    <updated>2016-04-17T12:29:48.729Z</updated>
-    
-    <content type="html">&lt;ul&gt;
-&lt;li&gt;&lt;h2 id=&quot;Mac&quot;&gt;&lt;a href=&quot;#Mac&quot; class=&quot;headerlink&quot; title=&quot;Mac&quot;&gt;&lt;/a&gt;Mac&lt;/h2&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;中文名&lt;/th&gt;
-&lt;th&gt;英文名&lt;/th&gt;
-&lt;th&gt;Unicode&lt;/th&gt;
-&lt;th&gt;Unicode 2&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;华文细黑&lt;/td&gt;
-&lt;td&gt;STHeiti Light [STXihei]&lt;/td&gt;
-&lt;td&gt;\534E\6587\7EC6\9ED1&lt;/td&gt;
-&lt;td&gt;华文细黑&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;华文黑体&lt;/td&gt;
-&lt;td&gt;STHeiti&lt;/td&gt;
-&lt;td&gt;\534E\6587\9ED1\4F53&lt;/td&gt;
-&lt;td&gt;华文黑体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;华文楷体&lt;/td&gt;
-&lt;td&gt;STKaiti&lt;/td&gt;
-&lt;td&gt;\534E\6587\6977\4F53&lt;/td&gt;
-&lt;td&gt;华文楷体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;华文宋体&lt;/td&gt;
-&lt;td&gt;STSong&lt;/td&gt;
-&lt;td&gt;\534E\6587\5B8B\4F53&lt;/td&gt;
-&lt;td&gt;华文宋体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;华文仿宋&lt;/td&gt;
-&lt;td&gt;STFangsong&lt;/td&gt;
-&lt;td&gt;\534E\6587\4EFF\5B8B&lt;/td&gt;
-&lt;td&gt;华文仿宋&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;丽黑 Pro&lt;/td&gt;
-&lt;td&gt;LiHei Pro Medium&lt;/td&gt;
-&lt;td&gt;\4E3D\9ED1 Pro&lt;/td&gt;
-&lt;td&gt;丽黑 Pro&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;丽宋 Pro&lt;/td&gt;
-&lt;td&gt;LiSong Pro Light&lt;/td&gt;
-&lt;td&gt;\4E3D\5B8B Pro&lt;/td&gt;
-&lt;td&gt;丽宋 Pro&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;标楷体&lt;/td&gt;
-&lt;td&gt;BiauKai&lt;/td&gt;
-&lt;td&gt;\6807\6977\4F53&lt;/td&gt;
-&lt;td&gt;标楷体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;苹果丽中黑&lt;/td&gt;
-&lt;td&gt;Apple LiGothic Medium&lt;/td&gt;
-&lt;td&gt;\82F9\679C\4E3D\4E2D\9ED1&lt;/td&gt;
-&lt;td&gt;苹果丽中黑&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;苹果丽细宋&lt;/td&gt;
-&lt;td&gt;Apple LiSung Light&lt;/td&gt;
-&lt;td&gt;\82F9\679C\4E3D\7EC6\5B8B&lt;/td&gt;
-&lt;td&gt;苹果丽细宋&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;h2 id=&quot;Window&quot;&gt;&lt;a href=&quot;#Window&quot; class=&quot;headerlink&quot; title=&quot;Window&quot;&gt;&lt;/a&gt;Window&lt;/h2&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;中文名&lt;/th&gt;
-&lt;th&gt;英文名&lt;/th&gt;
-&lt;th&gt;Unicode&lt;/th&gt;
-&lt;th&gt;Unicode 2&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;新细明体&lt;/td&gt;
-&lt;td&gt;PMingLiU&lt;/td&gt;
-&lt;td&gt;\65B0\7EC6\660E\4F53&lt;/td&gt;
-&lt;td&gt;新细明体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;细明体&lt;/td&gt;
-&lt;td&gt;MingLiU&lt;/td&gt;
-&lt;td&gt;\7EC6\660E\4F53&lt;/td&gt;
-&lt;td&gt;细明体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;标楷体&lt;/td&gt;
-&lt;td&gt;DFKai-SB&lt;/td&gt;
-&lt;td&gt;\6807\6977\4F53&lt;/td&gt;
-&lt;td&gt;标楷体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;黑体&lt;/td&gt;
-&lt;td&gt;SimHei&lt;/td&gt;
-&lt;td&gt;\9ED1\4F53&lt;/td&gt;
-&lt;td&gt;黑体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;宋体&lt;/td&gt;
-&lt;td&gt;SimSun&lt;/td&gt;
-&lt;td&gt;\5B8B\4F53&lt;/td&gt;
-&lt;td&gt;宋体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;新宋体&lt;/td&gt;
-&lt;td&gt;NSimSun&lt;/td&gt;
-&lt;td&gt;\65B0\5B8B\4F53&lt;/td&gt;
-&lt;td&gt;新宋体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;仿宋&lt;/td&gt;
-&lt;td&gt;FangSong&lt;/td&gt;
-&lt;td&gt;\4EFF\5B8B&lt;/td&gt;
-&lt;td&gt;仿宋&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;楷体&lt;/td&gt;
-&lt;td&gt;KaiTi&lt;/td&gt;
-&lt;td&gt;\6977\4F53&lt;/td&gt;
-&lt;td&gt;楷体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;仿宋_GB2312&lt;/td&gt;
-&lt;td&gt;FangSong_GB2312&lt;/td&gt;
-&lt;td&gt;\4EFF\5B8B_GB2312&lt;/td&gt;
-&lt;td&gt;仿宋_GB2312&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;楷体_GB2312&lt;/td&gt;
-&lt;td&gt;KaiTi_GB2312&lt;/td&gt;
-&lt;td&gt;\6977\4F53_GB2312&lt;/td&gt;
-&lt;td&gt;楷体_GB2312&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;微软正黑体&lt;/td&gt;
-&lt;td&gt;Microsoft JhengHei&lt;/td&gt;
-&lt;td&gt;\5FAE\x8F6F\6B63\9ED1\4F53&lt;/td&gt;
-&lt;td&gt;微软正黑体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;微软雅黑&lt;/td&gt;
-&lt;td&gt;Microsoft YaHei&lt;/td&gt;
-&lt;td&gt;\5FAE\8F6F\96C5\9ED1&lt;/td&gt;
-&lt;td&gt;微软雅黑&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;&lt;h2 id=&quot;Mac&quot;&gt;&lt;a href=&quot;#Mac&quot; class=&quot;headerlink&quot; title=&quot;Mac&quot;&gt;&lt;/a&gt;Mac&lt;/h2&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;中文名&lt;/th&gt;
-&lt;th&gt;英文名&lt;/th&gt;
-&lt;th&gt;Unicode&lt;/th&gt;
-&lt;th&gt;Unicode 2&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;华文细黑&lt;/td&gt;
-&lt;td&gt;STHeiti Light [STXihei]&lt;/td&gt;
-&lt;td&gt;\534E\6587\7EC6\9ED1&lt;/td&gt;
-&lt;td&gt;华文细黑&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;华文黑体&lt;/td&gt;
-&lt;td&gt;STHeiti&lt;/td&gt;
-&lt;td&gt;\534E\6587\9ED1\4F53&lt;/td&gt;
-&lt;td&gt;华文黑体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;华文楷体&lt;/td&gt;
-&lt;td&gt;STKaiti&lt;/td&gt;
-&lt;td&gt;\534E\6587\6977\4F53&lt;/td&gt;
-&lt;td&gt;华文楷体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;华文宋体&lt;/td&gt;
-&lt;td&gt;STSong&lt;/td&gt;
-&lt;td&gt;\534E\6587\5B8B\4F53&lt;/td&gt;
-&lt;td&gt;华文宋体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;华文仿宋&lt;/td&gt;
-&lt;td&gt;STFangsong&lt;/td&gt;
-&lt;td&gt;\534E\6587\4EFF\5B8B&lt;/td&gt;
-&lt;td&gt;华文仿宋&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;丽黑 Pro&lt;/td&gt;
-&lt;td&gt;LiHei Pro Medium&lt;/td&gt;
-&lt;td&gt;\4E3D\9ED1 Pro&lt;/td&gt;
-&lt;td&gt;丽黑 Pro&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;丽宋 Pro&lt;/td&gt;
-&lt;td&gt;LiSong Pro Light&lt;/td&gt;
-&lt;td&gt;\4E3D\5B8B Pro&lt;/td&gt;
-&lt;td&gt;丽宋 Pro&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;标楷体&lt;/td&gt;
-&lt;td&gt;BiauKai&lt;/td&gt;
-&lt;td&gt;\6807\6977\4F53&lt;/td&gt;
-&lt;td&gt;标楷体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;苹果丽中黑&lt;/td&gt;
-&lt;td&gt;Apple LiGothic Medium&lt;/td&gt;
-&lt;td&gt;\82F9\679C\4E3D\4E2D\9ED1&lt;/td&gt;
-&lt;td&gt;苹果丽中黑&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;苹果丽细宋&lt;/td&gt;
-&lt;td&gt;Apple LiSung Light&lt;/td&gt;
-&lt;td&gt;\82F9\679C\4E3D\7EC6\5B8B&lt;/td&gt;
-&lt;td&gt;苹果丽细宋&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-    
-    </summary>
-    
-      <category term="CSS" scheme="http://Mrzzchao.github.io/categories/CSS/"/>
-    
-    
-      <category term="Font-Name" scheme="http://Mrzzchao.github.io/tags/Font-Name/"/>
-    
-  </entry>
-  
-  <entry>
     <title>JavaScript基础知识点</title>
     <link href="http://Mrzzchao.github.io/2016/03/20/javascript%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/"/>
     <id>http://Mrzzchao.github.io/2016/03/20/javascript简明教程/</id>
@@ -1563,6 +1336,265 @@ hexo d == hexo deploy
     
       <category term="JavaScript" scheme="http://Mrzzchao.github.io/categories/JavaScript/"/>
     
+    
+  </entry>
+  
+  <entry>
+    <title>css字体名称</title>
+    <link href="http://Mrzzchao.github.io/2016/03/20/%E5%AD%97%E4%BD%93%E5%90%8D%E7%A7%B0/"/>
+    <id>http://Mrzzchao.github.io/2016/03/20/字体名称/</id>
+    <published>2016-03-20T07:30:03.000Z</published>
+    <updated>2016-04-17T12:29:48.729Z</updated>
+    
+    <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;h2 id=&quot;Mac&quot;&gt;&lt;a href=&quot;#Mac&quot; class=&quot;headerlink&quot; title=&quot;Mac&quot;&gt;&lt;/a&gt;Mac&lt;/h2&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;中文名&lt;/th&gt;
+&lt;th&gt;英文名&lt;/th&gt;
+&lt;th&gt;Unicode&lt;/th&gt;
+&lt;th&gt;Unicode 2&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;华文细黑&lt;/td&gt;
+&lt;td&gt;STHeiti Light [STXihei]&lt;/td&gt;
+&lt;td&gt;\534E\6587\7EC6\9ED1&lt;/td&gt;
+&lt;td&gt;华文细黑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文黑体&lt;/td&gt;
+&lt;td&gt;STHeiti&lt;/td&gt;
+&lt;td&gt;\534E\6587\9ED1\4F53&lt;/td&gt;
+&lt;td&gt;华文黑体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文楷体&lt;/td&gt;
+&lt;td&gt;STKaiti&lt;/td&gt;
+&lt;td&gt;\534E\6587\6977\4F53&lt;/td&gt;
+&lt;td&gt;华文楷体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文宋体&lt;/td&gt;
+&lt;td&gt;STSong&lt;/td&gt;
+&lt;td&gt;\534E\6587\5B8B\4F53&lt;/td&gt;
+&lt;td&gt;华文宋体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文仿宋&lt;/td&gt;
+&lt;td&gt;STFangsong&lt;/td&gt;
+&lt;td&gt;\534E\6587\4EFF\5B8B&lt;/td&gt;
+&lt;td&gt;华文仿宋&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;丽黑 Pro&lt;/td&gt;
+&lt;td&gt;LiHei Pro Medium&lt;/td&gt;
+&lt;td&gt;\4E3D\9ED1 Pro&lt;/td&gt;
+&lt;td&gt;丽黑 Pro&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;丽宋 Pro&lt;/td&gt;
+&lt;td&gt;LiSong Pro Light&lt;/td&gt;
+&lt;td&gt;\4E3D\5B8B Pro&lt;/td&gt;
+&lt;td&gt;丽宋 Pro&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;标楷体&lt;/td&gt;
+&lt;td&gt;BiauKai&lt;/td&gt;
+&lt;td&gt;\6807\6977\4F53&lt;/td&gt;
+&lt;td&gt;标楷体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;苹果丽中黑&lt;/td&gt;
+&lt;td&gt;Apple LiGothic Medium&lt;/td&gt;
+&lt;td&gt;\82F9\679C\4E3D\4E2D\9ED1&lt;/td&gt;
+&lt;td&gt;苹果丽中黑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;苹果丽细宋&lt;/td&gt;
+&lt;td&gt;Apple LiSung Light&lt;/td&gt;
+&lt;td&gt;\82F9\679C\4E3D\7EC6\5B8B&lt;/td&gt;
+&lt;td&gt;苹果丽细宋&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;h2 id=&quot;Window&quot;&gt;&lt;a href=&quot;#Window&quot; class=&quot;headerlink&quot; title=&quot;Window&quot;&gt;&lt;/a&gt;Window&lt;/h2&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;中文名&lt;/th&gt;
+&lt;th&gt;英文名&lt;/th&gt;
+&lt;th&gt;Unicode&lt;/th&gt;
+&lt;th&gt;Unicode 2&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;新细明体&lt;/td&gt;
+&lt;td&gt;PMingLiU&lt;/td&gt;
+&lt;td&gt;\65B0\7EC6\660E\4F53&lt;/td&gt;
+&lt;td&gt;新细明体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;细明体&lt;/td&gt;
+&lt;td&gt;MingLiU&lt;/td&gt;
+&lt;td&gt;\7EC6\660E\4F53&lt;/td&gt;
+&lt;td&gt;细明体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;标楷体&lt;/td&gt;
+&lt;td&gt;DFKai-SB&lt;/td&gt;
+&lt;td&gt;\6807\6977\4F53&lt;/td&gt;
+&lt;td&gt;标楷体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;黑体&lt;/td&gt;
+&lt;td&gt;SimHei&lt;/td&gt;
+&lt;td&gt;\9ED1\4F53&lt;/td&gt;
+&lt;td&gt;黑体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;宋体&lt;/td&gt;
+&lt;td&gt;SimSun&lt;/td&gt;
+&lt;td&gt;\5B8B\4F53&lt;/td&gt;
+&lt;td&gt;宋体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;新宋体&lt;/td&gt;
+&lt;td&gt;NSimSun&lt;/td&gt;
+&lt;td&gt;\65B0\5B8B\4F53&lt;/td&gt;
+&lt;td&gt;新宋体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;仿宋&lt;/td&gt;
+&lt;td&gt;FangSong&lt;/td&gt;
+&lt;td&gt;\4EFF\5B8B&lt;/td&gt;
+&lt;td&gt;仿宋&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;楷体&lt;/td&gt;
+&lt;td&gt;KaiTi&lt;/td&gt;
+&lt;td&gt;\6977\4F53&lt;/td&gt;
+&lt;td&gt;楷体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;仿宋_GB2312&lt;/td&gt;
+&lt;td&gt;FangSong_GB2312&lt;/td&gt;
+&lt;td&gt;\4EFF\5B8B_GB2312&lt;/td&gt;
+&lt;td&gt;仿宋_GB2312&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;楷体_GB2312&lt;/td&gt;
+&lt;td&gt;KaiTi_GB2312&lt;/td&gt;
+&lt;td&gt;\6977\4F53_GB2312&lt;/td&gt;
+&lt;td&gt;楷体_GB2312&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;微软正黑体&lt;/td&gt;
+&lt;td&gt;Microsoft JhengHei&lt;/td&gt;
+&lt;td&gt;\5FAE\x8F6F\6B63\9ED1\4F53&lt;/td&gt;
+&lt;td&gt;微软正黑体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;微软雅黑&lt;/td&gt;
+&lt;td&gt;Microsoft YaHei&lt;/td&gt;
+&lt;td&gt;\5FAE\8F6F\96C5\9ED1&lt;/td&gt;
+&lt;td&gt;微软雅黑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;&lt;h2 id=&quot;Mac&quot;&gt;&lt;a href=&quot;#Mac&quot; class=&quot;headerlink&quot; title=&quot;Mac&quot;&gt;&lt;/a&gt;Mac&lt;/h2&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;中文名&lt;/th&gt;
+&lt;th&gt;英文名&lt;/th&gt;
+&lt;th&gt;Unicode&lt;/th&gt;
+&lt;th&gt;Unicode 2&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;华文细黑&lt;/td&gt;
+&lt;td&gt;STHeiti Light [STXihei]&lt;/td&gt;
+&lt;td&gt;\534E\6587\7EC6\9ED1&lt;/td&gt;
+&lt;td&gt;华文细黑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文黑体&lt;/td&gt;
+&lt;td&gt;STHeiti&lt;/td&gt;
+&lt;td&gt;\534E\6587\9ED1\4F53&lt;/td&gt;
+&lt;td&gt;华文黑体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文楷体&lt;/td&gt;
+&lt;td&gt;STKaiti&lt;/td&gt;
+&lt;td&gt;\534E\6587\6977\4F53&lt;/td&gt;
+&lt;td&gt;华文楷体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文宋体&lt;/td&gt;
+&lt;td&gt;STSong&lt;/td&gt;
+&lt;td&gt;\534E\6587\5B8B\4F53&lt;/td&gt;
+&lt;td&gt;华文宋体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文仿宋&lt;/td&gt;
+&lt;td&gt;STFangsong&lt;/td&gt;
+&lt;td&gt;\534E\6587\4EFF\5B8B&lt;/td&gt;
+&lt;td&gt;华文仿宋&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;丽黑 Pro&lt;/td&gt;
+&lt;td&gt;LiHei Pro Medium&lt;/td&gt;
+&lt;td&gt;\4E3D\9ED1 Pro&lt;/td&gt;
+&lt;td&gt;丽黑 Pro&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;丽宋 Pro&lt;/td&gt;
+&lt;td&gt;LiSong Pro Light&lt;/td&gt;
+&lt;td&gt;\4E3D\5B8B Pro&lt;/td&gt;
+&lt;td&gt;丽宋 Pro&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;标楷体&lt;/td&gt;
+&lt;td&gt;BiauKai&lt;/td&gt;
+&lt;td&gt;\6807\6977\4F53&lt;/td&gt;
+&lt;td&gt;标楷体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;苹果丽中黑&lt;/td&gt;
+&lt;td&gt;Apple LiGothic Medium&lt;/td&gt;
+&lt;td&gt;\82F9\679C\4E3D\4E2D\9ED1&lt;/td&gt;
+&lt;td&gt;苹果丽中黑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;苹果丽细宋&lt;/td&gt;
+&lt;td&gt;Apple LiSung Light&lt;/td&gt;
+&lt;td&gt;\82F9\679C\4E3D\7EC6\5B8B&lt;/td&gt;
+&lt;td&gt;苹果丽细宋&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+    
+    </summary>
+    
+      <category term="CSS" scheme="http://Mrzzchao.github.io/categories/CSS/"/>
+    
+    
+      <category term="Font-Name" scheme="http://Mrzzchao.github.io/tags/Font-Name/"/>
     
   </entry>
   
