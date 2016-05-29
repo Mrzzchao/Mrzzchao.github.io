@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://Mrzzchao.github.io/"/>
-  <updated>2016-05-29T15:51:36.745Z</updated>
+  <updated>2016-05-29T15:54:02.877Z</updated>
   <id>http://Mrzzchao.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://Mrzzchao.github.io/2016/05/28/Linux%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/"/>
     <id>http://Mrzzchao.github.io/2016/05/28/Linux期末复习/</id>
     <published>2016-05-28T09:24:02.000Z</published>
-    <updated>2016-05-29T15:51:36.745Z</updated>
+    <updated>2016-05-29T15:54:02.877Z</updated>
     
     <content type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;一晃眼，期末再次来临，各种考试也接踵而至。考试是一学期的浪荡再加3天苦读，相信这是很多大学生的4年状态。而考完后，这些挤压在脑壳中的字符就像被格式化一般，最后一无所有。所以为了在Linux这门课上留下点什么，在此记录。（参照老邝PPT所给考点归纳，貌似依旧应试）&lt;/p&gt;
 &lt;h1 id=&quot;正文&quot;&gt;&lt;a href=&quot;#正文&quot; class=&quot;headerlink&quot; title=&quot;正文&quot;&gt;&lt;/a&gt;正文&lt;/h1&gt;&lt;h2 id=&quot;Linux、类unix基本常识&quot;&gt;&lt;a href=&quot;#Linux、类unix基本常识&quot; class=&quot;headerlink&quot; title=&quot;Linux、类unix基本常识&quot;&gt;&lt;/a&gt;Linux、类unix基本常识&lt;/h2&gt;&lt;h3 id=&quot;什么是linux&quot;&gt;&lt;a href=&quot;#什么是linux&quot; class=&quot;headerlink&quot; title=&quot;什么是linux&quot;&gt;&lt;/a&gt;什么是linux&lt;/h3&gt;&lt;p&gt;是一个类 UNIX 内核的可以自由发布的实现版本，是一个操作系统的底层核心。可以获得内核源代码，编译并安装，然后获得并安装许多其他自由发布的软件，从而创建一个完整的 Linux，通常称为 Linux 系统&lt;/p&gt;
@@ -30,6 +30,7 @@
 &lt;li&gt;1983 年 Richard Stallman(自由软件业的精神教父) 创办 GNU(GNU’s not Unix)计划&lt;/li&gt;
 &lt;li&gt;旨在发展一個类-Unix 且为 自由软件 的完整操作系統&lt;/li&gt;
 &lt;/ul&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;p&gt;&lt;strong&gt;GPL&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;GNU GPL（GNU General Public License，通用公共许可证）是一个广泛被使用的自由软件许可证，最初由理查德·斯托曼为GNU计划而撰写&lt;/li&gt;
@@ -348,7 +349,14 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;一晃眼，期末再次来临，各种考试也接踵而至。考试是一学期的浪荡再加3天苦读，相信这是很多大学生的4年状态。而考完后，这些挤压在脑壳中的字符就像
+      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;一晃眼，期末再次来临，各种考试也接踵而至。考试是一学期的浪荡再加3天苦读，相信这是很多大学生的4年状态。而考完后，这些挤压在脑壳中的字符就像被格式化一般，最后一无所有。所以为了在Linux这门课上留下点什么，在此记录。（参照老邝PPT所给考点归纳，貌似依旧应试）&lt;/p&gt;
+&lt;h1 id=&quot;正文&quot;&gt;&lt;a href=&quot;#正文&quot; class=&quot;headerlink&quot; title=&quot;正文&quot;&gt;&lt;/a&gt;正文&lt;/h1&gt;&lt;h2 id=&quot;Linux、类unix基本常识&quot;&gt;&lt;a href=&quot;#Linux、类unix基本常识&quot; class=&quot;headerlink&quot; title=&quot;Linux、类unix基本常识&quot;&gt;&lt;/a&gt;Linux、类unix基本常识&lt;/h2&gt;&lt;h3 id=&quot;什么是linux&quot;&gt;&lt;a href=&quot;#什么是linux&quot; class=&quot;headerlink&quot; title=&quot;什么是linux&quot;&gt;&lt;/a&gt;什么是linux&lt;/h3&gt;&lt;p&gt;是一个类 UNIX 内核的可以自由发布的实现版本，是一个操作系统的底层核心。可以获得内核源代码，编译并安装，然后获得并安装许多其他自由发布的软件，从而创建一个完整的 Linux，通常称为 Linux 系统&lt;/p&gt;
+&lt;h3 id=&quot;Linux的特性&quot;&gt;&lt;a href=&quot;#Linux的特性&quot; class=&quot;headerlink&quot; title=&quot;Linux的特性&quot;&gt;&lt;/a&gt;Linux的特性&lt;/h3&gt;&lt;p&gt;开放性、多用户、多任务、良好的用户界面、设备独立性、丰富的网络功能、可靠的系统安全、良好的可移植性。&lt;/p&gt;
+&lt;h3 id=&quot;GNU、GPL概念&quot;&gt;&lt;a href=&quot;#GNU、GPL概念&quot; class=&quot;headerlink&quot; title=&quot;GNU、GPL概念&quot;&gt;&lt;/a&gt;GNU、GPL概念&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;GNU&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1983 年 Richard Stallman(自由软件业的精神教父) 创办 GNU(GNU’s not Unix)计划&lt;/li&gt;
+&lt;li&gt;旨在发展一個类-Unix 且为 自由软件 的完整操作系統&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
