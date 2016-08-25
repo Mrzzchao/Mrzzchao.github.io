@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://Mrzzchao.github.io/"/>
-  <updated>2016-08-25T17:33:54.208Z</updated>
+  <updated>2016-08-25T17:40:47.443Z</updated>
   <id>http://Mrzzchao.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://Mrzzchao.github.io/2016/08/26/Yeoman-%E6%B5%85%E6%9E%90/"/>
     <id>http://Mrzzchao.github.io/2016/08/26/Yeoman-浅析/</id>
     <published>2016-08-25T17:32:40.000Z</published>
-    <updated>2016-08-25T17:33:54.208Z</updated>
+    <updated>2016-08-25T17:40:47.443Z</updated>
     
     <content type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;当项目达到一定规模时，相信每个人都在烦恼，目录结构、各种包、依赖的安装，这些是很影响效率的。所以呢，一个神奇的脚本架—Yeoman出现了。那什么是脚本架呢，官网解释是这样的&lt;/p&gt;
 &lt;blockquote&gt;
@@ -29,6 +29,7 @@
 &lt;p&gt;简单来说，就是一切帮你自动达好框架，你只要按着他的生成器教程来编写代码就可以了，&lt;a href=&quot;http://yeoman.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Yeoman官网&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;安装Yeoman&quot;&gt;&lt;a href=&quot;#安装Yeoman&quot; class=&quot;headerlink&quot; title=&quot;安装Yeoman&quot;&gt;&lt;/a&gt;安装Yeoman&lt;/h2&gt;&lt;h3 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h3&gt;&lt;p&gt;在安装Yeoman之前应该先搭好环境，应该是什么环境呢，当然是&lt;strong&gt;Node&lt;/strong&gt;了，这个就不多解释了，&lt;a href=&quot;http://nodejs.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Node安装&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&quot;安装-Yo&quot;&gt;&lt;a href=&quot;#安装-Yo&quot; class=&quot;headerlink&quot; title=&quot;安装 Yo&quot;&gt;&lt;/a&gt;安装 Yo&lt;/h3&gt;&lt;p&gt;很简单，把他安装到全局里，命令如下&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;npm install -g yo&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h3 id=&quot;安装生成器（Generators）&quot;&gt;&lt;a href=&quot;#安装生成器（Generators）&quot; class=&quot;headerlink&quot; title=&quot;安装生成器（Generators）&quot;&gt;&lt;/a&gt;安装生成器（Generators）&lt;/h3&gt;&lt;p&gt;安装好yo 之后呢，我们需要在安装我们需要的生成器，什么是生成器呢？其实就是项目模板，而Yo只是创建这模板的指挥员而已&lt;/p&gt;
 &lt;p&gt;所以，我们需要选择我们复合需求的生成器，官网里已经有很多已经搭建好的生成器，&lt;a href=&quot;http://yeoman.io/generators/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;详情&lt;/a&gt;&lt;/p&gt;
@@ -137,7 +138,13 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;当项目达到一定规模时，相信每个人都在烦恼，目录结构、各种包、依赖的安装，这些是很影响效率的。所以呢，一个神奇的脚本架—Yeoman出现了。那
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;当项目达到一定规模时，相信每个人都在烦恼，目录结构、各种包、依赖的安装，这些是很影响效率的。所以呢，一个神奇的脚本架—Yeoman出现了。那什么是脚本架呢，官网解释是这样的&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Yeoman helps you to kickstart new projects, prescribing best practices and tools to help you stay productive&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;简单来说，就是一切帮你自动达好框架，你只要按着他的生成器教程来编写代码就可以了，&lt;a href=&quot;http://yeoman.io/&quot;&gt;Yeoman官网&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;安装Yeoman&quot;&gt;&lt;a href=&quot;#安装Yeoman&quot; class=&quot;headerlink&quot; title=&quot;安装Yeoman&quot;&gt;&lt;/a&gt;安装Yeoman&lt;/h2&gt;&lt;h3 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h3&gt;&lt;p&gt;在安装Yeoman之前应该先搭好环境，应该是什么环境呢，当然是&lt;strong&gt;Node&lt;/strong&gt;了，这个就不多解释了，&lt;a href=&quot;http://nodejs.cn/&quot;&gt;Node安装&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;安装-Yo&quot;&gt;&lt;a href=&quot;#安装-Yo&quot; class=&quot;headerlink&quot; title=&quot;安装 Yo&quot;&gt;&lt;/a&gt;安装 Yo&lt;/h3&gt;&lt;p&gt;很简单，把他安装到全局里，命令如下&lt;/p&gt;
     
     </summary>
     
