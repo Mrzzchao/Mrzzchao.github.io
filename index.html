@@ -329,8 +329,7 @@
 
       
         
-          
-            <h2 id="加载与运行"><a href="#加载与运行" class="headerlink" title="加载与运行"></a>加载与运行</h2><ul>
+          <h2 id="加载与运行"><a href="#加载与运行" class="headerlink" title="加载与运行"></a>加载与运行</h2><ul>
 <li><p>延期脚本</p>
 <pre><code>&lt;scripttype=&quot;text/javascript&quot; src=&quot;file1.js&quot;defer&gt;&lt;/script&gt;
 js文件要在dom加载完成时才会被下载
@@ -344,166 +343,11 @@ document.getElementsByTagName_r(&quot;head&quot;)[0].appendChild(script)
 无论在何处启动下载，文件的下载和运行都不会阻塞其他页面的处理过程
 </code></pre></li>
 <li><p>XHR 脚本注入</p>
-<pre><code>var xhr = newXMLHttpRequest();
-xhr.open(&quot;get&quot;, &quot;file1.js&quot;, true);
-xhr.onreadystatechange = function() {
-    if (xhr.readyState == 4) {
-        if (xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300 || xhr.status == 304) {
-            var script = document.createElement(&quot;script&quot;);
-            script.type = &quot;text/javascript&quot;;
-            script.text = xhr.responseText;
-            document.body.appendChild(script);
-        }
-    }
-};
-xhr.send(null)
-
-在html页面中产生内联的js代码，它下载后不会立即执行，所以可以控制它的执行状态
-</code></pre></li>
-<li><p>推荐做法</p>
-<pre><code>&lt;script type = &quot;text/javascript&quot; &gt;
-    functionloadScript(url, callback) {
-        var script = document.createElement(&quot;script&quot;)
-        script.type = &quot;text/javascript&quot;;
-        if(script.readyState) { //IE
-            script.onreadystatechange = function() {
-                if (script.readyState == &quot;loaded&quot; ||
-                    script.readyState == &quot;complete&quot;) {
-                    script.onreadystatechange = null;
-                    callback();
-                }
-            };
-        } else { //Others
-            script.onload = function() {
-                callback();
-            };
-        }
-        script.src = url;
-        document.getElementsByTagName_r(&quot;head&quot;)[0].appendChild(script);
-    }
-loadScript(&quot;the-rest.js&quot;, function() {
-    Application.init();
-});
-&lt;/script&gt;
-</code></pre></li>
-</ul>
-<h2 id="数据访问"><a href="#数据访问" class="headerlink" title="数据访问"></a>数据访问</h2><ul>
-<li><p>避免with</p>
-<pre><code>当代码流执行到一个 with 表达式时，运行期上下文的作用域链被临时改变了。一个新的可变对象将被
-创建，它包含指定对象的所有属性。此对象被插入到作用域链的前端，意味着现在函数的所有局部变量都
-被推入第二个作用域链对象中，所以访问代价更高了（参见下图）。
-
-通过将 document 对象传递给 with 表达式，一个新的可变对象容纳了 document 对象的所有属性，被插入到作用域链的前端。这使得访问 document 的属性非常快，但是访问局部变量的速度却变慢了，例如 bd 变量。正因为这个原因，最好不要使用 with 表达式。正如前面提到的，只要简单地将 document 存储在一个
-局部变量中，就可以获得性能上的提升。
-</code></pre></li>
-</ul>
-<p><img src="http://7xrul1.com1.z0.glb.clouddn.com/gxn1.png" alt="此处输入图片的描述"></p>
-<ul>
-<li><p>避免try-catch</p>
-<pre><code>    在 JavaScript 中不只是 with 表达式人为地改变运行期上下文的作用域链，try-catch 表达式的 catch 子句
-具有相同效果。当 try 块发生错误时，程序流程自动转入 catch 块，并将异常对象推入作用域链前端的一个
-可变对象中。在 catch 块中，函数的所有局部变量现在被放在第二个作用域链对象中。例如：
-
-try {
- methodThatMightCauseAnError();
-} catch (ex){
- alert(ex.message); //scope chain is augmented here
-}
-</code></pre></li>
-<li><p>如果需要多次访问过深的作用域链和原型链，访问的内容不会变化时，那应该把需要访问的值赋给局部变量</p>
-<pre><code>在 JavaScript 中，数据存储位置可以对代码整体性能产生重要影响。有四种数据访问类型：直接量，变量，数组项，对象成员。它们有不同的性能考虑。
-
-直接量和局部变量访问速度非常快，数组项和对象成员需要更长时间。
-
-局部变量比域外变量快，因为它位于作用域链的第一个对象中。变量在作用域链中的位置越深，访问所需的时间就越长。全局变量总是最慢的，因为它们总是位于作用域链的最后一环。
-</code></pre></li>
-</ul>
-<h2 id="Dom-编程"><a href="#Dom-编程" class="headerlink" title="Dom 编程"></a>Dom 编程</h2><p>这对性能意味着什么呢？简单说来，两个独立的部分以功能接口连接就会带来性能损耗。一个很形象的比喻是把 DOM 看成一个岛屿，把 JavaScript（ECMAScript）看成另一个岛屿，两者之间以一座收费桥连<br>接（参见 John Hrvatin，微软，MIX09，<a href="http://videos.visitmix.com/MIX09/T53F）。每次" target="_blank" rel="external">http://videos.visitmix.com/MIX09/T53F）。每次</a> ECMAScript 需要访问DOM时，你需要过桥，交一次“过桥费”。你操作 DOM次数越多，费用就越高。一般的建议是尽量减少过桥次数，努力停留在 ECMAScript 岛上。</p>
-<ul>
-<li><p>最小化 DOM 访问，在 JavaScript 端做尽可能多的事情。</p>
-</li>
-<li><p>在反复访问的地方使用局部变量存放 DOM 引用.</p>
-</li>
-<li><p>小心地处理 HTML 集合，因为他们表现出“存在性”，总是对底层文档重新查询。将集合的 length 属性缓存到一个变量中，在迭代中使用这个变量。如果经常操作这个集合，可以将集合拷贝到数组中</p>
-</li>
-<li><p>如果可能的话，使用速度更快的 API，诸如 querySelectorAll()和 firstElementChild、querySelector()等css选择器</p>
-</li>
-<li><p>注意重绘和重排版；批量修改风格，离线操作 DOM 树，缓存并减少对布局信息的访问。</p>
-</li>
-<li><p>动画中使用绝对坐标，使用拖放代理。</p>
-</li>
-<li><p>使用事件托管技术最小化事件句柄数量。</p>
-</li>
-</ul>
-<h2 id="算法与流程控制"><a href="#算法与流程控制" class="headerlink" title="算法与流程控制"></a>算法与流程控制</h2><p>正如其他编程语言，代码的写法和算法选用影响 JavaScript 的运行时间。与其他编程语言不同的是，JavaScript 可用资源有限，所以优化技术更为重要。</p>
-<ul>
-<li><p>for，while，do-while 循环的性能特性相似，谁也不比谁更快或更慢。除非你要迭代遍历一个属性未知的对象，否则不要使用 for-in 循环。</p>
-</li>
-<li><p>当判断条件较多时，查表法比 if-else 或者 switch 更快。</p>
-</li>
-<li><p>如果你遇到一个栈溢出错误，将方法修改为一个迭代算法或者使用制表法可以避免重复工作。</p>
-</li>
-<li><p>当遇到递归时，如果有一些重复性的返回，就应该用缓存cache存储重复的返回</p>
-</li>
-</ul>
-<h2 id="字符串与正则表达式"><a href="#字符串与正则表达式" class="headerlink" title="字符串与正则表达式"></a>字符串与正则表达式</h2><ul>
-<li><p>字符串</p>
-<pre><code>当连接数量巨大或尺寸巨大的字符串时，数组联合是 IE7 和它的早期版本上唯一具有合理性能的方法。如果你不关心 IE7 和它的早期版本，数组联合是连接字符串最慢的方法之一。使用简单的+和+=取而代之，可避免（产生）不必要的中间字符串。
-</code></pre></li>
-<li><p>正则表达式</p>
-<pre><code>正则表达式并不总是完成工作的最佳工具，尤其当你只是搜索一个文本字符串时。
-</code></pre></li>
-</ul>
-<h2 id="响应接口"><a href="#响应接口" class="headerlink" title="响应接口"></a>响应接口</h2><ul>
-<li><p><strong>UI 线程</strong></p>
-<pre><code>大多数浏览器有一个单独的处理进程，它由两个任务所
-共享：JavaScript 任务和用户界面更新任务。每个时刻只有其中的一个操作得以执行，也就是说当 JavaScript
-代码运行时用户界面不能对输入产生反应，反之亦然。或者说，当 JavaScript 运行时，用户界面就被“锁定”
-了。管理好 JavaScript 运行时间对网页应用的性能很重要
-
-JavaScript 和 UI 更新共享的进程通常被称作浏览器 UI 线程（虽然对所有浏览器来说“线程”一词不一定准确）。此 UI 线程围绕着一个简单的队列系统工作，任务被保存到队列中直至进程空闲。一旦空闲，队列中的下一个任务将被检索和运行。这些任务不是运行 JavaScript 代码，就是执行 UI更新，包括重绘和重排版（在第三章讨论过）。此进程中最令人感兴趣的部分是每次输入均导致一个或多个任务被加入队列。
-</code></pre></li>
-<li><p>JS最佳运行时间是100ms以内</p>
-<pre><code>如果该接口在 100毫秒内响应用户输入，用户认为自己是“直接操作用户界面中的对象。”超过 100毫秒意味着用户认为自己与接口断开了。由于 UI 在JavaScript 运行时无法更新，如果运行时间长于 100 毫秒，用户就不能感受到对接口的控制
-</code></pre></li>
-<li><p>定时器可用于安排代码推迟执行，它使得你可以将长运行脚本分解成一系列较小的任务。</p>
-</li>
-</ul>
-<h2 id="Ajax-异步JavaScript-和-XML"><a href="#Ajax-异步JavaScript-和-XML" class="headerlink" title="Ajax 异步JavaScript 和 XML"></a>Ajax 异步JavaScript 和 XML</h2><p>Ajax 是高性能 JavaScript 的基石。它可以通过延迟下载大量资源使页面加载更快。它通过在客户端和服务器之间异步传送数据，避免页面集体加载。它还用于在一次 HTTP 请求中获取整个页面的资源。通过选择正确的传输技术和最有效的数据格式，你可以显著改善用户与网站之间的互动。</p>
-<ul>
-<li><p>高性能 Ajax 包括：知道你项目的具体需求，选择正确的数据格式和与之相配的传输技术。</p>
-<pre><code>作为数据格式，纯文本和 HTML 是高度限制的，但它们可节省客户端的 CPU 周期。XML 被广泛应用普遍支持，但它非常冗长且解析缓慢。JSON 是轻量级的，解析迅速（作为本地代码而不是字符串），交互性与 XML 相当。字符分隔的自定义格式非常轻量，在大量数据集解析时速度最快，但需要编写额外的程序在服务器端构造格式，并在客户端解析。
-</code></pre></li>
-<li><p>减少请求数量，可通过 JavaScript 和 CSS 文件打包，或者使用 MXHR。</p>
-</li>
-<li><p>缩短页面的加载时间，在页面其它内容加载之后，使用 Ajax 获取少量重要文件。</p>
-</li>
-</ul>
-<h2 id="编程实践"><a href="#编程实践" class="headerlink" title="编程实践"></a>编程实践</h2><ul>
-<li><p>给 setTimeout()和 setInterval()传递函数参数而不是字符串参数</p>
-</li>
-<li><p>创建新对象和数组时使用对象直接量和数组直接量。它们比非直接量形式创建和初始化更快</p>
-</li>
-<li><p>避免重复进行相同工作。当需要检测浏览器时，使用延迟加载或条件预加载</p>
-</li>
-<li><p>原生方法总是比 JavaScript 写的东西要快。尽量使用原生方法</p>
-</li>
-</ul>
-<h2 id="创建部署"><a href="#创建部署" class="headerlink" title="创建部署"></a>创建部署</h2><p>开发和部署过程对基于JavaScript的应用程序可以产生巨大影响，最重要的几个步骤如下：</p>
-<ul>
-<li><p>合并 JavaScript 文件，减少 HTTP 请求的数量</p>
-</li>
-<li><p>压缩JavaScript 文件</p>
-</li>
-<li><p>以压缩形式提供 JavaScript 文件（gzip 编码）</p>
-</li>
-<li><p>通过设置 HTTP 响应报文头使 JavaScript 文件可缓存，通过向文件名附加时间戳解决缓存问题</p>
-</li>
-<li><p>使用内容传递网络（CDN）提供 JavaScript 文件，CDN不仅可以提高性能，它还可以为你管理压缩和缓存</p>
-</li>
-</ul>
-<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><h3 id="我的简书"><a href="#我的简书" class="headerlink" title="我的简书"></a><a href="http://www.jianshu.com/p/272f8c6c4c29" target="_blank" rel="external">我的简书</a></h3>
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/12/JS性能优化小记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>

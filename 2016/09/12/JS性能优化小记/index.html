@@ -103,7 +103,7 @@ js文件要在dom加载完成时才会被下载
 var script= document.createElement (&amp;quot;script&amp;quot;);
 script.type=">
 <meta property="og:image" content="http://7xrul1.com1.z0.glb.clouddn.com/gxn1.png">
-<meta property="og:updated_time" content="2016-09-12T13:38:59.243Z">
+<meta property="og:updated_time" content="2016-09-12T13:40:55.328Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS性能优化小记">
 <meta name="twitter:description" content="加载与运行
@@ -361,6 +361,7 @@ document.getElementsByTagName_r(&quot;head&quot;)[0].appendChild(script)
 无论在何处启动下载，文件的下载和运行都不会阻塞其他页面的处理过程
 </code></pre></li>
 <li><p>XHR 脚本注入</p>
+<a id="more"></a>
 <pre><code>var xhr = newXMLHttpRequest();
 xhr.open(&quot;get&quot;, &quot;file1.js&quot;, true);
 xhr.onreadystatechange = function() {
