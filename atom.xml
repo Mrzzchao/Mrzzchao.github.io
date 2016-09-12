@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://Mrzzchao.github.io/"/>
-  <updated>2016-08-25T17:40:47.443Z</updated>
+  <updated>2016-09-12T13:38:59.243Z</updated>
   <id>http://Mrzzchao.github.io/</id>
   
   <author>
@@ -14,6 +14,198 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JS性能优化小记</title>
+    <link href="http://Mrzzchao.github.io/2016/09/12/JS%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%B0%8F%E8%AE%B0/"/>
+    <id>http://Mrzzchao.github.io/2016/09/12/JS性能优化小记/</id>
+    <published>2016-09-12T13:36:29.000Z</published>
+    <updated>2016-09-12T13:38:59.243Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;加载与运行&quot;&gt;&lt;a href=&quot;#加载与运行&quot; class=&quot;headerlink&quot; title=&quot;加载与运行&quot;&gt;&lt;/a&gt;加载与运行&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;延期脚本&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;scripttype=&amp;quot;text/javascript&amp;quot; src=&amp;quot;file1.js&amp;quot;defer&amp;gt;&amp;lt;/script&amp;gt;
+js文件要在dom加载完成时才会被下载
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;动态脚本元素&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var script= document.createElement (&amp;quot;script&amp;quot;);
+script.type= &amp;quot;text/javascript&amp;quot;;
+script.src= &amp;quot;file1.js&amp;quot;;
+document.getElementsByTagName_r(&amp;quot;head&amp;quot;)[0].appendChild(script)
+
+无论在何处启动下载，文件的下载和运行都不会阻塞其他页面的处理过程
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;XHR 脚本注入&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var xhr = newXMLHttpRequest();
+xhr.open(&amp;quot;get&amp;quot;, &amp;quot;file1.js&amp;quot;, true);
+xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4) {
+        if (xhr.status &amp;gt;= 200 &amp;amp;&amp;amp; xhr.status &amp;lt; 300 || xhr.status == 304) {
+            var script = document.createElement(&amp;quot;script&amp;quot;);
+            script.type = &amp;quot;text/javascript&amp;quot;;
+            script.text = xhr.responseText;
+            document.body.appendChild(script);
+        }
+    }
+};
+xhr.send(null)
+
+在html页面中产生内联的js代码，它下载后不会立即执行，所以可以控制它的执行状态
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;推荐做法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;script type = &amp;quot;text/javascript&amp;quot; &amp;gt;
+    functionloadScript(url, callback) {
+        var script = document.createElement(&amp;quot;script&amp;quot;)
+        script.type = &amp;quot;text/javascript&amp;quot;;
+        if(script.readyState) { //IE
+            script.onreadystatechange = function() {
+                if (script.readyState == &amp;quot;loaded&amp;quot; ||
+                    script.readyState == &amp;quot;complete&amp;quot;) {
+                    script.onreadystatechange = null;
+                    callback();
+                }
+            };
+        } else { //Others
+            script.onload = function() {
+                callback();
+            };
+        }
+        script.src = url;
+        document.getElementsByTagName_r(&amp;quot;head&amp;quot;)[0].appendChild(script);
+    }
+loadScript(&amp;quot;the-rest.js&amp;quot;, function() {
+    Application.init();
+});
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;数据访问&quot;&gt;&lt;a href=&quot;#数据访问&quot; class=&quot;headerlink&quot; title=&quot;数据访问&quot;&gt;&lt;/a&gt;数据访问&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;避免with&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;当代码流执行到一个 with 表达式时，运行期上下文的作用域链被临时改变了。一个新的可变对象将被
+创建，它包含指定对象的所有属性。此对象被插入到作用域链的前端，意味着现在函数的所有局部变量都
+被推入第二个作用域链对象中，所以访问代价更高了（参见下图）。
+
+通过将 document 对象传递给 with 表达式，一个新的可变对象容纳了 document 对象的所有属性，被插入到作用域链的前端。这使得访问 document 的属性非常快，但是访问局部变量的速度却变慢了，例如 bd 变量。正因为这个原因，最好不要使用 with 表达式。正如前面提到的，只要简单地将 document 存储在一个
+局部变量中，就可以获得性能上的提升。
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/gxn1.png&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;避免try-catch&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    在 JavaScript 中不只是 with 表达式人为地改变运行期上下文的作用域链，try-catch 表达式的 catch 子句
+具有相同效果。当 try 块发生错误时，程序流程自动转入 catch 块，并将异常对象推入作用域链前端的一个
+可变对象中。在 catch 块中，函数的所有局部变量现在被放在第二个作用域链对象中。例如：
+
+try {
+ methodThatMightCauseAnError();
+} catch (ex){
+ alert(ex.message); //scope chain is augmented here
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;如果需要多次访问过深的作用域链和原型链，访问的内容不会变化时，那应该把需要访问的值赋给局部变量&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;在 JavaScript 中，数据存储位置可以对代码整体性能产生重要影响。有四种数据访问类型：直接量，变量，数组项，对象成员。它们有不同的性能考虑。
+
+直接量和局部变量访问速度非常快，数组项和对象成员需要更长时间。
+
+局部变量比域外变量快，因为它位于作用域链的第一个对象中。变量在作用域链中的位置越深，访问所需的时间就越长。全局变量总是最慢的，因为它们总是位于作用域链的最后一环。
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Dom-编程&quot;&gt;&lt;a href=&quot;#Dom-编程&quot; class=&quot;headerlink&quot; title=&quot;Dom 编程&quot;&gt;&lt;/a&gt;Dom 编程&lt;/h2&gt;&lt;p&gt;这对性能意味着什么呢？简单说来，两个独立的部分以功能接口连接就会带来性能损耗。一个很形象的比喻是把 DOM 看成一个岛屿，把 JavaScript（ECMAScript）看成另一个岛屿，两者之间以一座收费桥连&lt;br&gt;接（参见 John Hrvatin，微软，MIX09，&lt;a href=&quot;http://videos.visitmix.com/MIX09/T53F）。每次&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://videos.visitmix.com/MIX09/T53F）。每次&lt;/a&gt; ECMAScript 需要访问DOM时，你需要过桥，交一次“过桥费”。你操作 DOM次数越多，费用就越高。一般的建议是尽量减少过桥次数，努力停留在 ECMAScript 岛上。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;最小化 DOM 访问，在 JavaScript 端做尽可能多的事情。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在反复访问的地方使用局部变量存放 DOM 引用.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;小心地处理 HTML 集合，因为他们表现出“存在性”，总是对底层文档重新查询。将集合的 length 属性缓存到一个变量中，在迭代中使用这个变量。如果经常操作这个集合，可以将集合拷贝到数组中&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;如果可能的话，使用速度更快的 API，诸如 querySelectorAll()和 firstElementChild、querySelector()等css选择器&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;注意重绘和重排版；批量修改风格，离线操作 DOM 树，缓存并减少对布局信息的访问。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;动画中使用绝对坐标，使用拖放代理。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;使用事件托管技术最小化事件句柄数量。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;算法与流程控制&quot;&gt;&lt;a href=&quot;#算法与流程控制&quot; class=&quot;headerlink&quot; title=&quot;算法与流程控制&quot;&gt;&lt;/a&gt;算法与流程控制&lt;/h2&gt;&lt;p&gt;正如其他编程语言，代码的写法和算法选用影响 JavaScript 的运行时间。与其他编程语言不同的是，JavaScript 可用资源有限，所以优化技术更为重要。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;for，while，do-while 循环的性能特性相似，谁也不比谁更快或更慢。除非你要迭代遍历一个属性未知的对象，否则不要使用 for-in 循环。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;当判断条件较多时，查表法比 if-else 或者 switch 更快。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;如果你遇到一个栈溢出错误，将方法修改为一个迭代算法或者使用制表法可以避免重复工作。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;当遇到递归时，如果有一些重复性的返回，就应该用缓存cache存储重复的返回&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;字符串与正则表达式&quot;&gt;&lt;a href=&quot;#字符串与正则表达式&quot; class=&quot;headerlink&quot; title=&quot;字符串与正则表达式&quot;&gt;&lt;/a&gt;字符串与正则表达式&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;字符串&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;当连接数量巨大或尺寸巨大的字符串时，数组联合是 IE7 和它的早期版本上唯一具有合理性能的方法。如果你不关心 IE7 和它的早期版本，数组联合是连接字符串最慢的方法之一。使用简单的+和+=取而代之，可避免（产生）不必要的中间字符串。
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;正则表达式&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;正则表达式并不总是完成工作的最佳工具，尤其当你只是搜索一个文本字符串时。
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;响应接口&quot;&gt;&lt;a href=&quot;#响应接口&quot; class=&quot;headerlink&quot; title=&quot;响应接口&quot;&gt;&lt;/a&gt;响应接口&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;UI 线程&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;大多数浏览器有一个单独的处理进程，它由两个任务所
+共享：JavaScript 任务和用户界面更新任务。每个时刻只有其中的一个操作得以执行，也就是说当 JavaScript
+代码运行时用户界面不能对输入产生反应，反之亦然。或者说，当 JavaScript 运行时，用户界面就被“锁定”
+了。管理好 JavaScript 运行时间对网页应用的性能很重要
+
+JavaScript 和 UI 更新共享的进程通常被称作浏览器 UI 线程（虽然对所有浏览器来说“线程”一词不一定准确）。此 UI 线程围绕着一个简单的队列系统工作，任务被保存到队列中直至进程空闲。一旦空闲，队列中的下一个任务将被检索和运行。这些任务不是运行 JavaScript 代码，就是执行 UI更新，包括重绘和重排版（在第三章讨论过）。此进程中最令人感兴趣的部分是每次输入均导致一个或多个任务被加入队列。
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;JS最佳运行时间是100ms以内&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;如果该接口在 100毫秒内响应用户输入，用户认为自己是“直接操作用户界面中的对象。”超过 100毫秒意味着用户认为自己与接口断开了。由于 UI 在JavaScript 运行时无法更新，如果运行时间长于 100 毫秒，用户就不能感受到对接口的控制
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;定时器可用于安排代码推迟执行，它使得你可以将长运行脚本分解成一系列较小的任务。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Ajax-异步JavaScript-和-XML&quot;&gt;&lt;a href=&quot;#Ajax-异步JavaScript-和-XML&quot; class=&quot;headerlink&quot; title=&quot;Ajax 异步JavaScript 和 XML&quot;&gt;&lt;/a&gt;Ajax 异步JavaScript 和 XML&lt;/h2&gt;&lt;p&gt;Ajax 是高性能 JavaScript 的基石。它可以通过延迟下载大量资源使页面加载更快。它通过在客户端和服务器之间异步传送数据，避免页面集体加载。它还用于在一次 HTTP 请求中获取整个页面的资源。通过选择正确的传输技术和最有效的数据格式，你可以显著改善用户与网站之间的互动。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;高性能 Ajax 包括：知道你项目的具体需求，选择正确的数据格式和与之相配的传输技术。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;作为数据格式，纯文本和 HTML 是高度限制的，但它们可节省客户端的 CPU 周期。XML 被广泛应用普遍支持，但它非常冗长且解析缓慢。JSON 是轻量级的，解析迅速（作为本地代码而不是字符串），交互性与 XML 相当。字符分隔的自定义格式非常轻量，在大量数据集解析时速度最快，但需要编写额外的程序在服务器端构造格式，并在客户端解析。
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;减少请求数量，可通过 JavaScript 和 CSS 文件打包，或者使用 MXHR。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;缩短页面的加载时间，在页面其它内容加载之后，使用 Ajax 获取少量重要文件。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;编程实践&quot;&gt;&lt;a href=&quot;#编程实践&quot; class=&quot;headerlink&quot; title=&quot;编程实践&quot;&gt;&lt;/a&gt;编程实践&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;给 setTimeout()和 setInterval()传递函数参数而不是字符串参数&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;创建新对象和数组时使用对象直接量和数组直接量。它们比非直接量形式创建和初始化更快&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;避免重复进行相同工作。当需要检测浏览器时，使用延迟加载或条件预加载&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;原生方法总是比 JavaScript 写的东西要快。尽量使用原生方法&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;创建部署&quot;&gt;&lt;a href=&quot;#创建部署&quot; class=&quot;headerlink&quot; title=&quot;创建部署&quot;&gt;&lt;/a&gt;创建部署&lt;/h2&gt;&lt;p&gt;开发和部署过程对基于JavaScript的应用程序可以产生巨大影响，最重要的几个步骤如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;合并 JavaScript 文件，减少 HTTP 请求的数量&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;压缩JavaScript 文件&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;以压缩形式提供 JavaScript 文件（gzip 编码）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;通过设置 HTTP 响应报文头使 JavaScript 文件可缓存，通过向文件名附加时间戳解决缓存问题&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;使用内容传递网络（CDN）提供 JavaScript 文件，CDN不仅可以提高性能，它还可以为你管理压缩和缓存&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;链接&quot;&gt;&lt;a href=&quot;#链接&quot; class=&quot;headerlink&quot; title=&quot;链接&quot;&gt;&lt;/a&gt;链接&lt;/h2&gt;&lt;h3 id=&quot;我的简书&quot;&gt;&lt;a href=&quot;#我的简书&quot; class=&quot;headerlink&quot; title=&quot;我的简书&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.jianshu.com/p/272f8c6c4c29&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;我的简书&lt;/a&gt;&lt;/h3&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;加载与运行&quot;&gt;&lt;a href=&quot;#加载与运行&quot; class=&quot;headerlink&quot; title=&quot;加载与运行&quot;&gt;&lt;/a&gt;加载与运行&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;延期脚本&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;scripttype=&amp;quot;text/jav
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Yeoman 浅析</title>
@@ -1178,6 +1370,265 @@ hexo d == hexo deploy
   </entry>
   
   <entry>
+    <title>css字体名称</title>
+    <link href="http://Mrzzchao.github.io/2016/03/20/%E5%AD%97%E4%BD%93%E5%90%8D%E7%A7%B0/"/>
+    <id>http://Mrzzchao.github.io/2016/03/20/字体名称/</id>
+    <published>2016-03-20T07:30:03.000Z</published>
+    <updated>2016-04-17T12:29:48.729Z</updated>
+    
+    <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;h2 id=&quot;Mac&quot;&gt;&lt;a href=&quot;#Mac&quot; class=&quot;headerlink&quot; title=&quot;Mac&quot;&gt;&lt;/a&gt;Mac&lt;/h2&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;中文名&lt;/th&gt;
+&lt;th&gt;英文名&lt;/th&gt;
+&lt;th&gt;Unicode&lt;/th&gt;
+&lt;th&gt;Unicode 2&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;华文细黑&lt;/td&gt;
+&lt;td&gt;STHeiti Light [STXihei]&lt;/td&gt;
+&lt;td&gt;\534E\6587\7EC6\9ED1&lt;/td&gt;
+&lt;td&gt;华文细黑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文黑体&lt;/td&gt;
+&lt;td&gt;STHeiti&lt;/td&gt;
+&lt;td&gt;\534E\6587\9ED1\4F53&lt;/td&gt;
+&lt;td&gt;华文黑体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文楷体&lt;/td&gt;
+&lt;td&gt;STKaiti&lt;/td&gt;
+&lt;td&gt;\534E\6587\6977\4F53&lt;/td&gt;
+&lt;td&gt;华文楷体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文宋体&lt;/td&gt;
+&lt;td&gt;STSong&lt;/td&gt;
+&lt;td&gt;\534E\6587\5B8B\4F53&lt;/td&gt;
+&lt;td&gt;华文宋体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文仿宋&lt;/td&gt;
+&lt;td&gt;STFangsong&lt;/td&gt;
+&lt;td&gt;\534E\6587\4EFF\5B8B&lt;/td&gt;
+&lt;td&gt;华文仿宋&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;丽黑 Pro&lt;/td&gt;
+&lt;td&gt;LiHei Pro Medium&lt;/td&gt;
+&lt;td&gt;\4E3D\9ED1 Pro&lt;/td&gt;
+&lt;td&gt;丽黑 Pro&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;丽宋 Pro&lt;/td&gt;
+&lt;td&gt;LiSong Pro Light&lt;/td&gt;
+&lt;td&gt;\4E3D\5B8B Pro&lt;/td&gt;
+&lt;td&gt;丽宋 Pro&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;标楷体&lt;/td&gt;
+&lt;td&gt;BiauKai&lt;/td&gt;
+&lt;td&gt;\6807\6977\4F53&lt;/td&gt;
+&lt;td&gt;标楷体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;苹果丽中黑&lt;/td&gt;
+&lt;td&gt;Apple LiGothic Medium&lt;/td&gt;
+&lt;td&gt;\82F9\679C\4E3D\4E2D\9ED1&lt;/td&gt;
+&lt;td&gt;苹果丽中黑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;苹果丽细宋&lt;/td&gt;
+&lt;td&gt;Apple LiSung Light&lt;/td&gt;
+&lt;td&gt;\82F9\679C\4E3D\7EC6\5B8B&lt;/td&gt;
+&lt;td&gt;苹果丽细宋&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;h2 id=&quot;Window&quot;&gt;&lt;a href=&quot;#Window&quot; class=&quot;headerlink&quot; title=&quot;Window&quot;&gt;&lt;/a&gt;Window&lt;/h2&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;中文名&lt;/th&gt;
+&lt;th&gt;英文名&lt;/th&gt;
+&lt;th&gt;Unicode&lt;/th&gt;
+&lt;th&gt;Unicode 2&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;新细明体&lt;/td&gt;
+&lt;td&gt;PMingLiU&lt;/td&gt;
+&lt;td&gt;\65B0\7EC6\660E\4F53&lt;/td&gt;
+&lt;td&gt;新细明体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;细明体&lt;/td&gt;
+&lt;td&gt;MingLiU&lt;/td&gt;
+&lt;td&gt;\7EC6\660E\4F53&lt;/td&gt;
+&lt;td&gt;细明体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;标楷体&lt;/td&gt;
+&lt;td&gt;DFKai-SB&lt;/td&gt;
+&lt;td&gt;\6807\6977\4F53&lt;/td&gt;
+&lt;td&gt;标楷体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;黑体&lt;/td&gt;
+&lt;td&gt;SimHei&lt;/td&gt;
+&lt;td&gt;\9ED1\4F53&lt;/td&gt;
+&lt;td&gt;黑体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;宋体&lt;/td&gt;
+&lt;td&gt;SimSun&lt;/td&gt;
+&lt;td&gt;\5B8B\4F53&lt;/td&gt;
+&lt;td&gt;宋体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;新宋体&lt;/td&gt;
+&lt;td&gt;NSimSun&lt;/td&gt;
+&lt;td&gt;\65B0\5B8B\4F53&lt;/td&gt;
+&lt;td&gt;新宋体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;仿宋&lt;/td&gt;
+&lt;td&gt;FangSong&lt;/td&gt;
+&lt;td&gt;\4EFF\5B8B&lt;/td&gt;
+&lt;td&gt;仿宋&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;楷体&lt;/td&gt;
+&lt;td&gt;KaiTi&lt;/td&gt;
+&lt;td&gt;\6977\4F53&lt;/td&gt;
+&lt;td&gt;楷体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;仿宋_GB2312&lt;/td&gt;
+&lt;td&gt;FangSong_GB2312&lt;/td&gt;
+&lt;td&gt;\4EFF\5B8B_GB2312&lt;/td&gt;
+&lt;td&gt;仿宋_GB2312&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;楷体_GB2312&lt;/td&gt;
+&lt;td&gt;KaiTi_GB2312&lt;/td&gt;
+&lt;td&gt;\6977\4F53_GB2312&lt;/td&gt;
+&lt;td&gt;楷体_GB2312&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;微软正黑体&lt;/td&gt;
+&lt;td&gt;Microsoft JhengHei&lt;/td&gt;
+&lt;td&gt;\5FAE\x8F6F\6B63\9ED1\4F53&lt;/td&gt;
+&lt;td&gt;微软正黑体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;微软雅黑&lt;/td&gt;
+&lt;td&gt;Microsoft YaHei&lt;/td&gt;
+&lt;td&gt;\5FAE\8F6F\96C5\9ED1&lt;/td&gt;
+&lt;td&gt;微软雅黑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;&lt;h2 id=&quot;Mac&quot;&gt;&lt;a href=&quot;#Mac&quot; class=&quot;headerlink&quot; title=&quot;Mac&quot;&gt;&lt;/a&gt;Mac&lt;/h2&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;中文名&lt;/th&gt;
+&lt;th&gt;英文名&lt;/th&gt;
+&lt;th&gt;Unicode&lt;/th&gt;
+&lt;th&gt;Unicode 2&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;华文细黑&lt;/td&gt;
+&lt;td&gt;STHeiti Light [STXihei]&lt;/td&gt;
+&lt;td&gt;\534E\6587\7EC6\9ED1&lt;/td&gt;
+&lt;td&gt;华文细黑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文黑体&lt;/td&gt;
+&lt;td&gt;STHeiti&lt;/td&gt;
+&lt;td&gt;\534E\6587\9ED1\4F53&lt;/td&gt;
+&lt;td&gt;华文黑体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文楷体&lt;/td&gt;
+&lt;td&gt;STKaiti&lt;/td&gt;
+&lt;td&gt;\534E\6587\6977\4F53&lt;/td&gt;
+&lt;td&gt;华文楷体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文宋体&lt;/td&gt;
+&lt;td&gt;STSong&lt;/td&gt;
+&lt;td&gt;\534E\6587\5B8B\4F53&lt;/td&gt;
+&lt;td&gt;华文宋体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文仿宋&lt;/td&gt;
+&lt;td&gt;STFangsong&lt;/td&gt;
+&lt;td&gt;\534E\6587\4EFF\5B8B&lt;/td&gt;
+&lt;td&gt;华文仿宋&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;丽黑 Pro&lt;/td&gt;
+&lt;td&gt;LiHei Pro Medium&lt;/td&gt;
+&lt;td&gt;\4E3D\9ED1 Pro&lt;/td&gt;
+&lt;td&gt;丽黑 Pro&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;丽宋 Pro&lt;/td&gt;
+&lt;td&gt;LiSong Pro Light&lt;/td&gt;
+&lt;td&gt;\4E3D\5B8B Pro&lt;/td&gt;
+&lt;td&gt;丽宋 Pro&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;标楷体&lt;/td&gt;
+&lt;td&gt;BiauKai&lt;/td&gt;
+&lt;td&gt;\6807\6977\4F53&lt;/td&gt;
+&lt;td&gt;标楷体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;苹果丽中黑&lt;/td&gt;
+&lt;td&gt;Apple LiGothic Medium&lt;/td&gt;
+&lt;td&gt;\82F9\679C\4E3D\4E2D\9ED1&lt;/td&gt;
+&lt;td&gt;苹果丽中黑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;苹果丽细宋&lt;/td&gt;
+&lt;td&gt;Apple LiSung Light&lt;/td&gt;
+&lt;td&gt;\82F9\679C\4E3D\7EC6\5B8B&lt;/td&gt;
+&lt;td&gt;苹果丽细宋&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+    
+    </summary>
+    
+      <category term="CSS" scheme="http://Mrzzchao.github.io/categories/CSS/"/>
+    
+    
+      <category term="Font-Name" scheme="http://Mrzzchao.github.io/tags/Font-Name/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JavaScript基础知识点</title>
     <link href="http://Mrzzchao.github.io/2016/03/20/javascript%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/"/>
     <id>http://Mrzzchao.github.io/2016/03/20/javascript简明教程/</id>
@@ -1476,265 +1927,6 @@ hexo d == hexo deploy
     
       <category term="JavaScript" scheme="http://Mrzzchao.github.io/categories/JavaScript/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>css字体名称</title>
-    <link href="http://Mrzzchao.github.io/2016/03/20/%E5%AD%97%E4%BD%93%E5%90%8D%E7%A7%B0/"/>
-    <id>http://Mrzzchao.github.io/2016/03/20/字体名称/</id>
-    <published>2016-03-20T07:30:03.000Z</published>
-    <updated>2016-04-17T12:29:48.729Z</updated>
-    
-    <content type="html">&lt;ul&gt;
-&lt;li&gt;&lt;h2 id=&quot;Mac&quot;&gt;&lt;a href=&quot;#Mac&quot; class=&quot;headerlink&quot; title=&quot;Mac&quot;&gt;&lt;/a&gt;Mac&lt;/h2&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;中文名&lt;/th&gt;
-&lt;th&gt;英文名&lt;/th&gt;
-&lt;th&gt;Unicode&lt;/th&gt;
-&lt;th&gt;Unicode 2&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;华文细黑&lt;/td&gt;
-&lt;td&gt;STHeiti Light [STXihei]&lt;/td&gt;
-&lt;td&gt;\534E\6587\7EC6\9ED1&lt;/td&gt;
-&lt;td&gt;华文细黑&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;华文黑体&lt;/td&gt;
-&lt;td&gt;STHeiti&lt;/td&gt;
-&lt;td&gt;\534E\6587\9ED1\4F53&lt;/td&gt;
-&lt;td&gt;华文黑体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;华文楷体&lt;/td&gt;
-&lt;td&gt;STKaiti&lt;/td&gt;
-&lt;td&gt;\534E\6587\6977\4F53&lt;/td&gt;
-&lt;td&gt;华文楷体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;华文宋体&lt;/td&gt;
-&lt;td&gt;STSong&lt;/td&gt;
-&lt;td&gt;\534E\6587\5B8B\4F53&lt;/td&gt;
-&lt;td&gt;华文宋体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;华文仿宋&lt;/td&gt;
-&lt;td&gt;STFangsong&lt;/td&gt;
-&lt;td&gt;\534E\6587\4EFF\5B8B&lt;/td&gt;
-&lt;td&gt;华文仿宋&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;丽黑 Pro&lt;/td&gt;
-&lt;td&gt;LiHei Pro Medium&lt;/td&gt;
-&lt;td&gt;\4E3D\9ED1 Pro&lt;/td&gt;
-&lt;td&gt;丽黑 Pro&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;丽宋 Pro&lt;/td&gt;
-&lt;td&gt;LiSong Pro Light&lt;/td&gt;
-&lt;td&gt;\4E3D\5B8B Pro&lt;/td&gt;
-&lt;td&gt;丽宋 Pro&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;标楷体&lt;/td&gt;
-&lt;td&gt;BiauKai&lt;/td&gt;
-&lt;td&gt;\6807\6977\4F53&lt;/td&gt;
-&lt;td&gt;标楷体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;苹果丽中黑&lt;/td&gt;
-&lt;td&gt;Apple LiGothic Medium&lt;/td&gt;
-&lt;td&gt;\82F9\679C\4E3D\4E2D\9ED1&lt;/td&gt;
-&lt;td&gt;苹果丽中黑&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;苹果丽细宋&lt;/td&gt;
-&lt;td&gt;Apple LiSung Light&lt;/td&gt;
-&lt;td&gt;\82F9\679C\4E3D\7EC6\5B8B&lt;/td&gt;
-&lt;td&gt;苹果丽细宋&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;h2 id=&quot;Window&quot;&gt;&lt;a href=&quot;#Window&quot; class=&quot;headerlink&quot; title=&quot;Window&quot;&gt;&lt;/a&gt;Window&lt;/h2&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;中文名&lt;/th&gt;
-&lt;th&gt;英文名&lt;/th&gt;
-&lt;th&gt;Unicode&lt;/th&gt;
-&lt;th&gt;Unicode 2&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;新细明体&lt;/td&gt;
-&lt;td&gt;PMingLiU&lt;/td&gt;
-&lt;td&gt;\65B0\7EC6\660E\4F53&lt;/td&gt;
-&lt;td&gt;新细明体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;细明体&lt;/td&gt;
-&lt;td&gt;MingLiU&lt;/td&gt;
-&lt;td&gt;\7EC6\660E\4F53&lt;/td&gt;
-&lt;td&gt;细明体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;标楷体&lt;/td&gt;
-&lt;td&gt;DFKai-SB&lt;/td&gt;
-&lt;td&gt;\6807\6977\4F53&lt;/td&gt;
-&lt;td&gt;标楷体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;黑体&lt;/td&gt;
-&lt;td&gt;SimHei&lt;/td&gt;
-&lt;td&gt;\9ED1\4F53&lt;/td&gt;
-&lt;td&gt;黑体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;宋体&lt;/td&gt;
-&lt;td&gt;SimSun&lt;/td&gt;
-&lt;td&gt;\5B8B\4F53&lt;/td&gt;
-&lt;td&gt;宋体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;新宋体&lt;/td&gt;
-&lt;td&gt;NSimSun&lt;/td&gt;
-&lt;td&gt;\65B0\5B8B\4F53&lt;/td&gt;
-&lt;td&gt;新宋体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;仿宋&lt;/td&gt;
-&lt;td&gt;FangSong&lt;/td&gt;
-&lt;td&gt;\4EFF\5B8B&lt;/td&gt;
-&lt;td&gt;仿宋&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;楷体&lt;/td&gt;
-&lt;td&gt;KaiTi&lt;/td&gt;
-&lt;td&gt;\6977\4F53&lt;/td&gt;
-&lt;td&gt;楷体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;仿宋_GB2312&lt;/td&gt;
-&lt;td&gt;FangSong_GB2312&lt;/td&gt;
-&lt;td&gt;\4EFF\5B8B_GB2312&lt;/td&gt;
-&lt;td&gt;仿宋_GB2312&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;楷体_GB2312&lt;/td&gt;
-&lt;td&gt;KaiTi_GB2312&lt;/td&gt;
-&lt;td&gt;\6977\4F53_GB2312&lt;/td&gt;
-&lt;td&gt;楷体_GB2312&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;微软正黑体&lt;/td&gt;
-&lt;td&gt;Microsoft JhengHei&lt;/td&gt;
-&lt;td&gt;\5FAE\x8F6F\6B63\9ED1\4F53&lt;/td&gt;
-&lt;td&gt;微软正黑体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;微软雅黑&lt;/td&gt;
-&lt;td&gt;Microsoft YaHei&lt;/td&gt;
-&lt;td&gt;\5FAE\8F6F\96C5\9ED1&lt;/td&gt;
-&lt;td&gt;微软雅黑&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;&lt;h2 id=&quot;Mac&quot;&gt;&lt;a href=&quot;#Mac&quot; class=&quot;headerlink&quot; title=&quot;Mac&quot;&gt;&lt;/a&gt;Mac&lt;/h2&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;中文名&lt;/th&gt;
-&lt;th&gt;英文名&lt;/th&gt;
-&lt;th&gt;Unicode&lt;/th&gt;
-&lt;th&gt;Unicode 2&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;华文细黑&lt;/td&gt;
-&lt;td&gt;STHeiti Light [STXihei]&lt;/td&gt;
-&lt;td&gt;\534E\6587\7EC6\9ED1&lt;/td&gt;
-&lt;td&gt;华文细黑&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;华文黑体&lt;/td&gt;
-&lt;td&gt;STHeiti&lt;/td&gt;
-&lt;td&gt;\534E\6587\9ED1\4F53&lt;/td&gt;
-&lt;td&gt;华文黑体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;华文楷体&lt;/td&gt;
-&lt;td&gt;STKaiti&lt;/td&gt;
-&lt;td&gt;\534E\6587\6977\4F53&lt;/td&gt;
-&lt;td&gt;华文楷体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;华文宋体&lt;/td&gt;
-&lt;td&gt;STSong&lt;/td&gt;
-&lt;td&gt;\534E\6587\5B8B\4F53&lt;/td&gt;
-&lt;td&gt;华文宋体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;华文仿宋&lt;/td&gt;
-&lt;td&gt;STFangsong&lt;/td&gt;
-&lt;td&gt;\534E\6587\4EFF\5B8B&lt;/td&gt;
-&lt;td&gt;华文仿宋&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;丽黑 Pro&lt;/td&gt;
-&lt;td&gt;LiHei Pro Medium&lt;/td&gt;
-&lt;td&gt;\4E3D\9ED1 Pro&lt;/td&gt;
-&lt;td&gt;丽黑 Pro&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;丽宋 Pro&lt;/td&gt;
-&lt;td&gt;LiSong Pro Light&lt;/td&gt;
-&lt;td&gt;\4E3D\5B8B Pro&lt;/td&gt;
-&lt;td&gt;丽宋 Pro&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;标楷体&lt;/td&gt;
-&lt;td&gt;BiauKai&lt;/td&gt;
-&lt;td&gt;\6807\6977\4F53&lt;/td&gt;
-&lt;td&gt;标楷体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;苹果丽中黑&lt;/td&gt;
-&lt;td&gt;Apple LiGothic Medium&lt;/td&gt;
-&lt;td&gt;\82F9\679C\4E3D\4E2D\9ED1&lt;/td&gt;
-&lt;td&gt;苹果丽中黑&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;苹果丽细宋&lt;/td&gt;
-&lt;td&gt;Apple LiSung Light&lt;/td&gt;
-&lt;td&gt;\82F9\679C\4E3D\7EC6\5B8B&lt;/td&gt;
-&lt;td&gt;苹果丽细宋&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-    
-    </summary>
-    
-      <category term="CSS" scheme="http://Mrzzchao.github.io/categories/CSS/"/>
-    
-    
-      <category term="Font-Name" scheme="http://Mrzzchao.github.io/tags/Font-Name/"/>
     
   </entry>
   
