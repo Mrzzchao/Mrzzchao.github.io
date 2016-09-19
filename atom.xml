@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://Mrzzchao.github.io/"/>
-  <updated>2016-09-12T13:40:55.328Z</updated>
+  <updated>2016-09-19T09:02:27.468Z</updated>
   <id>http://Mrzzchao.github.io/</id>
   
   <author>
@@ -14,6 +14,181 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HTML5知识点小记</title>
+    <link href="http://Mrzzchao.github.io/2016/09/19/HTML5%E7%9F%A5%E8%AF%86%E7%82%B9%E5%B0%8F%E8%AE%B0/"/>
+    <id>http://Mrzzchao.github.io/2016/09/19/HTML5知识点小记/</id>
+    <published>2016-09-19T09:01:18.000Z</published>
+    <updated>2016-09-19T09:02:27.468Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;Canvas&quot;&gt;&lt;a href=&quot;#Canvas&quot; class=&quot;headerlink&quot; title=&quot;Canvas&quot;&gt;&lt;/a&gt;Canvas&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;对于不支持自定义新标签的浏览器（IE9以下）的，可以使用如下方式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/aFarkas/html5shiv&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;HTML5Shiv&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;!--[if lt IE 9]&amp;gt;
+  &amp;lt;script src=&amp;quot;https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;![endif]--&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;canvas绘制圆时，弧度的位置是不变的，都是从逆时针的0,0.5PI,1PI,1.5PI,2PI&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;SVG&quot;&gt;&lt;a href=&quot;#SVG&quot; class=&quot;headerlink&quot; title=&quot;SVG&quot;&gt;&lt;/a&gt;SVG&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;&amp;lt;g&amp;gt;&lt;/code&gt; 代表组&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;defs&lt;/code&gt; 定义将来要使用的功能，&lt;code&gt;&amp;lt;use&amp;gt;&lt;/code&gt; 来调用&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Communication-API&quot;&gt;&lt;a href=&quot;#Communication-API&quot; class=&quot;headerlink&quot; title=&quot;Communication API&quot;&gt;&lt;/a&gt;Communication API&lt;/h2&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;postMessage&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;XHR2 支持跨域和进度事件&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;WebSocket-API&quot;&gt;&lt;a href=&quot;#WebSocket-API&quot; class=&quot;headerlink&quot; title=&quot;WebSocket API&quot;&gt;&lt;/a&gt;WebSocket API&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;基本用法&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;连接&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;w = new WebSocket(url, protocol);
+或 w = new WebSocket(url, [&amp;quot;proto1&amp;quot;, &amp;quot;proto2&amp;quot;]);
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;事件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;open 连接建立时
+message 收到消息时
+close 连接关闭时
+error 错误发生时
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;发送消息&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;w.send(msg);
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Forms&quot;&gt;&lt;a href=&quot;#Forms&quot; class=&quot;headerlink&quot; title=&quot;Forms&quot;&gt;&lt;/a&gt;Forms&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;控件&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;tel&lt;/li&gt;
+&lt;li&gt;email&lt;/li&gt;
+&lt;li&gt;url&lt;/li&gt;
+&lt;li&gt;search&lt;/li&gt;
+&lt;li&gt;range&lt;/li&gt;
+&lt;li&gt;number&lt;/li&gt;
+&lt;li&gt;progress&lt;/li&gt;
+&lt;li&gt;color&lt;/li&gt;
+&lt;li&gt;datetime&lt;/li&gt;
+&lt;li&gt;time&lt;/li&gt;
+&lt;li&gt;week&lt;/li&gt;
+&lt;li&gt;month&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;&lt;p data-height=&quot;265&quot; data-theme-id=&quot;dark&quot; data-slug-hash=&quot;GjjNAY&quot; data-default-tab=&quot;html,result&quot; data-user=&quot;Mrzzchao&quot; data-embed-version=&quot;2&quot; class=&quot;codepen&quot;&gt;See the Pen &lt;a href=&quot;http://codepen.io/Mrzzchao/pen/GjjNAY/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Inputs&lt;/a&gt; by MChao (&lt;a href=&quot;http://codepen.io/Mrzzchao&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;@Mrzzchao&lt;/a&gt;) on &lt;a href=&quot;http://codepen.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;
+&lt;script async src=&quot;//assets.codepen.io/assets/embed/ei.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;strong&gt;特性&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;placeholder 提示&lt;/li&gt;
+&lt;li&gt;autocomplete 自动填充&lt;/li&gt;
+&lt;li&gt;autofocus 页面载入后，自动获取焦点&lt;/li&gt;
+&lt;li&gt;spellcheck 检查拼写&lt;/li&gt;
+&lt;li&gt;datalist和list 通过通过&lt;code&gt;list&lt;/code&gt;和&lt;code&gt;datalist&lt;/code&gt;，用户可以构造一张选值列表&lt;/li&gt;
+&lt;li&gt;step 指定值递增的粒度&lt;/li&gt;
+&lt;li&gt;valueAsNumber 控件值类型与文本的转换&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;表单验证&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;获取&lt;code&gt;ValidityState&lt;/code&gt;对象&lt;br&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; valCheck = &lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.myForm.myInput.validity;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;验证&lt;br&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;valCheck.valid;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;valueMissing&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;目的：确保表单控件已填写
+用法：加require
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;typeMismatch&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;目的：保证与控件类型（email,url,number）匹配
+用法：给input加type类型
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;patternMismatch&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;目的：保证控件的值是否为有效格式
+用法：给pattern添加匹配规则
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;tooLong&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;用法：避免输入过多字符
+用法：添加maxLength属性
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;customError&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;目的：自定义产生的错误信息
+用法：setCustomValidity(Msg);
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;关闭验证&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;在标签添加 formnovalidate
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;拖动&quot;&gt;&lt;a href=&quot;#拖动&quot; class=&quot;headerlink&quot; title=&quot;拖动&quot;&gt;&lt;/a&gt;拖动&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;事件&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;dragstart 开始拖动时触发&lt;/li&gt;
+&lt;li&gt;drag 拖动时触发&lt;/li&gt;
+&lt;li&gt;dragenter 鼠标进入放置框或拖动元素时触发&lt;/li&gt;
+&lt;li&gt;dragleave鼠标离开放置框或拖动元素时触发&lt;/li&gt;
+&lt;li&gt;dragover 鼠标在移动时&lt;/li&gt;
+&lt;li&gt;drop 释放鼠标是触发&lt;/li&gt;
+&lt;li&gt;dragend 拖动的最后一个事件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/drag0.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;设置可拖动&lt;/strong&gt;&lt;br&gt;给标签添加可拖动属性&lt;code&gt;draggable&lt;/code&gt;&lt;br&gt;&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;myDragSource&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;draggable&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;true&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;传输和控制&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;dataTransfer 对象&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Web-Workers&quot;&gt;&lt;a href=&quot;#Web-Workers&quot; class=&quot;headerlink&quot; title=&quot;Web Workers&quot;&gt;&lt;/a&gt;Web Workers&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;创建&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; worker = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Worker(&lt;span class=&quot;string&quot;&gt;&quot;myJS.js&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;内联&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;script id=&lt;span class=&quot;string&quot;&gt;&quot;myWorker&quot;&lt;/span&gt; type=&lt;span class=&quot;string&quot;&gt;&quot;javascript/worker&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;共享&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; shareWorker = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; SharedWorker(&lt;span class=&quot;string&quot;&gt;&quot;sharedWorker.js&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;多个JS文件的加载和执行&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;importScript(&lt;span class=&quot;string&quot;&gt;&quot;file1.js&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;file2.js&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;会顺序加载和执行&lt;/p&gt;
+&lt;h2 id=&quot;Web-Storage&quot;&gt;&lt;a href=&quot;#Web-Storage&quot; class=&quot;headerlink&quot; title=&quot;Web Storage&quot;&gt;&lt;/a&gt;Web Storage&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;cookies&lt;/strong&gt;&lt;br&gt;生命周期由用户自己设置&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;localStorage&lt;/strong&gt;&lt;br&gt;生命周期很长&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;sessionStorage&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;设置与获取数据&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sessionStorage.setItem(&lt;span class=&quot;string&quot;&gt;&quot;myKey&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;myValue&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sessionStorage.myKey = &lt;span class=&quot;string&quot;&gt;&quot;myValue&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sessionStorage[&lt;span class=&quot;string&quot;&gt;&quot;myKey&quot;&lt;/span&gt;] = &lt;span class=&quot;string&quot;&gt;&quot;myValue&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;当浏览器或者标签关闭时清除&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;openDatabase&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;IndexDB&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;App-Cache&quot;&gt;&lt;a href=&quot;#App-Cache&quot; class=&quot;headerlink&quot; title=&quot;App Cache&quot;&gt;&lt;/a&gt;App Cache&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;manifest&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;html&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;manifest&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;application.appcache&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Canvas&quot;&gt;&lt;a href=&quot;#Canvas&quot; class=&quot;headerlink&quot; title=&quot;Canvas&quot;&gt;&lt;/a&gt;Canvas&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;对于不支持自定义新标签的浏览器（IE9以下）的，可以使用如下方式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/aFarkas/html5shiv&quot;&gt;HTML5Shiv&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;!--[if lt IE 9]&amp;gt;
+  &amp;lt;script src=&amp;quot;https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;![endif]--&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;canvas绘制圆时，弧度的位置是不变的，都是从逆时针的0,0.5PI,1PI,1.5PI,2PI&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;SVG&quot;&gt;&lt;a href=&quot;#SVG&quot; class=&quot;headerlink&quot; title=&quot;SVG&quot;&gt;&lt;/a&gt;SVG&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;&amp;lt;g&amp;gt;&lt;/code&gt; 代表组&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;defs&lt;/code&gt; 定义将来要使用的功能，&lt;code&gt;&amp;lt;use&amp;gt;&lt;/code&gt; 来调用&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Communication-API&quot;&gt;&lt;a href=&quot;#Communication-API&quot; class=&quot;headerlink&quot; title=&quot;Communication API&quot;&gt;&lt;/a&gt;Communication API&lt;/h2&gt;
+    
+    </summary>
+    
+      <category term="HTML" scheme="http://Mrzzchao.github.io/categories/HTML/"/>
+    
+    
+      <category term="HTML5" scheme="http://Mrzzchao.github.io/tags/HTML5/"/>
+    
+  </entry>
   
   <entry>
     <title>JS性能优化小记</title>
