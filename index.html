@@ -282,6 +282,143 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/06/客户端JavaScript时间线/" itemprop="url">
+                  客户端JavaScript时间线
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-06T10:47:32+08:00" content="2016-11-06">
+              2016-11-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/06/客户端JavaScript时间线/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/06/客户端JavaScript时间线/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/11/06/客户端JavaScript时间线/" class="leancloud_visitors" data-flag-title="客户端JavaScript时间线">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在重新啃回<strong>JS权威指南</strong>时，学到了浏览器对于页面解析的一个顺序过程，所以在这里整理一下</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ol>
+<li>创建Document对象，并且开始解析页面 <code>readyState</code>为<code>loading</code></li>
+<li>当遇到没有defer或async的<code>&lt;script&gt;</code>标签时，解析器会暂停，知道脚本文件下载和执行完成再重新启动</li>
+<li>当遇到有defer或async的<code>&lt;script&gt;</code>标签时，解析器和脚本下载会同步执行</li>
+<li>当文档完成解析后，<code>readyState</code>为<code>interactive</code>，会触发DOMContentLoaded事件</li>
+<li>文档解析完成后，但可能还有其他内容还没载入，例如图片。当所有的这些都载入后，<code>readyState</code>为<code>complete</code></li>
+<li>一切都完成后，就开始了异步事件的调用了，例如异步响应用户输入事件，网络事件等</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/19/HTML5知识点小记/" itemprop="url">
                   HTML5知识点小记
                 </a>
@@ -808,140 +945,6 @@ document.getElementsByTagName_r(&quot;head&quot;)[0].appendChild(script)
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/15/chrome禁止本地浏览时加载本地其他文件-md/" itemprop="url">
-                  chrome禁止本地浏览时加载本地其他文件
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-15T14:53:18+08:00" content="2016-05-15">
-              2016-05-15
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Angular/" itemprop="url" rel="index">
-                    <span itemprop="name">Angular</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/15/chrome禁止本地浏览时加载本地其他文件-md/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/15/chrome禁止本地浏览时加载本地其他文件-md/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/05/15/chrome禁止本地浏览时加载本地其他文件-md/" class="leancloud_visitors" data-flag-title="chrome禁止本地浏览时加载本地其他文件">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在学习Angular的<strong>step-5</strong>中，遇到了一个问题<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">angular.js:<span class="number">11028</span> XMLHttpRequest cannot load</span><br><span class="line">file:<span class="comment">///E:/%E9%A1%B9%E7%9B%AE/public/angular-phonecat/app/phones/phones.json.</span></span><br><span class="line">Cross origin requests are only supported <span class="keyword">for</span> protocol schemes: http, data, chrome, chrome-extension, https, chrome-extension-resource.</span><br></pre></td></tr></table></figure></p>
-<p>研究发现该问题在<strong>fixfox</strong>里面没有出现，所以锁定了<em>chrome禁止本地浏览时加载本地其他文件</em>的搜索关键字</p>
-<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><h4 id="启动参数"><a href="#启动参数" class="headerlink" title="启动参数"></a>启动参数</h4><p>–user-data-dir=”[PATH]“  自定义用户数据目录</p>
-<p>–start-maximized                启动就最大化<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/05/15/chrome禁止本地浏览时加载本地其他文件-md/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -987,7 +990,7 @@ document.getElementsByTagName_r(&quot;head&quot;)[0].appendChild(script)
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1004,7 +1007,7 @@ document.getElementsByTagName_r(&quot;head&quot;)[0].appendChild(script)
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
