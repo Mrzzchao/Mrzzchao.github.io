@@ -431,7 +431,7 @@ document.getElementsByTagName_r(&amp;quot;head&amp;quot;)[0].appendChild(script)
     <link href="http://Mrzzchao.github.io/2016/08/26/Yeoman-%E6%B5%85%E6%9E%90/"/>
     <id>http://Mrzzchao.github.io/2016/08/26/Yeoman-浅析/</id>
     <published>2016-08-25T17:32:40.000Z</published>
-    <updated>2016-08-25T17:40:47.443Z</updated>
+    <updated>2016-08-25T17:40:47.444Z</updated>
     
     <content type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;当项目达到一定规模时，相信每个人都在烦恼，目录结构、各种包、依赖的安装，这些是很影响效率的。所以呢，一个神奇的脚本架—Yeoman出现了。那什么是脚本架呢，官网解释是这样的&lt;/p&gt;
 &lt;blockquote&gt;
@@ -571,7 +571,7 @@ document.getElementsByTagName_r(&amp;quot;head&amp;quot;)[0].appendChild(script)
     <link href="http://Mrzzchao.github.io/2016/05/28/Linux%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/"/>
     <id>http://Mrzzchao.github.io/2016/05/28/Linux期末复习/</id>
     <published>2016-05-28T09:24:02.000Z</published>
-    <updated>2016-05-29T15:54:02.877Z</updated>
+    <updated>2016-05-29T15:54:02.878Z</updated>
     
     <content type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;一晃眼，期末再次来临，各种考试也接踵而至。考试是一学期的浪荡再加3天苦读，相信这是很多大学生的4年状态。而考完后，这些挤压在脑壳中的字符就像被格式化一般，最后一无所有。所以为了在Linux这门课上留下点什么，在此记录。（参照老邝PPT所给考点归纳，貌似依旧应试）&lt;/p&gt;
 &lt;h1 id=&quot;正文&quot;&gt;&lt;a href=&quot;#正文&quot; class=&quot;headerlink&quot; title=&quot;正文&quot;&gt;&lt;/a&gt;正文&lt;/h1&gt;&lt;h2 id=&quot;Linux、类unix基本常识&quot;&gt;&lt;a href=&quot;#Linux、类unix基本常识&quot; class=&quot;headerlink&quot; title=&quot;Linux、类unix基本常识&quot;&gt;&lt;/a&gt;Linux、类unix基本常识&lt;/h2&gt;&lt;h3 id=&quot;什么是linux&quot;&gt;&lt;a href=&quot;#什么是linux&quot; class=&quot;headerlink&quot; title=&quot;什么是linux&quot;&gt;&lt;/a&gt;什么是linux&lt;/h3&gt;&lt;p&gt;是一个类 UNIX 内核的可以自由发布的实现版本，是一个操作系统的底层核心。可以获得内核源代码，编译并安装，然后获得并安装许多其他自由发布的软件，从而创建一个完整的 Linux，通常称为 Linux 系统&lt;/p&gt;
@@ -978,7 +978,7 @@ document.getElementsByTagName_r(&amp;quot;head&amp;quot;)[0].appendChild(script)
     <link href="http://Mrzzchao.github.io/2016/05/07/Angular-%E8%BF%90%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E9%97%AE%E9%A2%98/"/>
     <id>http://Mrzzchao.github.io/2016/05/07/Angular-运行单元测试问题/</id>
     <published>2016-05-07T14:02:17.000Z</published>
-    <updated>2016-05-07T15:35:23.033Z</updated>
+    <updated>2016-05-07T15:35:23.034Z</updated>
     
     <content type="html">&lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;Angular真是一个很折腾人的框架，一天就遇到了两问题。&lt;/p&gt;
 &lt;p&gt;现在按照&lt;a href=&quot;http://www.apjs.net/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Angular中文网&lt;/a&gt;的步骤进行单元测试时，又出现了问题。&lt;/p&gt;
@@ -1143,7 +1143,7 @@ npm ERR!     E:\项目\public\angular-phonecat\npm-debug.log
     <link href="http://Mrzzchao.github.io/2016/04/17/%E5%8D%9A%E5%AE%A2%E8%AF%9E%E7%94%9F%E8%AE%B0%20/"/>
     <id>http://Mrzzchao.github.io/2016/04/17/博客诞生记 /</id>
     <published>2016-04-17T03:25:32.000Z</published>
-    <updated>2016-04-18T05:33:20.523Z</updated>
+    <updated>2016-04-18T05:33:20.524Z</updated>
     
     <content type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;折腾了两天，终于把期待很久的博客弄上线了，这就如同上了电视一般激动，所以激动的同时，也记录一下这个&lt;br&gt;艰辛的过程，留给自己，帮助他人。&lt;/p&gt;
 &lt;h1 id=&quot;Hexo&quot;&gt;&lt;a href=&quot;#Hexo&quot; class=&quot;headerlink&quot; title=&quot;Hexo&quot;&gt;&lt;/a&gt;Hexo&lt;/h1&gt;&lt;p&gt;Hexo的作者是tommy351，根据官方介绍，Hexo是一个简单、快速、强大的博客发布工具，支持Markdown格式&lt;/p&gt;
@@ -1589,11 +1589,270 @@ hexo d == hexo deploy
   </entry>
   
   <entry>
+    <title>css字体名称</title>
+    <link href="http://Mrzzchao.github.io/2016/03/20/%E5%AD%97%E4%BD%93%E5%90%8D%E7%A7%B0/"/>
+    <id>http://Mrzzchao.github.io/2016/03/20/字体名称/</id>
+    <published>2016-03-20T07:30:03.000Z</published>
+    <updated>2016-04-17T12:29:48.730Z</updated>
+    
+    <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;h2 id=&quot;Mac&quot;&gt;&lt;a href=&quot;#Mac&quot; class=&quot;headerlink&quot; title=&quot;Mac&quot;&gt;&lt;/a&gt;Mac&lt;/h2&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;中文名&lt;/th&gt;
+&lt;th&gt;英文名&lt;/th&gt;
+&lt;th&gt;Unicode&lt;/th&gt;
+&lt;th&gt;Unicode 2&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;华文细黑&lt;/td&gt;
+&lt;td&gt;STHeiti Light [STXihei]&lt;/td&gt;
+&lt;td&gt;\534E\6587\7EC6\9ED1&lt;/td&gt;
+&lt;td&gt;华文细黑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文黑体&lt;/td&gt;
+&lt;td&gt;STHeiti&lt;/td&gt;
+&lt;td&gt;\534E\6587\9ED1\4F53&lt;/td&gt;
+&lt;td&gt;华文黑体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文楷体&lt;/td&gt;
+&lt;td&gt;STKaiti&lt;/td&gt;
+&lt;td&gt;\534E\6587\6977\4F53&lt;/td&gt;
+&lt;td&gt;华文楷体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文宋体&lt;/td&gt;
+&lt;td&gt;STSong&lt;/td&gt;
+&lt;td&gt;\534E\6587\5B8B\4F53&lt;/td&gt;
+&lt;td&gt;华文宋体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文仿宋&lt;/td&gt;
+&lt;td&gt;STFangsong&lt;/td&gt;
+&lt;td&gt;\534E\6587\4EFF\5B8B&lt;/td&gt;
+&lt;td&gt;华文仿宋&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;丽黑 Pro&lt;/td&gt;
+&lt;td&gt;LiHei Pro Medium&lt;/td&gt;
+&lt;td&gt;\4E3D\9ED1 Pro&lt;/td&gt;
+&lt;td&gt;丽黑 Pro&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;丽宋 Pro&lt;/td&gt;
+&lt;td&gt;LiSong Pro Light&lt;/td&gt;
+&lt;td&gt;\4E3D\5B8B Pro&lt;/td&gt;
+&lt;td&gt;丽宋 Pro&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;标楷体&lt;/td&gt;
+&lt;td&gt;BiauKai&lt;/td&gt;
+&lt;td&gt;\6807\6977\4F53&lt;/td&gt;
+&lt;td&gt;标楷体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;苹果丽中黑&lt;/td&gt;
+&lt;td&gt;Apple LiGothic Medium&lt;/td&gt;
+&lt;td&gt;\82F9\679C\4E3D\4E2D\9ED1&lt;/td&gt;
+&lt;td&gt;苹果丽中黑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;苹果丽细宋&lt;/td&gt;
+&lt;td&gt;Apple LiSung Light&lt;/td&gt;
+&lt;td&gt;\82F9\679C\4E3D\7EC6\5B8B&lt;/td&gt;
+&lt;td&gt;苹果丽细宋&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;h2 id=&quot;Window&quot;&gt;&lt;a href=&quot;#Window&quot; class=&quot;headerlink&quot; title=&quot;Window&quot;&gt;&lt;/a&gt;Window&lt;/h2&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;中文名&lt;/th&gt;
+&lt;th&gt;英文名&lt;/th&gt;
+&lt;th&gt;Unicode&lt;/th&gt;
+&lt;th&gt;Unicode 2&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;新细明体&lt;/td&gt;
+&lt;td&gt;PMingLiU&lt;/td&gt;
+&lt;td&gt;\65B0\7EC6\660E\4F53&lt;/td&gt;
+&lt;td&gt;新细明体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;细明体&lt;/td&gt;
+&lt;td&gt;MingLiU&lt;/td&gt;
+&lt;td&gt;\7EC6\660E\4F53&lt;/td&gt;
+&lt;td&gt;细明体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;标楷体&lt;/td&gt;
+&lt;td&gt;DFKai-SB&lt;/td&gt;
+&lt;td&gt;\6807\6977\4F53&lt;/td&gt;
+&lt;td&gt;标楷体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;黑体&lt;/td&gt;
+&lt;td&gt;SimHei&lt;/td&gt;
+&lt;td&gt;\9ED1\4F53&lt;/td&gt;
+&lt;td&gt;黑体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;宋体&lt;/td&gt;
+&lt;td&gt;SimSun&lt;/td&gt;
+&lt;td&gt;\5B8B\4F53&lt;/td&gt;
+&lt;td&gt;宋体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;新宋体&lt;/td&gt;
+&lt;td&gt;NSimSun&lt;/td&gt;
+&lt;td&gt;\65B0\5B8B\4F53&lt;/td&gt;
+&lt;td&gt;新宋体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;仿宋&lt;/td&gt;
+&lt;td&gt;FangSong&lt;/td&gt;
+&lt;td&gt;\4EFF\5B8B&lt;/td&gt;
+&lt;td&gt;仿宋&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;楷体&lt;/td&gt;
+&lt;td&gt;KaiTi&lt;/td&gt;
+&lt;td&gt;\6977\4F53&lt;/td&gt;
+&lt;td&gt;楷体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;仿宋_GB2312&lt;/td&gt;
+&lt;td&gt;FangSong_GB2312&lt;/td&gt;
+&lt;td&gt;\4EFF\5B8B_GB2312&lt;/td&gt;
+&lt;td&gt;仿宋_GB2312&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;楷体_GB2312&lt;/td&gt;
+&lt;td&gt;KaiTi_GB2312&lt;/td&gt;
+&lt;td&gt;\6977\4F53_GB2312&lt;/td&gt;
+&lt;td&gt;楷体_GB2312&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;微软正黑体&lt;/td&gt;
+&lt;td&gt;Microsoft JhengHei&lt;/td&gt;
+&lt;td&gt;\5FAE\x8F6F\6B63\9ED1\4F53&lt;/td&gt;
+&lt;td&gt;微软正黑体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;微软雅黑&lt;/td&gt;
+&lt;td&gt;Microsoft YaHei&lt;/td&gt;
+&lt;td&gt;\5FAE\8F6F\96C5\9ED1&lt;/td&gt;
+&lt;td&gt;微软雅黑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;&lt;h2 id=&quot;Mac&quot;&gt;&lt;a href=&quot;#Mac&quot; class=&quot;headerlink&quot; title=&quot;Mac&quot;&gt;&lt;/a&gt;Mac&lt;/h2&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;中文名&lt;/th&gt;
+&lt;th&gt;英文名&lt;/th&gt;
+&lt;th&gt;Unicode&lt;/th&gt;
+&lt;th&gt;Unicode 2&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;华文细黑&lt;/td&gt;
+&lt;td&gt;STHeiti Light [STXihei]&lt;/td&gt;
+&lt;td&gt;\534E\6587\7EC6\9ED1&lt;/td&gt;
+&lt;td&gt;华文细黑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文黑体&lt;/td&gt;
+&lt;td&gt;STHeiti&lt;/td&gt;
+&lt;td&gt;\534E\6587\9ED1\4F53&lt;/td&gt;
+&lt;td&gt;华文黑体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文楷体&lt;/td&gt;
+&lt;td&gt;STKaiti&lt;/td&gt;
+&lt;td&gt;\534E\6587\6977\4F53&lt;/td&gt;
+&lt;td&gt;华文楷体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文宋体&lt;/td&gt;
+&lt;td&gt;STSong&lt;/td&gt;
+&lt;td&gt;\534E\6587\5B8B\4F53&lt;/td&gt;
+&lt;td&gt;华文宋体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;华文仿宋&lt;/td&gt;
+&lt;td&gt;STFangsong&lt;/td&gt;
+&lt;td&gt;\534E\6587\4EFF\5B8B&lt;/td&gt;
+&lt;td&gt;华文仿宋&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;丽黑 Pro&lt;/td&gt;
+&lt;td&gt;LiHei Pro Medium&lt;/td&gt;
+&lt;td&gt;\4E3D\9ED1 Pro&lt;/td&gt;
+&lt;td&gt;丽黑 Pro&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;丽宋 Pro&lt;/td&gt;
+&lt;td&gt;LiSong Pro Light&lt;/td&gt;
+&lt;td&gt;\4E3D\5B8B Pro&lt;/td&gt;
+&lt;td&gt;丽宋 Pro&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;标楷体&lt;/td&gt;
+&lt;td&gt;BiauKai&lt;/td&gt;
+&lt;td&gt;\6807\6977\4F53&lt;/td&gt;
+&lt;td&gt;标楷体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;苹果丽中黑&lt;/td&gt;
+&lt;td&gt;Apple LiGothic Medium&lt;/td&gt;
+&lt;td&gt;\82F9\679C\4E3D\4E2D\9ED1&lt;/td&gt;
+&lt;td&gt;苹果丽中黑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;苹果丽细宋&lt;/td&gt;
+&lt;td&gt;Apple LiSung Light&lt;/td&gt;
+&lt;td&gt;\82F9\679C\4E3D\7EC6\5B8B&lt;/td&gt;
+&lt;td&gt;苹果丽细宋&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+    
+    </summary>
+    
+      <category term="CSS" scheme="http://Mrzzchao.github.io/categories/CSS/"/>
+    
+    
+      <category term="Font-Name" scheme="http://Mrzzchao.github.io/tags/Font-Name/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JavaScript基础知识点</title>
     <link href="http://Mrzzchao.github.io/2016/03/20/javascript%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/"/>
     <id>http://Mrzzchao.github.io/2016/03/20/javascript简明教程/</id>
     <published>2016-03-20T07:30:03.000Z</published>
-    <updated>2016-04-17T12:28:11.355Z</updated>
+    <updated>2016-04-17T12:28:11.356Z</updated>
     
     <content type="html">&lt;h2 id=&quot;基本概念&quot;&gt;&lt;a href=&quot;#基本概念&quot; class=&quot;headerlink&quot; title=&quot;基本概念&quot;&gt;&lt;/a&gt;基本概念&lt;/h2&gt;&lt;h3 id=&quot;数据类型&quot;&gt;&lt;a href=&quot;#数据类型&quot; class=&quot;headerlink&quot; title=&quot;数据类型&quot;&gt;&lt;/a&gt;数据类型&lt;/h3&gt;&lt;h4 id=&quot;简单数据类型&quot;&gt;&lt;a href=&quot;#简单数据类型&quot; class=&quot;headerlink&quot; title=&quot;简单数据类型&quot;&gt;&lt;/a&gt;简单数据类型&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;Undefined&lt;/strong&gt;&lt;/p&gt;
@@ -1891,270 +2150,11 @@ hexo d == hexo deploy
   </entry>
   
   <entry>
-    <title>css字体名称</title>
-    <link href="http://Mrzzchao.github.io/2016/03/20/%E5%AD%97%E4%BD%93%E5%90%8D%E7%A7%B0/"/>
-    <id>http://Mrzzchao.github.io/2016/03/20/字体名称/</id>
-    <published>2016-03-20T07:30:03.000Z</published>
-    <updated>2016-04-17T12:29:48.729Z</updated>
-    
-    <content type="html">&lt;ul&gt;
-&lt;li&gt;&lt;h2 id=&quot;Mac&quot;&gt;&lt;a href=&quot;#Mac&quot; class=&quot;headerlink&quot; title=&quot;Mac&quot;&gt;&lt;/a&gt;Mac&lt;/h2&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;中文名&lt;/th&gt;
-&lt;th&gt;英文名&lt;/th&gt;
-&lt;th&gt;Unicode&lt;/th&gt;
-&lt;th&gt;Unicode 2&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;华文细黑&lt;/td&gt;
-&lt;td&gt;STHeiti Light [STXihei]&lt;/td&gt;
-&lt;td&gt;\534E\6587\7EC6\9ED1&lt;/td&gt;
-&lt;td&gt;华文细黑&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;华文黑体&lt;/td&gt;
-&lt;td&gt;STHeiti&lt;/td&gt;
-&lt;td&gt;\534E\6587\9ED1\4F53&lt;/td&gt;
-&lt;td&gt;华文黑体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;华文楷体&lt;/td&gt;
-&lt;td&gt;STKaiti&lt;/td&gt;
-&lt;td&gt;\534E\6587\6977\4F53&lt;/td&gt;
-&lt;td&gt;华文楷体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;华文宋体&lt;/td&gt;
-&lt;td&gt;STSong&lt;/td&gt;
-&lt;td&gt;\534E\6587\5B8B\4F53&lt;/td&gt;
-&lt;td&gt;华文宋体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;华文仿宋&lt;/td&gt;
-&lt;td&gt;STFangsong&lt;/td&gt;
-&lt;td&gt;\534E\6587\4EFF\5B8B&lt;/td&gt;
-&lt;td&gt;华文仿宋&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;丽黑 Pro&lt;/td&gt;
-&lt;td&gt;LiHei Pro Medium&lt;/td&gt;
-&lt;td&gt;\4E3D\9ED1 Pro&lt;/td&gt;
-&lt;td&gt;丽黑 Pro&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;丽宋 Pro&lt;/td&gt;
-&lt;td&gt;LiSong Pro Light&lt;/td&gt;
-&lt;td&gt;\4E3D\5B8B Pro&lt;/td&gt;
-&lt;td&gt;丽宋 Pro&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;标楷体&lt;/td&gt;
-&lt;td&gt;BiauKai&lt;/td&gt;
-&lt;td&gt;\6807\6977\4F53&lt;/td&gt;
-&lt;td&gt;标楷体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;苹果丽中黑&lt;/td&gt;
-&lt;td&gt;Apple LiGothic Medium&lt;/td&gt;
-&lt;td&gt;\82F9\679C\4E3D\4E2D\9ED1&lt;/td&gt;
-&lt;td&gt;苹果丽中黑&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;苹果丽细宋&lt;/td&gt;
-&lt;td&gt;Apple LiSung Light&lt;/td&gt;
-&lt;td&gt;\82F9\679C\4E3D\7EC6\5B8B&lt;/td&gt;
-&lt;td&gt;苹果丽细宋&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;h2 id=&quot;Window&quot;&gt;&lt;a href=&quot;#Window&quot; class=&quot;headerlink&quot; title=&quot;Window&quot;&gt;&lt;/a&gt;Window&lt;/h2&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;中文名&lt;/th&gt;
-&lt;th&gt;英文名&lt;/th&gt;
-&lt;th&gt;Unicode&lt;/th&gt;
-&lt;th&gt;Unicode 2&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;新细明体&lt;/td&gt;
-&lt;td&gt;PMingLiU&lt;/td&gt;
-&lt;td&gt;\65B0\7EC6\660E\4F53&lt;/td&gt;
-&lt;td&gt;新细明体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;细明体&lt;/td&gt;
-&lt;td&gt;MingLiU&lt;/td&gt;
-&lt;td&gt;\7EC6\660E\4F53&lt;/td&gt;
-&lt;td&gt;细明体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;标楷体&lt;/td&gt;
-&lt;td&gt;DFKai-SB&lt;/td&gt;
-&lt;td&gt;\6807\6977\4F53&lt;/td&gt;
-&lt;td&gt;标楷体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;黑体&lt;/td&gt;
-&lt;td&gt;SimHei&lt;/td&gt;
-&lt;td&gt;\9ED1\4F53&lt;/td&gt;
-&lt;td&gt;黑体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;宋体&lt;/td&gt;
-&lt;td&gt;SimSun&lt;/td&gt;
-&lt;td&gt;\5B8B\4F53&lt;/td&gt;
-&lt;td&gt;宋体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;新宋体&lt;/td&gt;
-&lt;td&gt;NSimSun&lt;/td&gt;
-&lt;td&gt;\65B0\5B8B\4F53&lt;/td&gt;
-&lt;td&gt;新宋体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;仿宋&lt;/td&gt;
-&lt;td&gt;FangSong&lt;/td&gt;
-&lt;td&gt;\4EFF\5B8B&lt;/td&gt;
-&lt;td&gt;仿宋&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;楷体&lt;/td&gt;
-&lt;td&gt;KaiTi&lt;/td&gt;
-&lt;td&gt;\6977\4F53&lt;/td&gt;
-&lt;td&gt;楷体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;仿宋_GB2312&lt;/td&gt;
-&lt;td&gt;FangSong_GB2312&lt;/td&gt;
-&lt;td&gt;\4EFF\5B8B_GB2312&lt;/td&gt;
-&lt;td&gt;仿宋_GB2312&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;楷体_GB2312&lt;/td&gt;
-&lt;td&gt;KaiTi_GB2312&lt;/td&gt;
-&lt;td&gt;\6977\4F53_GB2312&lt;/td&gt;
-&lt;td&gt;楷体_GB2312&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;微软正黑体&lt;/td&gt;
-&lt;td&gt;Microsoft JhengHei&lt;/td&gt;
-&lt;td&gt;\5FAE\x8F6F\6B63\9ED1\4F53&lt;/td&gt;
-&lt;td&gt;微软正黑体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;微软雅黑&lt;/td&gt;
-&lt;td&gt;Microsoft YaHei&lt;/td&gt;
-&lt;td&gt;\5FAE\8F6F\96C5\9ED1&lt;/td&gt;
-&lt;td&gt;微软雅黑&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;&lt;h2 id=&quot;Mac&quot;&gt;&lt;a href=&quot;#Mac&quot; class=&quot;headerlink&quot; title=&quot;Mac&quot;&gt;&lt;/a&gt;Mac&lt;/h2&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;中文名&lt;/th&gt;
-&lt;th&gt;英文名&lt;/th&gt;
-&lt;th&gt;Unicode&lt;/th&gt;
-&lt;th&gt;Unicode 2&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;华文细黑&lt;/td&gt;
-&lt;td&gt;STHeiti Light [STXihei]&lt;/td&gt;
-&lt;td&gt;\534E\6587\7EC6\9ED1&lt;/td&gt;
-&lt;td&gt;华文细黑&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;华文黑体&lt;/td&gt;
-&lt;td&gt;STHeiti&lt;/td&gt;
-&lt;td&gt;\534E\6587\9ED1\4F53&lt;/td&gt;
-&lt;td&gt;华文黑体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;华文楷体&lt;/td&gt;
-&lt;td&gt;STKaiti&lt;/td&gt;
-&lt;td&gt;\534E\6587\6977\4F53&lt;/td&gt;
-&lt;td&gt;华文楷体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;华文宋体&lt;/td&gt;
-&lt;td&gt;STSong&lt;/td&gt;
-&lt;td&gt;\534E\6587\5B8B\4F53&lt;/td&gt;
-&lt;td&gt;华文宋体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;华文仿宋&lt;/td&gt;
-&lt;td&gt;STFangsong&lt;/td&gt;
-&lt;td&gt;\534E\6587\4EFF\5B8B&lt;/td&gt;
-&lt;td&gt;华文仿宋&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;丽黑 Pro&lt;/td&gt;
-&lt;td&gt;LiHei Pro Medium&lt;/td&gt;
-&lt;td&gt;\4E3D\9ED1 Pro&lt;/td&gt;
-&lt;td&gt;丽黑 Pro&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;丽宋 Pro&lt;/td&gt;
-&lt;td&gt;LiSong Pro Light&lt;/td&gt;
-&lt;td&gt;\4E3D\5B8B Pro&lt;/td&gt;
-&lt;td&gt;丽宋 Pro&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;标楷体&lt;/td&gt;
-&lt;td&gt;BiauKai&lt;/td&gt;
-&lt;td&gt;\6807\6977\4F53&lt;/td&gt;
-&lt;td&gt;标楷体&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;苹果丽中黑&lt;/td&gt;
-&lt;td&gt;Apple LiGothic Medium&lt;/td&gt;
-&lt;td&gt;\82F9\679C\4E3D\4E2D\9ED1&lt;/td&gt;
-&lt;td&gt;苹果丽中黑&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;苹果丽细宋&lt;/td&gt;
-&lt;td&gt;Apple LiSung Light&lt;/td&gt;
-&lt;td&gt;\82F9\679C\4E3D\7EC6\5B8B&lt;/td&gt;
-&lt;td&gt;苹果丽细宋&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-    
-    </summary>
-    
-      <category term="CSS" scheme="http://Mrzzchao.github.io/categories/CSS/"/>
-    
-    
-      <category term="Font-Name" scheme="http://Mrzzchao.github.io/tags/Font-Name/"/>
-    
-  </entry>
-  
-  <entry>
     <title>纯CSS绘制三角形</title>
     <link href="http://Mrzzchao.github.io/2016/03/20/%E7%BA%AFCSS%E7%BB%98%E5%88%B6%E4%B8%89%E8%A7%92%E5%BD%A2%EF%BC%88%E5%90%84%E7%A7%8D%E8%A7%92%E5%BA%A6%EF%BC%89/"/>
     <id>http://Mrzzchao.github.io/2016/03/20/纯CSS绘制三角形（各种角度）/</id>
     <published>2016-03-20T07:28:03.000Z</published>
-    <updated>2016-04-17T12:28:52.247Z</updated>
+    <updated>2016-04-17T12:28:52.248Z</updated>
     
     <content type="html">&lt;p&gt;相信很多人在处理li图形的时候，都会很纳闷，为什么list-style-type没有三角图案，难度要在网上下个三角图标作为list-style-image?怎么可能呢，所以我整理了网上一些css三角绘制的方法和代码。&lt;/p&gt;
 &lt;h2 id=&quot;Triangle-Up&quot;&gt;&lt;a href=&quot;#Triangle-Up&quot; class=&quot;headerlink&quot; title=&quot;Triangle-Up&quot;&gt;&lt;/a&gt;Triangle-Up&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xrul1.com1.z0.glb.clouddn.com/triangle-up.jpg&quot; alt=&quot;Triangle-up&quot; title=&quot;triangle-up&quot;&gt;&lt;br&gt;&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-id&quot;&gt;#triangle-up&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;width&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;height&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;border-left&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;50px&lt;/span&gt; solid transparent;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;border-right&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;50px&lt;/span&gt; solid transparent;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;border-bottom&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;100px&lt;/span&gt; solid red;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
